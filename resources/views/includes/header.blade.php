@@ -1,22 +1,25 @@
 <style>
 .navbar-inner {
     border-bottom: 1px solid #000;
-    text-align: center;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10%;
+    padding-left: 10%;
 }
 
-ul#nav li {
-    display: inline;
+.navbar-item {
     font-size: large;
-
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
 }
 </style>
 
 <div class="navbar">
    <div class="navbar-inner">
-       <!--<a id="logo" href="/">ctbus</a>-->
-       <ul id="nav">
-           <li><a href="/">Home</a></li>
-           <li><a href="/resume">Resume</a></li>
-       </ul>
+       <div class="navbar-item"><a href="/projects">Projects</a></div>
+       <div class="navbar-item"><a href="/">Home</a></div>
+       <div class="navbar-item"><a href="/resume">Resume</a></div>
    </div>
 </div>
