@@ -1,10 +1,19 @@
 <style>
 .footer {
-
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 #bottom-line {
     display: flex;
-    align-content: space-between;
+    justify-content: space-between;
+    width: 90%;
+}
+.footer-note {
+    display: flex;
+    width: 90%;
 }
 </style>
 
@@ -41,6 +50,41 @@
         <p id="bottom-dash">-</p>
         <p id="bottom-dash">-</p>
         <p id="bottom-dash">-</p>
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
+        <p id="bottom-dash">-</p> 
         <p id="bottom-dash">-</p>
+    </div>
+    <div class="footer-note">
+        
     </div>
 </div>

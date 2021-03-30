@@ -21,6 +21,10 @@ Route::get('/resume', function () {
     return view('pages/resume');
 });
 
+Route::get('/projects', function () {
+    return view('pages/projects');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
