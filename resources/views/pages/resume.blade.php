@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+    $resumeUrl = $client->getObjectUrl(getenv('AWS_BUCKET'), 'resume.pdf', '5 minutes');
+?>
+
+<div style="text-decoration: underline; display: flex; justify-content: center;">
+    <a href="<?php echo $resumeUrl ?>" download>Download Resume&#769;</a>
+</div>
+
 <!-- Created by pdf2htmlEX (https://github.com/pdf2htmlEX/pdf2htmlEX) -->
 <meta name="generator" content="pdf2htmlEX"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
