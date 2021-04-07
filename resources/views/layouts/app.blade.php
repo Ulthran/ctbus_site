@@ -4,6 +4,20 @@
         @include('includes.head')
     </head>
     <body class="font-sans antialiased">
+        <?php
+        require "/var/www/ctbus_site/vendor/autoload.php";
+        use Aws\S3\S3Client;
+        use Aws\Exception\AwsException;
+
+        $sharedConfig = [
+            'region' => 'us-east-1',
+            'version' => 'latest'
+        ];
+
+        $sdk = new Aws\Sdk($sharedConfig);
+        $client = $sdk->createS3();
+        ?>
+
         <div class="min-h-screen bg-gray-100">
 
             <!-- Page Heading -->

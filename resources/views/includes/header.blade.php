@@ -1,17 +1,3 @@
-<?php
-require "/var/www/ctbus_site/vendor/autoload.php";
-use Aws\S3\S3Client;
-use Aws\Exception\AwsException;
-
-$sharedConfig = [
-    'region' => 'us-east-1',
-    'version' => 'latest'
-];
-
-$sdk = new Aws\Sdk($sharedConfig);
-$client = $sdk->createS3();
-?>
-
 <style>
 .navbar-inner {
     border-bottom: 1px solid #000;

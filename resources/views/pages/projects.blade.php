@@ -14,7 +14,7 @@
         ]);
 
         // Dissect
-        $descriptionStr = $description['Body']
+        $descriptionStr = $description['Body'];
 
         // Return project clip
 
