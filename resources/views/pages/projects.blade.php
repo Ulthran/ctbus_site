@@ -43,38 +43,37 @@
         $description = $client->getObject([
             'Bucket' => getenv('AWS_BUCKET'),
             'Key' => 'projects/' . $projName . '/description.txt'
-	]);
-	$tags = $client->getObject([
-	    'Bucket' => getenv('AWS_BUCKET'),
-	    'Key' => 'projects/' . $projName . '/tags.txt'
-	]);
-        $thumbnailCmd = $client->getCommand('GetObject', [
-            'Bucket' => getenv('AWS_BUCKET'),
-            'Key' => 'projects/' . $projName . '/thumbnail.png'
-	]);
-	$thumbnailReq = $client->createPresignedRequest($thumbnailCmd, '+10 minutes');
-	$thumbnailUrl = (string) $thumbnailReq->getUri();
-
-        // Return project clip
-        ?>
-	<a href="">
-        <div class="project-listing">
-            <div class="thumbnail">
-		<img src=<?php echo $thumbnailUrl; ?> alt="Uh oh ..." style="border-radius: 20px;">
-	    </div>
-	    <div style="width: 70%">
-		<div class="title">
-		<p><?php echo $title; ?></p>
-		</div>
-                <div class="description">
-                    <p><?php echo $description['Body']; ?></p>
-                </div>
-                <div class="description">
-		    <br /><p>Tags: <?php echo $tags['Body']; ?></p>
-                </div>
-	    </div>
-	</div>
-	</a>
+    	]);
+    	$tags = $client->getObject([
+    	    'Bucket' => getenv('AWS_BUCKET'),
+    	    'Key' => 'projects/' . $projName . '/tags.txt'
+    	]);
+            $thumbnailCmd = $client->getCommand('GetObject', [
+                'Bucket' => getenv('AWS_BUCKET'),
+                'Key' => 'projects/' . $projName . '/thumbnail.png'
+    	]);
+    	$thumbnailReq = $client->createPresignedRequest($thumbnailCmd, '+10 minutes');
+    	$thumbnailUrl = (string) $thumbnailReq->getUri();
+        // Display project listing
+?>
+    	<a href="">
+            <div class="project-listing">
+                <div class="thumbnail">
+    		<img src=<?php echo $thumbnailUrl; ?> alt="Uh oh ..." style="border-radius: 20px;">
+    	    </div>
+    	    <div style="width: 70%">
+    		<div class="title">
+    		<p><?php echo $title; ?></p>
+    		</div>
+                    <div class="description">
+                        <p><?php echo $description['Body']; ?></p>
+                    </div>
+                    <div class="description">
+    		    <br /><p>Tags: <?php echo $tags['Body']; ?></p>
+                    </div>
+    	    </div>
+    	</div>
+    	</a>
 <?php
     }
 ?>
