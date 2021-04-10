@@ -12,5 +12,6 @@
 <div class="content">
     <p>Hi there!</p>
     <p>There's some more text here :)</p>
+    <?php echo "Look, some PHP"; ?>
 </div>
 @stop

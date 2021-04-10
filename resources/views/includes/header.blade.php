@@ -9,7 +9,7 @@
 }
 
 .navbar-item {
-    font-size: large;
+    font-size: 30px;
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
@@ -20,6 +20,6 @@
    <div class="navbar-inner">
        <div class="navbar-item"><a href="/projects">Projects</a></div>
        <div class="navbar-item"><a href="/">Home</a></div>
-       <div class="navbar-item"><a href="/resume">Resume&#769;</a></div>
+       <div class="navbar-item"><a href="/resume">Re&#769;sume&#769;</a></div>
    </div>
 </div>
