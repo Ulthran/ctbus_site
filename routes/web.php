@@ -25,6 +25,10 @@ Route::get('/projects', function () {
     return view('pages/projects');
 });
 
+Route::get('/project', function () {
+    return view('pages/project');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

@@ -7,14 +7,16 @@
 }
 .sidebar {
     display: flex;
+    flex-direction: column;
     width: 25%;
     padding: 20px;
-    border: 1px solid #000;
     border-radius: 20px;
     margin: 20px;
 }
 .title {
-
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 20px;
 }
 .overview {
 
@@ -24,7 +26,11 @@
 }
 .body {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     padding: 20px;
+    width: 100%;
 }
 </style>
 
@@ -44,9 +50,9 @@
     $client = $sdk->createS3();
 
     // Get page material from S3
-    $body = '';
-    $video = '';
-    $slides = '';
+    $bodyUrl = '';
+    $videoUrl = '';
+    $slidesUrl = '';
     $title = $client->getObject([
         'Bucket' => getenv('AWS_BUCKET'),
         'Key' => 'projects/' . $_GET['projName'] . '/title.txt'
@@ -59,36 +65,53 @@
         'Bucket' => getenv('AWS_BUCKET'),
         'Key' => 'projects/' . $_GET['projName'] . '/links.txt'
     ]);
-    $linkList = explode(",", $links['Body']);
-    try {
-        $body = $client->getObject([
-            'Bucket' => getenv('AWS_BUCKET'),
-            'Key' => 'projects/' . $_GET['projName'] . '/body.pdf'
-    	]);
-    } catch (S3Exception $e) {
-        //echo $e->getMessage();
-    } catch (AwsException $e) {
-        //echo $e->getAwsRequestId() . "\n";
-        //echo $e->getAwsErrorType() . "\n";
-        //echo $e->getAwsErrorCode() . "\n";
-
-        //var_dump($e->toArray());
+    $linkList = [];
+    if($links['Body'] != '') {
+        foreach(explode(',', $links['Body']) as $kv) {
+	    list($k, $v) = explode(' => ', $kv);
+	    $linkList[$k] = $v;
+        }
     }
     try {
-        $video = $client->getObject([
+	$body = $client->getObject([
             'Bucket' => getenv('AWS_BUCKET'),
-            'Key' => 'projects/' . $_GET['projName'] . '/video.mp4'
-        ]);
+	    'Key' => 'projects/' . $_GET['projName'] . '/body.pdf'
+	]);
+        $bodyUrl = $client->getObjectUrl(
+            getenv('AWS_BUCKET'),
+	    'projects/' . $_GET['projName'] . '/body.pdf',
+	    '5 minutes'
+    	);
     } catch (S3Exception $e) {
 
     } catch (AwsException $e) {
 
     }
     try {
-        $slides = $client->getObject([
+	$video = $client->getObject([
             'Bucket' => getenv('AWS_BUCKET'),
-            'Key' => 'projects/' . $_GET['projName'] . '/slides.pptx'
-        ]);
+	    'Key' => 'projects/' . $_GET['projName'] . '/video.mp4'
+	]);
+        $videoUrl = $client->getObjectUrl(
+            getenv('AWS_BUCKET'),
+	    'projects/' . $_GET['projName'] . '/video.mp4',
+	    '5 minutes'
+        );
+    } catch (S3Exception $e) {
+
+    } catch (AwsException $e) {
+
+    }
+    try {
+	$slides = $client->getObject([
+            'Bucket' => getenv('AWS_BUCKET'),
+	    'Key' => 'projects/' . $_GET['projName'] . '/slides.pptx'
+	]);
+        $slidesUrl = $client->getObjectUrl(
+            getenv('AWS_BUCKET'),
+            'projects/' . $_GET['projName'] . '/slides.pptx',
+	    '5 minutes'
+        );
     } catch (S3Exception $e) {
 
     } catch (AwsException $e) {
@@ -99,6 +122,7 @@
 <div class="container">
     <div class="sidebar">
         <p class="title"><?php echo $title['Body']; ?></p>
+        <p>Links and Downloads:</p>
         <?php
             foreach ($linkList as $key => $value) {
                 ?>
@@ -106,9 +130,26 @@
                 <?php
             }
         ?>
+        <?php if($bodyUrl != '') { ?>
+	    <a href="<?php echo $bodyUrl; ?>" class="link">Paper</a>
+        <?php } ?>
+        <?php if($videoUrl != '') { ?>
+	    <a href="<?php echo $videoUrl; ?>" class="link">Video</a>
+        <?php } ?>
+        <?php if($slidesUrl != '') { ?>
+	    <a href="<?php echo $slidesUrl; ?>" class="link">Slides</a>
+        <?php } ?>
     </div>
     <div class="body">
-
+	<?php if($bodyUrl != '') { ?>
+	    <embed src="<?php echo $bodyUrl; ?>" width="100%" height="1150px" />
+	<?php } ?>
+        <?php if($videoUrl != '') { ?>
+            <video width="100%" controls style="padding: 20px;">
+	        <source src="<?php echo $videoUrl; ?>" type="video/mp4">
+                Your browser doesn't support the video tag. :(
+            </video>
+        <?php } ?>
     </div>
 </div>
 @stop

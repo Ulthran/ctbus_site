@@ -56,7 +56,8 @@
     	$thumbnailUrl = (string) $thumbnailReq->getUri();
         // Display project listing
 ?>
-    	<a href="">
+	<a href="http://54.234.4.35/project?projName=<?php echo $projName; ?>">
+	<!--<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "project?projName=" . $projName; ?>">-->
             <div class="project-listing">
                 <div class="thumbnail">
     		<img src=<?php echo $thumbnailUrl; ?> alt="Uh oh ..." style="border-radius: 20px;">
