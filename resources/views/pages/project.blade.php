@@ -126,18 +126,18 @@
         <?php
             foreach ($linkList as $key => $value) {
                 ?>
-                <a href="<?php echo $value; ?>" class="link"><?php echo $key; ?></a>
+                <a href="<?php echo $value; ?>" target="_blank" rel="noopener noreferrer" class="link"><?php echo $key; ?></a>
                 <?php
             }
         ?>
         <?php if($bodyUrl != '') { ?>
-	    <a href="<?php echo $bodyUrl; ?>" class="link">Paper</a>
+	    <a href="<?php echo $bodyUrl; ?>" target="_blank" rel="noopener noreferrer" class="link">Paper</a>
         <?php } ?>
         <?php if($videoUrl != '') { ?>
-	    <a href="<?php echo $videoUrl; ?>" class="link">Video</a>
+	    <a href="<?php echo $videoUrl; ?>" target="_blank" rel="noopener noreferrer" class="link">Video</a>
         <?php } ?>
         <?php if($slidesUrl != '') { ?>
-	    <a href="<?php echo $slidesUrl; ?>" class="link">Slides</a>
+	    <a href="<?php echo $slidesUrl; ?>" target="_blank" rel="noopener noreferrer" class="link">Slides</a>
         <?php } ?>
     </div>
     <div class="body">

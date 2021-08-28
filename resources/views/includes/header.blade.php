@@ -18,8 +18,8 @@
 
 <div class="navbar">
    <div class="navbar-inner">
-       <div class="navbar-item"><a href="/projects">Projects</a></div>
        <div class="navbar-item"><a href="/">Home</a></div>
+       <div class="navbar-item"><a href="/projects">Projects</a></div>
        <div class="navbar-item"><a href="/resume">Re&#769;sume&#769;</a></div>
    </div>
 </div>

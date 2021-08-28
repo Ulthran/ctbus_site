@@ -8,6 +8,10 @@
     border: 1px solid #000;
     padding: 20px;
     margin: 20px;
+    transition: all .2s ease-in-out;
+}
+.project-listing:hover {
+    transform: scale(1.01);
 }
 .thumbnail {
     margin-right: 30px;
@@ -58,8 +62,8 @@
 ?>
 	<a href="http://charliebushman.com/project?projName=<?php echo $projName; ?>">
 	<!--<a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "project?projName=" . $projName; ?>">-->
-            <div class="project-listing">
-                <div class="thumbnail">
+        <div class="project-listing">
+            <div class="thumbnail">
     		<img src=<?php echo $thumbnailUrl; ?> alt="Uh oh ..." style="border-radius: 20px;">
     	    </div>
     	    <div style="width: 70%">
@@ -81,9 +85,10 @@
 
 <div id="container">
     <?php displayProject("comps", $client, "COMPS: Physical reservoir computing for classification of temporal data"); ?>
+    <?php displayProject("latenite", $client, "LateNite"); ?>
     <?php displayProject("schmidtDecomp", $client, "Schmidt decomposition in quantum information theory"); ?>
     <?php displayProject("fractalsAndChaos", $client, "Fractals and Chaos: Fractal dimension as a measure of complexity"); ?>
-    <?php displayProject("fireWalls", $client, "防火墙观念和技术: Firewall theory and technology"); ?>
+    <?php displayProject("fireWalls", $client, "防火墙观念和技术: Firewall theory and technology (Harbin, China)"); ?>
     <?php displayProject("qkd", $client, "Twin-fields quantum key distribution"); ?>
     <?php displayProject("earthMag", $client, "Measuring the Earth's magnetic field in the undergraduate laboratory"); ?>
     <?php displayProject("trebuchet", $client, "Optimizing a trebuchet for range"); ?>
