@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}" type='text/css' />
+{% endblock %}
+
+{% block body %}
+<div style="text-decoration: underline; display: flex; justify-content: center; padding-top: 10px;">
+    <a href="https://ctbus-site-db.s3.amazonaws.com/resume.pdf" download>Download Re&#769;sume&#769;</a>
+</div>
+<div style="display: flex; justify-content: center; padding: 20px;">
+    <embed src="https://ctbus-site-db.s3.amazonaws.com/resume.pdf" width="90%" height="1150px"/>
+</div>
+{% endblock %}

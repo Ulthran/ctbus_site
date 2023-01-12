@@ -1,0 +1,46 @@
+.content-container {
+    display: inline-block;
+    padding: 20px;
+    width: 80%;
+    margin: 20px;
+}
+.sidebar {
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+    width: 15%;
+    text-align: center;
+}
+.content {
+    padding: 20px;
+    padding-left: 5%;
+    font-size: 20px;
+}
+.link {
+    text-decoration: underline;
+    padding-top: 10px;
+}
+.image-container {
+    position: relative;
+    text-align: center;
+}
+.image {
+    border: 5px outset silver;
+}
+.image:hover {
+    filter: brightness(85%);
+    filter: brightness(100%);
+}
+.caption {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+.caption:hover {
+    visibility: visible;
+}

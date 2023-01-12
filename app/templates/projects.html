@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}" type='text/css' />
+{% endblock %}
+
+{% block body %}
+<a href="projects/comps/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/comps/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>COMPS: Physical reservoir computing for classification of temporal data</p>
+            </div>
+            <div class="description">
+                <p>My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart physical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: machine learning, Mathematica, quantum computing</p>
+            </div>
+        </div>
+    </div>
+</a>
+<a href="projects/latenite/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/latenite/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>LateNite</p>
+            </div>
+            <div class="description">
+                <p>LateNite is a party planning app that I worked with Rachel Hodes to design for the Carleton startup competition. The app is built using React Native on AWS Amplify so that it is accessible from iOS, Android, or the web. This was my first experience designing a mainly JavaScript-based site. I was in charge of the technical side of things while Rachel managed most of the design and marketing materials and we worked together on financial projections with our advisor Ashley Lin. We ended up among the finalists but didn't win (only one prize :().</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: React Native, AWS Amplify, SendGrid</p>
+            </div>
+        </div>
+    </div>
+</a>
+<a href="projects/schmidtDecomp/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/schmidtDecomp/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>Schmidt decomposition in quantum information theory</p>
+            </div>
+            <div class="description">
+                <p>This is a project I did with April Reisenfeld in Numerical Analysis on how Schmidt decomposition is used in quantum information theory. In the paper we build up the necessary theoretical and mathematical background for understanding this application of Schmidt decomposition and then provide a specific example of how it can be used to build a quantum circuit for qubit state initialization. We then demonstrate how this can be done using a simple example programmed on IBM's quantum cloud with Qiskit.</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: quantum information, quantum computing, linear algebra, python</p>
+            </div>
+        </div>
+    </div>
+</a>
+<a href="projects/fractalsAndChaos/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/fractalsAndChaos/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>Fractals and Chaos: Fractal dimension as a measure of complexity</p>
+            </div>
+            <div class="description">
+                <p>Chaotic systems' trajectories through phase space have a tendency to produce fractals and so, measuring the fractal dimension of chaotic attractors can be a way of quantifying their complexity. In this project I explore methods for measuring the fractal dimensions of various chaotic attractors and then analyze the trends in complexity as the systems move through their parameter spaces.</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: Mathematica, fractals, chaos</p>
+            </div>
+        </div>
+    </div>
+</a>
+<a href="projects/fireWalls/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/fireWalls/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>防火墙观念和技术: Firewall theory and technology (Harbin, China)</p>
+            </div>
+            <div class="description">
+                <p>这篇文章是哈工大CET留学网络安全自学的期末论文。 四个月时间里，我跟林老师学习了传统防火墙技术， WEB应用防火墙 （WAF）， 和下一代防火墙 （NGFW）。 This essay is the term-end thesis from my network security independent study while studying abroad with CET at Harbin Institute of Technology (Harbin, China). Over four months, teacher Lin and I studied traditional firewall architectures, web application firewalls, and next generation firewalls.</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: Chinese, network security</p>
+            </div>
+        </div>
+    </div>
+</a>
+<a href="projects/qkd/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/qkd/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>Twin-fields quantum key distribution</p>
+            </div>
+            <div class="description">
+                <p>Quantum key distribution is a scheme for provably secure, optical communications that I researched as a project for Quantum Mechanics. The twin-fields QKD protocol is a relatively recent advancement in the field in which an untrusted intermediary is used to partially overcome the rate-distance limit, which is a fundamental issue with the field of optical communications. I explore this as well as BB84, the original QKD protocol, and theoretical protocols based on quanutum repeaters.</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: quantum information, optical signaling, cryptography</p>
+            </div>
+        </div>
+    </div>
+</a>
+<a href="projects/earthMag/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/earthMag/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>Measuring the Earth's magnetic field in the undergraduate laboratory</p>
+            </div>
+            <div class="description">
+                <p>This is a project I did with Evan David and Lucas Mueller for Contemporary Physics in which we compared various methods commonly employed in the undergraduate laboratory for measuring the Earth's magnetic field. Because this was during Covid times and we were spread across the country, we analyzed two methods: single-coil deflection and Helmholtz deflection, and we also used smartphone sensors to measure local fluctuations in the ambient fields. I took on the single-coil deflection method and built my own setup which turned out to provide accuracy within the range given by smartphone sensors and uncertainty of the accepted values.</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: electronics, Mathematica</p>
+            </div>
+        </div>
+    </div>
+</a>
+<a href="projects/trebuchet/index.html">
+    <div class="project-listing">
+        <div class="thumbnail">
+            <img src="projects/trebuchet/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+        </div>
+        <div style="width: 70%">
+            <div class="title">
+                <p>Optimizing a trebuchet for range</p>
+            </div>
+            <div class="description">
+                <p>A project I completed with Kyle Fraser-Mines, Jack Heinzel, and Axel Stahl for Classical Mechanics. We use Mathematica to model a trebuchet with Lagrangian techniques and then optimize it over a small subset of its parameter space. In conjunction with this, we also built a trebuchet out of Knex and various other materials to the specifications of our model and managed to launch marbles across a room.</p>
+            </div>
+            <div class="description">
+                <br /><p>Tags: Lagrangians, Mathematica, optimization</p>
+            </div>
+        </div>
+    </div>
+</a>
+</div>
+{% endblock %}

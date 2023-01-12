@@ -1,0 +1,52 @@
+/* Header */
+
+.navbar-inner {
+    border-bottom: 1px solid #000;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+.navbar-item {
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+/* Body */
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+.container {
+    background-blend-mode: lighten;
+    min-width: 100%;
+}
+
+/* Footer */
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#bottom-line {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 25px;
+    padding-bottom: 10px;
+}
+.footer-note {
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+.mailto-link {
+    color: #00F;
+}

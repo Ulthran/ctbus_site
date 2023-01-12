@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" type='text/css' />
+{% endblock %}
+
+{% block body %}
+<div class="container" >
+    <div class="content-container">
+        <div class="image-container">
+            <img src="https://ctbus-site-db.s3.amazonaws.com/MechanicalBifurcationDiagram.PNG" align="right" style="margin: 0px 0px 0px 10px;" class="image"/>
+            <div class="caption"></div>
+    </div>
+        <p class="content">Hi there! My name is Charlie Bushman and I work as an Application Developer in Statistical Metagenomics for the <a href="https://www.research.chop.edu/pennchop-microbiome-program" target="_blank" rel="noopener noreferrer" class="link">Penn-CHOP Microbiome Program</a> (University of Pennsylvania and Children's Hospital of Philadelphia). In this role I develop and maintain software for bioinformaticians to automate common tasks or perform new analyses.<br /><br />I graduated June of 2021 from Carleton College with a major in physics and 5+ years of interning and project experience in software engineering. At Carleton, I was a two-year captain of CHOP (frisbee team, 3x DIII national champs) and two-year director of the Queens of Comedy (standup group). I completed my thesis project on <a href="projects/comps/index.html" target="_blank" rel="noopener noreferrer" class="link">physical reservoir computing</a> (what I generated this cool plot for), and I was a finalist in the Carleton startup competition for a <a href="projects/latenite/index.html" target="_blank" rel="noopener noreferrer" class="link">React Native party planning app</a>.<br /><br />On this website, you can find a number of things relevant to me including GitHub and LinkedIn as well as my re&#769;sume&#769;. Under the projects tab, you'll find a lot of the work I have done ranging from math to physics to software and covering all the ground in between. If you have questions about any of them or anything further you'd like to know about me, you can reach me at <a href="mailto:ctbushman@gmail.com" class="link">ctbushman@gmail.com</a>. I look forward to your questions or comments!</p>
+    </div>
+    <div class="sidebar">
+        <p style="padding: 20px; font-weight: bold; font-size: 20px;">Important Links</p>
+        <a href="https://github.com/Ulthran" target="_blank" rel="noopener noreferrer" class="link">GitHub</a><br />
+        <a href="https://www.linkedin.com/in/charlie-bushman-8b0b59128/" target="_blank" rel="noopener noreferrer" class="link">LinkedIn</a><br />
+    </div>
+</div>
+{% endblock %}
