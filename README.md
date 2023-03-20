@@ -8,11 +8,18 @@ It is deployed as a serverless flask site using zappa on AWS.
 
  - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
  - `python -m venv env`
- - `source activate env/bin/activate`
+ - `source env/bin/activate`
  - `pip install -r requirements.txt`
  - `zappa deploy`
  - `zappa update` - to update a previously deployed app
  - `zappa tail` - to see logs
+
+To run locally,
+
+ - `source env/bin/activate`
+ - `flask --app app/app run`
+
+And go to the address given.
 
 ## Contributing
 

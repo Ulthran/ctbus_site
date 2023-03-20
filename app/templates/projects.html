@@ -5,6 +5,27 @@
 {% endblock %}
 
 {% block body %}
+    {% for project in projects %}
+        <a href="{{ url_for('templates', filename='project.html', project_name={{project}}) }}">
+            <div class="project-listing">
+                <div class="thumbnail">
+                    <img src="projects/comps/thumbnail.png" alt="Uh oh ..." style="border-radius: 20px;">
+                </div>
+                <div style="width: 70%">
+                    <div class="title">
+                        <p>COMPS: Physical reservoir computing for classification of temporal data</p>
+                    </div>
+                    <div class="description">
+                        <p>My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart physical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</p>
+                    </div>
+                    <div class="description">
+                        <br /><p>Tags: machine learning, Mathematica, quantum computing</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+
 <a href="projects/comps/index.html">
     <div class="project-listing">
         <div class="thumbnail">
