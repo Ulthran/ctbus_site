@@ -5,7 +5,7 @@ from lib import S3
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
-bucket = os.environ.get('BUCKET')
+bucket = os.environ.get('BUCKET', 'ctbus-site-db')
 db = S3.S3(bucket)
 
 @app.route('/favicon.ico')
@@ -23,11 +23,11 @@ def resume():
 
 @app.route('/projects')
 def projects():
-  return render_template('projects.html', project_list=db.list_projects())
+  return render_template('projects.html', project_dict=db.projects_dict())
 
 @app.route('/project/<project_name>')
 def project(project_name):
-  return render_template('project.html', project_name=project_name)
+  return render_template('project.html', project_dict=db.project_dict(project_name))
 
 if __name__ == "__main__":
   app.run(debug=True)
