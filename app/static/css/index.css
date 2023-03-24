@@ -22,7 +22,7 @@
 }
 .image-container {
     position: relative;
-    text-align: center;
+    text-align: right;
 }
 .image {
     border: 5px outset silver;

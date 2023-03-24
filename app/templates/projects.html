@@ -26,7 +26,7 @@
                     {% endif %}
                     {% if v["tags"] %}
                     <div class="description">
-                        <br /><p>Tags: {{v["tags"]}}</p>
+                        <br /><p>Tags: {{ ', '.join(v["tags"]) }}</p>
                     </div>
                     {% endif %}
                 </div>

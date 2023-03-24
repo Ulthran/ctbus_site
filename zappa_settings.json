@@ -7,7 +7,8 @@
         "runtime": "python3.9",
         "s3_bucket": "zappa-nhqh6fbxz",
         "environment_variables": {
-            "BUCKET": "ctbus-site-db"
+            "BUCKET": "ctbus-site-db",
+            "TABLE": "ctbus-site-db"
         }
     }
 }

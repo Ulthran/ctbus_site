@@ -18,6 +18,11 @@
         {% if project_dict["slides"] %}
         <a href="{{ project_dict['slides'] }}" target="_blank" rel="noopener noreferrer" class="link">Slides</a>
         {% endif %}
+        {% if project_dict["links"] %}
+        {% for k, v in project_dict["links"].items() %}
+        <a href="{{ v }}" target="_blank" rel="noopener noreferrer" class="link">{{ k }}</a>
+        {% endfor %}
+        {% endif %}
     </div>
     <div class="content">
         {% if project_dict["body"] %}

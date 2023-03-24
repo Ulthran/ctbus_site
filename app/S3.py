@@ -1,9 +1,11 @@
 import boto3
 import requests
 from collections import OrderedDict
+from DB import DB
 
-class S3:
+class S3(DB):
     def __init__(self, bucket: str) -> None:
+        super().__init__()
         self.NONO_LIST = ["", "EXAMPLE"]
         self.ORDERING = ["comps", "latenite", "schmidtDecomp", "fireWalls", "qkd", "fractalsAndChaos"]
 
@@ -14,16 +16,10 @@ class S3:
 
     def list_projects(self) -> list:
         return list(set([obj.key.split('/')[1] for obj in self.bucket.objects.filter(Prefix="projects/") if obj.key.split('/')[1] not in self.NONO_LIST]))
-
-    def get_url(self, project: str, key: str) -> str:
-        print(f"https://ctbus-site-db.s3.amazonaws.com/projects/{project}/{key}")
-        return f"https://ctbus-site-db.s3.amazonaws.com/projects/{project}/{key}"
     
     def project_dict(self, project_name: str) -> dict:
-        d = {}
+        d = super().project_dict(project_name)
 
-        if url := self.get_url(project_name, "thumbnail.png"):
-            d["thumbnail"] = url
         if url := self.get_url(project_name, "title.txt"):
             response = requests.get(url)
             d["title"] = response.text
@@ -33,14 +29,7 @@ class S3:
         if url := self.get_url(project_name, "tags.txt"):
             response = requests.get(url)
             d["tags"] = response.text
-        if url := self.get_url(project_name, "body.pdf"):
-            d["body"] = url
-        if url := self.get_url(project_name, "slides.pptxs"):
-            d["slides"] = url
-        if url := self.get_url(project_name, "video.mp4"):
-            d["video"] = url
         
-        print(d)
         return d
         
     def projects_dict(self) -> dict:

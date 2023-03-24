@@ -1,12 +1,13 @@
 import os
 from flask import Flask, render_template, url_for, request, redirect, flash, send_from_directory
-from lib import S3
+from DynamoDB import DynamoDB
 
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
-bucket = os.environ.get('BUCKET', 'ctbus-site-db')
-db = S3.S3(bucket)
+#bucket = os.environ.get('BUCKET', 'ctbus-site-db')
+table_name = os.environ.get('TABLE', 'ctbus-site-db')
+db = DynamoDB(table_name)
 
 @app.route('/favicon.ico')
 def favicon():
