@@ -1,9 +1,9 @@
 import boto3
 import requests
 from collections import OrderedDict
-from DB import DB
+from app.Backend import Backend
 
-class S3(DB):
+class S3(Backend):
     def __init__(self, bucket: str) -> None:
         super().__init__()
         self.NONO_LIST = ["", "EXAMPLE"]

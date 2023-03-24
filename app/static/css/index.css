@@ -20,10 +20,6 @@
     text-decoration: underline;
     padding-top: 10px;
 }
-.image-container {
-    position: relative;
-    text-align: right;
-}
 .image {
     border: 5px outset silver;
 }

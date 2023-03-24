@@ -1,8 +1,8 @@
 import boto3
 from collections import OrderedDict
-from DB import DB
+from app.Backend import Backend
 
-class DynamoDB(DB):
+class DynamoDB(Backend):
     def __init__(self, table_name: str) -> None:
         super().__init__()
 

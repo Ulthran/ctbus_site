@@ -1,9 +1,9 @@
 import boto3
 import requests
 
-class DB:
+class Backend:
     def __init__(self) -> None:
-        pass
+        self.cdn_url = "d20qcx1d083koe.cloudfront.net"
 
     def list_projects(self) -> list:
         raise NotImplementedError
@@ -16,7 +16,7 @@ class DB:
             return False
 
     def get_url(self, project: str, key: str) -> str:
-        url = f"https://ctbus-site-db.s3.amazonaws.com/projects/{project}/{key}"
+        url = f"https://{self.cdn_url}/projects/{project}/{key}"
         print(url)
         if self.url_exists(url):
             return url

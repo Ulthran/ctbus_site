@@ -1,6 +1,6 @@
 import os
-from flask import Flask, render_template, url_for, request, redirect, flash, send_from_directory
-from DynamoDB import DynamoDB
+from flask import Flask, render_template, send_from_directory
+from app.DynamoDB import DynamoDB
 
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
