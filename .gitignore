@@ -1,2 +1,2 @@
-ctbus-site-key.pem
-ssh_script.sh
+env/
+__pycache__

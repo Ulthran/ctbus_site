@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/project.css') }}" type='text/css' />
+{% endblock %}
+
+{% block body %}
+<div class="project-container">
+    <div class="sidebar">
+        <p class="title">{{ project_dict["title"] }}</p>
+        <p>Links and Downloads:</p>
+        {% if project_dict["body"] %}
+        <a href="{{ project_dict['body'] }}" target="_blank" rel="noopener noreferrer" class="link">Paper</a>
+        {% endif %}
+        {% if project_dict["video"] %}
+        <a href="{{ project_dict['video'] }}" target="_blank" rel="noopener noreferrer" class="link">Video</a>
+        {% endif %}
+        {% if project_dict["slides"] %}
+        <a href="{{ project_dict['slides'] }}" target="_blank" rel="noopener noreferrer" class="link">Slides</a>
+        {% endif %}
+        {% if project_dict["links"] %}
+        {% for k, v in project_dict["links"].items() %}
+        <a href="{{ v }}" target="_blank" rel="noopener noreferrer" class="link">{{ k }}</a>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="content">
+        {% if project_dict["body"] %}
+        <embed src="{{ project_dict['body'] }}" width="100%" height="1150px" />
+        {% endif %}
+        {% if project_dict["video"] %}
+        <video width="100%" controls style="padding: 20px;">
+        <source src="{{ project_dict['video'] }}" type="video/mp4">
+            Your browser doesn't support the video tag. :(
+        </video>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

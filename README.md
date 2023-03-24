@@ -4,7 +4,22 @@ This is a personal website for Charlie Bushman.
 
 ## Deployment
 
-It is deployed as a static site on AWS S3. All the materials are hosted in a bucket and served as is. 
+It is deployed as a serverless flask site using zappa on AWS.
+
+ - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
+ - `python -m venv env`
+ - `source env/bin/activate`
+ - `pip install -r requirements.txt`
+ - `zappa deploy`
+ - `zappa update` - to update a previously deployed app
+ - `zappa tail` - to see logs
+
+To run locally,
+
+ - `source env/bin/activate`
+ - `flask --app app/app run`
+
+And go to the address given.
 
 ## Contributing
 

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}" type='text/css' />
+{% endblock %}
+
+{% block body %}
+    {% for k, v in project_dict.items() %}
+        <a href="{{ url_for('project', project_name=k) }}">
+            <div class="project-listing">
+                {% if v["thumbnail"] %}
+                <div class="thumbnail">
+                    <img src={{v['thumbnail']}} alt="Uh oh ..." style="border-radius: 20px;">
+                </div>
+                {% endif %}
+                <div style="width: 70%">
+                    {% if v["title"] %}
+                    <div class="title">
+                        <p>{{v["title"]}}</p>
+                    </div>
+                    {% endif %}
+                    {% if v["description"] %}
+                    <div class="description">
+                        <p>{{v["description"]}}</p>
+                    </div>
+                    {% endif %}
+                    {% if v["tags"] %}
+                    <div class="description">
+                        <br /><p>Tags: {{ ', '.join(v["tags"]) }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+{% endblock %}

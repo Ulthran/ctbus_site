@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html style="width: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ctbus</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/googlefonts.css') }}" type='text/css' />
+
+    <!-- Styles -->
+    <link rel='stylesheet' href="{{ url_for('static', filename='css/tailwind1.9.6.min.css') }}" type='text/css' />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}" type='text/css' />
+
+    {% block head %}{% endblock %}
+</head>
+
+<body class="font-sans antialiased">
+    <div class="bg-gray-100 container">
+
+        <!-- Page Heading -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" style="padding-right: 10%; padding-left: 10%;">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="navbar-item"><a href="{{ url_for('index') }}">Home</a></div>
+                        <div class="navbar-item"><a href="{{ url_for('projects') }}">Projects</a></div>
+                        <div class="navbar-item"><a href="{{ url_for('resume') }}">Re&#769;sume&#769;</a></div>
+                    </div>
+                 </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        <!-- Page Footer -->
+        <footer>
+            <div class="footer">
+                <div id="bottom-line">
+                    <p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p>
+                </div>
+                <div class="footer-note">
+                   <p>Please direct any inquiries, bug reports, or interesting anecdotes to <a class="mailto-link" href="mailto:ctbushman@gmail.com">ctbushman@gmail.com</a>.</p> 
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
