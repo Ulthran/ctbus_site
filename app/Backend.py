@@ -1,5 +1,6 @@
 import requests
 
+
 class Backend:
     def __init__(self) -> None:
         self.cdn_url = "d3047k2vzxu60t.cloudfront.net"
@@ -19,7 +20,7 @@ class Backend:
         print(url)
         if self.url_exists(url):
             return url
-    
+
     def project_dict(self, project_name: str) -> dict:
         d = {}
 
@@ -31,8 +32,8 @@ class Backend:
             d["slides"] = url
         if url := self.get_url(project_name, "video.mp4"):
             d["video"] = url
-        
+
         return d
-        
+
     def projects_dict(self) -> dict:
         raise NotImplementedError

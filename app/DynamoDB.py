@@ -2,16 +2,17 @@ import boto3
 from collections import OrderedDict
 from app.Backend import Backend
 
+
 class DynamoDB(Backend):
     def __init__(self, table_name: str) -> None:
         super().__init__()
 
         self.table_name = table_name
-        self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+        self.dynamodb = boto3.resource("dynamodb", region_name="us-east-1")
 
         self.table = self.dynamodb.Table(self.table_name)
         self.projects = self.table.scan()["Items"]
-        self.projects.sort(key = lambda x: x["rank"])
+        self.projects.sort(key=lambda x: x["rank"])
 
     def list_projects(self) -> list:
         return [o["project"] for o in self.projects]
@@ -25,10 +26,10 @@ class DynamoDB(Backend):
                 d["description"] = project["description"]
                 d["tags"] = project["tags"]
                 d["links"] = project["links"]
-        
+
         print(d)
         return d
-    
+
     def projects_dict(self) -> dict:
         d = OrderedDict()
 
@@ -43,5 +44,5 @@ class DynamoDB(Backend):
             e["links"] = self.projects[i]["links"]
 
             d[project] = e
-        
+
         return d

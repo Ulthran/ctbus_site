@@ -3,20 +3,36 @@ import requests
 from collections import OrderedDict
 from app.Backend import Backend
 
+
 class S3(Backend):
     def __init__(self, bucket: str) -> None:
         super().__init__()
         self.NONO_LIST = ["", "EXAMPLE"]
-        self.ORDERING = ["comps", "latenite", "schmidtDecomp", "fireWalls", "qkd", "fractalsAndChaos"]
+        self.ORDERING = [
+            "comps",
+            "latenite",
+            "schmidtDecomp",
+            "fireWalls",
+            "qkd",
+            "fractalsAndChaos",
+        ]
 
         self.bucket_name = bucket
-        self.s3 = boto3.resource('s3')
+        self.s3 = boto3.resource("s3")
         self.bucket = self.s3.Bucket(bucket)
-        self.client = boto3.client('s3')
+        self.client = boto3.client("s3")
 
     def list_projects(self) -> list:
-        return list(set([obj.key.split('/')[1] for obj in self.bucket.objects.filter(Prefix="projects/") if obj.key.split('/')[1] not in self.NONO_LIST]))
-    
+        return list(
+            set(
+                [
+                    obj.key.split("/")[1]
+                    for obj in self.bucket.objects.filter(Prefix="projects/")
+                    if obj.key.split("/")[1] not in self.NONO_LIST
+                ]
+            )
+        )
+
     def project_dict(self, project_name: str) -> dict:
         d = super().project_dict(project_name)
 
@@ -29,9 +45,9 @@ class S3(Backend):
         if url := self.get_url(project_name, "tags.txt"):
             response = requests.get(url)
             d["tags"] = response.text
-        
+
         return d
-        
+
     def projects_dict(self) -> dict:
         d = OrderedDict()
 
@@ -51,5 +67,5 @@ class S3(Backend):
                 e["tags"] = response.text
 
             d[project] = e
-        
+
         return d
