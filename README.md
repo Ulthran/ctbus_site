@@ -1,3 +1,7 @@
+[![Tests](https://github.com/Ulthran/ctbus_site/actions/workflows/test.yml/badge.svg)](https://github.com/Ulthran/ctbus_site/actions/workflows/test.yml)
+[![Super-Linter](https://github.com/Ulthran/ctbus_site/actions/workflows/linter.yml/badge.svg)](https://github.com/Ulthran/ctbus_site/actions/workflows/linter.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/07edb64af1c544439190dff82571e7a5)](https://app.codacy.com/gh/Ulthran/ctbus_site/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ## About
 
 This is a personal website for Charlie Bushman.
