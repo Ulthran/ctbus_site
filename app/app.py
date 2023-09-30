@@ -31,4 +31,5 @@ def project(project_name):
   return render_template('project.html', project_dict=db.project_dict(project_name))
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  #app.run(debug=True)
+  app.run
