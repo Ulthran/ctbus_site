@@ -1,9 +1,8 @@
-import boto3
 import requests
 
 class Backend:
     def __init__(self) -> None:
-        self.cdn_url = "d20qcx1d083koe.cloudfront.net"
+        self.cdn_url = "d3047k2vzxu60t.cloudfront.net"
 
     def list_projects(self) -> list:
         raise NotImplementedError
