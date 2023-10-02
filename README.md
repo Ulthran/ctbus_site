@@ -22,7 +22,7 @@ It is deployed as a serverless flask site using zappa on AWS.
 To run locally,
 
  - `source env/bin/activate`
- - `flask --app app/app run`
+ - `export FLASK_DEBUG=1 && flask --app app/app run`
 
 And go to the address given.
 
