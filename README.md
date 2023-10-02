@@ -1,3 +1,7 @@
+[![Tests](https://github.com/Ulthran/ctbus_site/actions/workflows/test.yml/badge.svg)](https://github.com/Ulthran/ctbus_site/actions/workflows/test.yml)
+[![Super-Linter](https://github.com/Ulthran/ctbus_site/actions/workflows/linter.yml/badge.svg)](https://github.com/Ulthran/ctbus_site/actions/workflows/linter.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/07edb64af1c544439190dff82571e7a5)](https://app.codacy.com/gh/Ulthran/ctbus_site/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ## About
 
 This is a personal website for Charlie Bushman.
@@ -6,18 +10,19 @@ This is a personal website for Charlie Bushman.
 
 It is deployed as a serverless flask site using zappa on AWS.
 
- - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
- - `python -m venv env`
- - `source env/bin/activate`
- - `pip install -r requirements.txt`
- - `zappa deploy`
- - `zappa update` - to update a previously deployed app
- - `zappa tail` - to see logs
+-   `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
+-   `python -m venv env`
+-   `source env/bin/activate`
+-   `pip install -r requirements.txt`
+-   `pip install -r dev-requirements.txt` (for testing)
+-   `zappa deploy`
+-   `zappa update` (to update a previously deployed app)
+-   `zappa tail` (to see logs)
 
 To run locally,
 
- - `source env/bin/activate`
- - `flask --app app/app run`
+-   `source env/bin/activate`
+-   `export FLASK_DEBUG=1 && flask --app app/app run`
 
 And go to the address given.
 

@@ -1,5 +1,5 @@
 {
-    "dev": {
+    "common": {
         "app_function": "app.app.app",
         "aws_region": "us-east-1",
         "profile_name": "default",
@@ -10,5 +10,11 @@
             "BUCKET": "ctbus-site-db",
             "TABLE": "ctbus-site-db"
         }
+    },
+    "dev": {
+        "extends": "common"
+    },
+    "prod": {
+        "extends": "common"
     }
 }
