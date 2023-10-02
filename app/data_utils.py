@@ -3,10 +3,15 @@ import urllib.request
 
 
 def get_chess_stats() -> dict:
-    with urllib.request.urlopen(
-        "https://api.chess.com/pub/player/thwardenheimer/stats"
-    ) as url:
-        data = json.load(url)
+    url = "https://api.chess.com/pub/player/thwardenheimer/stats"
+
+    if url.lower().startswith("http"):
+        req = urllib.request.Request(url)
+    else:
+        raise ValueError from None
+
+    with urllib.request.urlopen(req) as resp:
+        data = json.load(resp)
 
         ret_dict = {}
 
