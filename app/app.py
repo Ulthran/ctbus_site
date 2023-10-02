@@ -7,7 +7,7 @@ from app.S3 import S3
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
-bucket = os.environ.get('BUCKET', 'ctbus-site-db')
+bucket = os.environ.get("BUCKET", "ctbus-site-db")
 s3 = S3(bucket)
 ENV = s3.get_env()
 table_name = os.environ.get("TABLE", "ctbus-site-db")
@@ -30,7 +30,7 @@ def index():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('error.html', cdn_url=ENV.get("CDN_URL", "")), 404
+    return render_template("error.html", cdn_url=ENV.get("CDN_URL", "")), 404
 
 
 @app.route("/resume")
@@ -55,7 +55,9 @@ def physics():
 
 @app.route("/sports")
 def sports():
-    return render_template("sports.html", cdn_url=ENV.get("CDN_URL", ""), chess_stats=get_chess_stats())
+    return render_template(
+        "sports.html", cdn_url=ENV.get("CDN_URL", ""), chess_stats=get_chess_stats()
+    )
 
 
 @app.route("/favorite-number")

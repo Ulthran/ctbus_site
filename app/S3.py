@@ -24,15 +24,18 @@ class S3(Backend):
         self.client = boto3.client("s3")
 
     def get_env(self) -> dict:
-        if not os.path.exists('.env'):
+        if not os.path.exists(".env"):
             try:
-                self.client.download_file(self.bucket_name, '.env', '.env')
+                self.client.download_file(self.bucket_name, ".env", ".env")
             except:
                 pass
-        
-        with open('.env', 'r') as f:
-            return {l.split("=")[0]: l.split("=")[1].strip() for l in f.readlines() if l.strip()}
 
+        with open(".env", "r") as f:
+            return {
+                l.split("=")[0]: l.split("=")[1].strip()
+                for l in f.readlines()
+                if l.strip()
+            }
 
     def list_projects(self) -> list:
         return list(
