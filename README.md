@@ -14,6 +14,7 @@ It is deployed as a serverless flask site using zappa on AWS.
  - `python -m venv env`
  - `source env/bin/activate`
  - `pip install -r requirements.txt`
+ - `pip install -r dev-requirements.txt` - for testing
  - `zappa deploy`
  - `zappa update` - to update a previously deployed app
  - `zappa tail` - to see logs

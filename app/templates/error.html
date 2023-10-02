@@ -1,5 +1,11 @@
-<body>
-  <h1>ERROR: Somthing went wrong :(</h1>
+{% extends 'base.html' %}
 
-  <p>Questions, comments, and complaints to <a href="mailto:ctbushman@gmail.com">ctbushman@gmail.com</a></p>
-</body>
+{% block body %}
+<!-- Error Content -->
+<div class="flex-grow flex items-center justify-center p-10">
+  <div class="bg-white p-8 rounded-lg shadow-md text-center">
+      <h2 class="text-3xl font-bold mb-4">Oops! Something went wrong.</h2>
+      <p class="text-gray-600 mb-8">We couldn't find the page you were looking for.</p>
+  </div>
+</div>
+{% endblock %}

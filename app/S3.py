@@ -1,11 +1,12 @@
 import boto3
+import os
 import requests
 from collections import OrderedDict
 from app.Backend import Backend
 
 
 class S3(Backend):
-    def __init__(self, bucket: str) -> None:
+    def __init__(self, bucket: str):
         super().__init__()
         self.NONO_LIST = ["", "EXAMPLE"]
         self.ORDERING = [
@@ -21,6 +22,17 @@ class S3(Backend):
         self.s3 = boto3.resource("s3")
         self.bucket = self.s3.Bucket(bucket)
         self.client = boto3.client("s3")
+
+    def get_env(self) -> dict:
+        if not os.path.exists('.env'):
+            try:
+                self.client.download_file(self.bucket_name, '.env', '.env')
+            except:
+                pass
+        
+        with open('.env', 'r') as f:
+            return {l.split("=")[0]: l.split("=")[1].strip() for l in f.readlines() if l.strip()}
+
 
     def list_projects(self) -> list:
         return list(

@@ -1,23 +1,105 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" type='text/css' />
-{% endblock %}
-
 {% block body %}
-<div class="container" >
-    <div class="content-container">
-        <div class="tooltip float-right">
-            <img src="https://d20qcx1d083koe.cloudfront.net/MechanicalBifurcationDiagram.png" align="right" style="margin: 0px 0px 0px 10px;" class="image"/>
-            <span class="tooltiptext">This is a bifurcation diagram I generated for a mechanical system of coupled weights on springs. The x-axis is the frequency of the driving force on the system (as a factor of ω0, the springs' resonant frequency) and the y-axis has two points for each value on the x, the maximum distances from equlibrium of the first weight in the system. You can see that with a driving frequency near resonance for the sytem it is chaotic, changing dramatically with tiny changes in input. As the driving force takes over with higher frequencies the sytem transitions into periodic behavior. It continues to be one of my favorite visualizations of chaotic and periodic regions in parameter space.</span>
-        </div>
+<!-- Hero Section -->
+<div class="container mx-auto flex-1 mt-8 p-4 text-center">
+    <h1 class="text-4xl font-bold mb-2">Charlie Bushman</h1>
+    <p class="text-lg">Developing Scientific Software, Chasing Flying Plastic, Etc.</p>
+    <!-- Logo -->
+    <img src="{{ cdn_url }}/images/Bvnrihioon.png" alt="Logo" class="rounded-full h-50 w-50 mb-4 mx-auto p-5">
+</div>
 
-        <p class="content">Hi there! My name is Charlie Bushman and I work as an Application Developer in Statistical Metagenomics for the <a href="https://www.research.chop.edu/pennchop-microbiome-program" target="_blank" rel="noopener noreferrer" class="link">Penn-CHOP Microbiome Program</a> (University of Pennsylvania and Children's Hospital of Philadelphia). In this role I develop and maintain software for bioinformaticians to automate common tasks and perform new analyses.<br /><br />I graduated June of 2021 from Carleton College with a major in physics and 5+ years of interning and project experience in software engineering. At Carleton, I was a two-year captain of CHOP (frisbee team, 3x DIII national champs) and two-year director of the Queens of Comedy (standup comedy group). I completed my thesis project on <a href="projects/comps/index.html" target="_blank" rel="noopener noreferrer" class="link">physical reservoir computing</a> (what I generated this cool plot for), and I was a finalist in the Carleton startup competition for a <a href="projects/latenite/index.html" target="_blank" rel="noopener noreferrer" class="link">React Native party planning app</a>.<br /><br />On this website, you can find a number of things relevant to me including GitHub and LinkedIn as well as my re&#769;sume&#769;. Under the projects tab, you'll find a lot of the work I have done ranging from math to physics to software and covering all the ground in between. If you have questions about any of them or anything further you'd like to know about me, you can reach me at <a href="mailto:ctbushman@gmail.com" class="link">ctbushman@gmail.com</a>. I look forward to your questions or comments!</p>
+<!-- About Section -->
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">About Me</h2>
+    <ul class="list-disc list-inside text-lg">
+        <li class="mb-4">Developer in Statistical Metagenomics with the <a href="https://www.research.chop.edu/pennchop-microbiome-program" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Penn CHOP Microbiome Program</a> (University of Pennsylvania and Childrens Hospital of Philadelphia)</li>
+        <li class="mb-4">Carleton College physics major ('21) whose thesis project was on physical reservoir computing implementations</li>
+        <li class="mb-4">Interests in: music, global food production/supply, blockchain, sports, creative writing, math</li>
+        <li class="mb-4">Plays competitive ultimate frisbee (along with many other sports less competitively: soccer, badminton, tennis, squash, ping pong, climbing, sailing)</li>
+        <li class="mb-4">Developed a party planning React Native app with AWS Amplify as part of a startup for about a year during and after college</li>
+    </ul>
+</div>
+
+<!-- Interests Section -->
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Buttons of Interest</h2>
+    <div class="flex flex-wrap">
+        <!-- Each interest is a button with an arrow icon linking to its own page -->
+        <a href="{{ url_for('pcmp') }}" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded h-[40px] m-4">
+            Work
+            <span class="ml-2">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <!-- DNA helix -->
+                    <path d="M11.8476 12.1524L12.0462 12.2208C15.3052 13.3428 19.2301 12.2699 22 9.5M11.8476 12.1524L11.2902 11.9606C8.24848 10.9134 4.58525 11.9147 2 14.5M11.8476 12.1524L11.7792 11.9538C10.6572 8.69481 11.7301 4.76991 14.5 2M11.8476 12.1524L12.0394 12.7098C13.0866 15.7515 12.0853 19.4147 9.5 22" stroke="#000" stroke-width="1" stroke-linecap="round"/> 
+                    <path d="M10 15L11.8431 16.9217M6.76465 11.8433L8 13.0786" stroke="#000" stroke-width="1" stroke-linecap="round"/> 
+                    <path d="M11.8438 6.76465L14 9M16 11L16.9222 11.8431" stroke="#000" stroke-width="1" stroke-linecap="round"/> 
+                    <path d="M3.99976 13L7.49976 16.5" stroke="#000" stroke-width="1" stroke-linecap="round"/> 
+                    <path d="M19.7783 10.8906L16.2783 7.39062" stroke="#000" stroke-width="1" stroke-linecap="round"/> 
+                    <path d="M9.30469 18.1914L10.8917 19.7784" stroke="#000" stroke-width="1" stroke-linecap="round"/> 
+                    <path d="M14.5869 5.58691L12.9999 3.99989" stroke="#000" stroke-width="1" stroke-linecap="round"/>
+                    <!-- 0s and 1s -->
+                    <text x="4" y="5" font-size="4" font-weight="bold" fill="#000">0101</text>
+                    <text x="4" y="9" font-size="4" font-weight="bold" fill="#000">1001</text>
+                    <text x="12" y="16" font-size="4" font-weight="bold" fill="#000">0010</text>
+                    <text x="12" y="20" font-size="4" font-weight="bold" fill="#000">1110</text>
+                </svg>
+            </span>
+        </a>
+        <a href="{{ url_for('music') }}" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded h-[40px] m-4">
+            Music
+            <span class="ml-2">
+                <svg class="w-6 h-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="#000000">
+                    <path d="M9 19C9 20.1046 7.65685 21 6 21C4.34315 21 3 20.1046 3 19C3 17.8954 4.34315 17 6 17C7.65685 17 9 17.8954 9 19ZM9 19V5L21 3V17M21 17C21 18.1046 19.6569 19 18 19C16.3431 19 15 18.1046 15 17C15 15.8954 16.3431 15 18 15C19.6569 15 21 15.8954 21 17ZM9 9L21 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </a>
+        <a href="{{ url_for('physics') }}" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded h-[50px] m-4">
+            Physics
+            <span class="ml-2">
+                <svg class="w-6 h-6" viewBox="-5 -5 14 14" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Lorenz System Points (scaled and shifted) -->
+                    <circle cx="-2" cy="-2" r="0.03" fill="#000000" />
+                    <circle cx="-1.97" cy="-2.03" r="0.03" fill="#000000" />
+                    <circle cx="-1.95" cy="-2.05" r="0.03" fill="#000000" />
+                    <circle cx="-1.93" cy="-2.07" r="0.03" fill="#000000" />
+                    <circle cx="-1.91" cy="-2.09" r="0.03" fill="#000000" />
+                    <circle cx="-1.88" cy="-2.12" r="0.03" fill="#000000" />
+                    <circle cx="-1.86" cy="-2.14" r="0.03" fill="#000000" />
+                    <circle cx="-1.84" cy="-2.16" r="0.03" fill="#000000" />
+                    <circle cx="-1.82" cy="-2.18" r="0.03" fill="#000000" />
+                    <circle cx="-1.8" cy="-2.2" r="0.03" fill="#000000" />
+                    <!-- ... (continue with more circles using scaled and shifted x, y values) ... -->
+                    <circle cx="1.24" cy="-0.06" r="0.03" fill="#000000" />
+                    <circle cx="1.27" cy="-0.12" r="0.03" fill="#000000" />
+                    <circle cx="1.29" cy="-0.16" r="0.03" fill="#000000" />
+                    <circle cx="1.31" cy="-0.2" r="0.03" fill="#000000" />
+                    <circle cx="1.33" cy="-0.24" r="0.03" fill="#000000" />
+                    <circle cx="1.35" cy="-0.28" r="0.03" fill="#000000" />
+                    <circle cx="1.37" cy="-0.32" r="0.03" fill="#000000" />
+                    <circle cx="1.39" cy="-0.36" r="0.03" fill="#000000" />
+                    <circle cx="1.41" cy="-0.4" r="0.03" fill="#000000" />
+                    <circle cx="1.43" cy="-0.44" r="0.03" fill="#000000" />
+                </svg>
+            </span>
+        </a>
+        <a href="latenite.html" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded h-[50px] m-4">
+            LateNite <span class="ml-2">&#8594;</span>
+        </a>
+        <a href="blockchain.html" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded h-[50px] m-4">
+            Blockchain <span class="ml-2">&#8594;</span>
+        </a>
+        <a href="sports.html" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded h-[50px] m-4">
+            Sports <span class="ml-2">&#8594;</span>
+        </a>
+        <!-- Add more interests here with similar button structure -->
     </div>
-    <div class="sidebar">
-        <p style="padding: 20px; font-weight: bold; font-size: 20px;">Important Links</p>
-        <a href="https://github.com/Ulthran" target="_blank" rel="noopener noreferrer" class="link">GitHub</a><br />
-        <a href="https://www.linkedin.com/in/charlie-bushman-8b0b59128/" target="_blank" rel="noopener noreferrer" class="link">LinkedIn</a><br />
-    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="container mx-auto p-4 text-center">
+    <h2 class="text-2xl font-bold mb-4">Get In Touch</h2>
+    <p class="mb-4">Feel free to reach out at <a href="mailto:ctbushman@gmail.com" class="text-blue-500">ctbushman@gmail.com</a></p>
+    <!-- Add social media or other contact information here -->
 </div>
 {% endblock %}
