@@ -4,12 +4,12 @@
 <!-- Hero Section -->
 <div class="container mx-auto flex-1 mt-8 p-4 text-center w-1/2">
     <h1 class="text-4xl font-bold mb-2">My Work with the Penn-CHOP Microbiome Program</h1>
-    <p class="text-lg">Hereunder is a list of some of the more presentable work I've done as a developer with the Penn-CHOP Microbiome Program. (A website for the center's software can be expected by the end of the year!)</p>
+    <p class="text-lg">Hereunder is a list of some of the more presentable (and open source) work I've done as a developer with the Penn-CHOP Microbiome Program. (A website for the center's software can be expected by the end of the year!)</p>
 </div>
 
 <!-- Project Cards -->
 <div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
-    <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+    <a href="https://github.com/sunbeam-labs/sunbeam" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
         <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sunbeam: a robust, extensible metagenomic sequencing pipeline</h5>
@@ -17,11 +17,43 @@
         </div>
     </a>
 
-    <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
+    <a href="https://github.com/sunbeam-labs/sbx_demic" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/DEMIC_replication.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">DEMIC: dynamic estimator of bacterial groth rates</h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">DEMIC is a dynamic estimator of microbial communities. It employs a multi-sample algorithm based on contigs and coverage values to infer the relative distances of contigs from the replication origin and to accurately compare bacterial growth rates between samples.</p>
+        </div>
+    </a>
+
+    <a href="https://github.com/sunbeam-labs/sbx_virus_id" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Virus ID: a viral identification pipeline</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_virus_id is a Sunbeam extension that identifies, filters, and annotates viruses from metagenomic samples.</p>
+        </div>
+    </a>
+
+    <a href="https://github.com/Ulthran/ShotgunUnifrac" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">ShotgunUniFrac: enables UniFrac distance calculation on shotgun metagenomic data</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">ShotgunUniFrac is a dual use program for downloading and extracting genes from NCBI and for creating phylogenetic trees for many marker genes and merging the results into one. This was my first from-scratch project for the PCMP.</p>
+        </div>
+    </a>
+
+    <a href="https://github.com/Ulthran/conda_env_check" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Conda Env Check: a Conda environment health check workflow</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Conda Env Check is a GitHub Action that can provide a number of health metrics for Conda environments including verifying that it is createable, verifying that any pinned versions are createable, and checking pinned versions against latest and solved.</p>
+        </div>
+    </a>
+
+    <a href="https://github.com/sunbeam-labs/sbx_test_action" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sbx Test Action: a Sunbeam extension test workflow</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_test_action is a GitHub Action that manages setup for testing Sunbeam extensions in a CI environment.</p>
         </div>
     </a>
 </div>

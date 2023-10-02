@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, send_from_directory
+from app.data_utils import get_chess_stats
 from app.DynamoDB import DynamoDB
 from app.S3 import S3
 
@@ -52,14 +53,14 @@ def physics():
     return render_template("physics.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
-@app.route("/projects")
-def projects():
-    return render_template("projects.html", cdn_url=ENV.get("CDN_URL", ""), project_dict=db.projects_dict())
+@app.route("/sports")
+def sports():
+    return render_template("sports.html", cdn_url=ENV.get("CDN_URL", ""), chess_stats=get_chess_stats())
 
 
-@app.route("/project/<project_name>")
-def project(project_name):
-    return render_template("project.html", cdn_url=ENV.get("CDN_URL", ""), project_dict=db.project_dict(project_name))
+@app.route("/favorite-number")
+def favorite_number():
+    return render_template("favorite-number.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
 if __name__ == "__main__":
