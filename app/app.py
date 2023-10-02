@@ -1,7 +1,6 @@
 import os
 from flask import Flask, render_template, send_from_directory
 from app.data_utils import get_chess_stats
-from app.DynamoDB import DynamoDB
 from app.S3 import S3
 
 app = Flask(__name__)
@@ -10,8 +9,6 @@ app.secret_key = os.urandom(12)
 bucket = os.environ.get("BUCKET", "ctbus-site-db")
 s3 = S3(bucket)
 ENV = s3.get_env()
-table_name = os.environ.get("TABLE", "ctbus-site-db")
-db = DynamoDB(table_name)
 
 
 @app.route("/favicon.ico")
