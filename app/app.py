@@ -50,6 +50,11 @@ def physics():
     return render_template("physics.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
+@app.route("/physics/<project>")
+def comps(project):
+    return render_template(f"physics/{project}.html", cdn_url=ENV.get("CDN_URL", ""))
+
+
 @app.route("/sports")
 def sports():
     return render_template(

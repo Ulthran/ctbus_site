@@ -13,5 +13,16 @@
     <div id='Lorenz'><!-- Plotly chart will be drawn inside this DIV --></div>
 </div>
 
+<!-- Project Cards -->
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
+    <a href="https://github.com/sunbeam-labs/sunbeam" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sunbeam: a robust, extensible metagenomic sequencing pipeline</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sunbeam is a pipeline written in snakemake that simplifies and automates many of the steps in metagenomic sequencing analysis. It uses conda to manage dependencies, so it doesn't have pre-existing dependencies or admin privileges, and can be deployed on most Linux workstations and clusters. To read more, check out the paper in Microbiome.</p>
+        </div>
+    </a>
+</div>
+
 <script src="{{ url_for('static', filename='js/Lorenz.js') }}"></script>
 {% endblock %}
