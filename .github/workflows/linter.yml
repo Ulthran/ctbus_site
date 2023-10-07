@@ -20,6 +20,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           VALIDATE_PYTHON_BLACK: true
-          VALIDATE_JAVASCRIPT_ES_LINT: true
+          VALIDATE_JAVASCRIPT_ES: true
 
           FILTER_REGEX_INCLUDE: app/|tests/
