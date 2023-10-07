@@ -30,11 +30,6 @@ def page_not_found(e):
     return render_template("error.html", cdn_url=ENV.get("CDN_URL", "")), 404
 
 
-@app.route("/resume")
-def resume():
-    return render_template("resume.html", cdn_url=ENV.get("CDN_URL", ""))
-
-
 @app.route("/pcmp")
 def pcmp():
     return render_template("pcmp.html", cdn_url=ENV.get("CDN_URL", ""))
