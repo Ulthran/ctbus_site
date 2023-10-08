@@ -46,7 +46,7 @@ def physics():
 
 
 @app.route("/physics/<project>")
-def comps(project):
+def physics_project(project):
     return render_template(f"physics/{project}.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
