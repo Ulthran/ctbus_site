@@ -5,6 +5,14 @@
 <script src='https://cdn.plot.ly/plotly-2.26.0.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
 <!-- MathJax -->
+<script type="text/x-mathjax-config">
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ["\\(", "\\)"]],
+        processEscapes: true,
+      }
+    }
+</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 {% endblock %}
@@ -13,7 +21,7 @@
 <!-- Hero Section -->
 <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
     <h1 class="text-4xl font-bold mb-2">COMPS: Physical reservoir computing for classification of temporal data</h1>
-    <p class="text-lg">My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart physical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</p>
+    <p class="text-lg">My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart mechanical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</p>
 
     <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
         <a href="{{ cdn_url }}/documents/comps_paper.pdf" target="_blank" class="text-white" title="View Paper">
@@ -42,11 +50,41 @@
         </a>
     </div>
 
-    <p class="text-lg">Here's Mackey-Glass: $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</p>
-
-    <div id='MG'><!-- Plotly chart will be drawn inside this DIV --></div>
-
-    <script src="{{ url_for('static', filename='js/MG.js') }}"></script>
+    <p class="text-lg">The phenomenon of reservoir computing arises from an amazing property of chaotic systems: that when you link two similar chaotic systems, they start to align with each other. The technical definitions of most of the words used there can vary across contexts but at its core, that is reservoir computing. It's creating a chaotic system you know and using it to extract information from one you don't.</p>
+    <p class="text-lg">The Lorenz system is a classic example of a chaotic system. It's described by a set of three differential equations that dictate the evolution of the system in 3D space. The equations are:</p>
+    <p class="text-lg">$$\frac{\delta x}{\delta t} = \sigma (y - x)$$ $$\frac{\delta y}{\delta t} = x (\rho - z) - y$$ $$\frac{\delta z}{\delta t} = x y - \beta z$$</p>
+    <p class="text-lg">In the below plots, we can see chaotic system coupling in action with two Lorenz systems (#1 and #2) with slightly different parameters where the second is simulated twice, once without coupling to the first and again coupled on the z axis $z_2 = z_1$.</p>
 </div>
+
+<div class="container flex flex-col mx-auto md:w-1/2 p-4 justify-center items-center">
+    <a onclick="hide_unhide_plots()" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4 cursor-pointer">Hide/Show Lorenz Plots</a>
+</div>
+
+<div class="flex flex-row items-center" id="LorenzPlots">
+    <div id='Lorenz' class="w-1/2"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div class="flex flex-col w-1/2">
+        <div id='Lorenz_unlinked_2'><!-- Plotly chart will be drawn inside this DIV --></div>
+        <div id='Lorenz2'><!-- Plotly chart will be drawn inside this DIV --></div>
+    </div>
+</div>
+
+<script>
+function hide_unhide_plots() {
+  var x = document.getElementById("LorenzPlots");
+  if (x.style.display === "none") {
+    x.style.display = "flex";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <p class="text-lg">Each dot represents its own version of the system (unique starting points) and you can see from the highlighted red one that the dots across the two linked systems are drawn to each other and, even if they aren't always on the same side of the attractor, quickly fall into the same (quasi-)period. Meanwhile the unlinked system is doing its own thing, on its own time.</p>
+
+    <p class="text-lg">Here's Mackey-Glass: $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</p>
+</div>
+
+<script src="{{ url_for('static', filename='js/Lorenz.js') }}"></script>
 
 {% endblock %}

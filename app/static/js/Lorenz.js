@@ -2,19 +2,77 @@ var n = 100;
 var x = [],
     y = [],
     z = [];
+var x2 = [],
+    y2 = [],
+    z2 = [];
+var x3 = [],
+    y3 = [],
+    z3 = [];
 var dt = 0.015;
 
 for (i = 0; i < n; i++) {
-    x[i] = Math.random() * 2 - 1;
-    y[i] = Math.random() * 2 - 1;
+    x[i] = Math.random() * 2 - 15;
+    y[i] = Math.random() * 2 - 15;
     z[i] = 30 + Math.random() * 10;
+
+    x2[i] = Math.random() * 2 + 13;
+    y2[i] = Math.random() * 2 + 13;
+    z2[i] = 30 + Math.random() * 10;
+
+    x3[i] = x2[i];
+    y3[i] = y2[i];
+    z3[i] = z2[i];
 }
 
-Plotly.newPlot('Lorenz', [{
-    x: x,
-    y: z,
-    mode: 'markers'
+Plotly.newPlot('Lorenz_unlinked_2', [{
+    x: [x3[0]],
+    y: [z3[0]],
+    mode: 'markers',
+    marker: {color: '#FF0000', size: 10},
+}, {
+    x: x3.slice(1),
+    y: z3.slice(1),
+    mode: 'markers',
+    marker: {color: '#0000FF', size: 3},
 }], {
+    title: {
+        text:'Unlinked Lorenz Attractor #2',
+        font: {
+            size: 18
+        },
+    },
+    xaxis: {
+        range: [-60, 60],
+        showticklabels: false,
+        zeroline: false
+    },
+    yaxis: {
+        range: [0, 60],
+        showticklabels: false,
+        zeroline: false
+    },
+    plot_bgcolor: '#F3F4F6',
+    paper_bgcolor: '#F3F4F6',
+    showlegend: false,
+}, {responsive: true})
+
+Plotly.newPlot('Lorenz', [{
+    x: [x[0]],
+    y: [z[0]],
+    mode: 'markers',
+    marker: {color: '#FF0000', size: 10},
+}, {
+    x: x.slice(1),
+    y: z.slice(1),
+    mode: 'markers',
+    marker: {color: '#0000FF', size: 3},
+}], {
+    title: {
+        text:'Lorenz Attractor #1',
+        font: {
+            size: 18
+        },
+    },
     xaxis: {
         range: [-40, 40],
         showticklabels: false,
@@ -27,7 +85,40 @@ Plotly.newPlot('Lorenz', [{
     },
     plot_bgcolor: '#F3F4F6',
     paper_bgcolor: '#F3F4F6',
-})
+    showlegend: false,
+}, {responsive: true})
+
+Plotly.newPlot('Lorenz2', [{
+    x: [x2[0]],
+    y: [z2[0]],
+    mode: 'markers',
+    marker: {color: '#FF0000', size: 10},
+}, {
+    x: x2.slice(1),
+    y: z2.slice(1),
+    mode: 'markers',
+    marker: {color: '#0000FF', size: 3},
+}], {
+    title: {
+        text:'Linked Lorenz Attractor #2',
+        font: {
+            size: 18
+        },
+    },
+    xaxis: {
+        range: [-60, 60],
+        showticklabels: false,
+        zeroline: false
+    },
+    yaxis: {
+        range: [0, 60],
+        showticklabels: false,
+        zeroline: false
+    },
+    plot_bgcolor: '#F3F4F6',
+    paper_bgcolor: '#F3F4F6',
+    showlegend: false,
+}, {responsive: true})
 
 function compute() {
     var s = 10,
@@ -54,13 +145,105 @@ function compute() {
     }
 }
 
+function compute2() {
+    var s = 10,
+        b = 8 / 3,
+        r = 28;
+    var dx, dy, dz;
+    var xh, yh, zh;
+    for (var i = 0; i < n; i++) {
+        dx = s * (y2[i] - x2[i]);
+        dy = x2[i] * (r - z2[i]) - y2[i];
+        dz = x2[i] * y2[i] - b * z2[i];
+
+        xh = x2[i] + dx * dt * 0.5;
+        yh = y2[i] + dy * dt * 0.5;
+        zh = z2[i] + dz * dt * 0.5;
+
+        dx = s * (yh - xh);
+        dy = xh * (r - zh) - yh;
+        dz = xh * yh - b * zh;
+
+        x2[i] += dx * dt;
+        var coupling_const = 0.03;
+        y2[i] = (1 - coupling_const) * (y2[i] + dy * dt) + coupling_const * y[i];
+        z2[i] += dz * dt;
+    }
+}
+
+function compute3() {
+    var s = 10,
+        b = 8 / 3,
+        r = 28;
+    var dx, dy, dz;
+    var xh, yh, zh;
+    for (var i = 0; i < n; i++) {
+        dx = s * (y3[i] - x3[i]);
+        dy = x3[i] * (r - z3[i]) - y3[i];
+        dz = x3[i] * y3[i] - b * z3[i];
+
+        xh = x3[i] + dx * dt * 0.5;
+        yh = y3[i] + dy * dt * 0.5;
+        zh = z3[i] + dz * dt * 0.5;
+
+        dx = s * (yh - xh);
+        dy = xh * (r - zh) - yh;
+        dz = xh * yh - b * zh;
+
+        x3[i] += dx * dt;
+        y3[i] += dy * dt;
+        z3[i] += dz * dt;
+    }
+}
+
 function update() {
     compute();
+    compute2();
+    compute3();
+
+    Plotly.animate('Lorenz_unlinked_2', {
+        data: [{
+            x: [x3[0]],
+            y: [z3[0]],
+        }, {
+            x: x3.slice(1),
+            y: z3.slice(1),
+        }]
+    }, {
+        transition: {
+            duration: 0
+        },
+        frame: {
+            duration: 0,
+            redraw: false
+        }
+    });
 
     Plotly.animate('Lorenz', {
         data: [{
-            x: x,
-            y: z
+            x: [x[0]],
+            y: [z[0]],
+        }, {
+            x: x.slice(1),
+            y: z.slice(1),
+        }]
+    }, {
+        transition: {
+            duration: 0
+        },
+        frame: {
+            duration: 0,
+            redraw: false
+        }
+    });
+
+    Plotly.animate('Lorenz2', {
+        data: [{
+            x: [x2[0]],
+            y: [z2[0]],
+        }, {
+            x: x2.slice(1),
+            y: z2.slice(1),
         }]
     }, {
         transition: {
