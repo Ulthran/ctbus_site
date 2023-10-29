@@ -20,7 +20,7 @@
 {% block body %}
 <!-- Hero Section -->
 <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
-    <h1 class="text-4xl font-bold mb-2">COMPS: Physical reservoir computing for classification of temporal data</h1>
+    <h1 class="text-4xl font-bold mb-2">Physical reservoir computing for classification of temporal data</h1>
     <p class="text-lg">My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart mechanical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</p>
 
     <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
@@ -89,11 +89,11 @@ function hide_unhide_plots() {
 
 <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
     <p class="text-lg">Each dot represents its own version of the system (unique starting points) and you can see from the highlighted red one that the dots across the two linked systems are drawn to each other and, even if they aren't always on the same side of the attractor, quickly fall into the same (quasi-)period. Meanwhile the unlinked system is doing its own thing, on its own time. And this is with a coupling constant of only 0.03!</p>
-    <h3 class="text-2xl font-bold my-4">Mackey-Glass</h3>
+    <h3 class="text-2xl font-bold my-4">More Systems</h3>
     <p class="text-lg">The Mackey-Glass system is a single variable : $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</p>
 </div>
 
-<div id="MG" class="w-1/2 flex flex-row items-center"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="MG" class="flex flex-row items-center"><!-- Plotly chart will be drawn inside this DIV --></div>
 
 <script src="{{ url_for('static', filename='js/MG.js') }}"></script>
 
