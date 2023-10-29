@@ -40,14 +40,14 @@ def music():
     return render_template("music.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
-@app.route("/physics")
-def physics():
-    return render_template("physics.html", cdn_url=ENV.get("CDN_URL", ""))
+@app.route("/projects")
+def projects():
+    return render_template("projects.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
-@app.route("/physics/<project>")
-def physics_project(project):
-    return render_template(f"physics/{project}.html", cdn_url=ENV.get("CDN_URL", ""))
+@app.route("/projects/<project>")
+def project(project):
+    return render_template(f"projects/{project}.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
 @app.route("/sports")

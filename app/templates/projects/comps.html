@@ -51,9 +51,15 @@
     </div>
 
     <p class="text-lg">The phenomenon of reservoir computing arises from an amazing property of chaotic systems: that when you link two similar chaotic systems, they start to align with each other. The technical definitions of most of the words used there can vary across contexts but at its core, that is reservoir computing. It's creating a chaotic system you know and using it to extract information from one you don't.</p>
+    <h3 class="text-2xl font-bold my-4">Linked Lorenz Systems</h3>
     <p class="text-lg">The Lorenz system is a classic example of a chaotic system. It's described by a set of three differential equations that dictate the evolution of the system in 3D space. The equations are:</p>
     <p class="text-lg">$$\frac{\delta x}{\delta t} = \sigma (y - x)$$ $$\frac{\delta y}{\delta t} = x (\rho - z) - y$$ $$\frac{\delta z}{\delta t} = x y - \beta z$$</p>
-    <p class="text-lg">In the below plots, we can see chaotic system coupling in action with two Lorenz systems (#1 and #2) with slightly different parameters where the second is simulated twice, once without coupling to the first and again coupled on the z axis $z_2 = z_1$.</p>
+    <p class="text-lg">In the below plots, we can see chaotic system coupling in action. There are three Lorenz systems being simulated with the same parameters but the two on the right have different inputs from the one on the left. Additionally, the linked attractor #2 has one dimension of its evolution partially defined by attractor #1. This can be simulated according to the following equations:</p>
+    <div class="flex flex-row items-center justify-between">
+      <p class="text-lg">$$x_{1,t} = x_{1,t-1} + dx * dt$$ $$y_{1,t} = y_{1,t-1} + dy * dt$$ $$z_{1,t} = z_{1,t-1} + dz * dt$$</p>
+      <p class="text-lg">$$x_{2,t} = x_{2,t-1} + dx * dt$$ $$y_{2,t} = (1 - c)(y_{2,t-1} + dy * dt) + c * y_{1,t-1}$$ $$z_{2,t} = z_{2,t-1} + dz * dt$$ $$c = 0.03$$</p>
+      <p class="text-lg">$$x_{3,t} = x_{3,t-1} + dx * dt$$ $$y_{3,t} = y_{3,t-1} + dy * dt$$ $$z_{3,t} = z_{3,t-1} + dz * dt$$</p>
+    </div>
 </div>
 
 <div class="container flex flex-col mx-auto md:w-1/2 p-4 justify-center items-center">
@@ -79,12 +85,16 @@ function hide_unhide_plots() {
 }
 </script>
 
-<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
-    <p class="text-lg">Each dot represents its own version of the system (unique starting points) and you can see from the highlighted red one that the dots across the two linked systems are drawn to each other and, even if they aren't always on the same side of the attractor, quickly fall into the same (quasi-)period. Meanwhile the unlinked system is doing its own thing, on its own time.</p>
+<script src="{{ url_for('static', filename='js/Lorenz.js') }}"></script>
 
-    <p class="text-lg">Here's Mackey-Glass: $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</p>
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <p class="text-lg">Each dot represents its own version of the system (unique starting points) and you can see from the highlighted red one that the dots across the two linked systems are drawn to each other and, even if they aren't always on the same side of the attractor, quickly fall into the same (quasi-)period. Meanwhile the unlinked system is doing its own thing, on its own time. And this is with a coupling constant of only 0.03!</p>
+    <h3 class="text-2xl font-bold my-4">Mackey-Glass</h3>
+    <p class="text-lg">The Mackey-Glass system is a single variable : $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</p>
 </div>
 
-<script src="{{ url_for('static', filename='js/Lorenz.js') }}"></script>
+<div id="MG" class="w-1/2 flex flex-row items-center"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+<script src="{{ url_for('static', filename='js/MG.js') }}"></script>
 
 {% endblock %}
