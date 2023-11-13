@@ -11,7 +11,7 @@ def get_chess_stats() -> dict:
         raise ValueError from None
 
     # Hardcoded url doesn't need to be sanitized (and it is anyway)
-    with urllib.request.urlopen(req) as resp: #nosec
+    with urllib.request.urlopen(req) as resp:  # nosec
         data = json.load(resp)
 
         ret_dict = {}
