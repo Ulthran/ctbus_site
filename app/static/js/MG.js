@@ -1,44 +1,44 @@
-var nt = 1000; // Number of time steps
-var dt = 0.1; // Time step size
-var tdelay = 2; // Time delay
-var x = []; // Array to store x(t) values
-var xd = []; // Array to store x(t - tdelay) values
-var xd2 = []; // Array to store x(t - 2 * tdelay) values
-var n = 9.65;
-var g = 1;
-var B = 10;
+var MGnt = 1000; // Number of time steps
+var MGdt = 0.1; // Time step size
+var MGtdelay = 2; // Time delay
+var MGx = []; // Array to store x(t) values
+var MGxd = []; // Array to store x(t - tdelay) values
+var MGxd2 = []; // Array to store x(t - 2 * tdelay) values
+var MGn = 9.65;
+var MGg = 1;
+var MGB = 10;
 
 // Initial condition: x(0) = 0
-x[0] = 0.5;
-for (var i = 1; i < tdelay / dt + 1; i++) {
-    x[i] = 0.5;
+MGx[0] = 0.5;
+for (var i = 1; i < MGtdelay / MGdt + 1; i++) {
+    MGx[i] = 0.5;
 }
 
-function compute() {
-    for (var i = tdelay / dt; i < nt; i++) {
-        var idelay = i - tdelay / dt; // Calculate delayed index
+function MGcompute() {
+    for (var i = MGtdelay / MGdt; i < MGnt; i++) {
+        var idelay = i - MGtdelay / MGdt; // Calculate delayed index
         
         // Compute x'(t) using the given differential equation
-        var dx = (B * x[idelay]) / (1 + Math.pow(x[idelay], n)) - g * x[i - 1];
+        var dx = (MGB * MGx[idelay]) / (1 + Math.pow(MGx[idelay], MGn)) - MGg * MGx[i - 1];
         
         // Use Euler method to update x(t) based on x'(t)
-        x[i] = x[i - 1] + dx * dt;
+        MGx[i] = MGx[i - 1] + dx * MGdt;
     }
 }
 
-compute();
+MGcompute();
 
-for (var i = 1; i < nt - tdelay / dt; i++) {
-    xd[i] = x[i + tdelay / dt];
+for (var i = 1; i < MGnt - MGtdelay / MGdt; i++) {
+    MGxd[i] = MGx[i + MGtdelay / MGdt];
 }
-for (var i = 1; i < nt - 2 * (tdelay / dt); i++) {
-    xd2[i] = x[i + 2 * (tdelay / dt)];
+for (var i = 1; i < MGnt - 2 * (MGtdelay / MGdt); i++) {
+    MGxd2[i] = MGx[i + 2 * (MGtdelay / MGdt)];
 }
 
 Plotly.newPlot('MG', [{
-    x: x,
-    y: xd,
-    z: xd2,
+    x: MGx,
+    y: MGxd,
+    z: MGxd2,
     mode: 'markers',
     marker: {
 		size: 2,
@@ -63,27 +63,3 @@ Plotly.newPlot('MG', [{
     plot_bgcolor: '#F3F4F6',
     paper_bgcolor: '#F3F4F6',
 })
-/*
-function update() {
-    compute();
-
-    Plotly.animate('MG', {
-        data: [{
-            x: x,
-            y: v,
-        }]
-    }, {
-        transition: {
-            duration: 0
-        },
-        frame: {
-            duration: 0,
-            redraw: false
-        }
-    });
-
-    requestAnimationFrame(update);
-}
-
-requestAnimationFrame(update);
-*/
