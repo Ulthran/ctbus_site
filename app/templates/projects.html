@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<script src='https://cdn.plot.ly/plotly-2.26.0.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
-{% endblock %}
-
 {% block body %}
 <!-- Hero Section -->
 <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
-    <h1 class="text-4xl font-bold mb-2">Fun Physics Projects</h1>
+    <h1 class="text-4xl font-bold mb-2">Projects</h1>
 </div>
 
 <!-- Project Cards -->
 <div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
     <a href="{{ url_for('project', project='comps') }}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/mechanical_bifurcation_diagram_nbg.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Physical reservoir computing for classification of temporal data</h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart mechanical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</p>
@@ -31,6 +26,4 @@
         </div>
     </a>
 </div>
-
-<script src="{{ url_for('static', filename='js/Lorenz.js') }}"></script>
 {% endblock %}

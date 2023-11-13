@@ -4,56 +4,86 @@
 <!-- Hero Section -->
 <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
     <h1 class="text-4xl font-bold mb-2">My Work with the Penn-CHOP Microbiome Program</h1>
-    <p class="text-lg">Hereunder is a list of some of the more presentable (and open source) work I've done as a developer with the Penn-CHOP Microbiome Program. (A website for the center's software can be expected by the end of the year!)</p>
+    <p class="text-lg">Hereunder is a list of some of the more presentable (and open source) work I've done as a developer with the Penn-CHOP Microbiome Program. Use the button(s) on each card to see my contributions. (A website for the center's software can be expected by the end of the year!)</p>
+</div>
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <h1 class="text-2xl font-bold mb-2"> Metagenomics Pipelines</h1>
 </div>
 
 <!-- Project Cards -->
 <div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
-    <a href="https://github.com/sunbeam-labs/sunbeam" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+    <div class="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
+        <a href="https://github.com/sunbeam-labs/sunbeam" target="_blank" class="flex flex-col md:flex-row items-center">
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sunbeam: a robust, extensible metagenomic sequencing pipeline</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sunbeam is a pipeline written in snakemake that simplifies and automates many of the steps in metagenomic sequencing analysis. It uses conda to manage dependencies and can be deployed on most Linux workstations and clusters. To read more, check out the paper in Microbiome.</p>
+            </div>
+        </a>
+        <div class="flex flex-col justify-center p-4 leading-normal">
+            <!-- Buttons for card -->
+            <a href="https://github.com/sunbeam-labs/sunbeam/graphs/contributors" target="_blank">
+                <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 8.83a3.001 3.001 0 1 0-2 0v6.34a3.001 3.001 0 1 0 2 0V8.83ZM6 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm0 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM17 15.17a3.001 3.001 0 1 0 2 0V10.4A5.4 5.4 0 0 0 13.6 5h-.186l.293-.293a1 1 0 0 0-1.414-1.414l-2 2a1 1 0 0 0 0 1.414l2 2a1 1 0 1 0 1.414-1.414L13.414 7h.186a3.4 3.4 0 0 1 3.4 3.4v4.77ZM17 18a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" fill="#000000"></path></g></svg>
+            </a>
+        </div>
+    </div>
+
+    <a href="https://github.com/sunbeam-labs/sbx_virus_id" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
         <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sunbeam: a robust, extensible metagenomic sequencing pipeline</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sunbeam is a pipeline written in snakemake that simplifies and automates many of the steps in metagenomic sequencing analysis. It uses conda to manage dependencies, so it doesn't have pre-existing dependencies or admin privileges, and can be deployed on most Linux workstations and clusters. To read more, check out the paper in Microbiome.</p>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Virus ID: a viral identification pipeline</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_virus_id is a Sunbeam extension that identifies, filters, and annotates viruses from metagenomic samples. It can be configured to use multiple different assemblers and virus identification software.</p>
         </div>
     </a>
+</div>
 
+    <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+        <h1 class="text-2xl font-bold mb-2">Statistical Packages</h1>
+    </div>
+
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
     <a href="https://github.com/sunbeam-labs/sbx_demic" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/DEMIC_replication.png" alt="">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/DEMIC_replication_nbg.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">DEMIC: dynamic estimator of bacterial groth rates</h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">DEMIC is a dynamic estimator of microbial communities. It employs a multi-sample algorithm based on contigs and coverage values to infer the relative distances of contigs from the replication origin and to accurately compare bacterial growth rates between samples.</p>
         </div>
     </a>
+</div>
 
-    <a href="https://github.com/sunbeam-labs/sbx_virus_id" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Virus ID: a viral identification pipeline</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_virus_id is a Sunbeam extension that identifies, filters, and annotates viruses from metagenomic samples.</p>
-        </div>
-    </a>
+    <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+        <h1 class="text-2xl font-bold mb-2">Utility Libraries</h1>
+    </div>
 
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
     <a href="https://github.com/Ulthran/ShotgunUnifrac" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/shotgun_unifrac_diagram.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">ShotgunUniFrac: enables UniFrac distance calculation on shotgun metagenomic data</h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">ShotgunUniFrac is a dual use program for downloading and extracting genes from NCBI and for creating phylogenetic trees for many marker genes and merging the results into one. This was my first from-scratch project for the PCMP.</p>
         </div>
     </a>
+</div>
 
+    <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+        <h1 class="text-2xl font-bold mb-2">CI/CD Workflows</h1>
+    </div>
+
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
     <a href="https://github.com/Ulthran/conda_env_check" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
         <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Conda Env Check: a Conda environment health check workflow</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Conda Env Check is a GitHub Action that can provide a number of health metrics for Conda environments including verifying that it is createable, verifying that any pinned versions are createable, and checking pinned versions against latest and solved.</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Conda Env Check is a GitHub Action that can provide a number of health metrics for Conda environments including verifying that it is createable, verifying that any pinned versions are retrievable, and checking versions against latest and solved.</p>
         </div>
     </a>
 
     <a href="https://github.com/sunbeam-labs/sbx_test_action" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sbx Test Action: a Sunbeam extension test workflow</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_test_action is a GitHub Action that manages setup for testing Sunbeam extensions in a CI environment.</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_test_action is a GitHub Action that manages setup of the core Sunbeam pipeline for testing extensions in a CI environment. It automatically handles branching, forking, and user information to always test the correct version of any given extension.</p>
         </div>
     </a>
 </div>
