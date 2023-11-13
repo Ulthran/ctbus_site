@@ -30,11 +30,6 @@ def page_not_found(e):
     return render_template("error.html", cdn_url=ENV.get("CDN_URL", "")), 404
 
 
-@app.route("/resume")
-def resume():
-    return render_template("resume.html", cdn_url=ENV.get("CDN_URL", ""))
-
-
 @app.route("/pcmp")
 def pcmp():
     return render_template("pcmp.html", cdn_url=ENV.get("CDN_URL", ""))
@@ -45,14 +40,14 @@ def music():
     return render_template("music.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
-@app.route("/physics")
-def physics():
-    return render_template("physics.html", cdn_url=ENV.get("CDN_URL", ""))
+@app.route("/projects")
+def projects():
+    return render_template("projects.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
-@app.route("/physics/<project>")
-def comps(project):
-    return render_template(f"physics/{project}.html", cdn_url=ENV.get("CDN_URL", ""))
+@app.route("/projects/<project>")
+def project(project):
+    return render_template(f"projects/{project}.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
 @app.route("/sports")
@@ -60,6 +55,11 @@ def sports():
     return render_template(
         "sports.html", cdn_url=ENV.get("CDN_URL", ""), chess_stats=get_chess_stats()
     )
+
+
+@app.route("/certifications")
+def certifications():
+    return render_template("certifications.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
 @app.route("/favorite-number")

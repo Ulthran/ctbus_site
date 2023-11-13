@@ -1,60 +1,49 @@
 {% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
 
 {% block body %}
-<!-- Hero Section -->
-<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
-    <h1 class="text-4xl font-bold mb-2">My Work with the Penn-CHOP Microbiome Program</h1>
-    <p class="text-lg">Hereunder is a list of some of the more presentable (and open source) work I've done as a developer with the Penn-CHOP Microbiome Program. (A website for the center's software can be expected by the end of the year!)</p>
-</div>
+{% call macros.hero(title = "My Work with the Penn-CHOP Microbiome Program", subtitle = "Hereunder is a list of some of the more presentable (and open source) work I've done as a developer with the Penn-CHOP Microbiome Program. Use the buttons on each card to see my contributions. (A website for the center's software can be expected by the end of the year!)") %}{% endcall %}
+
+{{ macros.section_header(title = "Metagenomics Pipelines") }}
 
 <!-- Project Cards -->
 <div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
-    <a href="https://github.com/sunbeam-labs/sunbeam" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/sunbeam_logo.png" alt="">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sunbeam: a robust, extensible metagenomic sequencing pipeline</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sunbeam is a pipeline written in snakemake that simplifies and automates many of the steps in metagenomic sequencing analysis. It uses conda to manage dependencies, so it doesn't have pre-existing dependencies or admin privileges, and can be deployed on most Linux workstations and clusters. To read more, check out the paper in Microbiome.</p>
-        </div>
-    </a>
+    {{ macros.project_card(main_link = "https://github.com/sunbeam-labs/sunbeam", img_link = cdn_url + "/images/sunbeam_logo.png", title = "Sunbeam: a robust, extensible metagenomic sequencing pipeline", body = "A pipeline written in snakemake that simplifies and automates many of the steps in metagenomic sequencing analysis. It uses conda to manage dependencies and can be deployed on most Linux workstations and clusters. To read more, check out the paper in Microbiome.", contributions_link = "https://github.com/sunbeam-labs/sunbeam/graphs/contributors") }}
 
-    <a href="https://github.com/sunbeam-labs/sbx_demic" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ cdn_url }}/images/DEMIC_replication.png" alt="">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">DEMIC: dynamic estimator of bacterial groth rates</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">DEMIC is a dynamic estimator of microbial communities. It employs a multi-sample algorithm based on contigs and coverage values to infer the relative distances of contigs from the replication origin and to accurately compare bacterial growth rates between samples.</p>
-        </div>
-    </a>
+    {{ macros.project_card(main_link = "https://github.com/sunbeam-labs/sbx_assembly", img_link = cdn_url + "/images/sunbeam_logo.png", title = "Assembly, annotation, and coverage extension", body = "A Sunbeam extension for assembly of contigs using Megahit, gene annotation using Prodigal, and annotation using Blast and Diamond. It can also map reads to contigs and calculat per-base coverage using Minimap2 and samtools.", contributions_link = "https://github.com/sunbeam-labs/sbx_assembly/graphs/contributors") }}
 
-    <a href="https://github.com/sunbeam-labs/sbx_virus_id" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Virus ID: a viral identification pipeline</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_virus_id is a Sunbeam extension that identifies, filters, and annotates viruses from metagenomic samples.</p>
-        </div>
-    </a>
+    {{ macros.project_card(main_link = "https://github.com/sunbeam-labs/sbx_demic", img_link = cdn_url + "/images/sunbeam_logo.png", title = "Bacterial growth estimation extension", body = "A Sunbeam extension for estimating bacterial growth rates via peak-to-trough ratios (PTRs) using DEMIC. In preparation to use demic, reads are first assembled using Megahit, then binned by inferred genome using MaxBin2, after which reads are mapped back onto contigs using Bowtie2 and Samtools.", contributions_link = "https://github.com/sunbeam-labs/sbx_demic/graphs/contributors") }}
 
-    <a href="https://github.com/Ulthran/ShotgunUnifrac" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">ShotgunUniFrac: enables UniFrac distance calculation on shotgun metagenomic data</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">ShotgunUniFrac is a dual use program for downloading and extracting genes from NCBI and for creating phylogenetic trees for many marker genes and merging the results into one. This was my first from-scratch project for the PCMP.</p>
-        </div>
-    </a>
+    {{ macros.project_card(main_link = "https://github.com/sunbeam-labs/sbx_virus_id", img_link = cdn_url + "/images/sunbeam_logo.png", title = "Virus identification extension", body = "A Sunbeam extension that identifies, filters, and annotates viruses from metagenomic samples. It can be configured to use multiple different assemblers and virus identification software.", contributions_link = "https://github.com/sunbeam-labs/sbx_virus_id/graphs/contributors") }}
+</div>
 
-    <a href="https://github.com/Ulthran/conda_env_check" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Conda Env Check: a Conda environment health check workflow</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Conda Env Check is a GitHub Action that can provide a number of health metrics for Conda environments including verifying that it is createable, verifying that any pinned versions are createable, and checking pinned versions against latest and solved.</p>
-        </div>
-    </a>
+{{ macros.section_header(title = "Statistical Packages") }}
 
-    <a href="https://github.com/sunbeam-labs/sbx_test_action" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 m-4">
-        <rect class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-white"></rect>
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sbx Test Action: a Sunbeam extension test workflow</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Sbx_test_action is a GitHub Action that manages setup for testing Sunbeam extensions in a CI environment.</p>
-        </div>
-    </a>
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
+    {{ macros.project_card(main_link = "https://github.com/Ulthran/demic", img_link = cdn_url + "/images/DEMIC_replication_nbg.png", title = "DEMIC: dynamic estimator of bacterial groth rates", body = "A dynamic estimator of microbial communities. It employs a multi-sample algorithm based on contigs and coverage values to infer the relative distances of contigs from the replication origin and to accurately compare bacterial growth rates between samples.", contributions_link = "https://github.com/Ulthran/demic/graphs/contributors") }}
+
+    {{ macros.project_card(main_link = "https://github.com/PennChopMicrobiomeProgram/ZIBR", img_link = "", title = "ZIBR: Zero-Inflated Beta Random Effects Model", body = "A two-part zero-inflated Beta regression model with random effects for testing the association between microbial abundance and clinical covariates for longitudinal microbiome data.", contributions_link = "https://github.com/PennChopMicrobiomeProgram/ZIBR/graphs/contributors") }}
+</div>
+
+{{ macros.section_header(title = "Utility Libraries") }}
+
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
+    {{ macros.project_card(main_link = "https://github.com/Ulthran/ShotgunUnifrac", img_link = cdn_url + "/images/shotgun_unifrac_diagram.png", title = "ShotgunUniFrac", body = "A dual use program for downloading and extracting genes from NCBI and for creating phylogenetic trees for many marker genes and merging the results into one. This was my first from-scratch project for the PCMP.", contributions_link = "https://github.com/Ulthran/ShotgunUnifrac/graphs/contributors") }}
+
+    {{ macros.project_card(main_link = "https://github.com/Ulthran/pycov3", img_link = cdn_url + "/images/pycov3_logo.png", title = "PyCov3", body = "A package for generating cov3 files which are generated from sam files giving coverage information and a fasta file giving binned contigs. Cov3 files are used as input for the DEMIC R package which calculates PTR, an estimate for bacterial growth rates.", contributions_link = "https://github.com/Ulthran/pycov3/graphs/contributors") }}
+
+    {{ macros.project_card(main_link = "https://github.com/PennChopMicrobiomeProgram/primertrim", img_link = "", title = "primertrim", body = "Detect short primer sequences in FASTQ reads and trim the reads accordingly.", contributions_link = "https://github.com/PennChopMicrobiomeProgram/primertrim/graphs/contributors") }}
+
+    {{ macros.project_card(main_link = "https://github.com/PennChopMicrobiomeProgram/dnabc", img_link = "", title = "DNAbc", body = "Identify DNA barcodes in FASTQ data files and write demultiplexed data.", contributions_link = "https://github.com/PennChopMicrobiomeProgram/dnabc/graphs/contributors") }}
+</div>
+
+{{ macros.section_header(title = "DevOps Tools") }}
+
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
+    {{ macros.project_card(main_link = "https://github.com/Ulthran/conda_env_check", img_link = "", title = "Conda Env Check: a Conda environment health check workflow", body = "A GitHub Action that can provide a number of health metrics for Conda environments including verifying that it is createable, verifying that any pinned versions are retrievable, and checking versions against latest and solved.", contributions_link = "https://github.com/Ulthran/conda_env_check/graphs/contributors") }}
+
+    {{ macros.project_card(main_link = "https://github.com/sunbeam-labs/sbx_test_action", img_link = cdn_url + "/images/sunbeam_logo.png", title = "sbx_test_action", body = "A GitHub Action that manages setup of the core Sunbeam pipeline for testing extensions in a CI environment. It automatically handles branching, forking, and user information to always test the correct version of any given extension.", contributions_link = "https://github.com/sunbeam-labs/sbx_test_action/graphs/contributors") }}
+
+    {{ macros.project_card(main_link = "https://github.com/sunbeam-labs/sbx_template", img_link = cdn_url + "/images/sunbeam_logo.png", title = "sbx_template", body = "A template repository that allows for quick and easy creation of new Sunbeam extensions. It includes workflows to automatically fill in the new extension name and organization in many files.", contributions_link = "https://github.com/sunbeam-labs/sbx_template/graphs/contributors") }}
 </div>
 {% endblock %}
