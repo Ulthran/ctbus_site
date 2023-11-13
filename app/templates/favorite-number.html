@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
 
 {% block body %}
-<!-- Hero Section -->
-<div class="container mx-auto flex-1 mt-8 p-4 text-center w-1/2">
-    <h1 class="text-4xl font-bold mb-2">27</h1>
-    <p class="text-lg">It's 3<sup>3</sup>, what's not to like?</p>
-</div>
+{% call macros.hero(title = "27", subtitle = "It's 3<sup>3</sup>, what's not to like?") %}{% endcall %}
 {% endblock %}

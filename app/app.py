@@ -57,6 +57,11 @@ def sports():
     )
 
 
+@app.route("/certifications")
+def certifications():
+    return render_template("certifications.html", cdn_url=ENV.get("CDN_URL", ""))
+
+
 @app.route("/favorite-number")
 def favorite_number():
     return render_template("favorite-number.html", cdn_url=ENV.get("CDN_URL", ""))

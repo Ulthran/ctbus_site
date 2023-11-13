@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
 
 {% block head %}
 <!-- Plotly -->
@@ -18,49 +19,45 @@
 {% endblock %}
 
 {% block body %}
-<!-- Hero Section -->
-<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
-    <h1 class="text-4xl font-bold mb-2">Physical reservoir computing for classification of temporal data</h1>
-    <p class="text-lg">My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart mechanical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</p>
+{% call macros.hero(title = "Physical reservoir computing for classification of temporal data", subtitle = "My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart mechanical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.") %}
+<div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
+    <a href="{{ cdn_url }}/documents/comps_paper.pdf" target="_blank" class="text-white" title="View Paper">
+        <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="SVGRepo_iconCarrier">
+        <path clip-rule="evenodd" d="m12.2826 3.81217c-.2389-.05735-.5014-.06217-1.2708-.06217h-1.2118c-.85245 0-1.44669.00058-1.90932.03838-.45388.03709-.71464.10622-.91216.20686-.42336.21571-.76757.55992-.98328.98328-.10064.19752-.16977.45829-.20686.91216-.0378.46263-.03838 1.05687-.03838 1.90932v8.4c0 .8525.00058 1.4467.03838 1.9093.03709.4539.10622.7147.20686.9122.21571.4233.55992.7676.98328.9833.19752.1006.45828.1697.91216.2068.46263.0378 1.05687.0384 1.90932.0384h4.4c.8525 0 1.4467-.0006 1.9093-.0384.4539-.0371.7147-.1062.9122-.2068.4233-.2157.7675-.56.9833-.9833.1006-.1975.1697-.4583.2068-.9122.0378-.4626.0384-1.0568.0384-1.9093v-5.2118c0-.7694-.0048-1.03194-.0622-1.27081-.0551-.22958-.146-.44906-.2694-.65037-.1283-.20946-.3105-.39848-.8546-.94258l-3.1882-3.18822c-.5441-.5441-.7332-.7263-.9426-.85466-.2013-.12336-.4208-.21427-.6504-.26939zm-1.1854-1.56218c.6516-.00019 1.1026-.00032 1.5356.10362.3826.09187.7484.24338 1.0839.44899.3797.23266.6985.55166 1.1591 1.01251l.0604.06045 3.1882 3.18822.0605.06043c.4608.46059.7798.7794 1.0125 1.15906.2056.33552.3571.70132.449 1.08395.1039.43298.1038.88398.1036 1.53558v.0854 5.2118.0321c0 .8129 0 1.4685-.0434 1.9994-.0446.5466-.139 1.0267-.3653 1.471-.3596.7056-.9332 1.2793-1.6388 1.6388-.4443.2263-.9244.3207-1.471.3653-.5309.0434-1.1865.0434-1.9994.0434h-.0321-4.4-.03212c-.81283 0-1.46844 0-1.99935-.0434-.54663-.0446-1.02678-.139-1.47099-.3653-.70561-.3595-1.27929-.9332-1.63881-1.6388-.22634-.4443-.3207-.9244-.36537-1.471-.04337-.5309-.04337-1.1866-.04336-1.9994v-.0321-8.4-.0321c-.00001-.81284-.00001-1.46846.04336-1.99937.04467-.54663.13903-1.02677.36537-1.47099.35952-.70561.9332-1.27929 1.63881-1.63881.44421-.22634.92436-.3207 1.47099-.36536.53091-.04338 1.18653-.04338 1.99937-.04337h.0321 1.2118zm.9028 5.00001c.4142 0 .75.33579.75.75v7.8781c.1969-.0737.4191-.2101.7365-.4796.3539-.3004.7745-.7202 1.3773-1.3229l.6059-.6059c.2929-.2929.7677-.2929 1.0606 0s.2929.7677 0 1.0606l-.6059.6059-.0226.0227c-.5748.5748-1.0384 1.0384-1.4445 1.3831-.4181.355-.8243.6278-1.2985.7818-.7531.2447-1.5645.2447-2.3176 0-.4742-.154-.8804-.4268-1.29851-.7818-.40608-.3447-.86967-.8083-1.44442-1.3831h-.00001l-.0227-.0227-.60589-.6059c-.29289-.2929-.29289-.7677 0-1.0606s.76777-.2929 1.06066 0l.60589.6059c.60277.6027 1.02338 1.0225 1.37728 1.3229.3174.2695.5396.4059.7365.4796v-7.8781c0-.41421.3358-.75.75-.75z" fill="#000000" fill-rule="evenodd"/>
+        </g>
+        </svg>
+    </a>
 
-    <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
-        <a href="{{ cdn_url }}/documents/comps_paper.pdf" target="_blank" class="text-white" title="View Paper">
-            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-            <g id="SVGRepo_iconCarrier">
-            <path clip-rule="evenodd" d="m12.2826 3.81217c-.2389-.05735-.5014-.06217-1.2708-.06217h-1.2118c-.85245 0-1.44669.00058-1.90932.03838-.45388.03709-.71464.10622-.91216.20686-.42336.21571-.76757.55992-.98328.98328-.10064.19752-.16977.45829-.20686.91216-.0378.46263-.03838 1.05687-.03838 1.90932v8.4c0 .8525.00058 1.4467.03838 1.9093.03709.4539.10622.7147.20686.9122.21571.4233.55992.7676.98328.9833.19752.1006.45828.1697.91216.2068.46263.0378 1.05687.0384 1.90932.0384h4.4c.8525 0 1.4467-.0006 1.9093-.0384.4539-.0371.7147-.1062.9122-.2068.4233-.2157.7675-.56.9833-.9833.1006-.1975.1697-.4583.2068-.9122.0378-.4626.0384-1.0568.0384-1.9093v-5.2118c0-.7694-.0048-1.03194-.0622-1.27081-.0551-.22958-.146-.44906-.2694-.65037-.1283-.20946-.3105-.39848-.8546-.94258l-3.1882-3.18822c-.5441-.5441-.7332-.7263-.9426-.85466-.2013-.12336-.4208-.21427-.6504-.26939zm-1.1854-1.56218c.6516-.00019 1.1026-.00032 1.5356.10362.3826.09187.7484.24338 1.0839.44899.3797.23266.6985.55166 1.1591 1.01251l.0604.06045 3.1882 3.18822.0605.06043c.4608.46059.7798.7794 1.0125 1.15906.2056.33552.3571.70132.449 1.08395.1039.43298.1038.88398.1036 1.53558v.0854 5.2118.0321c0 .8129 0 1.4685-.0434 1.9994-.0446.5466-.139 1.0267-.3653 1.471-.3596.7056-.9332 1.2793-1.6388 1.6388-.4443.2263-.9244.3207-1.471.3653-.5309.0434-1.1865.0434-1.9994.0434h-.0321-4.4-.03212c-.81283 0-1.46844 0-1.99935-.0434-.54663-.0446-1.02678-.139-1.47099-.3653-.70561-.3595-1.27929-.9332-1.63881-1.6388-.22634-.4443-.3207-.9244-.36537-1.471-.04337-.5309-.04337-1.1866-.04336-1.9994v-.0321-8.4-.0321c-.00001-.81284-.00001-1.46846.04336-1.99937.04467-.54663.13903-1.02677.36537-1.47099.35952-.70561.9332-1.27929 1.63881-1.63881.44421-.22634.92436-.3207 1.47099-.36536.53091-.04338 1.18653-.04338 1.99937-.04337h.0321 1.2118zm.9028 5.00001c.4142 0 .75.33579.75.75v7.8781c.1969-.0737.4191-.2101.7365-.4796.3539-.3004.7745-.7202 1.3773-1.3229l.6059-.6059c.2929-.2929.7677-.2929 1.0606 0s.2929.7677 0 1.0606l-.6059.6059-.0226.0227c-.5748.5748-1.0384 1.0384-1.4445 1.3831-.4181.355-.8243.6278-1.2985.7818-.7531.2447-1.5645.2447-2.3176 0-.4742-.154-.8804-.4268-1.29851-.7818-.40608-.3447-.86967-.8083-1.44442-1.3831h-.00001l-.0227-.0227-.60589-.6059c-.29289-.2929-.29289-.7677 0-1.0606s.76777-.2929 1.06066 0l.60589.6059c.60277.6027 1.02338 1.0225 1.37728 1.3229.3174.2695.5396.4059.7365.4796v-7.8781c0-.41421.3358-.75.75-.75z" fill="#000000" fill-rule="evenodd"/>
-            </g>
-            </svg>
-        </a>
+    <a href="{{ cdn_url }}/slides/comps_slides.pptx" target="_blank" class="text-white" title="View Slides">
+        <svg class="w-12 h-12" fill="#ffffff" width="199px" height="199px" viewBox="0 0 24.00 24.00" id="presentation-down-arrow" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color" stroke="#ffffff" stroke-width="0.768"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.192"></g><g id="SVGRepo_iconCarrier"><path id="secondary" d="M13,22H11a1,1,0,0,1,0-2V16a1,1,0,0,1,2,0v4a1,1,0,0,1,0,2Z" style="fill: #000000;"></path><path id="primary" d="M20,2H4A1,1,0,0,0,3,3V15a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V3A1,1,0,0,0,20,2Z" style="fill: #000000;"></path><path id="secondary-2" data-name="secondary" d="M17,9.32l-1,3A1,1,0,0,1,15,13H12a1,1,0,0,1,0-2h1.19A5.91,5.91,0,0,0,8,8,1,1,0,0,1,8,6a7.84,7.84,0,0,1,6.72,3.66l.33-1a1,1,0,1,1,1.9.64ZM21,2H3A1,1,0,0,0,3,4H21a1,1,0,0,0,0-2Z" style="fill: #000000;"></path></g></svg>
+    </a>
 
-        <a href="{{ cdn_url }}/slides/comps_slides.pptx" target="_blank" class="text-white" title="View Slides">
-            <svg class="w-12 h-12" fill="#ffffff" width="199px" height="199px" viewBox="0 0 24.00 24.00" id="presentation-down-arrow" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color" stroke="#ffffff" stroke-width="0.768"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.192"></g><g id="SVGRepo_iconCarrier"><path id="secondary" d="M13,22H11a1,1,0,0,1,0-2V16a1,1,0,0,1,2,0v4a1,1,0,0,1,0,2Z" style="fill: #000000;"></path><path id="primary" d="M20,2H4A1,1,0,0,0,3,3V15a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V3A1,1,0,0,0,20,2Z" style="fill: #000000;"></path><path id="secondary-2" data-name="secondary" d="M17,9.32l-1,3A1,1,0,0,1,15,13H12a1,1,0,0,1,0-2h1.19A5.91,5.91,0,0,0,8,8,1,1,0,0,1,8,6a7.84,7.84,0,0,1,6.72,3.66l.33-1a1,1,0,1,1,1.9.64ZM21,2H3A1,1,0,0,0,3,4H21a1,1,0,0,0,0-2Z" style="fill: #000000;"></path></g></svg>
-        </a>
+    <a href="{{ cdn_url }}/videos/comps_video.mp4" target="_blank" class="text-white" title="View Video">
+        <svg class="w-12 h-12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0H24V24H0z"></path> <path d="M16 4c.552 0 1 .448 1 1v4.2l5.213-3.65c.226-.158.538-.103.697.124.058.084.09.184.09.286v12.08c0 .276-.224.5-.5.5-.103 0-.203-.032-.287-.09L17 14.8V19c0 .552-.448 1-1 1H2c-.552 0-1-.448-1-1V5c0-.552.448-1 1-1h14zm-1 2H3v12h12V6zm-5 2v4h3l-4 4-4-4h3V8h2zm11 .841l-4 2.8v.718l4 2.8V8.84z"></path> </g> </g></svg>
+    </a>
 
-        <a href="{{ cdn_url }}/videos/comps_video.mp4" target="_blank" class="text-white" title="View Video">
-            <svg class="w-12 h-12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0H24V24H0z"></path> <path d="M16 4c.552 0 1 .448 1 1v4.2l5.213-3.65c.226-.158.538-.103.697.124.058.084.09.184.09.286v12.08c0 .276-.224.5-.5.5-.103 0-.203-.032-.287-.09L17 14.8V19c0 .552-.448 1-1 1H2c-.552 0-1-.448-1-1V5c0-.552.448-1 1-1h14zm-1 2H3v12h12V6zm-5 2v4h3l-4 4-4-4h3V8h2zm11 .841l-4 2.8v.718l4 2.8V8.84z"></path> </g> </g></svg>
-        </a>
-
-        <a href="https://github.com/Ulthran/comps" target="_blank" class="text-white" title="Github Repo">
-            <!-- This SVG was generated by ChatGPT -->
-            <svg class="w-8 h-8" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577 0-.285-.01-1.03-.015-2.02-3.193.694-3.865-1.54-3.865-1.54-.522-1.324-1.274-1.677-1.274-1.677-1.044-.714.079-.699.079-.699 1.154.081 1.762 1.18 1.762 1.18 1.025 1.755 2.688 1.248 3.34.956.104-.743.4-1.247.728-1.532-2.545-.291-5.207-1.273-5.207-5.66 0-1.253.447-2.277 1.18-3.078-.118-.29-.51-1.462.112-3.042 0 0 1.005-.308 3.3 1.18.958-.267 1.98-.4 3-.405 1.02.005 2.042.138 3 .405 2.292-1.488 3.297-1.18 3.297-1.18.622 1.58.232 2.752.114 3.042.72.8 1.166 1.825 1.166 3.078 0 4.396-2.665 5.365-5.22 5.647.41.354.777 1.054.777 2.123 0 1.534-.014 2.774-.014 3.15 0 .318.21.694.8.576C20.566 21.797 24 17.288 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/>
-            </svg>
-        </a>
-    </div>
-
-    <p class="text-lg">The phenomenon of reservoir computing arises from an amazing property of chaotic systems: that when you link two similar chaotic systems, they start to align with each other. The technical definitions of most of the words used there can vary across contexts but at its core, that is reservoir computing. It's creating a chaotic system you know and using it to extract information from one you don't.</p>
-    <h3 class="text-2xl font-bold my-4">Linked Lorenz Systems</h3>
-    <p class="text-lg">The Lorenz system is a classic example of a chaotic system. It's described by a set of three differential equations that dictate the evolution of the system in 3D space. The equations are:</p>
-    <p class="text-lg">$$\frac{\delta x}{\delta t} = \sigma (y - x)$$ $$\frac{\delta y}{\delta t} = x (\rho - z) - y$$ $$\frac{\delta z}{\delta t} = x y - \beta z$$</p>
-    <p class="text-lg">In the below plots, we can see chaotic system coupling in action. There are three Lorenz systems being simulated with the same parameters but the two on the right have different inputs from the one on the left. Additionally, the linked attractor #2 has one dimension of its evolution partially defined by attractor #1. This can be simulated according to the following equations:</p>
-    <div class="flex flex-row items-center justify-between">
-      <p class="text-lg">$$x_{1,t} = x_{1,t-1} + dx * dt$$ $$y_{1,t} = y_{1,t-1} + dy * dt$$ $$z_{1,t} = z_{1,t-1} + dz * dt$$</p>
-      <p class="text-lg">$$x_{2,t} = x_{2,t-1} + dx * dt$$ $$y_{2,t} = (1 - c)(y_{2,t-1} + dy * dt) + c * y_{1,t-1}$$ $$z_{2,t} = z_{2,t-1} + dz * dt$$ $$c = 0.03$$</p>
-      <p class="text-lg">$$x_{3,t} = x_{3,t-1} + dx * dt$$ $$y_{3,t} = y_{3,t-1} + dy * dt$$ $$z_{3,t} = z_{3,t-1} + dz * dt$$</p>
-    </div>
+    <a href="https://github.com/Ulthran/comps" target="_blank" class="text-white" title="Github Repo">
+        <!-- This SVG was generated by ChatGPT -->
+        <svg class="w-8 h-8" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577 0-.285-.01-1.03-.015-2.02-3.193.694-3.865-1.54-3.865-1.54-.522-1.324-1.274-1.677-1.274-1.677-1.044-.714.079-.699.079-.699 1.154.081 1.762 1.18 1.762 1.18 1.025 1.755 2.688 1.248 3.34.956.104-.743.4-1.247.728-1.532-2.545-.291-5.207-1.273-5.207-5.66 0-1.253.447-2.277 1.18-3.078-.118-.29-.51-1.462.112-3.042 0 0 1.005-.308 3.3 1.18.958-.267 1.98-.4 3-.405 1.02.005 2.042.138 3 .405 2.292-1.488 3.297-1.18 3.297-1.18.622 1.58.232 2.752.114 3.042.72.8 1.166 1.825 1.166 3.078 0 4.396-2.665 5.365-5.22 5.647.41.354.777 1.054.777 2.123 0 1.534-.014 2.774-.014 3.15 0 .318.21.694.8.576C20.566 21.797 24 17.288 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/>
+        </svg>
+    </a>
 </div>
+
+<p class="text-lg">The phenomenon of reservoir computing arises from an amazing property of chaotic systems: that when you link two similar chaotic systems, they start to align with each other. The technical definitions of most of the words used there can vary across contexts but at its core, that is reservoir computing. It's creating a chaotic system you know and using it to extract information from one you don't.</p>
+<h3 class="text-2xl font-bold my-4">Linked Lorenz Systems</h3>
+<p class="text-lg">The Lorenz system is a classic example of a chaotic system. It's described by a set of three differential equations that dictate the evolution of the system in 3D space. The equations are:</p>
+<p class="text-lg">$$\frac{\delta x}{\delta t} = \sigma (y - x)$$ $$\frac{\delta y}{\delta t} = x (\rho - z) - y$$ $$\frac{\delta z}{\delta t} = x y - \beta z$$</p>
+<p class="text-lg">In the below plots, we can see chaotic system coupling in action. There are three Lorenz systems being simulated with the same parameters but the two on the right have different inputs from the one on the left. Additionally, the linked attractor #2 has one dimension of its evolution partially defined by attractor #1. This can be simulated according to the following equations:</p>
+<div class="flex flex-row items-center justify-between">
+    <p class="text-lg">$$x_{1,t} = x_{1,t-1} + dx * dt$$ $$y_{1,t} = y_{1,t-1} + dy * dt$$ $$z_{1,t} = z_{1,t-1} + dz * dt$$</p>
+    <p class="text-lg">$$x_{2,t} = x_{2,t-1} + dx * dt$$ $$y_{2,t} = (1 - c)(y_{2,t-1} + dy * dt) + c * y_{1,t-1}$$ $$z_{2,t} = z_{2,t-1} + dz * dt$$ $$c = 0.03$$</p>
+    <p class="text-lg">$$x_{3,t} = x_{3,t-1} + dx * dt$$ $$y_{3,t} = y_{3,t-1} + dy * dt$$ $$z_{3,t} = z_{3,t-1} + dz * dt$$</p>
+</div>
+{% endcall %}
 
 <div class="container flex flex-col mx-auto md:w-1/2 p-4 justify-center items-center">
     <a onclick="hide_unhide_plots()" class="interest-button flex items-center bg-green-500 hover:bg-green-600 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4 cursor-pointer">Hide/Show Lorenz Plots</a>
