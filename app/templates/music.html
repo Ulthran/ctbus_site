@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 {% import 'macros.jinja' as macros %}
 
+{% block head %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+$(function() {
+    $('a#tg').on('click', function(e) {
+        const note = $('input#note').val();
+        e.preventDefault()
+        $.getJSON('/tone-guides/' + note,
+            function(data) {
+            //do nothing
+        });
+        return false;
+    });
+});
+</script>
+{% endblock %}
+
 {% block body %}
 {% call macros.hero(title="Music", subtitle = "Listening to and (sometimes) making music has been an increasingly large influence in my life. Favorite artist is Jacob Collier. I play piano. I've also made playlists of new music finds every month since January 2022, follow my Spotify to listen.") %}
 <a href="https://open.spotify.com/user/charlie_bushman?si=0dd732a8d6da46b6" target="_blank" class="flex items-center justify-center p-5">
@@ -13,4 +30,17 @@
     </svg>
 </a>
 {% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 p-2 md:p-4 text-center md:w-1/2">
+    <form>
+        <a href=# id=tg><button class='btn btn-default'>Play</button></a><br />
+        <input href=# type="text" id="note" />
+    </form>
+    <audio controls>
+        <!--<source src="horse.ogg" type="audio/ogg">-->
+        <!--<source src="horse.mp3" type="audio/mpeg">-->
+        <source src="static/audio/tmp.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+</div>
 {% endblock %}

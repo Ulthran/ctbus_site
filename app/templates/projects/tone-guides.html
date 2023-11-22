@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
+
+{% block body %}
+{% call macros.hero(title = "Tone Guides", subtitle = "") %}{% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 p-2 md:p-4 text-center md:w-1/2">
+    <p class="text-lg">For a while now I've wanted to get a handle on audio processing so I could develop some fun musical tools. I chose python as the language to match this website's flask framework and because it's what I'm most used to working with right now. From there I needed a library with plenty of high-level features but also enough control to get into the meat of things, and decided on PyAudio.</p>
+
+    <div class="border-solid text-left">
+        <pre class="p-5">pip install pyaudio</pre>
+    </div>
+
+    <div class="border-solid text-left"></div>
+        <pre class="p-5">
+            src/pyaudio/device_api.c:9:10: fatal error: portaudio.h: No such file or directory
+                9 | #include "portaudio.h"
+                |          ^~~~~~~~~~~~~
+            compilation terminated.
+            error: command '/usr/bin/gcc' failed with exit code 1
+            [end of output]
+
+        note: This error originates from a subprocess, and is likely not a problem with pip.
+        ERROR: Failed building wheel for pyaudio
+        Failed to build pyaudio
+        ERROR: Could not build wheels for pyaudio, which is required to install pyproject.toml-based projects
+        </pre>
+    </div>
+
+    <p class="text-lg">Needed portaudio19, tried with pipwin, nothing appears to have support for WSL. Switched gears for librosa, install worked. But the IPython.display.Audio wasn't playing as it was expected to (probably another WSL thing?). Or is it maybe only supposed to work within the context of a Jupyter notebook? Luckily I can write the Audio object to a file and then play that file. </p>
+</div>
+{% endblock %}
