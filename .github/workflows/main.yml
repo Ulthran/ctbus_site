@@ -95,6 +95,11 @@ jobs:
         run: |
           zappa update dev --zip ctbus_site.zip --json
 
+      - name: Dump Logs
+        if: always()
+        run: |
+          zappa tail dev --json --since 10m
+
   test-deployment:
     needs: dev-deploy
     runs-on: ubuntu-latest
