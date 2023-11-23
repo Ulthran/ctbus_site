@@ -141,7 +141,7 @@ jobs:
 
   prod-deploy:
     needs: [test-deployment, super-linter]
-    if: contains(github.event_name, "push")
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint
     permissions:
