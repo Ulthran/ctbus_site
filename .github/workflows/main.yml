@@ -93,6 +93,7 @@ jobs:
       - name: Dump Logs
         if: always()
         run: |
+          sleep 30
           zappa tail dev --json --since 10m --disable-keep-open
 
   test-deployment:

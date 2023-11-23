@@ -8,9 +8,10 @@ app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
 print("Getting environment variables...")
-bucket = os.environ.get("BUCKET", "ctbus-site-db")
-s3 = S3(bucket)
-ENV = s3.get_env()
+#bucket = os.environ.get("BUCKET", "ctbus-site-db")
+#s3 = S3(bucket)
+#ENV = s3.get_env()
+ENV = {"CDN_URL": "https://d2w4s6xs8769uj.cloudfront.net"}
 print("Ready to go!")
 
 
