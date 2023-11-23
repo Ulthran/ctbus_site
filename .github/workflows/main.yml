@@ -81,7 +81,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::832242454463:role/ctbus-site-dev-ZappaLambdaExecutionRole
+          role-to-assume: arn:aws:iam::832242454463:role/ZappaUserRole
           aws-region: us-east-1
       
       - name: Setup AWS Profile
