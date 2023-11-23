@@ -58,6 +58,10 @@ jobs:
   dev-deploy:
     needs: build-artifact
     runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout Code
@@ -72,6 +76,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ctbus_site
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::832242454463:role/ctbus-site-dev-ZappaLambdaExecutionRole
+          aws-region: us-east-1
       
       - name: Deploy to Dev
         run: |
