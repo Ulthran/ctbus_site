@@ -38,6 +38,11 @@ jobs:
           source env/bin/activate
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - uses: geekyeggo/delete-artifact@v2
+        with:
+            name: ctbus_site
+            failOnError: false
       
       - name: Build Artifact
         run: |
@@ -47,7 +52,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: "ctbus_site_${{ github.run_id }}"
+          name: ctbus_site
           path: ./ctbus_site.zip
 
   dev-deploy:
@@ -58,15 +63,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Download a single artifact
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download Zip
         uses: actions/download-artifact@v3
         with:
-          name: "ctbus_site_${{ github.run_id }}"
+          name: ctbus_site
       
       - name: Deploy to Dev
         run: |
-          source env/bin/activate
-          zappa update dev --zip "ctbus_site_${{ github.run_id }}.zip" --json
+          zappa update dev --zip ctbus_site.zip --json
 
   test-deployment:
     needs: dev-deploy
