@@ -38,11 +38,6 @@ jobs:
           source env/bin/activate
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - uses: geekyeggo/delete-artifact@v2
-        with:
-            name: ctbus_site
-            failOnError: false
       
       - name: Build Artifact
         run: |
@@ -111,3 +106,15 @@ jobs:
       - name: Install Dependencies
         run: |
           echo "GOT TO HERE"
+
+  remove-artifact:
+    needs: [build-artifact, dev-deploy, test-deployment]
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Remove Artifact
+        uses: geekyeggo/delete-artifact@v2
+        with:
+            name: ctbus_site
+            failOnError: false
