@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template, send_from_directory
 from app.data_utils import get_chess_stats
-#from app.S3 import S3
+
+# from app.S3 import S3
 
 print("Starting app...")
 app = Flask(__name__)

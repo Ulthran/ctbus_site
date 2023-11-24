@@ -23,7 +23,7 @@ def setup(setup_chrome, setup_chromium, setup_brave, setup_edge):
 
 @pytest.fixture
 def arg(request):
-    return request.getfuncargvalue(request.param)
+    return request.getfixturevalue(request.param)
 
 
 @pytest.fixture()
