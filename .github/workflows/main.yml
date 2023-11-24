@@ -41,7 +41,7 @@ jobs:
       
       - name: Run Tests
         run: |
-          pytest tests/
+          pytest tests/unit/
   
   build-artifact:
     needs: test
@@ -123,9 +123,22 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install software
         run: |
-          echo "GOT TO HERE"
+          sudo apt-get install -y chromium-browser
+
+      - name: Install the necessary packages
+        run: |
+          pip install requests webdriver-manager selenium pytest
+
+      - name: Run the PyTest script
+        run: |
+          pytest -rA tests/e2e/
 
   remove-artifact:
     needs: [build-artifact, dev-deploy, test-deployment]
