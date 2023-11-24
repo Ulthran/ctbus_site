@@ -2,15 +2,15 @@ import pytest
 from . import DEV_URL
 
 
-@pytest.mark.usefixtures("setup_chrome")
-class TestChrome:
-    def __init__(self):
-        self.driver = setup_chrome
+@pytest.mark.parametrize("setup", [(setup_chrome)])
+def test_title(setup):
+    driver = setup
+    driver.get(DEV_URL)
+    assert driver.title == "Charlie Bushman"
 
-    def test_title(self):
-        self.driver.get(DEV_URL)
-        assert self.driver.title == "Charlie Bushman"
 
-    def test_title_blog(self):
-        self.driver.get(f"{DEV_URL}/certifications")
-        print(self.driver.title)
+@pytest.mark.parametrize("setup", [(setup_chrome)])
+def test_title_certs(setup):
+    driver = setup
+    driver.get(f"{DEV_URL}/certifications")
+    print(driver.title)

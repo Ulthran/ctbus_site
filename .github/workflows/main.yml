@@ -164,7 +164,7 @@ jobs:
           flask-unsign --decode --server "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/" || true
 
   remove-artifact:
-    needs: [build-artifact, dev-deploy, test-deployment, zap-deployment]
+    needs: [build-artifact, dev-deploy, test-deployment, zap-deployment, unsign-deployment]
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     runs-on: ubuntu-latest
 
@@ -176,7 +176,7 @@ jobs:
             failOnError: false
 
   prod-deploy:
-    needs: [test-deployment, zap-deployment, super-linter]
+    needs: [test-deployment, zap-deployment, unsign-deployment, super-linter]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint
