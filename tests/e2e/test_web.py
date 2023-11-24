@@ -2,7 +2,7 @@ import pytest
 from . import DEV_URL
 
 
-@pytest.mark.usefixtures("setup")
+@pytest.mark.usefixtures("setup_chrome")
 class TestExampleOne:
     def test_title(self):
         self.driver.get(DEV_URL)

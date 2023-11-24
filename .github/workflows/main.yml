@@ -139,6 +139,16 @@ jobs:
       - name: Run the PyTest script
         run: |
           pytest -rA tests/e2e/
+  
+  zap-deployment:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: 'https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/'
 
   remove-artifact:
     needs: [build-artifact, dev-deploy, test-deployment]
