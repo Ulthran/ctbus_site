@@ -7,6 +7,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture()
+def setup(setup_chrome):
+    yield {"chrome": setup_chrome}
+
+
+@pytest.fixture()
 def setup_chrome(request):
     chrome_options = ChromeOptions()
     options = [
