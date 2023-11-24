@@ -10,15 +10,13 @@ from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.edge.options import Options as EdgeOptions
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from webdriver_manager.firefox import GeckoDriverManager
 
-@pytest.fixture()
-def setup(setup_chrome, setup_chromium, setup_brave, setup_edge):
-    yield {
-        "chrome": setup_chrome,
-        "chromium": setup_chromium,
-        "brave": setup_brave,
-        "edge": setup_edge,
-    }
+from selenium.webdriver.ie.service import Service as IEService
+from selenium.webdriver.ie.options import Options as IEOptions
+from webdriver_manager.microsoft import IEDriverManager
 
 
 @pytest.fixture
@@ -121,6 +119,54 @@ def setup_edge():
 
     driver = webdriver.Edge(
         service=EdgeService(EdgeChromiumDriverManager().install()), options=options
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
+def setup_firefox():
+    options = FirefoxOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1920,1200",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Firefox(
+        service=FirefoxService(GeckoDriverManager().install()), options=options
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
+def setup_ie():
+    options = IEOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1920,1200",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Ie(
+        service=IEService(IEDriverManager().install()), options=options
     )
 
     yield driver

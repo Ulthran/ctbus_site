@@ -4,7 +4,14 @@ from . import DEV_URL
 
 @pytest.mark.parametrize(
     "arg",
-    ["setup_chrome", "setup_chromium", "setup_brave", "setup_edge"],
+    [
+        "setup_chrome",
+        "setup_chromium",
+        "setup_brave",
+        "setup_edge",
+        "setup_firefox",
+        "setup_ie",
+    ],
     indirect=True,
 )
 def test_title(arg):
