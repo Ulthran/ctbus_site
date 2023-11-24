@@ -1,5 +1,5 @@
 import pytest
-from .. import DEV_URL
+from . import DEV_URL
 
 
 @pytest.mark.usefixtures("setup")
