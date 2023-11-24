@@ -27,7 +27,7 @@ def arg(request):
 
 
 @pytest.fixture()
-def setup_chrome(request):
+def setup_chrome():
     options = ChromeOptions()
     options_arr = [
         "--headless",
@@ -51,7 +51,7 @@ def setup_chrome(request):
 
 
 @pytest.fixture()
-def setup_chromium(request):
+def setup_chromium():
     options = ChromeOptions()
     options_arr = [
         "--headless",
@@ -78,7 +78,7 @@ def setup_chromium(request):
 
 
 @pytest.fixture()
-def setup_brave(request):
+def setup_brave():
     options = ChromeOptions()
     options_arr = [
         "--headless",
@@ -105,7 +105,7 @@ def setup_brave(request):
 
 
 @pytest.fixture()
-def setup_edge(request):
+def setup_edge():
     options = EdgeOptions()
     options_arr = [
         "--headless",
