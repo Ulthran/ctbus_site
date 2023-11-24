@@ -123,20 +123,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
 
-      - name: Install software
+      - name: Install Apt Dependencies
         run: |
           sudo apt-get install -y chromium-browser
 
-      - name: Install the necessary packages
+      - name: Install Pip Dependencies
         run: |
           pip install requests webdriver-manager selenium pytest
 
-      - name: Run the PyTest script
+      - name: Run PyTest
         run: |
           pytest -rA tests/e2e/
   

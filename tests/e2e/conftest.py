@@ -4,17 +4,27 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
+
+from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.edge.options import Options as EdgeOptions
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 
 @pytest.fixture()
 def setup(setup_chrome):
-    yield {"chrome": setup_chrome}
+    yield {
+        "chrome": setup_chrome,
+        "chromium": setup_chromium,
+        "brave": setup_brave,
+        "edge": setup_edge,
+    }
 
 
 @pytest.fixture()
 def setup_chrome(request):
-    chrome_options = ChromeOptions()
-    options = [
+    options = ChromeOptions()
+    options_arr = [
         "--headless",
         "--disable-gpu",
         "--window-size=1920,1200",
@@ -23,11 +33,89 @@ def setup_chrome(request):
         "--no-sandbox",
         "--disable-dev-shm-usage",
     ]
-    for option in options:
-        chrome_options.add_argument(option)
+    for option in options_arr:
+        options.add_argument(option)
 
     driver = webdriver.Chrome(
-        service=ChromeService(ChromeDriverManager().install()), options=chrome_options
+        service=ChromeService(ChromeDriverManager().install()), options=options
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
+def setup_chromium(request):
+    options = ChromeOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1920,1200",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Chrome(
+        service=ChromeService(
+            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+        ),
+        options=options,
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
+def setup_brave(request):
+    options = ChromeOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1920,1200",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Chrome(
+        service=ChromeService(
+            ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()
+        ),
+        options=options,
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
+def setup_edge(request):
+    options = EdgeOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1920,1200",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Edge(
+        service=EdgeService(EdgeChromiumDriverManager().install()), options=options
     )
 
     yield driver
