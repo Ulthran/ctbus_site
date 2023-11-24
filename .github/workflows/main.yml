@@ -1,0 +1,186 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+jobs:
+  super-linter:
+    name: Lint Codebase
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Super-Linter
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          VALIDATE_PYTHON_BLACK: true
+          VALIDATE_JAVASCRIPT_ES: true
+
+          FILTER_REGEX_INCLUDE: app/|tests/
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r dev-requirements.txt
+      
+      - name: Run Tests
+        run: |
+          pytest tests/
+  
+  build-artifact:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies to venv
+        run: |
+          python -m venv env
+          source env/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Build Artifact
+        run: |
+          source env/bin/activate
+          zappa package dev -o ctbus_site.zip
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ctbus_site
+          path: ./ctbus_site.zip
+          retention-days: 1
+
+  dev-deploy:
+    needs: build-artifact
+    runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download Zip
+        uses: actions/download-artifact@v3
+        with:
+          name: ctbus_site
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::832242454463:role/ZappaUserRole
+          aws-region: us-east-1
+      
+      - name: Setup AWS Profile
+        run: |
+          aws configure set region us-east-1 --profile default
+          aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }} --profile default
+          aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }} --profile default
+          aws configure set aws_session_token ${{ env.AWS_SESSION_TOKEN }} --profile default
+      
+      - name: Deploy to Dev
+        run: |
+          zappa update dev --zip ctbus_site.zip --json
+
+      - name: Dump Logs
+        if: always()
+        run: |
+          sleep 30
+          zappa tail dev --json --since 10m --disable-keep-open
+
+  test-deployment:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          echo "GOT TO HERE"
+
+  remove-artifact:
+    needs: [build-artifact, dev-deploy, test-deployment]
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Remove Artifact
+        uses: geekyeggo/delete-artifact@v2
+        with:
+            name: ctbus_site
+            failOnError: false
+
+  prod-deploy:
+    needs: [test-deployment, super-linter]
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download Zip
+        uses: actions/download-artifact@v3
+        with:
+          name: ctbus_site
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::832242454463:role/ZappaUserRole
+          aws-region: us-east-1
+      
+      - name: Setup AWS Profile
+        run: |
+          aws configure set region us-east-1 --profile default
+          aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }} --profile default
+          aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }} --profile default
+          aws configure set aws_session_token ${{ env.AWS_SESSION_TOKEN }} --profile default
+      
+      - name: Deploy to Prod
+        run: |
+          zappa update prod --zip ctbus_site.zip --json
+
+      - name: Dump Logs
+        if: always()
+        run: |
+          sleep 30
+          zappa tail prod --json --since 10m --disable-keep-open

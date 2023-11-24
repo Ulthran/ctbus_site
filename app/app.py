@@ -3,12 +3,16 @@ from flask import Flask, render_template, send_from_directory
 from app.data_utils import get_chess_stats
 from app.S3 import S3
 
+print("Starting app...")
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
-bucket = os.environ.get("BUCKET", "ctbus-site-db")
-s3 = S3(bucket)
-ENV = s3.get_env()
+print("Getting environment variables...")
+# bucket = os.environ.get("BUCKET", "ctbus-site-db")
+# s3 = S3(bucket)
+# ENV = s3.get_env()
+ENV = {"CDN_URL": "https://d2w4s6xs8769uj.cloudfront.net"}
+print("Ready to go!")
 
 
 @app.route("/favicon.ico")
