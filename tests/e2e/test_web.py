@@ -1,13 +1,13 @@
+import pytest
 from . import DEV_URL
 
 
-def test_title(setup):
-    for name, driver in setup.items():
-        driver.get(DEV_URL)
-        assert driver.title == "Charlie Bushman", f"{name} failed"
-
-
-def test_title(setup):
-    for name, driver in setup.items():
-        driver.get(f"{DEV_URL}/certifications")
-        assert driver.title == "Charlie Bushman", f"{name} failed"
+@pytest.mark.parametrize(
+    "arg",
+    ["setup_chrome", "setup_chromium", "setup_brave", "setup_edge"],
+    indirect=True,
+)
+def test_title(arg):
+    driver = arg
+    driver.get(DEV_URL)
+    assert driver.title == "Charlie Bushman"

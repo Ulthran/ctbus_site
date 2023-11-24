@@ -12,13 +12,18 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 
 @pytest.fixture()
-def setup(setup_chrome):
+def setup(setup_chrome, setup_chromium, setup_brave, setup_edge):
     yield {
         "chrome": setup_chrome,
         "chromium": setup_chromium,
         "brave": setup_brave,
         "edge": setup_edge,
     }
+
+
+@pytest.fixture
+def arg(request):
+    return request.getfuncargvalue(request.param)
 
 
 @pytest.fixture()
