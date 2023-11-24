@@ -149,9 +149,22 @@ jobs:
         uses: zaproxy/action-baseline@v0.10.0
         with:
           target: 'https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/'
+  
+  unsign-deployment:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Dependencies
+        run: |
+          pip install flask-unsign
+      
+      - name: Unsign Flask Session
+        run: |
+          flask-unsign --decode --server "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/" || true
 
   remove-artifact:
-    needs: [build-artifact, dev-deploy, test-deployment]
+    needs: [build-artifact, dev-deploy, test-deployment, zap-deployment]
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     runs-on: ubuntu-latest
 
@@ -163,7 +176,7 @@ jobs:
             failOnError: false
 
   prod-deploy:
-    needs: [test-deployment, super-linter]
+    needs: [test-deployment, zap-deployment, super-linter]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint

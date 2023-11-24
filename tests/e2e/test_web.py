@@ -3,7 +3,10 @@ from . import DEV_URL
 
 
 @pytest.mark.usefixtures("setup_chrome")
-class TestExampleOne:
+class TestChrome:
+    def __init__(self):
+        self.driver = setup_chrome
+
     def test_title(self):
         self.driver.get(DEV_URL)
         assert self.driver.title == "Charlie Bushman"
