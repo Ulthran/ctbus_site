@@ -8,7 +8,7 @@ def test_broken_links(setup_chrome):
     driver.get(DEV_URL)
     links = driver.find_elements(By.TAG_NAME, "a")
     for link in links:
-        url = link.href
+        url = link.get_attribute("href")
         try:
             response_code = int(requests.head(url).status_code)
             if response_code >= 200 and response_code < 300:
