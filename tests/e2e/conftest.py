@@ -25,6 +25,18 @@ def arg(request):
 
 
 @pytest.fixture()
+# TODO: Fix this, would be nice to have a lightest weight driver
+def setup_html_unit():
+    driver = webdriver.Remote(
+        desired_capabilities=webdriver.DesiredCapabilities.HTMLUNIT
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
 def setup_chrome():
     options = ChromeOptions()
     options_arr = [
