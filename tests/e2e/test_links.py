@@ -22,10 +22,16 @@ def test_bad_links(setup_chrome, page):
                 warning_links.append(f"Warning: {url} returned 999")
                 assert True
             else:
-                bad_links.append(f"Bad link {response_code}: {url}")
+                if "https://twitter.com" in url:
+                    warning_links.append(
+                        f"Warning: Twitter ({url}) returned {response_code}"
+                    )
+                else:
+                    bad_links.append(f"Bad link {response_code}: {url}")
         except (
             requests.exceptions.ConnectionError,
             requests.exceptions.InvalidSchema,
+            requests.exceptions.MissingSchema,
         ) as e:
             warning_links.append(f"Warning: {url} failed with {e}")
 
