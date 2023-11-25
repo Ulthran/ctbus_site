@@ -24,8 +24,5 @@ def test_broken_links(setup_chrome):
                 assert True
             else:
                 assert False, f"Bad link: {url}"
-        except (
-            requests.exceptions.ConnectionError,
-            requests.exceptions.InvalidSchema,
-        ) as e:
+        except (requests.exceptions.ConnectionError, requests.exceptions.InvalidSchema) as e:
             print(f"Warning: {url} failed with {e}")
