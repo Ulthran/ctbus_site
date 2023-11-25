@@ -1,4 +1,3 @@
-import os
 import pytest
 from selenium import webdriver
 
@@ -48,6 +47,31 @@ def setup_chrome():
         "--disable-extensions",
         "--no-sandbox",
         "--disable-dev-shm-usage",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Chrome(
+        service=ChromeService(ChromeDriverManager().install()), options=options
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
+def setup_chrome_mobile():
+    options = ChromeOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1080,1920",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--user-agent=Mozilla/5.0 (Linux; Android 11; Pixel 4 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Mobile Safari/537.36",
     ]
     for option in options_arr:
         options.add_argument(option)

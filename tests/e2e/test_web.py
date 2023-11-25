@@ -6,6 +6,7 @@ from . import DEV_URL
     "arg",
     [
         "setup_chrome",
+        "setup_chrome_mobile",
         "setup_chromium",
         "setup_edge",
         "setup_firefox",

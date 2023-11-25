@@ -140,7 +140,6 @@ jobs:
       - name: Install Pip Dependencies
         run: |
           pip install requests webdriver-manager selenium pytest
-          pip install -r requirements.txt
 
       - name: Run PyTest
         run: |
