@@ -1,12 +1,14 @@
-from selenium import webdriver
+from selenium.webdriver.common import By
 from . import DEV_URL
 
 
 def test_broken_links(setup_chrome):
     driver = setup_chrome
     driver.get(DEV_URL)
-    links = driver.find_elements_by_tag_name("a")
+    links = driver.find_element(By.TAG_NAME, "a")
+    print(str(links))
     for link in links:
+        print(str(link))
         url = link.get_attribute("href")
         if url:
             if url.startswith(DEV_URL):

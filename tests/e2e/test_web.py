@@ -10,7 +10,6 @@ from . import DEV_URL
         "setup_brave",
         "setup_edge",
         "setup_firefox",
-        "setup_ie",
     ],
     indirect=True,
 )

@@ -1,3 +1,4 @@
+import os
 import pytest
 from selenium import webdriver
 
@@ -24,8 +25,8 @@ def arg(request):
     return request.getfixturevalue(request.param)
 
 
-@pytest.fixture()
 # TODO: Fix this, would be nice to have a lightest weight driver
+@pytest.fixture()
 def setup_html_unit():
     driver = webdriver.Remote(
         desired_capabilities=webdriver.DesiredCapabilities.HTMLUNIT
@@ -162,6 +163,7 @@ def setup_firefox():
     driver.close()
 
 
+# TODO: Setup Windows runner in GHA to test IE (same with macOS for Safari)
 @pytest.fixture()
 def setup_ie():
     options = IEOptions()
