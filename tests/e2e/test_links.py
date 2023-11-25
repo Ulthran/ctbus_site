@@ -25,7 +25,7 @@ def test_bad_links(setup_chrome, page):
                 warning_links.append(f"Warning: {url} returned 999")
                 assert True
             else:
-                if any(url_exceptions in url):
+                if any([ue in url for ue in url_exceptions]):
                     warning_links.append(
                         f"Warning: {url} returned {response_code} but that's expected for bots"
                     )
