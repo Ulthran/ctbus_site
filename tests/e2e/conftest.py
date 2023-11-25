@@ -88,6 +88,7 @@ def setup_chromium():
     driver.close()
 
 
+# TODO: Get Brave working
 @pytest.fixture()
 def setup_brave():
     options = ChromeOptions()

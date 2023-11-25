@@ -7,7 +7,6 @@ from . import DEV_URL
     [
         "setup_chrome",
         "setup_chromium",
-        "setup_brave",
         "setup_edge",
         "setup_firefox",
     ],

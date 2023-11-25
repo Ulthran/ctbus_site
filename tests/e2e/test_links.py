@@ -11,7 +11,10 @@ def test_broken_links(setup_chrome):
         url = link.get_attribute("href")
         try:
             response_code = int(requests.head(url).status_code)
-            if (response_code >= 200 and response_code < 300) or response_code == 999:
+            if response_code >= 200 and response_code < 300:
+                assert True
+            elif response_code == 999:
+                print(f"Warning: {url} returned 999")
                 assert True
             else:
                 assert False, f"Bad link: {url}"
