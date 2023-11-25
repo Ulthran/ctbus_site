@@ -1,4 +1,4 @@
-from selenium.webdriver.common import By
+from selenium.webdriver.common.by import By
 from . import DEV_URL
 
 
