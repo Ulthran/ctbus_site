@@ -5,6 +5,9 @@ from . import DEV_URL
 from . import pages
 
 
+url_exceptions = ["https://twitter.com", "https://www.nature.com"]
+
+
 @pytest.mark.parametrize("page", pages())
 def test_bad_links(setup_chrome, page):
     driver = setup_chrome
@@ -22,9 +25,9 @@ def test_bad_links(setup_chrome, page):
                 warning_links.append(f"Warning: {url} returned 999")
                 assert True
             else:
-                if "https://twitter.com" in url:
+                if any(url_exceptions in url):
                     warning_links.append(
-                        f"Warning: Twitter ({url}) returned {response_code}"
+                        f"Warning: {url} returned {response_code} but that's expected for bots"
                     )
                 else:
                     bad_links.append(f"Bad link {response_code}: {url}")
