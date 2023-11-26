@@ -41,7 +41,7 @@ jobs:
       
       - name: Run Tests
         run: |
-          pytest tests/
+          pytest tests/unit/
   
   build-artifact:
     needs: test
@@ -123,12 +123,53 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get install -y chromium-browser
+
+          wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+          tar -xvzf geckodriver*
+          chmod +x geckodriver
+          sudo mv geckodriver /usr/local/bin/
+
+      - name: Install Pip Dependencies
+        run: |
+          pip install requests webdriver-manager selenium pytest
+
+      - name: Run PyTest
+        run: |
+          pytest -rA tests/e2e/
+  
+  zap-deployment:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: 'https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/'
+  
+  unsign-deployment:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Install Dependencies
         run: |
-          echo "GOT TO HERE"
+          pip install flask-unsign
+      
+      - name: Unsign Flask Session
+        run: |
+          flask-unsign --decode --server "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/" || true
 
   remove-artifact:
-    needs: [build-artifact, dev-deploy, test-deployment]
+    needs: [build-artifact, dev-deploy, test-deployment, zap-deployment, unsign-deployment]
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     runs-on: ubuntu-latest
 
@@ -140,7 +181,7 @@ jobs:
             failOnError: false
 
   prod-deploy:
-    needs: [test-deployment, super-linter]
+    needs: [test-deployment, zap-deployment, unsign-deployment, super-linter]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint
