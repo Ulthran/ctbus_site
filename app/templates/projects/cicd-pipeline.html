@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
+
+{% block body %}
+{% call macros.hero(title = "CI/CD with GitHub Actions for a Flask Site Deployed with Zappa", subtitle = "") %}{% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <p class="text-xl">TEXT</p>
+</div>
+
+{% endblock %}
