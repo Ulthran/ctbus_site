@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, send_from_directory
-from app.data_utils import get_chess_stats
+from app.py.data_utils import get_chess_stats
+from app.py.garmin_vs_whoop import generate_garmin_whoop_graphs
 
 # from app.S3 import S3
 
@@ -52,6 +53,8 @@ def projects():
 
 @app.route("/projects/<project>")
 def project(project):
+    if project == "garmin-vs-whoop":
+        generate_garmin_whoop_graphs()
     return render_template(f"projects/{project}.html", cdn_url=ENV.get("CDN_URL", ""))
 
 
