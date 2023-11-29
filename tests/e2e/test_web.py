@@ -25,7 +25,7 @@ def test_comps(arg):
     driver = arg
     driver.get(DEV_URL)
 
-    comps = Comps(driver)
+    comps = Comps(driver, DEV_URL)
     comps.hide_graphs_button.click()
     assert not comps.lorenz_plots.is_displayed()
 

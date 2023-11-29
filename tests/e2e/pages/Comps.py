@@ -5,7 +5,7 @@ from tests.e2e.pages.PageObject import Page
 
 class Comps(Page):
     def __init__(self, driver: webdriver, url: str):
-        super().__init__(driver, url)
+        super().__init__(driver, f"{url}/projects/comps")
 
         self.hide_graphs_button = self.driver.find_element(
             By.CLASS_NAME, "interest-button"
