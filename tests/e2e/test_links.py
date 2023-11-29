@@ -42,4 +42,4 @@ def test_bad_links(setup_chrome, page):
         print("\n".join(warning_links))
     if bad_links:
         print("\n".join(bad_links))
-        assert False
+        assert False, bad_links
