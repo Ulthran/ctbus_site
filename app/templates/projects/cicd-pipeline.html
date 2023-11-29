@@ -420,7 +420,57 @@ def test_title(arg):
 
     <p class="text-lg text-left">Obviously this test is little more than a PoC for running tests on multiple web drivers though. In order to actually start testing useful features, I read the Selenium docs and learned about their PageObject testing structure. Under this paradigm, each page of the site is abstracted to a PageObject that models objects on the page within the test code. These PageObjects can then be used to perform higher-level feature testing without worrying about implementation changes in the actual page. Here's an example of that with a button for hiding graphs (not the most critical, but nice to know it will work).</p>
 
+    <div class="text-left p-1 my-4">
+        <code>
+tests/e2e/test_web.py
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+import pytest
+from . import DEV_URL
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
+class Page:
+    def __init__(self, driver: webdriver, url: str):
+        self.driver = driver
+        driver.get(url)
+
+class Comps(Page):
+def __init__(self, driver: webdriver, url: str):
+    super().__init__(driver, f"{url}/projects/comps")
+
+    self.hide_graphs_button = self.driver.find_element(
+        By.CLASS_NAME, "interest-button"
+    )
+    self.lorenz_plots = self.driver.find_element(By.ID, "LorenzPlots")
+
+@pytest.mark.parametrize(
+"arg",
+[
+    "setup_chrome",
+    "setup_chrome_mobile",
+    "setup_chromium",
+    "setup_edge",
+    "setup_firefox",
+],
+indirect=True,
+)
+def test_comps(arg):
+    driver = arg
+    driver.get(DEV_URL)
+
+    comps = Comps(driver, DEV_URL)
+    comps.hide_graphs_button.click()
+    assert not comps.lorenz_plots.is_displayed()
+
+    comps.hide_graphs_button.click()
+    assert comps.lorenz_plots.is_displayed()
+            </code>
+        </pre>
+    </div>
+    
+    <p class="text-lg text-left">This idea can be extended to any other user flows that need testing (but I don't really have any on the site right now, mostly just readable content). So it's time to move on to the next type of website testing: accessibility testing. Fortunately, there is a prebuilt <a class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline" href="https://github.com/a11ywatch/github-actions" target="_blank">GHA from A11ywatch</a> </p>
 
     <h3 class="text-2xl font-bold my-4">Conclusions</h3>
 

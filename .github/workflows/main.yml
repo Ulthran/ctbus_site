@@ -182,7 +182,7 @@ jobs:
           SITEMAP: false
           FAIL_ERRORS_COUNT: 15
           LIST: true
-          FIX: true
+          FIX: false
           UPGRADE: true
           UPLOAD: true
         env:
