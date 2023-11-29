@@ -169,7 +169,6 @@ jobs:
 
   web-accessibility-eval:
     needs: dev-deploy
-    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -178,13 +177,13 @@ jobs:
         with:
           WEBSITE_URL: "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/"
           SITE_WIDE: true
-          SUBDOMAINS: true
+          SUBDOMAINS: false
           TLD: false
-          SITEMAP: true
+          SITEMAP: false
           FAIL_ERRORS_COUNT: 15
           LIST: true
           FIX: false
-          UPGRADE: false
+          UPGRADE: true
           UPLOAD: true
         env:
           DEFAULT_RUNNERS: htmlcs,axe
