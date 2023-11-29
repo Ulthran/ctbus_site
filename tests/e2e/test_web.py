@@ -1,6 +1,6 @@
 import pytest
 from . import DEV_URL
-from tests.e2e.pages.Comps import Comps
+from tests.e2e.pages import Index, Comps
 
 
 WEBDRIVERS = [
@@ -12,15 +12,11 @@ WEBDRIVERS = [
 ]
 
 
-@pytest.mark.parametrize(
-    "arg",
-    WEBDRIVERS,
-    indirect=True,
-)
-def test_title(arg):
+@pytest.mark.parametrize("arg", WEBDRIVERS, indirect=True)
+def test_index(arg):
     driver = arg
-    driver.get(DEV_URL)
-    assert driver.title == "Charlie Bushman"
+    index = Index(driver, DEV_URL)
+    assert index.title == "Charlie Bushman"
 
 
 @pytest.mark.parametrize("arg", WEBDRIVERS, indirect=True)
