@@ -175,15 +175,14 @@ jobs:
       - name: Web Accessibility Eval
         uses: a11ywatch/github-action@v2.1.7
         with:
-          #WEBSITE_URL: "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/"
-          WEBSITE_URL: "https://charliebushman.com"
-          SITE_WIDE: true
+          WEBSITE_URL: "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/"
+          SITE_WIDE: false
           SUBDOMAINS: false
           TLD: false
           SITEMAP: false
           FAIL_ERRORS_COUNT: 15
           LIST: true
-          FIX: false
+          FIX: true
           UPGRADE: false
           UPLOAD: true
         env:
