@@ -1,6 +1,7 @@
 import pytest
 from . import DEV_URL
-from tests.e2e.pages import Index, Comps
+from tests.e2e.pages.Index import Index
+from tests.e2e.pages.Comps import Comps
 
 
 WEBDRIVERS = [
