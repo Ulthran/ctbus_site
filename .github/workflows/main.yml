@@ -169,6 +169,7 @@ jobs:
 
   web-accessibility-eval:
     needs: dev-deploy
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -203,7 +204,7 @@ jobs:
             failOnError: false
 
   prod-deploy:
-    needs: [test-deployment, zap-deployment, unsign-deployment, super-linter]
+    needs: [test-deployment, zap-deployment, unsign-deployment, web-accessibility-eval, super-linter]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint

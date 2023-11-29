@@ -387,7 +387,7 @@ def setup_chrome_mobile():
         </pre>
     </div>
 
-    <p class="text-lg text-left">OK I went overboard and setup two WebDrivers: one for testing Chrome and one for testing Chrome on a mobile device. I also created this weird <code>arg</code> function so that I can use PyTest fixture parameterization to run the same test on each of my WebDriver fixtures.</p>
+    <p class="text-lg text-left">OK I went overboard and setup two WebDrivers: one for testing Chrome and one for testing Chrome on a mobile device. I also created this weird <code>arg</code> function so that I can use PyTest fixture parameterization to run the same tests on each of my WebDriver fixtures.</p>
 
     <div class="text-left p-1 my-4">
         <code>
@@ -418,7 +418,7 @@ def test_title(arg):
         </pre>
     </div>
 
-    <p class="text-lg text-left"></p>
+    <p class="text-lg text-left">Obviously this test is little more than a PoC for running tests on multiple web drivers though. In order to actually start testing useful features, I read the Selenium docs and learned about their PageObject testing structure. Under this paradigm, each page of the site is abstracted to a PageObject that models objects on the page within the test code. These PageObjects can then be used to perform higher-level feature testing without worrying about implementation changes in the actual page. </p>
 
     <h3 class="text-2xl font-bold my-4">Conclusions</h3>
 
