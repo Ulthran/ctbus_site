@@ -7,5 +7,7 @@ class Comps(Page):
     def __init__(self, driver: webdriver):
         super().__init__(driver)
 
-        self.hide_graphs_button = self.driver.find_element(By.CLASS_NAME, "interest-button")
+        self.hide_graphs_button = self.driver.find_element(
+            By.CLASS_NAME, "interest-button"
+        )
         self.lorenz_plots = self.driver.find_element(By.ID, "LorenzPlots")
