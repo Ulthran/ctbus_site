@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, make_response, render_template, send_from_directory
 from flask_sitemapper import Sitemapper
 from app import project_pages
 from app.data_utils import get_chess_stats
@@ -106,6 +106,12 @@ def favorite_number():
 @app.route("/sitemap.xml")
 def r_sitemap():
     return sitemapper.generate()
+
+
+@app.after_request
+def add_security_headers(resp):
+    resp.headers['Content-Security-Policy']='default-src \'self\''
+    return resp
 
 
 if __name__ == "__main__":
