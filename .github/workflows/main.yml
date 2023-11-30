@@ -175,7 +175,7 @@ jobs:
       - name: Web Accessibility Eval
         uses: a11ywatch/github-action@v2.1.9
         with:
-          WEBSITE_URL: "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/pcmp"
+          WEBSITE_URL: "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/"
           SITE_WIDE: false
           SUBDOMAINS: false
           TLD: false
