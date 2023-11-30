@@ -173,16 +173,16 @@ jobs:
 
     steps:
       - name: Web Accessibility Eval
-        uses: a11ywatch/github-action@v2.1.7
+        uses: a11ywatch/github-action@v2.1.9
         with:
-          WEBSITE_URL: "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/"
-          SITE_WIDE: true
+          WEBSITE_URL: "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/pcmp"
+          SITE_WIDE: false
           SUBDOMAINS: false
           TLD: false
           SITEMAP: true
           FAIL_ERRORS_COUNT: 15
           LIST: true
-          FIX: false
+          FIX: true
           UPGRADE: true
           UPLOAD: true
         env:
