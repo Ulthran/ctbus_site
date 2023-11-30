@@ -183,7 +183,7 @@ jobs:
           FAIL_ERRORS_COUNT: 15
           LIST: true
           FIX: true
-          UPGRADE: true
+          UPGRADE: false
           UPLOAD: true
         env:
           DEFAULT_RUNNERS: htmlcs,axe
