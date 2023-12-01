@@ -1,5 +1,5 @@
 import os
-from flask import Flask, make_response, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory
 from flask_sitemapper import Sitemapper
 from app import project_pages
 from app.data_utils import get_chess_stats
