@@ -176,7 +176,7 @@ jobs:
         uses: a11ywatch/github-action@v2.1.9
         with:
           WEBSITE_URL: https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/
-          SITE_WIDE: true
+          SITE_WIDE: false
           SUBDOMAINS: false
           TLD: false
           SITEMAP: true
