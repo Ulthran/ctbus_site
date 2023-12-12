@@ -7,6 +7,8 @@
 
 This is a personal website for Charlie Bushman.
 
+https://charliebushman.com
+
 ## Deployment
 
 It is deployed as a serverless flask site using zappa on AWS.
