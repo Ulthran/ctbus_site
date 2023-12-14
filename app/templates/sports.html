@@ -26,20 +26,6 @@
 </div>
 {% endcall %}
 
-<!-- Soccer -->
-{% call macros.hero(title = "Soccer", subtitle = "I played soccer until the end of high school and haven't had the time since. But I was awarded MVP of JV1 and JV2 my freshman year and MVDP (defensive player) of Varsity my senior year.") %}
-<div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
-    {{ svgs.soccer(class="w-12 h-12") }}
-</div>
-{% endcall %}
-
-<!-- Badminton -->
-{% call macros.hero(title = "Badminton", subtitle = "I started playing badminton end of high school and trained 10 hours a week for a few months. Now I play for fun when I can.") %}
-<div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
-    {{ svgs.badminton(class="w-12 h-12") }}
-</div>
-{% endcall %}
-
 <!-- Chess -->
 {% call macros.hero(title = "Chess", subtitle = "Winter break, 2019, I came home and was sick for a week. So I played chess the whole time. And I've kept playing since (only sometimes getting better).") %}
 <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
@@ -71,6 +57,34 @@
         {{ svgs.sun()}}
         <p class="text-lg font-bold">{{ chess_stats['daily_last_rating'] }}</p>
     </div>
+</div>
+{% endcall %}
+
+<!-- Skiing -->
+{% call macros.hero(title = "Skiing", subtitle = "I've skied the northeast my whole life and sometimes go out west just to feel worse about the conditions here.") %}
+<div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
+    {{ svgs.skiing(class="w-12 h-12") }}
+</div>
+{% endcall %}
+
+<!-- Soccer -->
+{% call macros.hero(title = "Soccer", subtitle = "I played soccer until the end of high school and haven't had the time since. But I was awarded MVP of JV1 and JV2 my freshman year and MVDP (defensive player) of Varsity my senior year.") %}
+<div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
+    {{ svgs.soccer(class="w-12 h-12") }}
+</div>
+{% endcall %}
+
+<!-- Badminton -->
+{% call macros.hero(title = "Badminton", subtitle = "I started playing badminton end of high school and trained 10 hours a week for a few months. Now I play for fun when I can.") %}
+<div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
+    {{ svgs.badminton(class="w-12 h-12") }}
+</div>
+{% endcall %}
+
+<!-- Squash -->
+{% call macros.hero(title = "Squash", subtitle = "I played squash for a few years somewhere around middle school. My crowing achievement was winning the Marblehead YMCA snowflake holiday tournament.") %}
+<div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
+    {{ svgs.squash(class="w-12 h-12") }}
 </div>
 {% endcall %}
 {% endblock %}
