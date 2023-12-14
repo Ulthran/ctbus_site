@@ -87,7 +87,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Download Zip
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ctbus_site
       
@@ -223,7 +223,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Download Zip
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ctbus_site
       
