@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, send_from_directory
 from flask_sitemapper import Sitemapper
-from app import project_pages
+from app import project_pages, random_third_attribute
 from app.data_utils import get_chess_stats
 
 sitemapper = Sitemapper()
@@ -27,7 +27,11 @@ def favicon():
 )
 @app.route("/")
 def index():
-    return render_template("index.html", cdn_url=ENV.get("CDN_URL", ""))
+    return render_template(
+        "index.html",
+        cdn_url=ENV.get("CDN_URL", ""),
+        third_attr=random_third_attribute(),
+    )
 
 
 @app.errorhandler(404)

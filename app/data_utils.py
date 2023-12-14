@@ -1,8 +1,9 @@
 import json
 import urllib.request
+from typing import Dict
 
 
-def get_chess_stats() -> dict:
+def get_chess_stats() -> Dict[str, str]:
     url = "https://api.chess.com/pub/player/thwardenheimer/stats"
 
     if url.lower().startswith("http"):
