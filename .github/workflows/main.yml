@@ -63,7 +63,7 @@ jobs:
           zappa package dev -o ctbus_site.zip
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ctbus_site
           path: ./ctbus_site.zip
