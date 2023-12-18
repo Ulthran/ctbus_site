@@ -24,10 +24,18 @@
 
     <p class="text-lg text-left">Before you go further and get too invested in QKD, a couple disclaimers. First, QKD requires a lot of infrastructure that only sort of exists. The most commonly proposed is a network of fiber optic cables for transmitting photonic qubits. That's a lot of effort and will likely not be in common practice any time terribly soon. Second, the more likely near/mid-term solution to quantum computers breaking classical cryptography is quantum-resistant classical cryptography. Yes it exists, but the field is still very new and NIST has yet to decide on a set of algorithms that will be standardized going forward. There's a whole world of crazy math to dive into there.</p>
 
+    <h3 class="text-2xl font-bold my-4">A Quick Briefing in Information Theory and Quantum Information Theory</h3>
+
+    <p class="text-lg text-left">Information theory is a surprisingly recent field that is also surprisingly fundamental. The basic idea behind it is that the information content of anything can be quantified by determining how many bits it would take to represent it. For instance, the number 1000 contains 10 bits of information because in binary it is 1111101000. The number 1 only has 1 bit of information. </p>
+
+    <p class="text-lg text-left">Extending this to quantum information theory, the only thing that changes is the unit, the bit, becomes a quantum bit (qubit). </p>
+
     <h3 class="text-2xl font-bold my-4">BB84: Intro to QKD</h3>
 
-    <p class="text-lg text-left"></p>
+    <p class="text-lg text-left">BB84 is the first quantum key distribution scheme published in 1984 by Bennett and Brassard and is not a rolly robot. It details the steps that two parties can take to create a shared secret key with communications over a quantum channel and a classical channel, either of which could have eavesdroppers. The protocol starts with one person, whom we'll call Alice, generating two random bit strings a and b of length n. She then creates a sequence of n photons where each photon carries one bit of information determined by the corresponding bit in a encoded in one of two bases determined by the corresponding bit in b. This is easier to explain in the language of quantum mechanics (see Eqs. 1 and 2 in my paper), but the end result is that Alice now has a sequence of photons that encodes all the information of the two bit strings she generated.</p>
 
     BB84 IMAGE (with BB8 on it)
+        
+    <p class="text-lg text-left">She sends these photons over to Bob, who guesses </p>
 
 {% endblock %}
