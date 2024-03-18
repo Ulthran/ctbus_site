@@ -199,7 +199,7 @@ jobs:
 
     steps:
       - name: Remove Artifact
-        uses: geekyeggo/delete-artifact@v4
+        uses: geekyeggo/delete-artifact@v5
         with:
             name: ctbus_site
             failOnError: false
