@@ -63,7 +63,7 @@ jobs:
           zappa package dev -o ctbus_site.zip
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ctbus_site
           path: ./ctbus_site.zip
@@ -87,7 +87,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Download Zip
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ctbus_site
       
@@ -152,7 +152,7 @@ jobs:
 
     steps:
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.10.0
+        uses: zaproxy/action-baseline@v0.11.0
         with:
           target: 'https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/'
   
@@ -175,7 +175,7 @@ jobs:
 
     steps:
       - name: Web Accessibility Eval
-        uses: a11ywatch/github-action@v2.1.9
+        uses: a11ywatch/github-action@v2.1.10
         with:
           WEBSITE_URL: https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/
           SITE_WIDE: false
@@ -199,7 +199,7 @@ jobs:
 
     steps:
       - name: Remove Artifact
-        uses: geekyeggo/delete-artifact@v2
+        uses: geekyeggo/delete-artifact@v5
         with:
             name: ctbus_site
             failOnError: false
@@ -223,7 +223,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Download Zip
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ctbus_site
       
