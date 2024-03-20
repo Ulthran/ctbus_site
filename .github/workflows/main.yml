@@ -152,7 +152,7 @@ jobs:
 
     steps:
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.10.0
+        uses: zaproxy/action-baseline@v0.11.0
         with:
           target: 'https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/'
   
