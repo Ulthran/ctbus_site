@@ -5,5 +5,17 @@
 <a href="https://open.spotify.com/user/charlie_bushman?si=0dd732a8d6da46b6" target="_blank" class="flex items-center justify-center p-5">
     {{ svgs.spotify(class="w-12 h-12")}}
 </a>
+
+{% if auth_url %}
+<div class="flex items-center justify-center p-5">
+    <a href="{{ auth_url }}" class="flex items-center justify-center p-5">
+        {{ svgs.spotify(class="w-12 h-12")}}
+    </a>
+</div>
+{% else %}
+<div class="flex items-center justify-center p-5">
+    Playlists: {{ playlists['items'][0]['name'] }}
+</div>
+{% endif %}
 {% endcall %}
 {% endblock %}
