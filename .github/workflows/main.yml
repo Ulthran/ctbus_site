@@ -20,7 +20,7 @@ jobs:
           pip install black
       
       - name: Install JS modules
-        run: yarn install eslint
+        run: yarn add eslint
 
       - name: Lint Code
         run: |
