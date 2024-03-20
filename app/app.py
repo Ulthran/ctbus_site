@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, send_from_directory
 from flask_sitemapper import Sitemapper
 from app import project_pages, random_third_attribute
-from app.data_utils import get_chess_stats
+from app.data_utils import get_chess_stats, get_chess_league_image
 
 sitemapper = Sitemapper()
 app = Flask(__name__)
@@ -83,7 +83,10 @@ def project(project):
 @app.route("/sports")
 def sports():
     return render_template(
-        "sports.html", cdn_url=ENV.get("CDN_URL", ""), chess_stats=get_chess_stats()
+        "sports.html",
+        cdn_url=ENV.get("CDN_URL", ""),
+        chess_stats=get_chess_stats(),
+        chess_league_image=get_chess_league_image(),
     )
 
 
@@ -116,9 +119,9 @@ def r_sitemap():
 def add_security_headers(resp):
     resp.headers["Content-Security-Policy"] = "default-src 'self'"
     resp.headers["Content-Security-Policy"] = "style-src 'self' cdn.jsdelivr.net/npm/"
-    resp.headers[
-        "Content-Security-Policy"
-    ] = "script-src 'self' cdn.jsdelivr.net/npm/ cdnjs.cloudflare.com/ajax polyfill.io"
+    resp.headers["Content-Security-Policy"] = (
+        "script-src 'self' cdn.jsdelivr.net/npm/ cdnjs.cloudflare.com/ajax polyfill.io"
+    )
 
     resp.headers["Content-Security-Policy"] = "frame-ancestors 'none'"
     return resp

@@ -3,6 +3,28 @@ import urllib.request
 from typing import Dict
 
 
+def get_chess_league_image() -> str:
+    url = "https://api.chess.com/pub/player/thwardenheimer"
+
+    if url.lower().startswith("http"):
+        req = urllib.request.Request(url)
+    else:
+        raise ValueError from None
+
+    # Hardcoded url doesn't need to be sanitized (and it is anyway)
+    with urllib.request.urlopen(req) as resp:  # nosec
+        data = json.load(resp)
+        # The league string should be lower case
+        league = str(data["league"]).lower()
+
+        try:
+            return (
+                f"https://www.chess.com/bundles/web/images/leagues/badges/{league}.svg"
+            )
+        except KeyError:
+            return "ERR"
+
+
 def get_chess_stats() -> Dict[str, str]:
     url = "https://api.chess.com/pub/player/thwardenheimer/stats"
 
