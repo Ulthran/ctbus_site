@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-{% call macros.hero(title = "My Work with the Penn-CHOP Microbiome Program", subtitle = "Hereunder is a list of some of the more presentable (and open source) work I've done as a developer with the Penn-CHOP Microbiome Program. Use the buttons on each card to see my contributions. (A website for the center's software can be expected by the end of the year!)") %}{% endcall %}
+{% call macros.hero(title = "My Work with the Penn-CHOP Microbiome Program", subtitle = "Hereunder is a list of some of the more presentable (and open source) projects I've worked on as a developer with the Penn-CHOP Microbiome Program. Use the buttons on each card to see my contributions. See also the new <a href='https://www.med.upenn.edu/microbiocode/' target='_blank' class='font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline'>MicroBioCode</a> website!") %}{% endcall %}
 
 {{ macros.section_header(title = "Metagenomics Pipelines") }}
 
@@ -22,6 +22,8 @@
     {{ macros.project_card(main_link = "https://github.com/Ulthran/demic", link_opts = "target='_blank'", img_link = cdn_url + "/images/DEMIC_replication_nbg.png", title = "DEMIC: dynamic estimator of bacterial groth rates", body = "A dynamic estimator of microbial communities. It employs a multi-sample algorithm based on contigs and coverage values to infer the relative distances of contigs from the replication origin and to accurately compare bacterial growth rates between samples.", contributions_link = "https://github.com/Ulthran/demic/graphs/contributors") }}
 
     {{ macros.project_card(main_link = "https://github.com/PennChopMicrobiomeProgram/ZIBR", link_opts = "target='_blank'", img_link = "", title = "ZIBR: Zero-Inflated Beta Random Effects Model", body = "A two-part zero-inflated Beta regression model with random effects for testing the association between microbial abundance and clinical covariates for longitudinal microbiome data.", contributions_link = "https://github.com/PennChopMicrobiomeProgram/ZIBR/graphs/contributors") }}
+
+    {{ macros.project_card(main_link = "https://github.com/lakerwsl/DAFOT", link_opts = "target='_blank'", img_link = "", title = "DAFOT: Detector of Active Flow On a Tree", body = "The main goal of this package is to provide a new method for two-sample testing for microbial compositional data by leveraging the phylogenetic tree information. Empirical evidence from real data sets suggests that the phylogenetic microbial composition difference between two populations is usually  sparse. Motivated by this observation, this package implements a new maximum type test that is particularly powerful against sparse phylogenetic composition  differences and enjoys certain optimality.", contributions_link = "https://github.com/lakerwsl/DAFOT/graphs/contributors") }}
 </div>
 
 {{ macros.section_header(title = "Utility Libraries") }}
