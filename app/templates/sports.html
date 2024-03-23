@@ -30,7 +30,9 @@
 {% call macros.hero(title = "Chess", subtitle = "Winter break, 2019, I came home and was sick for a week. So I played chess the whole time. And I've kept playing since (only sometimes getting better).") %}
 <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
     <a href="https://www.chess.com/member/thwardenheimer" target="_blank" title="My Chess.com profile" class="px-4 py-2">
-        {{ svgs.chess(class="w-12 h-12") }}
+        <svg alt="Chess.com profile" class="w-14 h-12">
+            <image xlink:href="{{ chess_league_image }}" class="w-14 h-12"/>
+        </svg>
     </a>
 
     <div title="Tactical puzzles are my favorite" class="px-4 py-2">
