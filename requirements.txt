@@ -9,3 +9,4 @@ requests==2.28.2 # Pinned to avoid deployment error, flagged by Snyk as a vulner
 python-dotenv
 cachelib # Needed by this but somehow never properly installed
 spotipy
+python-memcached
