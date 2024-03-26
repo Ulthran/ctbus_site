@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-{% call macros.hero(title = "Session Data", subtitle = "Here you can see all the session data saved by this site.") %}
+{% call macros.hero(title = "Session Data", subtitle = "Here you can manage all the data saved by this site.") %}
 <div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
     <table style="border-collapse: collapse; border: 1px solid black; margin: 10px; padding: 10px;">
         {% for k, v in session.items() %}

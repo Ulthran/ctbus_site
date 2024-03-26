@@ -1,3 +1,4 @@
+import memcache
 import os
 import spotipy
 
@@ -22,8 +23,12 @@ sitemapper = Sitemapper()
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 sitemapper.init_app(app)
-app.config["SESSION_TYPE"] = "filesystem"
-app.config["SESSION_FILE_DIR"] = "./.flask_session/"
+app.config["SESSION_TYPE"] = "memcached"
+app.config["SESSION_MEMCACHED"] = memcache.Client(["ctbus-site-cache-tncxie.serverless.use1.cache.amazonaws.com:11211"])
+app.config['SESSION_PERMANENT'] = False
+#app.config["SESSION_MEMCACHED"] = Client('/run/memcached/memcached.sock')
+#app.config["SESSION_TYPE"] = "filesystem"
+#app.config["SESSION_FILE_DIR"] = "./.flask_session/"
 Session(app)
 
 CDN_URL = os.environ.get("CDN_URL", "")
@@ -74,12 +79,18 @@ def pcmp():
 )
 @app.route("/music")
 def music():
+    print("START")
     cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
+    print(session)
+    print(cache_handler.get_cached_token())
+    print("AUTH")
     auth_manager = spotipy.oauth2.SpotifyOAuth(
-        scope="user-read-currently-playing playlist-modify-private",
+        scope="user-read-currently-playing",
         cache_handler=cache_handler,
         show_dialog=True,
     )
+    print(session)
+    print(cache_handler.get_cached_token())
 
     if request.args.get("code"):
         # Step 2. Being redirected from Spotify auth page
@@ -154,6 +165,8 @@ def favorite_number():
 )
 @app.route("/session")
 def session_info():
+    session['test'] = 'test'
+    print(session)
     return render_template("session.html", cdn_url=CDN_URL, session=session)
 
 
