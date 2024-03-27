@@ -23,14 +23,17 @@ sitemapper = Sitemapper()
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 sitemapper.init_app(app)
-app.config["SESSION_TYPE"] = "memcached"
-app.config["SESSION_MEMCACHED"] = memcache.Client(
-    ["ctbus-site-cache-tncxie.serverless.use1.cache.amazonaws.com:11211"]
-)
-app.config["SESSION_PERMANENT"] = False
-# app.config["SESSION_MEMCACHED"] = Client('/run/memcached/memcached.sock')
-# app.config["SESSION_TYPE"] = "filesystem"
-# app.config["SESSION_FILE_DIR"] = "./.flask_session/"
+
+if os.environ.get("FLASK_DEBUG", 0):
+    app.config["SESSION_TYPE"] = "filesystem"
+    app.config["SESSION_FILE_DIR"] = "./.flask_session/"
+else:
+    app.config["SESSION_TYPE"] = "memcached"
+    app.config["SESSION_MEMCACHED"] = memcache.Client(
+        ["ctbus-site-cache-tncxie.serverless.use1.cache.amazonaws.com:11211"]
+    )
+    app.config["SESSION_PERMANENT"] = False
+    
 Session(app)
 
 CDN_URL = os.environ.get("CDN_URL", "")
