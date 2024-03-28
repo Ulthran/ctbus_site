@@ -20,10 +20,15 @@
     <!-- Navigation Bar -->
     <nav class="bg-gray-700 p-4 text-white">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="{{ url_for('index') }}" class="font-bold text-lg" title="Home">
-                {{ svgs.home(class="w-12 h-12") }}
-            </a>
             <div class="flex space-x-4">
+                <a href="{{ url_for('index') }}" class="font-bold text-lg" title="Home">
+                    {{ svgs.home(class="w-12 h-12") }}
+                </a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="{{ url_for('session_info') }}" class="font-bold text-lg" title="Your Data">
+                    {{ svgs.data(class="w-8 h-8") }}
+                </a>
                 <!-- Resume Download -->
                 <a href="{{ cdn_url }}/documents/resume.pdf" target="_blank" class="text-white" title="Download R&eacute;sum&eacute;">
                     {{ svgs.download_file(class="w-8 h-8") }}

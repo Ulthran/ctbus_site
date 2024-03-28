@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
+
+{% block body %}
+{% call macros.hero(title = "Flask Session Data: Where to Put It", subtitle = "Posted: . Last Updated: .") %}{% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <h3 class="text-2xl font-bold my-4">What is Session Data</h3>
+
+    <h3 class="text-xl font-bold my-4">First Try: Flask-Session with Filesystem</h3>
+
+    <h3 class="text-xl font-bold my-4">Second Try: Flask-Session with Memcache (AWS ElastiCache)</h3>
+
+    <h3 class="text-xl font-bold my-4">Third Try: Flask-Session with Redis</h3>
+</div>
