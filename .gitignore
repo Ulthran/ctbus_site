@@ -1,4 +1,5 @@
 .env
+ctbus-site-secrets.json
 env/
 __pycache__
 node_modules/

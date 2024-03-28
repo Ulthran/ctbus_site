@@ -9,7 +9,8 @@
         "environment_variables": {
             "BUCKET": "ctbus-site-db",
             "TABLE": "ctbus-site-db"
-        }
+        },
+        "remote_env": "s3://ctbus-config-bucket/ctbus-site-secrets.json"
     },
     "dev": {
         "extends": "common"

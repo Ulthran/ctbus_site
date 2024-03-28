@@ -1,4 +1,3 @@
-import memcache
 import os
 import spotipy
 
@@ -13,8 +12,6 @@ from flask import (
 )
 from flask_sitemapper import Sitemapper
 
-# from flask_session import Session
-
 from app import project_pages, random_third_attribute
 from app.data_utils import get_chess_stats
 
@@ -24,18 +21,6 @@ sitemapper = Sitemapper()
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 sitemapper.init_app(app)
-
-# if os.environ.get("FLASK_DEBUG", 0):
-#    app.config["SESSION_TYPE"] = "filesystem"
-#    app.config["SESSION_FILE_DIR"] = "./.flask_session/"
-# else:
-#    app.config["SESSION_TYPE"] = "memcached"
-#    app.config["SESSION_MEMCACHED"] = memcache.Client(
-#        ["ctbus-site-cache-tncxie.serverless.use1.cache.amazonaws.com:11211"]
-#    )
-#    app.config["SESSION_PERMANENT"] = False
-
-# Session(app)
 
 CDN_URL = os.environ.get("CDN_URL", "")
 
@@ -85,19 +70,12 @@ def pcmp():
 )
 @app.route("/music")
 def music():
-    print("START")
     cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
-    print(session)
-    print(cache_handler.get_cached_token())
-    print("AUTH")
     auth_manager = spotipy.oauth2.SpotifyOAuth(
         scope="user-read-currently-playing",
         cache_handler=cache_handler,
         show_dialog=True,
     )
-    print(session)
-    print(cache_handler.get_cached_token())
-    print(auth_manager.validate_token(cache_handler.get_cached_token()))
 
     if request.args.get("code"):
         # Step 2. Being redirected from Spotify auth page
@@ -107,7 +85,6 @@ def music():
     if not auth_manager.validate_token(cache_handler.get_cached_token()):
         # Step 1. Display sign in link when no token
         auth_url = auth_manager.get_authorize_url()
-        print(auth_url)
         return render_template("music.html", cdn_url=CDN_URL, auth_url=auth_url)
 
     # Step 3. Signed in, display data
@@ -172,7 +149,6 @@ def favorite_number():
 )
 @app.route("/session")
 def session_info():
-    session["test"] = "test"
     return render_template("session.html", cdn_url=CDN_URL, session=session)
 
 
