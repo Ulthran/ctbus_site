@@ -3,6 +3,9 @@
 {% block body %}
 {% call macros.hero(title = "Session Data", subtitle = "Here you can manage all the data saved by this site.") %}
 <div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
+    {% if session|length == 0 %}
+        <p class="text-2xl font-bold my-4">No session data found.</p>
+    {% else %}
     <table style="border-collapse: collapse; border: 1px solid black; margin: 10px; padding: 10px;">
         {% for k, v in session.items() %}
             <tr style="border: 1px solid black;">
@@ -19,6 +22,7 @@
             </tr>
         {% endfor %}
     </table>
+    {% endif %}
 </div>
 {% endcall %}
 {% endblock %}

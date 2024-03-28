@@ -5,7 +5,11 @@ from . import DEV_URL
 from . import pages
 
 
-url_exceptions = ["https://twitter.com", "https://www.nature.com"]
+url_exceptions = [
+    "https://twitter.com",
+    "https://www.nature.com",
+    "https://accounts.spotify.com/authorize",
+]
 
 
 @pytest.mark.parametrize("page", pages())
