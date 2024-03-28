@@ -12,7 +12,7 @@ from flask import (
     session,
 )
 from flask_sitemapper import Sitemapper
-from flask_session import Session
+#from flask_session import Session
 
 from app import project_pages, random_third_attribute
 from app.data_utils import get_chess_stats
@@ -24,17 +24,17 @@ app = Flask(__name__)
 app.secret_key = os.urandom(12)
 sitemapper.init_app(app)
 
-if os.environ.get("FLASK_DEBUG", 0):
-    app.config["SESSION_TYPE"] = "filesystem"
-    app.config["SESSION_FILE_DIR"] = "./.flask_session/"
-else:
-    app.config["SESSION_TYPE"] = "memcached"
-    app.config["SESSION_MEMCACHED"] = memcache.Client(
-        ["ctbus-site-cache-tncxie.serverless.use1.cache.amazonaws.com:11211"]
-    )
-    app.config["SESSION_PERMANENT"] = False
+#if os.environ.get("FLASK_DEBUG", 0):
+#    app.config["SESSION_TYPE"] = "filesystem"
+#    app.config["SESSION_FILE_DIR"] = "./.flask_session/"
+#else:
+#    app.config["SESSION_TYPE"] = "memcached"
+#    app.config["SESSION_MEMCACHED"] = memcache.Client(
+#        ["ctbus-site-cache-tncxie.serverless.use1.cache.amazonaws.com:11211"]
+#    )
+#    app.config["SESSION_PERMANENT"] = False
     
-Session(app)
+#Session(app)
 
 CDN_URL = os.environ.get("CDN_URL", "")
 
@@ -172,7 +172,6 @@ def favorite_number():
 @app.route("/session")
 def session_info():
     session["test"] = "test"
-    print(session)
     return render_template("session.html", cdn_url=CDN_URL, session=session)
 
 

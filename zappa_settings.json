@@ -12,12 +12,7 @@
         }
     },
     "dev": {
-        "extends": "common",
-        "vpc-config": {
-            "SubnetIds": ["subnet-be0c19d9", "subnet-f9288db4", "subnet-1d524133", "subnet-5c184062", "subnet-d685938a"],
-            "SecurityGroupIds": ["sg-31933567"],
-            "Ipv6AllowedForDualStack": true
-          }
+        "extends": "common"
     },
     "prod": {
         "extends": "common"
