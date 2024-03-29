@@ -75,7 +75,6 @@ def pcmp():
 )
 @app.route("/music")
 def music():
-    print(url_for("music"))
     cache_handler, auth_manager = get_spotipy_auth_manager(
         session, url_for("music", _external=True)
     )
