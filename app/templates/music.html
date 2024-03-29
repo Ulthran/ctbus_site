@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-2.26.0.min.js" integrity="sha384-xuh4dD2xC9BZ4qOrUrLt8psbgevXF2v+K+FrXxV4MlJHnWKgnaKoh74vd/6Ik8uF" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous"></script>
+{% endblock %}
+
 {% block body %}
 {% call macros.hero(title="Music", subtitle = "Listening to and (sometimes) making music has been an increasingly large influence in my life. Favorite artist is Jacob Collier. I play piano. I've also made playlists of new music finds every month since January 2022, follow my Spotify to listen.") %}
 <a href="https://open.spotify.com/user/charlie_bushman?si=0dd732a8d6da46b6" target="_blank" class="flex items-center justify-center p-5">
     {{ svgs.spotify(class="w-12 h-12")}}
 </a>
+{% endcall %}
 
 {% if auth_url %}
 <div class="flex items-center justify-center p-5">
@@ -13,9 +20,56 @@
     </a>
 </div>
 {% else %}
-<div class="flex items-center justify-center p-5">
-    Playlists: {{ playlists['items'][0]['name'] }}
+<div class="container mx-auto py-4 px-1 m-2 flex md:flex-row flex-col border border-black rounded">
+    <div class="container mx-auto p-2 md:w-1/4 border border-gray-300 rounded">
+        <h2 class="text-2xl font-bold mb-4">{{ spotify_user['display_name'] }}</h2><br />
+        <img src="{{ spotify_user['images'][1]['url'] }}" class="w-20 h-20 rounded-full" alt="Profile Picture"><br />
+        
+        <input type="radio" id="short_term" name="time_frame" value="short_term" onChange="display_spotify_data()">
+        <label for="short_term">SHORT</label><br>
+        <input type="radio" id="medium_term" name="time_frame" value="medium_term" onChange="display_spotify_data()" checked>
+        <label for="medium_term">MEDIUM</label><br>
+        <input type="radio" id="long_term" name="time_frame" value="long_term" onChange="display_spotify_data()">
+        <label for="long_term">LONG</label><br>
+
+        <label for="num_tracks">Number of tracks:</label>
+        <input type="number" id="num_tracks" name="num_tracks" min="1" max="20" value="20" onChange="display_spotify_data()">
+    </div>
+    <div class="container mx-auto p-2 md:w-3/4 border border-gray-300 rounded">
+        <div id="spotify-audio-features"><!-- Plotly chart will be drawn inside this DIV --></div>
+    </div>
 </div>
+
+<script type="text/javascript">
+    function display_spotify_data() {
+        var time_frame = document.querySelector('input[name="time_frame"]:checked').value;
+        var num_tracks = document.getElementById("num_tracks").value;
+
+        const spotify_data_url = {{ url_for("spotify_data")|tojson }} + "?time_frame=" + time_frame + "&num_tracks=" + num_tracks;
+        fetch(spotify_data_url)
+            .then((response) => {
+                return response.json().then((data) => {
+                    console.log(data);
+                    var layout = {
+                        font:{
+                            family: 'sans-serif'
+                        },
+                        xaxis: {
+                            tickangle: -45
+                        },
+                        showlegend: false,
+                        barcornerradius: 15,
+                        barmode: 'stack'
+                    };
+
+                    Plotly.newPlot('spotify-audio-features', data, layout);
+                }).catch((err) => {
+                    console.log(err);
+                }) 
+            });
+    }
+
+    window.onload = display_spotify_data;
+</script>
 {% endif %}
-{% endcall %}
 {% endblock %}

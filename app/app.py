@@ -13,7 +13,12 @@ from flask import (
 from flask_sitemapper import Sitemapper
 
 from app import project_pages, random_third_attribute
-from app.data_utils import get_chess_stats
+from app.data_utils import (
+    get_chess_stats,
+    get_spotify_data,
+    get_spotify_user,
+    get_spotipy_auth_manager,
+)
 
 load_dotenv()
 
@@ -70,12 +75,7 @@ def pcmp():
 )
 @app.route("/music")
 def music():
-    cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
-    auth_manager = spotipy.oauth2.SpotifyOAuth(
-        scope="user-read-currently-playing",
-        cache_handler=cache_handler,
-        show_dialog=True,
-    )
+    cache_handler, auth_manager = get_spotipy_auth_manager(session)
 
     if request.args.get("code"):
         # Step 2. Being redirected from Spotify auth page
@@ -88,10 +88,17 @@ def music():
         return render_template("music.html", cdn_url=CDN_URL, auth_url=auth_url)
 
     # Step 3. Signed in, display data
-    spotify = spotipy.Spotify(auth_manager=auth_manager)
     return render_template(
-        "music.html", cdn_url=CDN_URL, playlists=spotify.current_user_playlists()
+        "music.html", cdn_url=CDN_URL, spotify_user=get_spotify_user(auth_manager)
     )
+
+
+@app.route("/spotify_data")
+def spotify_data():
+    _, auth_manager = get_spotipy_auth_manager(session)
+    time_frame = request.args.get("time_frame", "medium_term")
+    num_tracks = int(request.args.get("num_tracks", 20))
+    return get_spotify_data(auth_manager, time_frame=time_frame, num_tracks=num_tracks)
 
 
 @sitemapper.include(

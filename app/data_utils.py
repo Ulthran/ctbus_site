@@ -1,6 +1,9 @@
 import json
+import spotipy
 import urllib.request
-from typing import Dict
+
+from flask.sessions import SessionMixin
+from typing import Dict, Tuple
 
 
 def get_chess_stats() -> Dict[str, str]:
@@ -43,3 +46,71 @@ def get_chess_stats() -> Dict[str, str]:
             ret_dict["daily_last_rating"] = "ERR"
 
         return ret_dict
+
+
+def get_spotipy_auth_manager(
+    session: SessionMixin,
+) -> Tuple[spotipy.cache_handler.FlaskSessionCacheHandler, spotipy.oauth2.SpotifyOAuth]:
+    cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
+    auth_manager = spotipy.oauth2.SpotifyOAuth(
+        scope="user-top-read",
+        cache_handler=cache_handler,
+        show_dialog=True,
+    )
+
+    return cache_handler, auth_manager
+
+
+def get_spotify_user(auth_manager: spotipy.oauth2.SpotifyOAuth) -> Dict[str, str]:
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+    return sp.me()
+
+
+NORMALIZED_AUDIO_FEATURES = [
+    "danceability",
+    "energy",
+    "mode",
+    "speechiness",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "valence",
+]
+
+
+def get_normalized_audio_features(
+    auth_manager: spotipy.oauth2.SpotifyOAuth,
+    time_frame: str = "medium_term",
+    num_tracks: int = 20,
+) -> Dict[str, str]:
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+
+    top_tracks = sp.current_user_top_tracks(
+        limit=num_tracks, offset=0, time_range=time_frame
+    )
+
+    audio_features = sp.audio_features([track["id"] for track in top_tracks["items"]])
+
+    ret = [
+        {
+            "x": NORMALIZED_AUDIO_FEATURES,
+            "y": [track[key] for key in NORMALIZED_AUDIO_FEATURES],
+            "name": [t["name"] for t in top_tracks["items"] if t["id"] == track["id"]][
+                0
+            ],
+            "type": "bar",
+        }
+        for track in audio_features
+    ]
+
+    return ret
+
+
+def get_spotify_data(
+    auth_manager: spotipy.oauth2.SpotifyOAuth,
+    time_frame: str = "medium_term",
+    num_tracks: int = 20,
+) -> Dict[str, str]:
+    return get_normalized_audio_features(
+        auth_manager, time_frame=time_frame, num_tracks=num_tracks
+    )
