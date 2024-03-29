@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% call macros.hero(title = "PCMP Project Dashboard", subtitle = "This is mostly just for me to keep tabs on the state of all the projects I maintain.") %}{% endcall %}
+
+<div class="container mx-auto flex flex-wrap flex-col mt-8 p-4 justify-center">
+    {% for repo, badges in repo_badges.items() %}
+    <div class="container mx-auto flex flex-col p-4 m-4 border border-gray-300 rounded">
+        <a href="https://github.com/{{ repo }}" target="_blank" class="text-2xl font-bold mb-4">{{ repo }}</a>
+        <div class="flex flex-wrap">
+            {% for badge in badges %}
+                <img src="{{ badge }}" alt="Badge" class="m-2">
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
