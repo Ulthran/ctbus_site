@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, send_from_directory
 from flask_sitemapper import Sitemapper
 from app import project_pages, random_third_attribute
-from app.data_utils import get_chess_stats
+from app.data_utils import get_chess_stats, pcmp_repo_badges
 
 sitemapper = Sitemapper()
 app = Flask(__name__)
@@ -47,6 +47,16 @@ def page_not_found(e):
 @app.route("/pcmp")
 def pcmp():
     return render_template("pcmp.html", cdn_url=ENV.get("CDN_URL", ""))
+
+
+@sitemapper.include(
+    lastmod="2024-03-29",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/pcmp/dashboard")
+def pcmp_dashboard():
+    return render_template("pcmp_dashboard.html", repo_badges=pcmp_repo_badges())
 
 
 @sitemapper.include(
@@ -116,9 +126,9 @@ def r_sitemap():
 def add_security_headers(resp):
     resp.headers["Content-Security-Policy"] = "default-src 'self'"
     resp.headers["Content-Security-Policy"] = "style-src 'self' cdn.jsdelivr.net/npm/"
-    resp.headers[
-        "Content-Security-Policy"
-    ] = "script-src 'self' cdn.jsdelivr.net/npm/ cdnjs.cloudflare.com/ajax polyfill.io"
+    resp.headers["Content-Security-Policy"] = (
+        "script-src 'self' cdn.jsdelivr.net/npm/ cdnjs.cloudflare.com/ajax polyfill.io"
+    )
 
     resp.headers["Content-Security-Policy"] = "frame-ancestors 'none'"
     return resp
