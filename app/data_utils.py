@@ -1,4 +1,3 @@
-import asyncio
 import re
 import requests
 from . import PCMP_REPOS
@@ -6,8 +5,11 @@ from . import PCMP_REPOS
 
 def get_chess_stats() -> dict[str, str]:
     url = "https://api.chess.com/pub/player/thwardenheimer/stats"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+    }
 
-    reponse = requests.get(url)
+    reponse = requests.get(url, headers=headers, timeout=5)
     data = reponse.json()
 
     ret_dict = {}
@@ -40,48 +42,21 @@ def get_chess_stats() -> dict[str, str]:
     return ret_dict
 
 
-async def aiter(iterable: list[str]):
-    for i in iterable:
-        yield i
+def pcmp_repo_badges(repos: list[str] = PCMP_REPOS) -> dict[str, list[str]]:
+    d = {repo: [] for repo in repos}
 
-
-async def get_repo_badges_async() -> dict[str, list[str]]:
-    d = {repo: [] for repo in PCMP_REPOS}
-
-    async for repo in aiter(PCMP_REPOS):
-        response = requests.get(
-            f"https://api.github.com/repos/{repo}/actions/workflows"
-        )
-
-        try:
-            d[repo] = [
-                workflow["badge_url"] for workflow in response.json()["workflows"]
-            ]
-        except KeyError:
-            pass
-
-    return d
-
-
-def pcmp_repo_badges1() -> dict[str, list[str]]:
-    # Ideally we would use the GraphQL endpoint for batching these but it seems like currently there is no link between repos and workflows https://github.com/orgs/community/discussions/56300
-    return asyncio.run(get_repo_badges_async())
-
-
-def pcmp_repo_badges() -> dict[str, list[str]]:
-    d = {repo: [] for repo in PCMP_REPOS}
-
-    for repo in PCMP_REPOS:
+    for repo in repos:
         try:
             text = requests.get(
-                f"https://raw.githubusercontent.com/{repo}/main/README.md"
+                f"https://raw.githubusercontent.com/{repo}/main/README.md", timeout=5
             ).text
         except requests.exceptions.RequestException:
             continue
         if text.startswith("404: Not Found"):
             try:
                 text = requests.get(
-                    f"https://raw.githubusercontent.com/{repo}/master/README.md"
+                    f"https://raw.githubusercontent.com/{repo}/master/README.md",
+                    timeout=5,
                 ).text
             except requests.exceptions.RequestException:
                 continue

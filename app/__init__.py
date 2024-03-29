@@ -1,6 +1,5 @@
 import glob
 import random
-import requests
 from pathlib import Path
 
 

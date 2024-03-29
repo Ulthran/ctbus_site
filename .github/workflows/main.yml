@@ -40,7 +40,7 @@ jobs:
       
       - name: Run Tests
         run: |
-          pytest tests/unit/
+          pytest tests/unit/ tests/integration/
   
   build-artifact:
     needs: test
