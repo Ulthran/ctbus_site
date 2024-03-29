@@ -126,9 +126,9 @@ def r_sitemap():
 def add_security_headers(resp):
     resp.headers["Content-Security-Policy"] = "default-src 'self'"
     resp.headers["Content-Security-Policy"] = "style-src 'self' cdn.jsdelivr.net/npm/"
-    resp.headers["Content-Security-Policy"] = (
-        "script-src 'self' cdn.jsdelivr.net/npm/ cdnjs.cloudflare.com/ajax polyfill.io"
-    )
+    resp.headers[
+        "Content-Security-Policy"
+    ] = "script-src 'self' cdn.jsdelivr.net/npm/ cdnjs.cloudflare.com/ajax polyfill.io"
 
     resp.headers["Content-Security-Policy"] = "frame-ancestors 'none'"
     return resp
