@@ -75,7 +75,7 @@ def pcmp():
 )
 @app.route("/music")
 def music():
-    cache_handler, auth_manager = get_spotipy_auth_manager(session)
+    cache_handler, auth_manager = get_spotipy_auth_manager(session, url_for("music"))
 
     if request.args.get("code"):
         # Step 2. Being redirected from Spotify auth page

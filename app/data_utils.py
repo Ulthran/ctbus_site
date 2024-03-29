@@ -49,13 +49,14 @@ def get_chess_stats() -> Dict[str, str]:
 
 
 def get_spotipy_auth_manager(
-    session: SessionMixin,
+    session: SessionMixin, redirect_uri: str
 ) -> Tuple[spotipy.cache_handler.FlaskSessionCacheHandler, spotipy.oauth2.SpotifyOAuth]:
     cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
     auth_manager = spotipy.oauth2.SpotifyOAuth(
         scope="user-top-read",
         cache_handler=cache_handler,
         show_dialog=True,
+        redirect_uri=redirect_uri,
     )
 
     return cache_handler, auth_manager
