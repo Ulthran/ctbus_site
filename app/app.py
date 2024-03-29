@@ -1,5 +1,4 @@
 import os
-import spotipy
 
 from dotenv import load_dotenv
 from flask import (
@@ -9,6 +8,7 @@ from flask import (
     request,
     send_from_directory,
     session,
+    url_for,
 )
 from flask_sitemapper import Sitemapper
 
@@ -80,7 +80,7 @@ def music():
     if request.args.get("code"):
         # Step 2. Being redirected from Spotify auth page
         auth_manager.get_access_token(request.args.get("code"))
-        return redirect("/music")
+        return redirect(url_for("music"))
 
     if not auth_manager.validate_token(cache_handler.get_cached_token()):
         # Step 1. Display sign in link when no token
@@ -162,7 +162,7 @@ def session_info():
 @app.route("/remove-session-data/<key>")
 def remove_session_data(key):
     session.pop(key, None)
-    return redirect("/session")
+    return redirect(url_for("session"))
 
 
 @app.route("/sitemap.xml")
