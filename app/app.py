@@ -18,6 +18,7 @@ from app.data_utils import (
     get_spotify_data,
     get_spotify_user,
     get_spotipy_auth_manager,
+    pcmp_repo_badges
 )
 
 load_dotenv()
@@ -66,6 +67,16 @@ def page_not_found(e):
 @app.route("/pcmp")
 def pcmp():
     return render_template("pcmp.html", cdn_url=CDN_URL)
+
+
+@sitemapper.include(
+    lastmod="2024-03-29",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/pcmp/dashboard")
+def pcmp_dashboard():
+    return render_template("pcmp_dashboard.html", repo_badges=pcmp_repo_badges())
 
 
 @sitemapper.include(
