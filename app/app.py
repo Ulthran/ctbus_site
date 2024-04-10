@@ -18,7 +18,7 @@ from app.data_utils import (
     get_spotify_data,
     get_spotify_user,
     get_spotipy_auth_manager,
-    pcmp_repo_badges
+    pcmp_repo_badges,
 )
 
 load_dotenv()

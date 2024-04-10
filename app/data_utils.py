@@ -71,12 +71,13 @@ def pcmp_repo_badges(repos: list[str] = PCMP_REPOS) -> dict[str, list[str]]:
 
     return d
 
+
 def get_spotipy_auth_manager(
     session: SessionMixin, redirect_uri: str
 ) -> tuple[spotipy.cache_handler.FlaskSessionCacheHandler, spotipy.oauth2.SpotifyOAuth]:
     cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
     auth_manager = spotipy.oauth2.SpotifyOAuth(
-        scope="user-top-read",
+        scope="user-top-read playlist-read-private",
         cache_handler=cache_handler,
         show_dialog=True,
         redirect_uri=redirect_uri,

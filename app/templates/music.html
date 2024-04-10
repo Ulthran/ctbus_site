@@ -12,7 +12,7 @@
     {{ svgs.spotify(class="w-12 h-12")}}
 </a>
 
-Check out the Spotify stats visualizer I made (by logging in you'll only be giving read access to your Spotify data):
+Check out the Spotify stats visualizer I made (by logging in you'll only be giving temporary read access to your Spotify data):
 {% endcall %}
 
 {% if auth_url %}
@@ -26,16 +26,32 @@ Check out the Spotify stats visualizer I made (by logging in you'll only be givi
     <div class="container mx-auto p-2 md:w-1/4 border border-gray-300 rounded">
         <h2 class="text-2xl font-bold mb-4">{{ spotify_user['display_name'] }}</h2><br />
         <img src="{{ spotify_user['images'][1]['url'] }}" class="w-20 h-20 rounded-full" alt="Profile Picture"><br />
-        
-        <input type="radio" id="short_term" name="time_frame" value="short_term" onChange="display_spotify_data()">
-        <label for="short_term">SHORT</label><br>
-        <input type="radio" id="medium_term" name="time_frame" value="medium_term" onChange="display_spotify_data()" checked>
-        <label for="medium_term">MEDIUM</label><br>
-        <input type="radio" id="long_term" name="time_frame" value="long_term" onChange="display_spotify_data()">
-        <label for="long_term">LONG</label><br>
 
-        <label for="num_tracks">Number of tracks:</label>
-        <input type="number" id="num_tracks" name="num_tracks" min="1" max="20" value="20" onChange="display_spotify_data()">
+        <!-- Tab setup, one button should start with the "active" class and the corresponding tabcontent class should not have the "hidden" class -->
+        <div class="tab border-solid rounded bg-white">
+            <button id="top-tracks-button" class="tablinks float-left bg-inherit hover:bg-gray-300 active:bg-gray-500 p-2 cursor-pointer" onclick="openView(event, 'Top Tracks')">Top Tracks</button>
+            <button id="playlists-button" class="tablinks float-left bg-inherit hover:bg-gray-300 active:bg-gray-500 p-2 cursor-pointer" onclick="openView(event, 'Playlists')">Playlists</button>
+        </div>
+        
+        <div id="Top Tracks" class="tabcontent p-4 border-solid bg-white hidden">
+            <input type="radio" id="short_term" name="time_frame" value="short_term" onChange="display_spotify_data()">
+            <label for="short_term">SHORT</label><br>
+            <input type="radio" id="medium_term" name="time_frame" value="medium_term" onChange="display_spotify_data()" checked>
+            <label for="medium_term">MEDIUM</label><br>
+            <input type="radio" id="long_term" name="time_frame" value="long_term" onChange="display_spotify_data()">
+            <label for="long_term">LONG</label><br>
+
+            <label for="num_tracks">Number of tracks:</label>
+            <input type="number" id="num_tracks" name="num_tracks" min="1" max="20" value="20" onChange="display_spotify_data()">
+        </div>
+
+        <div id="Playlists" class="tabcontent p-4 border-solid bg-white hidden">
+            <select id="playlist_select" name="playlist_select" onChange="display_spotify_data()">
+                <option value="new_music_finds">New Music Finds</option>
+                <option value="jacob_collier">Jacob Collier</option>
+                <option value="jacob_collier_inspired">Jacob Collier Inspired</option>
+            </select>
+        </div>
     </div>
     <div class="container mx-auto p-2 md:w-3/4 border border-gray-300 rounded">
         <div id="spotify-audio-features"><!-- Plotly chart will be drawn inside this DIV --></div>
@@ -71,7 +87,31 @@ Check out the Spotify stats visualizer I made (by logging in you'll only be givi
             });
     }
 
-    window.onload = display_spotify_data;
+    function openView(evt, viewName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(viewName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    window.onload = function() {
+        document.getElementById("top-tracks-button").click();
+        display_spotify_data();
+    }
 </script>
 {% endif %}
 {% endblock %}
