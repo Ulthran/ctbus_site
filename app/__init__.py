@@ -17,7 +17,7 @@ PCMP_REPOS = [
     "Ulthran/sbx_mgv",
     "Ulthran/sbx_seeker",
     "Ulthran/demic",
-    "kylebittinger/unassigner",
+    "PennChopMicrobiomeProgram/unassigner",
     "PennChopMicrobiomeProgram/ZIBR",
     "lakerwsl/DAFOT",
     "Ulthran/ShotgunUnifrac",
