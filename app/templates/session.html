@@ -10,7 +10,7 @@
         {% for k, v in session.items() %}
             <tr style="border: 1px solid black;">
                 <td style="border: 1px solid black; padding: 5px;">{{ k }}</td>
-                <td style="border: 1px solid black; padding: 5px;">{{ v }}</td>
+                <td style="border: 1px solid black; padding: 5px;" class="overflow-scroll">{{ v }}</td>
                 <td style="border: 1px solid black; padding: 5px;">
                     <a href="{{ url_for('remove_session_data', key=k) }}" class="interest-button flex items-center bg-red-700 hover:bg-red-800 text-black text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
                         Remove

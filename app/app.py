@@ -185,7 +185,7 @@ def session_info():
 @app.route("/remove-session-data/<key>")
 def remove_session_data(key):
     session.pop(key, None)
-    return redirect(url_for("session"))
+    return redirect(url_for("session_info"))
 
 
 @app.route("/sitemap.xml")
