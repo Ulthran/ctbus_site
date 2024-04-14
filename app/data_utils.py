@@ -3,6 +3,7 @@ import requests
 import spotipy
 
 from flask.sessions import SessionMixin
+from typing import Union
 from . import PCMP_REPOS
 
 
@@ -199,7 +200,7 @@ def get_spotify_data(
     num_tracks: int = None,
     playlistsQ: bool = False,
     playlist_name: str = None,
-) -> dict[str, str] | list[str]:
+) -> Union[dict[str, str], list[str]]:
     if playlistsQ:
         print("playlistsQ")
         val = get_playlists(auth_manager)
