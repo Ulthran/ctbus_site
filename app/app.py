@@ -111,9 +111,17 @@ def spotify_data():
     _, auth_manager = get_spotipy_auth_manager(
         session, url_for("music", _external=True)
     )
-    time_frame = request.args.get("time_frame", "medium_term")
-    num_tracks = int(request.args.get("num_tracks", 20))
-    return get_spotify_data(auth_manager, time_frame=time_frame, num_tracks=num_tracks)
+    time_frame = request.args.get("time_frame", None)
+    num_tracks = request.args.get("num_tracks", None)
+    playlistsQ = bool(request.args.get("playlistsQ", False))
+    playlist_name = request.args.get("playlist_name", None)
+    return get_spotify_data(
+        auth_manager,
+        time_frame=time_frame,
+        num_tracks=num_tracks,
+        playlistsQ=playlistsQ,
+        playlist_name=playlist_name,
+    )
 
 
 @sitemapper.include(

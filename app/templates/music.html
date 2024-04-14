@@ -23,34 +23,34 @@ Check out the Spotify stats visualizer I made (by logging in you'll only be givi
 </div>
 {% else %}
 <div class="container mx-auto py-4 px-1 m-2 flex md:flex-row flex-col border border-black rounded">
-    <div class="container mx-auto p-2 md:w-1/4 border border-gray-300 rounded">
-        <h2 class="text-2xl font-bold mb-4">{{ spotify_user['display_name'] }}</h2><br />
+    <div class="container mx-auto p-2 md:w-1/4 flex flex-col border border-gray-300 rounded justify-center items-center">
+        <h2 class="text-2xl font-bold mb-4">{{ spotify_user['display_name'] }}</h2>
         <img src="{{ spotify_user['images'][1]['url'] }}" class="w-20 h-20 rounded-full" alt="Profile Picture"><br />
 
-        <!-- Tab setup, one button should start with the "active" class and the corresponding tabcontent class should not have the "hidden" class -->
-        <div class="tab border-solid rounded bg-white">
-            <button id="top-tracks-button" class="tablinks float-left bg-inherit hover:bg-gray-300 active:bg-gray-500 p-2 cursor-pointer" onclick="openView(event, 'Top Tracks')">Top Tracks</button>
-            <button id="playlists-button" class="tablinks float-left bg-inherit hover:bg-gray-300 active:bg-gray-500 p-2 cursor-pointer" onclick="openView(event, 'Playlists')">Playlists</button>
-        </div>
-        
-        <div id="Top Tracks" class="tabcontent p-4 border-solid bg-white hidden">
-            <input type="radio" id="short_term" name="time_frame" value="short_term" onChange="display_spotify_data()">
-            <label for="short_term">SHORT</label><br>
-            <input type="radio" id="medium_term" name="time_frame" value="medium_term" onChange="display_spotify_data()" checked>
-            <label for="medium_term">MEDIUM</label><br>
-            <input type="radio" id="long_term" name="time_frame" value="long_term" onChange="display_spotify_data()">
-            <label for="long_term">LONG</label><br>
+        <div class="flex flex-col items-left">
+            <!-- Tab setup, one button should start with the "active" class and the corresponding tabcontent class should not have the "hidden" class -->
+            <div class="tab border-solid rounded bg-white max-w-fit overflow-hidden">
+                <button id="top-tracks-button" class="tablinks float-left hover:bg-gray-200 [&.active]:bg-gray-300 p-2 cursor-pointer" onclick="openView(event, 'Top Tracks')">Top Tracks</button>
+                <button id="playlists-button" class="tablinks float-left hover:bg-gray-200 [&.active]:bg-gray-300 p-2 cursor-pointer" onclick="openView(event, 'Playlists')">Playlists</button>
+            </div>
+            
+            <div id="Top Tracks" class="tabcontent p-4 border-solid bg-white hidden">
+                <input type="radio" id="short_term" name="time_frame" value="short_term" onChange="display_spotify_data()">
+                <label for="short_term">SHORT</label><br>
+                <input type="radio" id="medium_term" name="time_frame" value="medium_term" onChange="display_spotify_data()" checked>
+                <label for="medium_term">MEDIUM</label><br>
+                <input type="radio" id="long_term" name="time_frame" value="long_term" onChange="display_spotify_data()">
+                <label for="long_term">LONG</label><br>
 
-            <label for="num_tracks">Number of tracks:</label>
-            <input type="number" id="num_tracks" name="num_tracks" min="1" max="20" value="20" onChange="display_spotify_data()">
-        </div>
+                <label for="num_tracks">Number of tracks:</label>
+                <input type="number" id="num_tracks" name="num_tracks" min="1" max="20" value="20" onChange="display_spotify_data()" class="border-gray-300 rounded">
+            </div>
 
-        <div id="Playlists" class="tabcontent p-4 border-solid bg-white hidden">
-            <select id="playlist_select" name="playlist_select" onChange="display_spotify_data()">
-                <option value="new_music_finds">New Music Finds</option>
-                <option value="jacob_collier">Jacob Collier</option>
-                <option value="jacob_collier_inspired">Jacob Collier Inspired</option>
-            </select>
+            <div id="Playlists" class="tabcontent p-4 border-solid bg-white hidden">
+                <select id="playlist_select" name="playlist_select" onChange="display_spotify_data()"></select>
+                <br /><br />
+                <i class="text-sm">Tip: Click on categories in the legend to show/hide them.</i>
+            </div>
         </div>
     </div>
     <div class="container mx-auto p-2 md:w-3/4 border border-gray-300 rounded">
@@ -60,25 +60,52 @@ Check out the Spotify stats visualizer I made (by logging in you'll only be givi
 
 <script type="text/javascript">
     function display_spotify_data() {
-        var time_frame = document.querySelector('input[name="time_frame"]:checked').value;
-        var num_tracks = document.getElementById("num_tracks").value;
+        var top_tracks = document.getElementById("top-tracks-button").classList.contains("active");
+        var playlists = document.getElementById("playlists-button").classList.contains("active");
+        var spotify_data_url;
 
-        const spotify_data_url = {{ url_for("spotify_data")|tojson }} + "?time_frame=" + time_frame + "&num_tracks=" + num_tracks;
+        if (playlists) {
+            var playlist_name = document.getElementById("playlist_select").value;
+
+            spotify_data_url = {{ url_for("spotify_data")|tojson }} + "?playlist_name=" + playlist_name;
+        } else {
+            var time_frame = document.querySelector('input[name="time_frame"]:checked').value;
+            var num_tracks = document.getElementById("num_tracks").value;
+
+            spotify_data_url = {{ url_for("spotify_data")|tojson }} + "?time_frame=" + time_frame + "&num_tracks=" + num_tracks;
+        }
+        console.log(spotify_data_url)
+
         fetch(spotify_data_url)
             .then((response) => {
                 return response.json().then((data) => {
                     console.log(data);
-                    var layout = {
-                        font:{
-                            family: 'sans-serif'
-                        },
-                        xaxis: {
-                            tickangle: -45
-                        },
-                        showlegend: false,
-                        barcornerradius: 15,
-                        barmode: 'stack'
-                    };
+                    var layout;
+
+                    if (playlists) {
+                        layout = {
+                            font:{
+                                family: 'sans-serif'
+                            },
+                            xaxis: {
+                                title: "Runtime (mins)",
+                                tickangle: -45
+                            },
+                            showlegend: true
+                        };
+                    } else {
+                        layout = {
+                            font:{
+                                family: 'sans-serif'
+                            },
+                            xaxis: {
+                                tickangle: -45
+                            },
+                            showlegend: false,
+                            barcornerradius: 15,
+                            barmode: 'stack'
+                        };
+                    }
 
                     Plotly.newPlot('spotify-audio-features', data, layout);
                 }).catch((err) => {
@@ -106,11 +133,37 @@ Check out the Spotify stats visualizer I made (by logging in you'll only be givi
         // Show the current tab, and add an "active" class to the button that opened the tab
         document.getElementById(viewName).style.display = "block";
         evt.currentTarget.className += " active";
+
+        if (viewName == "Playlists") {
+            populate_playlists_dropdown();
+        }
+
+        display_spotify_data();
+    }
+
+    function populate_playlists_dropdown() {
+        let selectTag = document.getElementById('playlist_select');
+
+        const spotify_data_url = {{ url_for("spotify_data")|tojson }} + "?playlistsQ=True";
+        fetch(spotify_data_url)
+            .then((response) => {
+                return response.json().then((data) => {
+                    data.map( (pl, i) => {
+                        let opt = document.createElement("option");
+                        opt.value = pl;
+                        opt.innerHTML = pl;
+                        selectTag.append(opt);
+                    });
+
+                    display_spotify_data();
+                }).catch((err) => {
+                    console.log(err);
+                }) 
+            });
     }
 
     window.onload = function() {
         document.getElementById("top-tracks-button").click();
-        display_spotify_data();
     }
 </script>
 {% endif %}
