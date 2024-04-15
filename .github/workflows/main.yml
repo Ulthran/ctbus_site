@@ -7,23 +7,21 @@ on:
     branches: [main, master]
 
 jobs:
-  super-linter:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run Super-Linter
-        uses: github/super-linter@v5
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black
 
-          VALIDATE_PYTHON_BLACK: true
-          VALIDATE_JAVASCRIPT_ES: true
-
-          FILTER_REGEX_INCLUDE: app/|tests/
+      - name: Lint Code
+        run: |
+          black . --check
 
   test:
     runs-on: ubuntu-latest
@@ -205,7 +203,7 @@ jobs:
             failOnError: false
 
   prod-deploy:
-    needs: [test-deployment, zap-deployment, unsign-deployment, web-accessibility-eval, super-linter]
+    needs: [test-deployment, zap-deployment, unsign-deployment, web-accessibility-eval, lint]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint

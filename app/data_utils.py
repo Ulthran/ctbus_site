@@ -1,5 +1,9 @@
 import re
 import requests
+import spotipy
+
+from flask.sessions import SessionMixin
+from typing import Union
 from . import PCMP_REPOS
 
 
@@ -67,3 +71,147 @@ def pcmp_repo_badges(repos: list[str] = PCMP_REPOS) -> dict[str, list[str]]:
         d[repo] = badge_urls
 
     return d
+
+
+def get_spotipy_auth_manager(
+    session: SessionMixin, redirect_uri: str
+) -> tuple[spotipy.cache_handler.FlaskSessionCacheHandler, spotipy.oauth2.SpotifyOAuth]:
+    cache_handler = spotipy.cache_handler.FlaskSessionCacheHandler(session)
+    auth_manager = spotipy.oauth2.SpotifyOAuth(
+        scope="user-top-read playlist-read-private",
+        cache_handler=cache_handler,
+        show_dialog=True,
+        redirect_uri=redirect_uri,
+    )
+
+    return cache_handler, auth_manager
+
+
+def get_spotify_user(auth_manager: spotipy.oauth2.SpotifyOAuth) -> dict[str, str]:
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+    return sp.me()
+
+
+NORMALIZED_AUDIO_FEATURES = [
+    "danceability",
+    "energy",
+    "mode",
+    "speechiness",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "valence",
+]
+
+
+def get_normalized_audio_features(
+    auth_manager: spotipy.oauth2.SpotifyOAuth,
+    time_frame: str = "medium_term",
+    num_tracks: int = 20,
+) -> dict[str, str]:
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+
+    top_tracks = sp.current_user_top_tracks(
+        limit=num_tracks, offset=0, time_range=time_frame
+    )
+
+    audio_features = sp.audio_features([track["id"] for track in top_tracks["items"]])
+
+    ret = [
+        {
+            "x": NORMALIZED_AUDIO_FEATURES,
+            "y": [track[key] for key in NORMALIZED_AUDIO_FEATURES],
+            "name": [t["name"] for t in top_tracks["items"] if t["id"] == track["id"]][
+                0
+            ],
+            "type": "bar",
+        }
+        for track in audio_features
+    ]
+
+    return ret
+
+
+def get_playlists(auth_manager: spotipy.oauth2.SpotifyOAuth) -> list[str]:
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+
+    playlists = sp.current_user_playlists()
+
+    return [playlist["name"] for playlist in playlists["items"]]
+
+
+def get_playlist(
+    auth_manager: spotipy.oauth2.SpotifyOAuth, playlist_name: str
+) -> dict[str, str]:
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+
+    playlists = sp.current_user_playlists()
+
+    playlist_id = None
+    for playlist in playlists["items"]:
+        if playlist["name"] == playlist_name:
+            playlist_id = playlist["id"]
+            break
+
+    if not playlist_id:
+        return {"error": "Playlist not found"}
+
+    playlist = sp.playlist(playlist_id)
+
+    playlist_features = sp.audio_features(
+        [track["track"]["id"] for track in playlist["tracks"]["items"]]
+    )
+
+    # THIS SHOULD BE PASSED AS PARAMETER
+    features = [
+        "energy",
+        "danceability",
+        "acousticness",
+        "instrumentalness",
+        "valence",
+        "liveness",
+        "speechiness",
+    ]
+
+    return [
+        {
+            "x": [
+                sum(
+                    [
+                        playlist["tracks"]["items"][j]["track"]["duration_ms"] / 60000
+                        for j in range(0, i)
+                    ]
+                )
+                for i in range(len(playlist["tracks"]["items"]))
+            ],
+            "y": [track[feature] for track in playlist_features],
+            "text": [track["track"]["name"] for track in playlist["tracks"]["items"]],
+            "textposition": "top",
+            "name": feature,
+            "type": "scatter",
+        }
+        for feature in features
+    ]
+
+
+def get_spotify_data(
+    auth_manager: spotipy.oauth2.SpotifyOAuth,
+    time_frame: str = None,
+    num_tracks: int = None,
+    playlistsQ: bool = False,
+    playlist_name: str = None,
+) -> Union[dict[str, str], list[str]]:
+    if playlistsQ:
+        print("playlistsQ")
+        val = get_playlists(auth_manager)
+        print(val)
+
+        return get_playlists(auth_manager)
+    elif time_frame and num_tracks:
+        print("Normalized Audio Features")
+        return get_normalized_audio_features(
+            auth_manager, time_frame=time_frame, num_tracks=num_tracks
+        )
+    elif playlist_name:
+        print("Playlist")
+        return get_playlist(auth_manager, playlist_name)

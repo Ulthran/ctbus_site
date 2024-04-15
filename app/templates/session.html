@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% call macros.hero(title = "Session Data", subtitle = "Here you can view and delete all the data saved by this site. It is stored as cookies in your browser.") %}
+<div class="flex flex-wrap items-center justify-center p-5 md:mx-10">
+    {% if session|length == 0 %}
+        <p class="text-2xl font-bold my-4">No session data found.</p>
+    {% else %}
+    <table style="border-collapse: collapse; border: 1px solid black; margin: 10px; padding: 10px; width: 90vw; display: flex;">
+        {% for k, v in session.items() %}
+            <tr style="width: 85vw; display: flex;">
+                <td style="border: 1px solid black; padding: 5px;">{{ k }}</td>
+                <td style="padding: 5px;" class="flex overflow-scroll">{{ v }}</td>
+                <td style="border: 1px solid black; padding: 5px;">
+                    <a href="{{ url_for('remove_session_data', key=k) }}" class="interest-button flex items-center bg-red-700 hover:bg-red-800 text-black text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
+                        Remove
+                        <span class="ml-2">
+                            {{ svgs.trashcan(class="w-6 h-6") }}
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endcall %}
+{% endblock %}
