@@ -28,6 +28,7 @@ PCMP_REPOS = [
     "PennChopMicrobiomeProgram/dnabc",
     "kylebittinger/heyfastq",
     "PennChopMicrobiomeProgram/SampleRegistry",
+    "PennChopMicrobiomeProgram/CHOP_metadata_checker",
     "Ulthran/conda_env_check",
     "sunbeam-labs/sbx_template",
     "sunbeam_labs/sbx_test_action",
