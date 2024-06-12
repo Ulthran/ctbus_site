@@ -13,7 +13,7 @@
         </a>
 
         <a href="{{ url_for('session_info') }}" target="_blank" class="text-white" title="Session Info">
-            {{ svgs.data(class="w-12 h-12") }}
+            {{ svgs.data(class="w-12 h-12"), fill="#000000" }}
         </a>
     </div>
 
@@ -31,7 +31,7 @@
 
     <h3 class="text-xl font-bold my-4">Third Try: Flask's built in session Object</h3>
 
-    <p class="text-lg text-left">Then I realized I had made a signinificant oversight in my initial overview of the options available to me. Flask (without Flask Session) has a built in session object. And that session stores data locally to the user's computer. I tried this way out and it worked immediately. Even better, it incurs no added cost and doesn't add any dependencies to the site (keeping bundle size down). So this is what I went with. And it still gives the ability to have a page where you (the user) can <a href="{{ url_for('session_info') }}">view and delete session data</a> from this site.</p>
+    <p class="text-lg text-left">Then I realized I had made a signinificant oversight in my initial overview of the options available to me. Flask (without Flask Session) has a built in session object. And that session stores data locally to the user's computer. I tried this way out and it worked immediately. Even better, it incurs no added cost and doesn't add any dependencies to the site (keeping bundle size down). So this is what I went with. And it still gives the ability to have a page where you (the user) can <a href="{{ url_for('session_info') }}" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">view and delete session data</a> from this site.</p>
 
     <p class="text-lg text-left">This was my first foray into using session data on a website. If you have experience with it and want to provide feedback/critique or if you have none and want to know more about my setup, please send me an email. :)</p>
 </div>

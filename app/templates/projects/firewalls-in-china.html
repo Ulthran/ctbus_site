@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
+
+{% block body %}
+{% call macros.hero(title = "Firewalls in China: Studying Computer Networks in Chinese", subtitle = "Posted: . Last Updated: .") %}{% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <p class="text-lg text-left">In the fall of 2019, I spent four months studying Mandarin in Harbin, China with <a href="https://cetacademicprograms.com/college-study-abroad/programs/china/harbin-chinese-language/" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">CET</a> and the <a href="http://en.hit.edu.cn/" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Harbin Institute of Technology</a> (HIT). As part of the program, I was able to design a 1-on-1 class with a HIT professor and chose to do it on computer networks and their security (particularly relevant in China, where there is a nationwide firewall preventing access to certain parts of the internet).</p>
+
+    <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
+        <a href="{{ cdn_url }}/documents/firewalls_paper.pdf" target="_blank" class="text-white" title="Spotify Stats">
+            {{ svgs.download_file(class="w-12 h-12", fill="#000000") }}
+        </a>
+    </div>
+
+    <h3 class="text-2xl font-bold my-4">Why'd You Do This</h3>
+
+    <h3 class="text-xl font-bold my-4">The Process</h3>
+
+    <h3 class="text-xl font-bold my-4">What I Learned</h3>
+    
+</div>
+
+{% endblock %}
