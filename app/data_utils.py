@@ -3,6 +3,7 @@ import requests
 import spotipy
 
 from flask.sessions import SessionMixin
+from spotipy.oauth2 import SpotifyClientCredentials
 from typing import Union
 from . import PCMP_REPOS
 
@@ -71,6 +72,61 @@ def pcmp_repo_badges(repos: list[str] = PCMP_REPOS) -> dict[str, list[str]]:
         d[repo] = badge_urls
 
     return d
+
+
+#
+# BEGIN SPOTIPY CREDENTIAL-BASED CODE
+#
+
+
+def get_ctbus_monthly_playlists() -> list[dict[str, str]]:
+    auth_manager = SpotifyClientCredentials()
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+
+    playlists = sp.user_playlists("charlie_bushman")
+    monthlies = []
+    while playlists:
+        # Note that apparently some playlists apostrophe is encoded as ' while others are ‘ so we search both with ['‘]
+        playlists["items"] = [
+            p
+            for p in playlists["items"]
+            if re.search(r"[A-Z][a-z]{2} ['‘]\d{2}", p["name"])
+        ]
+        for i, playlist in enumerate(playlists["items"]):
+            playlist["name"] = playlist["name"].replace("‘", "'")
+            monthlies.append(playlist)
+        if playlists["next"]:
+            playlists = sp.next(playlists)
+        else:
+            playlists = None
+
+    # Sort monthlies by name first sorting by the year (last two digits) and then month (first three characters)
+    months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ]
+    monthlies.sort(key=lambda x: (int(x["name"][-2:]), months.index(x["name"][:3])))
+
+    return monthlies
+
+
+#
+# END SPOTIPY CREDENTIAL-BASED CODE
+#
+
+#
+# BEGIN SPOTIPY AUTHORIZATION-BASED CODE
+#
 
 
 def get_spotipy_auth_manager(
@@ -215,3 +271,8 @@ def get_spotify_data(
     elif playlist_name:
         print("Playlist")
         return get_playlist(auth_manager, playlist_name)
+
+
+#
+# END SPOTIPY AUTHORIZATION-BASED CODE
+#
