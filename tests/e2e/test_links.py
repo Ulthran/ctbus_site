@@ -9,7 +9,9 @@ url_exceptions = [
     "https://twitter.com",
     "https://www.nature.com",
     "https://accounts.spotify.com/authorize",
+    "https://open.spotify.com",
     "https://www.research.chop.edu",
+    "https://cetacademicprograms.com",
 ]
 
 
