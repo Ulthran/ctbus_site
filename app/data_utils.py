@@ -115,7 +115,9 @@ def get_ctbus_monthly_playlists() -> list[dict[str, str]]:
         "Nov",
         "Dec",
     ]
-    monthlies.sort(key=lambda x: (int(x["name"][-2:]), months.index(x["name"][:3])))
+    monthlies.sort(
+        key=lambda x: (int(x["name"][-2:]), months.index(x["name"][:3])), reverse=True
+    )
 
     return monthlies
 
