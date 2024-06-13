@@ -92,7 +92,7 @@ def get_ctbus_monthly_playlists() -> list[dict[str, str]]:
             for p in playlists["items"]
             if re.search(r"[A-Z][a-z]{2} ['‘]\d{2}", p["name"])
         ]
-        for i, playlist in enumerate(playlists["items"]):
+        for playlist in playlists["items"]:
             playlist["name"] = playlist["name"].replace("‘", "'")
             monthlies.append(playlist)
         if playlists["next"]:

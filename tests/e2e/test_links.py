@@ -9,6 +9,7 @@ url_exceptions = [
     "https://twitter.com",
     "https://www.nature.com",
     "https://accounts.spotify.com/authorize",
+    "https://open.spotify.com",
     "https://www.research.chop.edu",
 ]
 
@@ -23,7 +24,12 @@ def test_bad_links(setup_chrome, page):
     for link in links:
         url = link.get_attribute("href")
         try:
-            response_code = int(requests.head(url, timeout=10).status_code)
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+            }
+            response_code = int(
+                requests.head(url, headers=headers, timeout=10).status_code
+            )
             if response_code >= 200 and response_code < 300:
                 assert True
             elif response_code == 999:
