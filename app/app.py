@@ -15,6 +15,7 @@ from flask_sitemapper import Sitemapper
 from app import project_pages, random_third_attribute
 from app.data_utils import (
     get_chess_stats,
+    get_ctbus_monthly_playlists,
     get_spotify_data,
     get_spotify_user,
     get_spotipy_auth_manager,
@@ -98,11 +99,19 @@ def music():
     if not auth_manager.validate_token(cache_handler.get_cached_token()):
         # Step 1. Display sign in link when no token
         auth_url = auth_manager.get_authorize_url()
-        return render_template("music.html", cdn_url=CDN_URL, auth_url=auth_url)
+        return render_template(
+            "music.html",
+            cdn_url=CDN_URL,
+            auth_url=auth_url,
+            monthlies=get_ctbus_monthly_playlists(),
+        )
 
     # Step 3. Signed in, display data
     return render_template(
-        "music.html", cdn_url=CDN_URL, spotify_user=get_spotify_user(auth_manager)
+        "music.html",
+        cdn_url=CDN_URL,
+        spotify_user=get_spotify_user(auth_manager),
+        monthlies=get_ctbus_monthly_playlists(),
     )
 
 
