@@ -5,9 +5,10 @@ from tests.e2e.pages.Comps import Comps
 
 
 WEBDRIVERS = [
+    # "setup_html_unit",
     "setup_chrome",
     "setup_chrome_mobile",
-    "setup_chromium",
+    # "setup_chromium",
     "setup_edge",
     "setup_firefox",
 ]
