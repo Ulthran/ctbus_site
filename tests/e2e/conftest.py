@@ -85,6 +85,10 @@ def setup_chrome_mobile():
     driver.close()
 
 
+# TODO: The version of ChromeDriver needs to be held consistent with chromium-browser (currently installed via apt in CI workflow)
+# Try just uncommenting and it might work again once the apt repo is up to date with the latest version of chromium-browser
+# Maybe try to get the current version of chromium-browser in the CI workflow and install the corresponding version of ChromeDriver
+# It should be installed by this point, so if we could interact with apt to get the version...
 @pytest.fixture()
 def setup_chromium():
     options = ChromeOptions()
