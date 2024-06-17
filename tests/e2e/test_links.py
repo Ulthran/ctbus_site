@@ -11,6 +11,7 @@ url_exceptions = [
     "https://accounts.spotify.com/authorize",
     "https://open.spotify.com",
     "https://www.research.chop.edu",
+    "https://cetacademicprograms.com",
 ]
 
 
