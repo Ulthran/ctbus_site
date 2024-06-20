@@ -1,7 +1,9 @@
 import pytest
+
 from . import DEV_URL
 from tests.e2e.pages.Index import Index
 from tests.e2e.pages.Comps import Comps
+from tests.e2e.pages.Music import Music
 
 
 WEBDRIVERS = [
@@ -32,3 +34,14 @@ def test_comps(arg):
 
     comps.hide_graphs_button.click()
     assert comps.lorenz_plots.is_displayed()
+
+
+@pytest.mark.parametrize("arg", WEBDRIVERS, indirect=True)
+def test_music(arg):
+    driver = arg
+    driver.get(DEV_URL)
+
+    music = Music(driver, DEV_URL)
+    music.authorize_button.click()
+
+    # How to authorize with dummy account???

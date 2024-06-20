@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from flask import (
+    flash,
     Flask,
     redirect,
     render_template,
@@ -93,7 +94,12 @@ def music():
 
     if request.args.get("code"):
         # Step 2. Being redirected from Spotify auth page
-        auth_manager.get_access_token(request.args.get("code"))
+        try:
+            auth_manager.get_access_token(request.args.get("code"))
+        except Exception as e:
+            flash(
+                f"Failed to authorize Spotify. Have you followed the sandbox instructions?"
+            )
         return redirect(url_for("music"))
 
     if not auth_manager.validate_token(cache_handler.get_cached_token()):
