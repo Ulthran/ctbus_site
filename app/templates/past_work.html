@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% call macros.hero(title = "My Past Jobs", subtitle = "") %}{% endcall %}
+
+{{ macros.project_card() }}
+
+{{ macros.section_header(title = "Internships") }}
+
+{{ macros.project_card(main_link = "https://www.hpe.com/us/en/greenlake.html", link_opts = "target='_blank'", img_link = cdn_url + "/images/hpe_greenlake.png", title = "HPE Software Internship", body = "") }}
+
+{{ macros.project_card(main_link = "https://owllabs.com", link_opts = "target='_blank'", img_link = cdn_url + "/images/owllabs.png", title = "Owl Labs Software Internship", body = "") }}
+
+{{ macros.project_card(main_link = "https://hepatochem.com", link_opts = "target='_blank'", img_link = cdn_url + "/images/hepatochem.png", title = "HepatoChem Software Internship", body = "HepatoChem is a very small chem-tech startup that creates biomimetic screening kits for clients to rapidly test a particle of interest against a wide array of complex chemical reactions. I interned with them as a Junior and Senior in high school, working with the CEO to create a reliable and user friendly inventory management system using MS Access. I migrated the data from spreadsheets they were using and then created forms and macros for common tasks, including compiling saftey data sheets for any kit, which had previously been an annoying manual task.") }}
+
+{% endblock %}

@@ -61,6 +61,16 @@ def page_not_found(e):
 
 
 @sitemapper.include(
+    lastmod="2024-06-25",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/past_work")
+def past_work():
+    return render_template("past_work.html", cdn_url=CDN_URL)
+
+
+@sitemapper.include(
     lastmod="2023-11-29",
     changefreq="monthly",
     priority=0.9,
@@ -78,6 +88,16 @@ def pcmp():
 @app.route("/pcmp/dashboard")
 def pcmp_dashboard():
     return render_template("pcmp_dashboard.html", repo_badges=pcmp_repo_badges())
+
+
+@sitemapper.include(
+    lastmod="2024-06-25",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/pcmp/more")
+def pcmp_more():
+    return render_template("pcmp_more.html", cdn_url=CDN_URL)
 
 
 @sitemapper.include(
