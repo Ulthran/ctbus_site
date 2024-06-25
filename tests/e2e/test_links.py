@@ -12,6 +12,7 @@ url_exceptions = [
     "https://open.spotify.com",
     "https://www.research.chop.edu",
     "https://cetacademicprograms.com",
+    "https://hpe.com",
 ]
 
 
