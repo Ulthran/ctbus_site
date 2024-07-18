@@ -13,12 +13,6 @@
             {{ svgs.pcmp(class="w-6 h-6") }}
         </span>
     </a>
-    <a href="{{ url_for('music') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[40px] m-4">
-        Music&nbsp;&nbsp;&nbsp;
-        <span class="ml-2">
-            {{ svgs.music(class="w-6 h-6") }}
-        </span>
-    </a>
     <a href="{{ url_for('projects') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
         Projects
         <span class="ml-2">
@@ -29,6 +23,12 @@
         Sports&nbsp;&nbsp;
         <span class="ml-2">
             {{ svgs.frisbee(class="w-6 h-6") }}
+        </span>
+    </a>
+    <a href="{{ url_for('music') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[40px] m-4">
+        Music&nbsp;&nbsp;&nbsp;
+        <span class="ml-2">
+            {{ svgs.music(class="w-6 h-6") }}
         </span>
     </a>
     <a href="{{ url_for('certifications') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
@@ -42,6 +42,7 @@
         <span class="ml-2">
             {{ svgs.past(class="w-6 h-6") }}
         </span>
+    </a>
 </div>
 
 <!-- About Section -->
