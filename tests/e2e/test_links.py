@@ -13,6 +13,7 @@ url_exceptions = [
     "https://www.research.chop.edu",
     "https://cetacademicprograms.com",
     "https://hpe.com",
+    "https://www.buda.org/en_us/t/mob-3",
 ]
 
 
