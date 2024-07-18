@@ -13,12 +13,6 @@
             {{ svgs.pcmp(class="w-6 h-6") }}
         </span>
     </a>
-    <a href="{{ url_for('music') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[40px] m-4">
-        Music&nbsp;&nbsp;&nbsp;
-        <span class="ml-2">
-            {{ svgs.music(class="w-6 h-6") }}
-        </span>
-    </a>
     <a href="{{ url_for('projects') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
         Projects
         <span class="ml-2">
@@ -31,10 +25,22 @@
             {{ svgs.frisbee(class="w-6 h-6") }}
         </span>
     </a>
+    <a href="{{ url_for('music') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[40px] m-4">
+        Music&nbsp;&nbsp;&nbsp;
+        <span class="ml-2">
+            {{ svgs.music(class="w-6 h-6") }}
+        </span>
+    </a>
     <a href="{{ url_for('certifications') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
         Certifications
         <span class="ml-2">
             {{ svgs.cert(class="w-6 h-6") }}
+        </span>
+    </a>
+    <a href="{{ url_for('past_work') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
+        Past Work
+        <span class="ml-2">
+            {{ svgs.past(class="w-6 h-6") }}
         </span>
     </a>
 </div>
@@ -45,9 +51,9 @@
         <h2 class="text-2xl font-bold mb-4">About Me</h2>
         <ul class="list-disc list-inside text-lg">
             <li class="mb-4">Developer in Statistical Metagenomics with the <a href="https://www.research.chop.edu/pennchop-microbiome-program" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Penn CHOP Microbiome Program</a> (University of Pennsylvania and Childrens Hospital of Philadelphia)</li>
-            <li class="mb-4">Former Carleton College physics major ('21) with a thesis project on physical reservoir computing implementations</li>
-            <li class="mb-4">Interests in: music, food production/supply, quantum computing, blockchain, sports, creative writing, math</li>
-            <li class="mb-4">Plays competitive ultimate frisbee and many other sports less competitively: soccer, badminton, tennis, squash, ping pong, chess, climbing, skiing, sailing</li>
+            <li class="mb-4">Former Carleton College physics major ('21) with a <a href="{{ url_for('project', project = 'comps')}}" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">thesis project</a> on physical reservoir computing implementations</li>
+            <li class="mb-4">Outside interests in: music, food production/supply, quantum computing, blockchain, sports, creative writing, math</li>
+            <li class="mb-4">Spends way too much time playing ultimate frisbee</li>
         </ul>
     </div>
     <div class="container mx-auto p-4 md:w-1/3">
