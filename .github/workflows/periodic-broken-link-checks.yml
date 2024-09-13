@@ -12,11 +12,6 @@ jobs:
   broken-link-checker:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
-
       - name: Check broken links
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
