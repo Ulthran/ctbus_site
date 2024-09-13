@@ -1,0 +1,34 @@
+name: periodic-health-checks
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/health-checks.yml
+  schedule:
+    - cron: '3 3 * * 3'
+
+jobs:
+  broken-link-checker:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/linkchecker/linkchecker:latest
+
+    steps:
+      - name: Run check
+        run: linkchecker https://charliebushman.com
+
+  critical-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Verify critical docs' availability
+        run: |
+          RESUME=$(curl -s -o /dev/null -w "%{http_code}" https://charliebushman.com/resume)
+          if [ $RESUME -eq 200 ]; then
+            echo "Got 200! All done!"
+            break
+          else
+            echo "Got $RESUME :("
+            exit 1
+          fi
