@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Verify critical docs' availability
         run: |
-          RESUME=$(curl -s -o /dev/null -w "%{http_code}" https://charliebushman.com/resume)
+          RESUME=$(curl -s -o /dev/null -w "%{http_code}" https://d2w4s6xs8769uj.cloudfront.net/documents/resume.pdf)
           if [ $RESUME -eq 200 ]; then
             echo "Got 200! All done!"
             break
