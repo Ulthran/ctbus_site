@@ -11,9 +11,9 @@ on:
 jobs:
   broken-link-checker:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/linkchecker/linkchecker:latest
+
     steps:
-      - name: Check broken links
-        uses: ruzickap/action-my-broken-link-checker@v2
-        with:
-          url: "https://charliebushman.com"
-          cmd_params: '--buffer-size=8192 --max-connections=10 --color=always --header="User-Agent:curl/7.54.0" --timeout=20'
+      - name: Run check
+        run: --verbose https://charliebushman.com
