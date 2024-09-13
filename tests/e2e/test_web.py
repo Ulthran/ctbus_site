@@ -26,8 +26,8 @@ def test_index(arg):
     assert index.title == "Charlie Bushman"
 
 
-#@pytest.mark.parametrize("arg", WEBDRIVERS, indirect=True)
-#def test_comps(arg):
+# @pytest.mark.parametrize("arg", WEBDRIVERS, indirect=True)
+# def test_comps(arg):
 #    driver = arg
 #    driver.get(DEV_URL)
 
