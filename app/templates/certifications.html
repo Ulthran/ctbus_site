@@ -3,7 +3,10 @@
 {% import 'svgs.jinja' as svgs %}
 
 {% block body %}
-{% call macros.hero(title = "Certifications") %}
+{% call macros.hero(title = "Certifications and Learning", subtitle="") %}
+
+
+
 <h3 class="text-2xl font-bold my-4">AI/ML</h3>
 
 <div class="flex flex-row justify-center align-middle">
@@ -71,6 +74,12 @@
     <a class="p-4" href="{{ cdn_url }}/certificates/scala_lang_prof.pdf" target="_blank">
         {{ svgs.cert() }}
     </a>
+</div>
+
+<h3 class="text-2xl font-bold my-4">Mathematics and Science</h3>
+
+<div class="flex flex-row justify-center align-middle">
+    <img src="https://projecteuler.net/profile/Ulthran.png" />
 </div>
 
 <h3 class="text-2xl font-bold my-4">Leadership and Management</h3>
