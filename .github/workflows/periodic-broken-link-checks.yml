@@ -16,4 +16,4 @@ jobs:
 
     steps:
       - name: Run check
-        run: linkchecker --verbose https://charliebushman.com
+        run: linkchecker https://charliebushman.com
