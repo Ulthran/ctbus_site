@@ -87,7 +87,9 @@ def pcmp():
 )
 @app.route("/pcmp/dashboard")
 def pcmp_dashboard():
-    return render_template("pcmp_dashboard.html", repo_badges=pcmp_repo_badges())
+    return render_template(
+        "pcmp_dashboard.html", cdn_url=CDN_URL, repo_badges=pcmp_repo_badges()
+    )
 
 
 @sitemapper.include(

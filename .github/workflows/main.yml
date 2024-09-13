@@ -143,6 +143,16 @@ jobs:
       - name: Run PyTest
         run: |
           pytest -rA tests/e2e/
+
+  linkcheck-deployment:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/linkchecker/linkchecker:latest
+
+    steps:
+      - name: Run check
+        run: linkchecker https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/
   
   zap-deployment:
     needs: dev-deploy
@@ -191,7 +201,7 @@ jobs:
           AI_DISABLED: false
 
   remove-artifact:
-    needs: [build-artifact, dev-deploy, test-deployment, zap-deployment, unsign-deployment, web-accessibility-eval]
+    needs: [build-artifact, dev-deploy, test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, web-accessibility-eval]
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     runs-on: ubuntu-latest
 
@@ -203,7 +213,7 @@ jobs:
             failOnError: false
 
   prod-deploy:
-    needs: [test-deployment, zap-deployment, unsign-deployment, web-accessibility-eval, lint]
+    needs: [test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, web-accessibility-eval, lint]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint

@@ -1,0 +1,19 @@
+name: periodic-broken-link-checks
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/periodic-broken-link-checks.yml
+  schedule:
+    - cron: '3 3 * * 3'
+
+jobs:
+  broken-link-checker:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/linkchecker/linkchecker:latest
+
+    steps:
+      - name: Run check
+        run: linkchecker https://charliebushman.com
