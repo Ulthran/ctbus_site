@@ -194,6 +194,16 @@ def certifications():
 
 
 @sitemapper.include(
+    lastmod="2024-09-13",
+    changefreq="monthly",
+    priority=0.95,
+)
+@app.route("/resume")
+def resume():
+    return redirect(f"{CDN_URL}/documents/resume.pdf")
+
+
+@sitemapper.include(
     lastmod="2023-11-29",
     changefreq="monthly",
     priority=0.9,
