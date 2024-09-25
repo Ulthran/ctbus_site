@@ -2,18 +2,14 @@
 {% import 'macros.jinja' as macros %}
 
 {% block body %}
-{% call macros.hero(title = "Ultimate DiscTracker", subtitle = "Posted: 07/18/24. Last Updated: 07/18/24.") %}{% endcall %}
+{% call macros.hero(title = "Ultimate DiscTracker", subtitle = "Posted: 09/13/24. Last Updated: 09/13/24.") %}{% endcall %}
 
 <div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
     <p class="text-lg text-left"></p>
 
     <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
-        <a href="{{ url_for('music') }}" target="_blank" class="text-white" title="Spotify Stats">
-            {{ svgs.music(class="w-12 h-12") }}
-        </a>
-
-        <a href="{{ url_for('session_info') }}" target="_blank" class="text-white" title="Session Info">
-            {{ svgs.data(class="w-12 h-12", stroke="#000000") }}
+        <a href="https://ultimatedisctracker.com" target="_blank" class="text-white" title="Ultimate DiscTracker">
+            {{ svgs.frisbee(class="w-12 h-12") }}
         </a>
     </div>
 
