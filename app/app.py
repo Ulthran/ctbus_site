@@ -182,6 +182,16 @@ def sports():
 
 
 @sitemapper.include(
+    lastmod="2024-09-27",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/education")
+def education():
+    return render_template("education.html")
+
+
+@sitemapper.include(
     lastmod="2023-11-29",
     changefreq="monthly",
     priority=0.9,
