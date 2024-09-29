@@ -32,6 +32,11 @@ sitemapper.init_app(app)
 CDN_URL = os.environ.get("CDN_URL", "")
 
 
+@app.context_processor
+def inject_variables():
+    return dict(cdn_url=CDN_URL)
+
+
 @app.route("/favicon.ico")
 def favicon():
     return send_from_directory(
@@ -50,14 +55,13 @@ def favicon():
 def index():
     return render_template(
         "index.html",
-        cdn_url=CDN_URL,
         third_attr=random_third_attribute(),
     )
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("error.html", cdn_url=CDN_URL), 404
+    return render_template("error.html"), 404
 
 
 @sitemapper.include(
@@ -67,7 +71,7 @@ def page_not_found(e):
 )
 @app.route("/past_work")
 def past_work():
-    return render_template("past_work.html", cdn_url=CDN_URL)
+    return render_template("past_work.html")
 
 
 @sitemapper.include(
@@ -77,7 +81,7 @@ def past_work():
 )
 @app.route("/pcmp")
 def pcmp():
-    return render_template("pcmp.html", cdn_url=CDN_URL)
+    return render_template("pcmp.html")
 
 
 @sitemapper.include(
@@ -87,9 +91,7 @@ def pcmp():
 )
 @app.route("/pcmp/dashboard")
 def pcmp_dashboard():
-    return render_template(
-        "pcmp_dashboard.html", cdn_url=CDN_URL, repo_badges=pcmp_repo_badges()
-    )
+    return render_template("pcmp_dashboard.html", repo_badges=pcmp_repo_badges())
 
 
 @sitemapper.include(
@@ -99,7 +101,7 @@ def pcmp_dashboard():
 )
 @app.route("/pcmp/more")
 def pcmp_more():
-    return render_template("pcmp_more.html", cdn_url=CDN_URL)
+    return render_template("pcmp_more.html")
 
 
 @sitemapper.include(
@@ -123,7 +125,6 @@ def music():
         auth_url = auth_manager.get_authorize_url()
         return render_template(
             "music.html",
-            cdn_url=CDN_URL,
             auth_url=auth_url,
             monthlies=get_ctbus_monthly_playlists(),
         )
@@ -131,7 +132,6 @@ def music():
     # Step 3. Signed in, display data
     return render_template(
         "music.html",
-        cdn_url=CDN_URL,
         spotify_user=get_spotify_user(auth_manager),
         monthlies=get_ctbus_monthly_playlists(),
     )
@@ -162,13 +162,13 @@ def spotify_data():
 )
 @app.route("/projects")
 def projects():
-    return render_template("projects.html", cdn_url=CDN_URL)
+    return render_template("projects.html")
 
 
 @sitemapper.include(url_variables={"project": project_pages()})
 @app.route("/projects/<project>")
 def project(project):
-    return render_template(f"projects/{project}.html", cdn_url=CDN_URL)
+    return render_template(f"projects/{project}.html")
 
 
 @sitemapper.include(
@@ -178,9 +178,17 @@ def project(project):
 )
 @app.route("/sports")
 def sports():
-    return render_template(
-        "sports.html", cdn_url=CDN_URL, chess_stats=get_chess_stats()
-    )
+    return render_template("sports.html", chess_stats=get_chess_stats())
+
+
+@sitemapper.include(
+    lastmod="2024-09-27",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/education")
+def education():
+    return render_template("education.html")
 
 
 @sitemapper.include(
@@ -190,7 +198,17 @@ def sports():
 )
 @app.route("/certifications")
 def certifications():
-    return render_template("certifications.html", cdn_url=CDN_URL)
+    return render_template("certifications.html")
+
+
+@sitemapper.include(
+    lastmod="2024-09-25",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 @sitemapper.include(
@@ -210,7 +228,7 @@ def resume():
 )
 @app.route("/favorite-number")
 def favorite_number():
-    return render_template("favorite-number.html", cdn_url=CDN_URL)
+    return render_template("favorite-number.html")
 
 
 @sitemapper.include(
@@ -220,7 +238,7 @@ def favorite_number():
 )
 @app.route("/session")
 def session_info():
-    return render_template("session.html", cdn_url=CDN_URL, session=session)
+    return render_template("session.html", session=session)
 
 
 @app.route("/remove-session-data/<key>")
