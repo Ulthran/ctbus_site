@@ -4,7 +4,7 @@
 {% call macros.hero(title = "About Me", subtitle="Building the infrastructure behind <b>reliable</b>, <b>reproducible</b>, and <b>high performance</b> research and development.") %}{% endcall %}
 <br />
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700">
+<ol class="relative mx-auto md:w-1/2">
     {% call macros.timeline_component(time="Jan 2022", title="Developer in Statistical Metagenomics", content="My position with the Penn-CHOP Microbiome Program has honed my <b>software development skills</b> and expanded my knowledge about <b>bioinformatics and statistics</b>. It has also shown me how to have an outsized impact on research and development on the basis of my unique skillset, namely driving software standards, encouraging well structured data/metadata, and building the infrastructure to support it.") %}
         <a href="{{ url_for('pcmp') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more {{ svgs.arrow_right() }}</a>
     {% endcall %}
