@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% call macros.hero(title = "About Me", subtitle="Building the infrastructure behind <b>reliable</b>, <b>reproducible</b>, and <b>high performance</b> research and development.") %}{% endcall %}
+<br />
+
+<ol class="relative mx-auto md:w-1/2">
+    {% call macros.timeline_component(time="Jan 2022", title="Developer in Statistical Metagenomics", content="My position with the Penn-CHOP Microbiome Program has honed my <b>software development skills</b> and expanded my knowledge about <b>bioinformatics and statistics</b>. It has also shown me how to have an outsized impact on research and development on the basis of my unique skillset, namely driving software standards, encouraging well structured data/metadata, and building the infrastructure to support it.") %}
+        <a href="{{ url_for('pcmp') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more {{ svgs.arrow_right() }}</a>
+    {% endcall %}
+
+    {% call macros.timeline_component(time="Jun 2021", title="Lead Developer for Nightly", content="This was where I experienced for the first time seeing something missing from the world and then creating a product to fill that gap. Before this, all my projects had been academic, the ends were just themselves and I knew they had been done before. After, I started to see every bad UX, every missing feature or platform, as opportunities and as gaps that I could conceivably fill. This was also the first time I had to take on the role of a <b>product owner</b> and spend more of my time thinking about the user experience than working out bugs.") %}
+        <a href="{{ url_for('past_work', _anchor='Lead Developer for Nightly') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more {{ svgs.arrow_right() }}</a>
+    {% endcall %}
+
+    {% call macros.timeline_component(time="Jun 2021", title="Graduated Carleton College", content="Physics Major.<br />GPA: 3.66.<br />Two years as captain of DIII frisbee team (best finish 3rd at nationals) and two years as head of the standup group.<br />Prototyped Nightly for startup competition and was among finalists.") %}{% endcall %}
+
+    {% call macros.timeline_component(time="Jun 2020", title="Internship at HPE", content="At HPE I got to experience working with a <b>Scrum team</b> for the first time. Unlike with many other interns, my manager, after some training and certification, put me right to work as a member of the team which was awesome for so many reasons. I got to learn first hand how Scrum teams work (and sometimes don't work), both the theory and the practice of large scale <b>data pipelines</b>, and how to approach each unit of development work with the dual focuses of how to make it work in a vacuum and have it effectively integrate into the larger system.", left_content="Lightbend Scala Language - Professional", cert_name="scala_lang_prof") %}
+        <a href="{{ url_for('past_work', _anchor='HPE Software Internship') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more {{ svgs.arrow_right() }}</a>
+    {% endcall %}
+
+    {% call macros.timeline_component(time="Jun 2018", title="Internship at Owl Labs", content="This internship was my first experience with a professional software environment. And it taught me a lot of skills that I now take for granted such as how to work at the command line, how to use git, and how to apply a <b>testing framework</b> to a large codebase.") %}
+        <a href="{{ url_for('past_work', _anchor='Owl Labs Software Internship') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more {{ svgs.arrow_right() }}</a>
+    {% endcall %}
+
+    {% call macros.timeline_component(time="Jul 2017", title="Graduated Marblehead High School", content="") %}{% endcall %}
+
+    {% call macros.timeline_component(time="Jul 2016", title="Internship at HepatoChem", content="I was fortunate to spend two summers and a winter of high school working with the awesome biochemists of HepatoChem. It was here that I first gained experience with lab work (just a little bit), practical database implementation, and the importance of good <b>information infrastructure for inventory management</b>. They were using Excel for all of their order and inventory management when I arrived and I was able to create a simple Access database that could handle the same tasks and compile safety data sheets for each kit. That system is still in use today.") %}
+        <a href="{{ url_for('past_work', _anchor='HepatoChem Software Internship') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more {{ svgs.arrow_right() }}</a>
+    {% endcall %}
+
+    {% call macros.timeline_component(time="Oct 1998", title="I was born", content="Self explanatory.") %}{% endcall %}
+</ol>
+{% endblock %}

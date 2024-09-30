@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% call macros.hero(title = "Education and Continued Learning") %}{% endcall %}
+
+{{ macros.section_header(title = "Online Courses") }}
+
+Still figuring out how I want to display this info.
+
+{{ macros.section_header(title = "Formal Education") }}
+
+<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
+
+{{ macros.project_card(main_link = "https://www.carleton.edu/", link_opts = "target='_blank'", img_link = cdn_url + "/images/carleton_logo.png", title = "Carleton College", body = "") }}
+
+{{ macros.project_card(main_link = "https://www.marbleheadschools.org/marblehead-high-school", link_opts = "target='_blank'", img_link = cdn_url + "/images/mhs_logo.png", title = "Marblehead High School", body = "") }}
+
+</div>
+{% endblock %}

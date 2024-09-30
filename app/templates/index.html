@@ -31,8 +31,14 @@
             {{ svgs.music(class="w-6 h-6") }}
         </span>
     </a>
+    <a href="{{ url_for('education') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
+        Education
+        <span class="ml-2">
+            {{ svgs.education(class="w-6 h-6") }}
+        </span>
+    </a>
     <a href="{{ url_for('certifications') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
-        Certifications
+        Certificates
         <span class="ml-2">
             {{ svgs.cert(class="w-6 h-6") }}
         </span>
@@ -48,20 +54,15 @@
 <!-- About Section -->
 <div class="container mx-auto p-4 flex md:flex-row flex-col">
     <div class="container mx-auto p-4 md:w-1/2">
-        <h2 class="text-2xl font-bold mb-4">About Me</h2>
-        <ul class="list-disc list-inside text-lg">
-            <li class="mb-4">Developer in Statistical Metagenomics with the <a href="https://www.research.chop.edu/pennchop-microbiome-program" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Penn CHOP Microbiome Program</a> (University of Pennsylvania and Childrens Hospital of Philadelphia)</li>
-            <li class="mb-4">Former Carleton College physics major ('21) with a <a href="{{ url_for('project', project = 'comps')}}" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">thesis project</a> on physical reservoir computing implementations</li>
-            <li class="mb-4">Outside interests in: music, food production/supply, quantum information, transit tech, blockchain, sports, creative writing, math</li>
-            <li class="mb-4">Spends way too much time playing ultimate frisbee</li>
-        </ul>
+        <a href="{{ url_for('about') }}"><h2 class="text-2xl font-bold mb-4">About Me</h2></a>
+        <p class="mb-8 text-xl">A software developer with a passion and skillset for data processing and automation. Throughout my career I've seen unformed data/metadata and unautomated processes sapping scientists' time and their confidence in results. At each turn, I've had the opportunity to improve the status quo, learn more about the science involved (which satisfies my inner physics major), and build out my skills around deployment and DevOps. It is my goal anywhere I go not just to create and improve the systems they need but also to teach and learn as much as possible about the flow of information through the scientific process.<br /><br />My life away from the computer consists mostly of playing or training for <a href="{{ url_for('sports') }}" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">frisbee</a>, reading, and playing piano.</p>
+        <a href="{{ url_for('about') }}" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Learn more</a>
     </div>
     <div class="container mx-auto p-4 md:w-1/3">
         <h2 class="text-2xl font-bold mb-4">About This Site</h2>
-        <ul class="list-disc list-inside text-lg">
-            <li class="mb-4">Built with <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Flask</a>, stylized with <a href="https://tailwindcss.com/" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Tailwind CSS</a>, and deployed "serverlessly" on AWS with <a href="https://github.com/zappa/Zappa" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Zappa</a></li>
-            <li class="mb-4">Get back to this page with the Home button in the top left on any page. See external links or download my resume in the top right. Explore other interesting pages with the buttons above. There are absolutely no fun easter-eggs so don't bother looking.</li>
-        </ul>
+        <p class="mb-4 text-xl">Built with <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Flask</a>, stylized with <a href="https://tailwindcss.com/" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Tailwind CSS</a>, and deployed "serverlessly" on AWS with <a href="https://github.com/zappa/Zappa" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Zappa</a>.
+        <br /><br />
+        This site is an ongoing experiment in web design and deployment for me. It began as a PHP-based site using Laravel and running on an EC2 instance (costing me ~$10-20/month). From there it progressed to being a collection of statically sourced HTML pages from an S3 bucket (for free!) and then to it's current dynamic incarnation (also for free!). There are absolutely no fun easter-eggs so don't bother looking.</p>
         <div class="flex flex-wrap">
             <a href="https://github.com/Ulthran/ctbus_site/actions/workflows/main.yml" class="py-1 px-1">
                 <img src="https://github.com/Ulthran/ctbus_site/actions/workflows/main.yml/badge.svg" alt="CI/CD"/>

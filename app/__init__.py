@@ -55,8 +55,9 @@ def random_third_attribute() -> str:
         "Crocs Wearer",
         "And a Third Thing",
         "Trapped in a Docker Container",
-        "Finding New Music",
         "XKCD Quoter",
         "Definitely Human",
+        "Automating Processes",
+        "Developing Solutions",
     ]
     return random.choice(attrs)
