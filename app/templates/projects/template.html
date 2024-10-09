@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
+
+{% block body %}
+{% call macros.hero(title = "TITLE", subtitle = "Posted: 01/01/01. Last Updated: 01/01/01.") %}{% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
+        <a href="#" target="_blank" class="text-white" title="DEMO">
+            {{ svgs.frisbee(class="w-12 h-12") }}
+        </a>
+        <a href="#" target="_blank" class="text-white" title="DEMO">
+            {{ svgs.app(class="w-12 h-12") }}
+        </a>
+        <a href="#" target="_blank" class="text-white" title="DEMO">
+            {{ svgs.dev(class="w-12 h-12") }}
+        </a>
+    </div>
+
+    <h3 class="text-xl font-bold my-4">Intro</h3>
+
+    <p class="text-lg text-left"></p>
+
+    <h3 class="text-xl font-bold my-4">Initial Work and Challenges</h3>
+
+    <p class="text-lg text-left"></p>
+
+    <h3 class="text-xl font-bold my-4">Current Work</h3>
+
+    <p class="text-lg text-left"></p>
+
+    <h3 class="text-xl font-bold my-4">Crazy Aspirations</h3>
+
+    <p class="text-lg text-left"></p>
+</div>
+{% endblock %}

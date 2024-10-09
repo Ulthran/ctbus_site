@@ -9,6 +9,10 @@
     </svg>
 {% endmacro %}
 
+{% macro app(class="w-10 h-10") %}
+    <svg class="{{ class }}" fill="#000000" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 43.6327 20.5937 C 48.0860 20.5937 51.7657 16.9141 51.7657 12.4610 C 51.7657 8.0078 48.1091 4.3281 43.6327 4.3281 C 39.1796 4.3281 35.5233 8.0078 35.5233 12.4610 C 35.5233 16.9141 39.1796 20.5937 43.6327 20.5937 Z M 4.2343 39.1797 C 4.2343 43.1875 4.5858 46.5156 6.9765 48.9063 C 9.3671 51.2969 12.7421 51.6719 16.7499 51.6719 L 34.9608 51.6719 C 38.9452 51.6719 42.3202 51.2969 44.7108 48.9063 C 47.1016 46.5156 47.4529 43.1875 47.4529 39.1797 L 47.4529 23.2188 C 46.4219 23.5703 45.2968 23.7578 44.1249 23.7344 C 43.9608 23.7578 43.8436 23.7578 43.6796 23.7813 L 43.6796 39.8125 C 43.6796 42.2500 43.3749 44.7344 41.9687 46.1641 C 40.5389 47.5703 38.0077 47.8984 35.5936 47.8984 L 16.0936 47.8984 C 13.6796 47.8984 11.1484 47.5703 9.7421 46.1641 C 8.3124 44.7344 8.0077 42.2500 8.0077 39.8125 L 8.0077 20.5703 C 8.0077 18.1094 8.3124 15.5781 9.7187 14.1719 C 11.1484 12.7422 13.7030 12.4375 16.1640 12.4375 L 32.3358 12.4375 C 32.3358 12.2735 32.3593 12.1328 32.3827 11.9922 C 32.3593 10.8203 32.5233 9.6953 32.8984 8.6641 L 16.6796 8.6641 C 12.7421 8.6641 9.3671 9.0391 6.9765 11.4297 C 4.5858 13.8203 4.2343 17.1719 4.2343 21.0859 Z"></path></g></svg>
+{% endmacro %}
+
 {% macro arrow_right(class="w-10 h-10") %}
     <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -43,6 +47,10 @@
 
 {% macro data(class="w-10 h-10", stroke="#FFFFFF") %}
     <svg class={{ class }} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="System / Data"> <path id="Vector" d="M18 12V17C18 18.6569 15.3137 20 12 20C8.68629 20 6 18.6569 6 17V12M18 12V7M18 12C18 13.6569 15.3137 15 12 15C8.68629 15 6 13.6569 6 12M18 7C18 5.34315 15.3137 4 12 4C8.68629 4 6 5.34315 6 7M18 7C18 8.65685 15.3137 10 12 10C8.68629 10 6 8.65685 6 7M6 12V7" stroke={{ stroke }} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+{% endmacro %}
+
+{% macro dev(class="w-10 h-10") %}
+    <svg class={{ class }} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 8L3 12L7 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 8L21 12L17 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 4L9.8589 19.4548" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 {% endmacro %}
 
 {% macro download_file(class="w-10 h-10", fill="#ffffff") %}
