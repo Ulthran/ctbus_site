@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% call macros.hero(title = "An Introduction to Prefect (for Bioinformaticians)", subtitle = "Posted: 10/22/24. Last Updated: 10/22/24.") %}{% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
+        <a href="https://docs.prefect.io/3.0/get-started/index" target="_blank" class="text-white" title="Prefect Docs">
+            {{ svgs.documentation(class="w-12 h-12") }}
+        </a>
+        <a href="https://github.com/Ulthran/autobfx" target="_blank" class="text-white" title="AutoBfx">
+            {{ svgs.github(class="w-12 h-12") }}
+        </a>
+    </div>
+
+    <h3 class="text-xl font-bold my-4">Intro to Prefect</h3>
+
+    <p class="text-lg text-left"></p>
+
+    <h3 class="text-xl font-bold my-4">Intro to Prefect (From the Perspective of a Snakemake/Nextflow Dev)</h3>
+
+
+</div>
+
+{% endblock %}
