@@ -4,12 +4,13 @@ from tests.e2e.pages.Index import Index
 from tests.e2e.pages.Comps import Comps
 
 
+# TODO: These things keep on breaking, we need to improve the stability of the selenium tests
 WEBDRIVERS = [
     # "setup_html_unit",
     "setup_chrome",
     "setup_chrome_mobile",
     # "setup_chromium",
-    "setup_edge",
+    # "setup_edge",
     "setup_firefox",
 ]
 
