@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% import 'macros.jinja' as macros %}
+
+{% block body %}
+{% call macros.hero(title = "Multiple Dev Deployments to Site Subdomains", subtitle = "Posted: 11/13/24. Last Updated: 11/13/24.") %}{% endcall %}
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
+        <a href="https://ultimatedisctracker.com" target="_blank" class="text-white" title="UDT">
+            {{ svgs.frisbee(class="w-12 h-12") }}
+        </a>
+        <a href="https://main.ultimatedisctracker.com" target="_blank" class="text-white" title="UDT Main Dev Site">
+            {{ svgs.frisbee(class="w-12 h-12") }}
+        </a>
+        <a href="https://github.com/Ulthran/disctracker_site/tree/main/.github/workflows" target="_blank" class="text-white" title="GitHub Actions">
+            {{ svgs.github(class="w-12 h-12") }}
+        </a>
+    </div>
+
+    <h3 class="text-xl font-bold my-4">Intro</h3>
+
+    <i class="text-lg text-left">Some background on the <a href="{{ url_for('project', project='cicd-pipeline') }}">original CI/CD pipeline I created for this site</a> and on the <a href="{{ url_for('project', project='disctracker') }}">Ultimate Disctracker (UDT)</a> project (which I copied a lot of the CI/CD for).</i>
+
+    <p class="text-lg text-left"></p>
+
+    <h3 class="text-xl font-bold my-4">Initial Work and Challenges</h3>
+
+    <p class="text-lg text-left"></p>
+
+    <h3 class="text-xl font-bold my-4">Current Work</h3>
+
+    <p class="text-lg text-left"></p>
+
+    <h3 class="text-xl font-bold my-4">Crazy Aspirations</h3>
+
+    <p class="text-lg text-left"></p>
+</div>
+{% endblock %}
