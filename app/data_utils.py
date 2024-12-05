@@ -86,7 +86,8 @@ def get_ctbus_monthly_playlists() -> list[dict[str, str]]:
     playlists = sp.user_playlists("charlie_bushman")
     monthlies = []
     while playlists:
-        # Note that apparently some playlists apostrophe is encoded as ' while others are ‘ so we search both with ['‘]
+        # Note that apparently some playlists' apostrophe is encoded as ' while others are ‘ so we search both with ['‘]
+        playlists["items"] = [p for p in playlists["items"] if p]
         playlists["items"] = [
             p
             for p in playlists["items"]
@@ -118,6 +119,22 @@ def get_ctbus_monthly_playlists() -> list[dict[str, str]]:
     monthlies.sort(
         key=lambda x: (int(x["name"][-2:]), months.index(x["name"][:3])), reverse=True
     )
+
+    # Verify that all the fields used on the page template exist for each entry
+    for playlist in monthlies:
+        try:
+            playlist["external_urls"]["spotify"]
+        except KeyError:
+            print(f"Playlist {playlist['name']} has no Spotify URL: {playlist}")
+            playlist["external_urls"] = {"spotify": "#"}
+        try:
+            playlist["images"][2]["url"]
+        except KeyError:
+            print(f"Playlist {playlist['name']} has no images: {playlist}")
+            playlist["images"] = [{}, {}, {"url": "#"}]
+        except IndexError:
+            print(f"Playlist {playlist['name']} has no 2nd image: {playlist}")
+            playlist["images"] = [{}, {}, {"url": "#"}]
 
     return monthlies
 
