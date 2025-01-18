@@ -4,7 +4,7 @@
 {% block body %}
 {% call blog.post_body() %}
 
-{{ blog.hero(title = "Discovering Prefect", subtitle = "I was considering using cronjobs just to avoid Airflow. Then I found Prefect.", tags = ["automation", "python", "bioinformatics"], info = "Posted: 12/04/24. Last Updated: 12/04/24.", img_link = cdn_url + "/images/blog/discovering_prefect.png") }}
+{{ blog.hero(title = title, subtitle = subtitle, tags = tags, date = date, mod_date = mod_date, img_link = img_link) }}
 
 {% call blog.section(header = "Background") %}
 <p class="text-lg text-left">Automation in academia is difficult. Once a protocol is locked down enough to be reasonably automatable, it drifts into being mundane, no longer the cutting edge, and definitely not very publishable. Despite this, primary barriers to faster progress in many data intensive academic research fields are poor data lifecycle management and lack of automated processes. Preprocessing metagenomic sequencing data to make it ready for exploratory analysis can be a complicated task and it's one that takes away hours per project from bioinformaticians who's main value should be added downstream. I was tasked with converting a large array of written preprocessing Standard Operating Procedures into an automation framework to solve this problem for the CHOP Microbiome Center Analytics Core.</p>

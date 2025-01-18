@@ -13,6 +13,7 @@ from flask import (
 from flask_sitemapper import Sitemapper
 
 from app import blog_pages, project_pages, random_third_attribute
+from app.blog import posts
 from app.data_utils import (
     get_chess_stats,
     get_ctbus_monthly_playlists,
@@ -159,7 +160,16 @@ def spotify_data():
 @app.route("/blog/<post>")
 def blog(post=None):
     if post:
-        return render_template(f"blog/{post}.html")
+        post_info = posts.get(post)
+        return render_template(
+            f"blog/{post}.html",
+            title=post_info["title"],
+            subtitle=post_info["subtitle"],
+            date=post_info["date"],
+            mod_date=post_info["mod_date"],
+            tags=post_info["tags"],
+            img_link=f"{CDN_URL}/images/blog/{post.replace('-', '_')}.png",
+        )
     return render_template("blog.html")
 
 
