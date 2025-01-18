@@ -34,7 +34,7 @@ CDN_URL = os.environ.get("CDN_URL", "")
 
 @app.context_processor
 def inject_variables():
-    return dict(cdn_url=CDN_URL)
+    return dict(cdn_url=CDN_URL, third_attr=random_third_attribute())
 
 
 @app.route("/favicon.ico")
@@ -55,7 +55,6 @@ def favicon():
 def index():
     return render_template(
         "index.html",
-        third_attr=random_third_attribute(),
     )
 
 
