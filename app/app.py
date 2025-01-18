@@ -154,20 +154,13 @@ def spotify_data():
     )
 
 
-@sitemapper.include(
-    lastmod="2025-01-15",
-    changefreq="monthly",
-    priority=0.9,
-)
-@app.route("/blog")
-def blog():
-    return render_template("blog.html")
-
-
 @sitemapper.include(url_variables={"post": [blog_pages()]})
+@app.route("/blog")
 @app.route("/blog/<post>")
-def blog_post(post):
-    return render_template(f"blog/{post}.html")
+def blog(post=None):
+    if post:
+        return render_template(f"blog/{post}.html")
+    return render_template("blog.html")
 
 
 @sitemapper.include(

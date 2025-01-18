@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-{% call macros.hero(title = "Charlie Bushman") %}
+{% call macros.hero(title = "Charlie Bushman", subtitle = "Developer in Statistical Metagenomics with the University of Pennsylvania and Children's Hospital of Philadelphia") %}
 <div class="flex flex-row justify-center items-center">
     <a href="https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url" target="_blank">
         <img src="{{ cdn_url }}/certificates/aws_certified_cloud_practitioner.png" alt="AWS Certified Cloud Practitioner - Foundational" class="px-4" height="200px" width="200px" />
@@ -21,6 +21,12 @@
         Work&nbsp;&nbsp;&nbsp;&nbsp;
         <span class="ml-2">
             {{ svgs.pcmp(class="w-6 h-6") }}
+        </span>
+    </a>
+    <a href="{{ url_for('blog') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[40px] m-4">
+        Blog&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="ml-2">
+            {{ svgs.dev(class="w-6 h-6") }}
         </span>
     </a>
     <a href="{{ url_for('projects') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
