@@ -12,8 +12,8 @@ from flask import (
 )
 from flask_sitemapper import Sitemapper
 
-from app import blog_pages, project_pages, random_third_attribute
-from app.blog import posts
+from app import project_pages, random_third_attribute
+from app.blog import post_list, posts
 from app.data_utils import (
     get_chess_stats,
     get_ctbus_monthly_playlists,
@@ -155,12 +155,21 @@ def spotify_data():
     )
 
 
-@sitemapper.include(url_variables={"post": [blog_pages()]})
+@sitemapper.include(url_variables={"post": [post_list]})
 @app.route("/blog")
 @app.route("/blog/<post>")
 def blog(post=None):
     if post:
-        post_info = posts.get(post)
+        post_info = posts.get(
+            post,
+            {
+                "title": "Uh oh!",
+                "subtitle": "We can't find the metadata for this post :(",
+                "tags": ["embarrassment", "shame"],
+                "date": "01/01/01",
+                "mod_date": "01/01/01",
+            },
+        )
         return render_template(
             f"blog/{post}.html",
             title=post_info["title"],
@@ -170,7 +179,7 @@ def blog(post=None):
             tags=post_info["tags"],
             img_link=f"{CDN_URL}/images/blog/{post.replace('-', '_')}.png",
         )
-    return render_template("blog.html")
+    return render_template("blog.html", posts=posts)
 
 
 @sitemapper.include(

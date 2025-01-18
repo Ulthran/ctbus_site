@@ -43,10 +43,6 @@ def project_pages() -> list[str]:
     return _get_pages(Path("app/templates/projects"))
 
 
-def blog_pages() -> list[str]:
-    return _get_pages(Path("app/templates/blog"))
-
-
 def random_third_attribute() -> str:
     attrs = [
         "Plant Dad",
