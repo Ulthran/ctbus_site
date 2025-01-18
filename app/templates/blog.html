@@ -4,7 +4,7 @@
 {% call macros.hero(title="Blog") %}{% endcall %}
 
 <!-- Blog Cards -->
-<div class="container mx-auto flex flex-wrap mt-8 p-4 justify-center">
+<div class="container mx-auto flex flex-col mt-8 p-4 items-center justify-center">
     {% for name, post in posts.items() %}
         {{ macros.blog_card(name = name, img_link = cdn_url + "/images/blog/" + name|replace("-", "_") + ".png", title = post['title'], subtitle = post['subtitle'], date = post['date'], mod_date = post['mod_date'], tags = post['tags']) }}
     {% endfor %}
