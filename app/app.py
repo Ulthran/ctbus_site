@@ -12,7 +12,7 @@ from flask import (
 )
 from flask_sitemapper import Sitemapper
 
-from app import project_pages, random_third_attribute
+from app import blog_pages, project_pages, random_third_attribute
 from app.data_utils import (
     get_chess_stats,
     get_ctbus_monthly_playlists,
@@ -156,6 +156,22 @@ def spotify_data():
 
 
 @sitemapper.include(
+    lastmod="2025-01-15",
+    changefreq="monthly",
+    priority=0.9,
+)
+@app.route("/blog")
+def blog():
+    return render_template("blog.html")
+
+
+@sitemapper.include(url_variables={"post": [blog_pages()]})
+@app.route("/blog/<post>")
+def blog_post(post):
+    return render_template(f"blog/{post}.html")
+
+
+@sitemapper.include(
     lastmod="2023-11-29",
     changefreq="monthly",
     priority=0.9,
@@ -198,7 +214,7 @@ def education():
 )
 @app.route("/certifications")
 def certifications():
-    return render_template("certifications.html")
+    return render_template('certifications.html')
 
 
 @sitemapper.include(

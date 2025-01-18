@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% import 'blog/blog.jinja' as blog %}
+
+{% block body %}
+
+{{ blog.hero(title = "Discovering Prefect", subtitle = "I was considering using cronjobs instead of Airflow. Then I found Prefect.", tags = ["automation", "python"], info = "Posted: 12/04/24. Last Updated: 12/04/24.") }}
+
+{% endblock %}
