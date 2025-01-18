@@ -214,7 +214,7 @@ def education():
 )
 @app.route("/certifications")
 def certifications():
-    return render_template('certifications.html')
+    return render_template("certifications.html")
 
 
 @sitemapper.include(
