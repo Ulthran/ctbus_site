@@ -2,7 +2,7 @@ projects_dict = {
     "ctbus-site": {
         "title": "CTBus Site",
         "subtitle": "A site for me. This site! Designed with Flask and Tailwind then deployed serverlessly on AWS using Zappa.",
-        "tags": ["web", "flask", "python"],
+        "tags": ["web", "flask", "python", "serverless"],
         "image": "Bvnrihioon.png",
     },
     "ctbus-health": {
