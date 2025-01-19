@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% import 'projects/projects.jinja' as projects %}
+
+{% block body %}
+{% call projects.page_body() %}
+
+{{ projects.hero(title = title, subtitle = subtitle, tags = tags, date = date, mod_date = mod_date, img_link = img_link) }}
+
+{% call projects.section(header = "Overview") %}
+<p class="text-lg text-left">WORK IN PROGRESS. </p>
+{% endcall %}
+{% endcall %}
+{% endblock %}
