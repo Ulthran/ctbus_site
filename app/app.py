@@ -22,6 +22,7 @@ from app.data_utils import (
     get_spotipy_auth_manager,
     pcmp_repo_badges,
 )
+from app.projects import projects_dict, project_list
 
 load_dotenv()
 
@@ -182,20 +183,27 @@ def blog(post=None):
     return render_template("blog.html", posts=posts)
 
 
-@sitemapper.include(
-    lastmod="2023-11-29",
-    changefreq="monthly",
-    priority=0.9,
-)
+@sitemapper.include(url_variables={"project": project_list})
 @app.route("/projects")
-def projects():
-    return render_template("projects.html")
-
-
-@sitemapper.include(url_variables={"project": project_pages()})
 @app.route("/projects/<project>")
-def project(project):
-    return render_template(f"projects/{project}.html")
+def projects(project=None):
+    if project:
+        project_info = projects_dict.get(
+            project,
+            {
+                "title": "Uh oh!",
+                "subtitle": "We can't find the metadata for this project :(",
+                "tags": ["embarrassment", "shame"],
+            },
+        )
+        return render_template(
+            f"projects/{project}.html",
+            title=project_info["title"],
+            subtitle=project_info["subtitle"],
+            tags=project_info["tags"],
+            img_link=f"{CDN_URL}/images/{project_info['image']}",
+        )
+    return render_template("projects.html", projects=projects_dict)
 
 
 @sitemapper.include(

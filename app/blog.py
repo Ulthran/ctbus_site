@@ -1,8 +1,5 @@
 # This is not a clean implementation but it's kinda in line with the site design
 # It'll probably stay this way until I rewrite the whole site at some point
-from collections import OrderedDict
-
-
 posts = {
     "discovering-prefect": {
         "title": "Discovering Prefect",
