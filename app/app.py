@@ -13,6 +13,7 @@ from flask import (
 from flask_sitemapper import Sitemapper
 
 from app import project_pages, random_third_attribute
+from app.blog import post_list, posts
 from app.data_utils import (
     get_chess_stats,
     get_ctbus_monthly_playlists,
@@ -21,6 +22,7 @@ from app.data_utils import (
     get_spotipy_auth_manager,
     pcmp_repo_badges,
 )
+from app.projects import projects_dict, project_list
 
 load_dotenv()
 
@@ -34,7 +36,7 @@ CDN_URL = os.environ.get("CDN_URL", "")
 
 @app.context_processor
 def inject_variables():
-    return dict(cdn_url=CDN_URL)
+    return dict(cdn_url=CDN_URL, third_attr=random_third_attribute())
 
 
 @app.route("/favicon.ico")
@@ -55,7 +57,6 @@ def favicon():
 def index():
     return render_template(
         "index.html",
-        third_attr=random_third_attribute(),
     )
 
 
@@ -155,20 +156,54 @@ def spotify_data():
     )
 
 
-@sitemapper.include(
-    lastmod="2023-11-29",
-    changefreq="monthly",
-    priority=0.9,
-)
+@sitemapper.include(url_variables={"post": [post_list]})
+@app.route("/blog")
+@app.route("/blog/<post>")
+def blog(post=None):
+    if post:
+        post_info = posts.get(
+            post,
+            {
+                "title": "Uh oh!",
+                "subtitle": "We can't find the metadata for this post :(",
+                "tags": ["embarrassment", "shame"],
+                "date": "01/01/01",
+                "mod_date": "01/01/01",
+            },
+        )
+        return render_template(
+            f"blog/{post}.html",
+            title=post_info["title"],
+            subtitle=post_info["subtitle"],
+            date=post_info["date"],
+            mod_date=post_info["mod_date"],
+            tags=post_info["tags"],
+            img_link=f"{CDN_URL}/images/blog/{post.replace('-', '_')}.png",
+        )
+    return render_template("blog.html", posts=posts)
+
+
+@sitemapper.include(url_variables={"project": project_list})
 @app.route("/projects")
-def projects():
-    return render_template("projects.html")
-
-
-@sitemapper.include(url_variables={"project": project_pages()})
 @app.route("/projects/<project>")
-def project(project):
-    return render_template(f"projects/{project}.html")
+def projects(project=None):
+    if project:
+        project_info = projects_dict.get(
+            project,
+            {
+                "title": "Uh oh!",
+                "subtitle": "We can't find the metadata for this project :(",
+                "tags": ["embarrassment", "shame"],
+            },
+        )
+        return render_template(
+            f"projects/{project}.html",
+            title=project_info["title"],
+            subtitle=project_info["subtitle"],
+            tags=project_info["tags"],
+            img_link=f"{CDN_URL}/images/{project_info['image']}",
+        )
+    return render_template("projects.html", projects=projects_dict)
 
 
 @sitemapper.include(

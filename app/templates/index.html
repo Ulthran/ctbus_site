@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
 {% block body %}
-{% call macros.hero(title = "Charlie Bushman", subtitle = "Developing Software. Chasing Plastic. " + third_attr + ".") %}
-<img src="{{ cdn_url }}/images/Bvnrihioon.png" alt="Logo" class="rounded-full h-50 w-50 mb-4 mx-auto p-5">
+{% call macros.hero(title = "Charlie Bushman", subtitle = "Developer in Statistical Metagenomics with the University of Pennsylvania and Children's Hospital of Philadelphia") %}
+<div class="flex flex-row justify-center items-center">
+    <a href="https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url" target="_blank">
+        <img src="{{ cdn_url }}/certificates/aws_certified_cloud_practitioner.png" alt="AWS Certified Cloud Practitioner - Foundational" class="px-4" height="150px" width="150px" />
+    </a>
+    <a href="https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url" target="_blank">
+        <img src="{{ cdn_url }}/certificates/aws_certified_ai_practitioner_early_adopter.png" alt="AWS Certified AI Practitioner" class="px-4" height="180px" width="180px" />
+    </a>
+    <a href="https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url" target="_blank">
+        <img src="{{ cdn_url }}/certificates/aws_certified_developer_associate.png" alt="AWS Certified Developer - Associate" class="px-4" height="150px" width="150px" />
+    </a>
+</div>
 {% endcall %}
 
 <div class="container flex flex-wrap mx-auto md:w-1/2 p-4 justify-center items-center">
@@ -13,10 +23,28 @@
             {{ svgs.pcmp(class="w-6 h-6") }}
         </span>
     </a>
+    <a href="{{ url_for('blog') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[40px] m-4">
+        Blog&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="ml-2">
+            {{ svgs.dev(class="w-6 h-6") }}
+        </span>
+    </a>
+    <a href="{{ url_for('certifications') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
+        Certs&nbsp;&nbsp;&nbsp;
+        <span class="ml-2">
+            {{ svgs.cert(class="w-6 h-6") }}
+        </span>
+    </a>
     <a href="{{ url_for('projects') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
         Projects
         <span class="ml-2">
             {{ svgs.projects(class="w-6 h-6") }}
+        </span>
+    </a>
+    <a href="{{ url_for('education') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
+        Education
+        <span class="ml-2">
+            {{ svgs.education(class="w-6 h-6") }}
         </span>
     </a>
     <a href="{{ url_for('sports') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
@@ -29,18 +57,6 @@
         Music&nbsp;&nbsp;&nbsp;
         <span class="ml-2">
             {{ svgs.music(class="w-6 h-6") }}
-        </span>
-    </a>
-    <a href="{{ url_for('education') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
-        Education
-        <span class="ml-2">
-            {{ svgs.education(class="w-6 h-6") }}
-        </span>
-    </a>
-    <a href="{{ url_for('certifications') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">
-        Certificates
-        <span class="ml-2">
-            {{ svgs.cert(class="w-6 h-6") }}
         </span>
     </a>
     <a href="{{ url_for('past_work') }}" class="interest-button flex items-center bg-green-700 hover:bg-green-800 text-white text-lg font-bold font-mono py-2 px-4 rounded h-[50px] m-4">

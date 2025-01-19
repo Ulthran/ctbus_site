@@ -35,14 +35,12 @@ PCMP_REPOS = [
 ]
 
 
-def project_pages() -> list[str]:
-    templates_fp = Path("app/templates/projects/")
-    extensions = []
-    for fp_str in glob.iglob(str(templates_fp / "*.html")):
-        fp = Path(fp_str.replace(str(templates_fp), ""))
-        extensions.append(str(fp).replace(".html", ""))
+def _get_pages(template_fp: Path) -> list[str]:
+    return [fp.stem for fp in template_fp.glob("*.html")]
 
-    return extensions
+
+def project_pages() -> list[str]:
+    return _get_pages(Path("app/templates/projects"))
 
 
 def random_third_attribute() -> str:

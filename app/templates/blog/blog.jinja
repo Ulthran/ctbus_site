@@ -1,0 +1,30 @@
+{% macro post_body() %}
+    <!-- Blog Post -->
+    <div class="container mx-auto flex flex-col mt-8 p-2 md:p-4 md:w-1/2">
+        {{ caller() }}
+    </div>
+{% endmacro %}
+
+{% macro hero(title, subtitle, tags, date, mod_date, img_link) %}
+    <!-- Blog Hero -->
+    <div class="container flex flex-row">
+        <img src="{{ img_link }}" class="w-36 h-48 rounded-l-lg" alt="Blog Icon" />
+        <div class="flex flex-col justify-center ml-4 overflow-x-scroll">
+            <h1 class="text-4xl font-bold mb-2">{{ title }}</h1>
+            <p class="text-lg italic">{{ subtitle }}</p>
+            <div class="flex flex-row mt-2">
+                {% for tag in tags %}
+                    <span class="text-sm bg-gray-200 text-gray-800 rounded-full px-2 py-1 mr-2">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro section(header) %}
+    <!-- Blog Section -->
+    <div>
+        <h2 class="text-2xl font-bold mt-4 mb-2">{{ header }}</h2>
+        {{ caller() }}
+    </div>
+{% endmacro %}

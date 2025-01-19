@@ -12,14 +12,15 @@
         <a href="https://main.ultimatedisctracker.com" target="_blank" class="text-white" title="UDT Main Dev Site">
             {{ svgs.frisbee(class="w-12 h-12") }}
         </a>
-        <a href="https://github.com/Ulthran/disctracker_site/tree/main/.github/workflows" target="_blank" class="text-white" title="GitHub Actions">
+        <a href="https://github.com/Ulthran/disctracker_site/tree/main/.github/workflows" target="_blank" title="GitHub Actions">
             {{ svgs.github(class="w-12 h-12") }}
         </a>
     </div>
 
-    <h3 class="text-xl font-bold my-4">Intro</h3>
+    <h3 class="text-
+    xl font-bold my-4">Intro</h3>
 
-    <i class="text-lg text-left">Some background on the <a href="{{ url_for('project', project='cicd-pipeline') }}">original CI/CD pipeline I created for this site</a> and on the <a href="{{ url_for('project', project='disctracker') }}">Ultimate Disctracker (UDT)</a> project (which I copied a lot of the CI/CD for).</i>
+    <i class="text-lg text-left">Some background on the <a href="{{ url_for('projects', project='cicd-pipeline') }}">original CI/CD pipeline I created for this site</a> and on the <a href="{{ url_for('projects', project='disctracker') }}">Ultimate Disctracker (UDT)</a> project (which I copied a lot of the CI/CD for) linked here.</i>
 
     <p class="text-lg text-left">As a tl;dr for those who don't want to read those other articles, for this site and another that I developed with Flask, I created a CI/CD pipeline that will deploy test changes to a dev site for further testing (automated and manual) before deploying to production. The issue with my setup was that I only had one dev site, so if I made changes on one branch then made changes on another, the later changes would overwrite the earlier ones. The obvious solution is to deploy each development branch to its own dev site.</p>
 
