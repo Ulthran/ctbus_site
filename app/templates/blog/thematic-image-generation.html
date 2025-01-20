@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% import 'blog/blog.jinja' as blog %}
+
+{% block body %}
+{% call blog.post_body() %}
+
+{{ blog.hero(title = title, subtitle = subtitle, tags = tags, date = date, mod_date = mod_date, img_link = img_link) }}
+
+{% call blog.section(header = "Background") %}
+<p class="text-lg text-left"></p>
+{% endcall %}
+
+{% call blog.section(header = "Attempting One-Shot Prompt Solution") %}
+<p class="text-lg text-left"></p>
+{% endcall %}
+
+{% call blog.section(header = "Generating Seeds") %}
+<p class="text-lg text-left"></p>
+{% endcall %}
+
+{% call blog.section(header = "Putting it All Together with AWS Bedrock") %}
+<p class="text-lg text-left"></p>
+{% endcall %}
+
+{% endcall %}
+{% endblock %}
