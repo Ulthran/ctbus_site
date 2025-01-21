@@ -3,8 +3,8 @@
 posts = {
     "thematic-image-generation": {
         "title": "Generating Consistent Thematic Images",
-        "date": "01/20/25",
-        "mod_date": "01/20/25",
+        "date": "01/21/25",
+        "mod_date": "01/21/25",
         "tags": ["ai", "generative models", "aws"],
         "subtitle": "A picture is, in fact, worth a thousand words when it comes to image generation.",
     },
