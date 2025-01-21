@@ -1,6 +1,13 @@
 # This is not a clean implementation but it's kinda in line with the site design
 # It'll probably stay this way until I rewrite the whole site at some point
 posts = {
+    "thematic-image-generation": {
+        "title": "Generating Consistent Thematic Images",
+        "date": "01/21/25",
+        "mod_date": "01/21/25",
+        "tags": ["ai", "generative models", "aws"],
+        "subtitle": "A picture is, in fact, worth a thousand words when it comes to image generation.",
+    },
     "discovering-prefect": {
         "title": "Discovering Prefect",
         "date": "01/17/25",
