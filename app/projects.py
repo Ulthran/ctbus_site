@@ -9,7 +9,7 @@ projects_dict = {
         "title": "Spotify Visualizer",
         "subtitle": "A quick and dirty serverless data dashboard for visualizing Spotify playlist information.",
         "tags": ["aws", "dash", "serverless"],
-        "image": "spotify-vis.png",
+        "image": "spotify_vis.png",
     },
     "ctbus-health": {
         "title": "CTBus Health",
