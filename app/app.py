@@ -61,8 +61,22 @@ def index():
 
 
 @app.errorhandler(404)
+@app.errorhandler(500)
 def page_not_found(e):
-    return render_template("error.html"), 404
+    if e.code == 404:
+        return (
+            render_template(
+                "error.html", msg="We couldn't find the page you were looking for."
+            ),
+            404,
+        )
+    else:
+        return (
+            render_template(
+                "error.html", msg="Something broke inside. We're working on fixing it."
+            ),
+            500,
+        )
 
 
 @sitemapper.include(
@@ -96,63 +110,15 @@ def pcmp_dashboard():
 
 
 @sitemapper.include(
-    lastmod="2024-06-25",
-    changefreq="monthly",
-    priority=0.9,
-)
-@app.route("/pcmp/more")
-def pcmp_more():
-    return render_template("pcmp_more.html")
-
-
-@sitemapper.include(
     lastmod="2023-11-29",
     changefreq="monthly",
     priority=0.9,
 )
 @app.route("/music")
 def music():
-    cache_handler, auth_manager = get_spotipy_auth_manager(
-        session, url_for("music", _external=True)
-    )
-
-    if request.args.get("code"):
-        # Step 2. Being redirected from Spotify auth page
-        auth_manager.get_access_token(request.args.get("code"))
-        return redirect(url_for("music"))
-
-    if not auth_manager.validate_token(cache_handler.get_cached_token()):
-        # Step 1. Display sign in link when no token
-        auth_url = auth_manager.get_authorize_url()
-        return render_template(
-            "music.html",
-            auth_url=auth_url,
-            monthlies=get_ctbus_monthly_playlists(),
-        )
-
-    # Step 3. Signed in, display data
     return render_template(
         "music.html",
-        spotify_user=get_spotify_user(auth_manager),
         monthlies=get_ctbus_monthly_playlists(),
-    )
-
-
-@app.route("/spotify_data")
-def spotify_data():
-    _, auth_manager = get_spotipy_auth_manager(
-        session, url_for("music", _external=True)
-    )
-    time_frame = request.args.get("time_frame", None)
-    num_tracks = request.args.get("num_tracks", None)
-    playlistsQ = bool(request.args.get("playlistsQ", False))
-    playlist_name = request.args.get("playlist_name", None)
-    return get_spotify_data(
-        auth_manager,
-        time_frame=time_frame,
-        num_tracks=num_tracks,
-        playlistsQ=playlistsQ,
-        playlist_name=playlist_name,
     )
 
 
