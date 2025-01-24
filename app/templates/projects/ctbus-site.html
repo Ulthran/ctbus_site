@@ -9,5 +9,16 @@
 {% call projects.section(header = "Overview") %}
 <p class="text-lg text-left">It's my website! I've spent a lot of time working on this, evolving it into the thing you see now. Not all of it is pretty, there are ideas and remnants of ideas that should definitely be cleaned up (and I am working on cleaning them up all the time). But I'm proud of it and I like working on it. Hopefully you like it and find what you came here looking for. :)</p>
 {% endcall %}
+
+{% call projects.section(header = "Links") %}
+<div class="flex flex-wrap items-center justify-around p-5 md:mx-10">
+    <a href="https://charliebushman.com" target="_blank" class="text-white" title="My Site">
+        {{ svgs.web(class="w-12 h-12") }}
+    </a>
+    <a href="https://github.com/Ulthran/ctbus_site" target="_blank" title="GitHub Repo">
+        {{ svgs.github(class="w-12 h-12") }}
+    </a>
+</div>
+{% endcall %}
 {% endcall %}
 {% endblock %}
