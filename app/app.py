@@ -43,7 +43,7 @@ def favicon():
 
 
 @sitemapper.include(
-    lastmod="2023-11-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=1.0,
 )
@@ -74,7 +74,7 @@ def page_not_found(e):
 
 
 @sitemapper.include(
-    lastmod="2024-06-25",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -84,7 +84,7 @@ def past_work():
 
 
 @sitemapper.include(
-    lastmod="2023-11-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -94,7 +94,7 @@ def pcmp():
 
 
 @sitemapper.include(
-    lastmod="2024-03-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -104,7 +104,7 @@ def pcmp_dashboard():
 
 
 @sitemapper.include(
-    lastmod="2023-11-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -167,7 +167,7 @@ def projects(project=None):
 
 
 @sitemapper.include(
-    lastmod="2023-11-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -177,7 +177,7 @@ def sports():
 
 
 @sitemapper.include(
-    lastmod="2024-09-27",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -187,7 +187,7 @@ def education():
 
 
 @sitemapper.include(
-    lastmod="2023-11-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -197,7 +197,7 @@ def certifications():
 
 
 @sitemapper.include(
-    lastmod="2024-09-25",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -207,7 +207,7 @@ def about():
 
 
 @sitemapper.include(
-    lastmod="2024-09-13",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.95,
 )
@@ -217,7 +217,7 @@ def resume():
 
 
 @sitemapper.include(
-    lastmod="2023-11-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
@@ -227,7 +227,7 @@ def favorite_number():
 
 
 @sitemapper.include(
-    lastmod="2023-11-29",
+    lastmod="2025-01-24",
     changefreq="monthly",
     priority=0.9,
 )
