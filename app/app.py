@@ -1,25 +1,19 @@
 import os
-
 from dotenv import load_dotenv
 from flask import (
     Flask,
     redirect,
     render_template,
-    request,
     send_from_directory,
     session,
     url_for,
 )
 from flask_sitemapper import Sitemapper
-
-from app import project_pages, random_third_attribute
+from app import random_third_attribute
 from app.blog import post_list, posts
 from app.data_utils import (
     get_chess_stats,
     get_ctbus_monthly_playlists,
-    get_spotify_data,
-    get_spotify_user,
-    get_spotipy_auth_manager,
     pcmp_repo_badges,
 )
 from app.projects import projects_dict, project_list
