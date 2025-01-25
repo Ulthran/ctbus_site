@@ -6,3 +6,4 @@ node_modules/
 .flask_session/
 .cache
 aws/
+.vscode/

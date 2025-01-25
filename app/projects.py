@@ -5,6 +5,12 @@ projects_dict = {
         "tags": ["web", "flask", "python", "serverless"],
         "image": "Bvnrihioon.png",
     },
+    "spotify-vis": {
+        "title": "Spotify Visualizer",
+        "subtitle": "A quick and dirty serverless data dashboard for visualizing Spotify playlist information.",
+        "tags": ["aws", "dash", "serverless"],
+        "image": "spotify_vis.png",
+    },
     "ctbus-health": {
         "title": "CTBus Health",
         "subtitle": "A serverless ETL pipeline I'm developing in AWS to aggregate and analyze health data I keep in many different formats and locations.",

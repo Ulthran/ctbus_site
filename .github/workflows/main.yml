@@ -39,6 +39,9 @@ jobs:
       - name: Run Tests
         run: |
           pytest tests/unit/ tests/integration/
+        env:
+          SPOTIPY_CLIENT_ID: ${{ secrets.SPOTIPY_CLIENT_ID }}
+          SPOTIPY_CLIENT_SECRET: ${{ secrets.SPOTIPY_CLIENT_SECRET }}
   
   build-artifact:
     needs: test
