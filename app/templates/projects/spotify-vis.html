@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% import 'projects/projects.jinja' as projects %}
 
+{% block head %}
+<title>{{ title }}</title>
+<meta name="description" content="{{ subtitle }}" />
+{% endblock %}
+
 {% block body %}
 {% call projects.page_body() %}
 
