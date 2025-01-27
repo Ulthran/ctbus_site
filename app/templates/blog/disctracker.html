@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% import 'macros.jinja' as macros %}
 
+{% block head %}
+<title>{{ title }}</title>
+<meta name="description" content="{{ subtitle }}" />
+{% endblock %}
+
 {% block body %}
 {% call macros.hero(title = "Ultimate DiscTracker", subtitle = "Posted: 10/08/24. Last Updated: 10/08/24.") %}{% endcall %}
 

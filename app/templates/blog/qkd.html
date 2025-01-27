@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<title>{{ title }}</title>
+<meta name="description" content="{{ subtitle }}" />
+{% endblock %}
+
 {% block body %}
 {% call macros.hero(title = "Quantum Key Distribution", subtitle = "Posted: 03/20/24. Last Updated: 03/20/24.") %}{% endcall %}
 

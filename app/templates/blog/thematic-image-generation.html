@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% import 'blog/blog.jinja' as blog %}
 
+{% block head %}
+<title>{{ title }}</title>
+<meta name="description" content="{{ subtitle }}" />
+{% endblock %}
+
 {% block body %}
 {% call blog.post_body() %}
 
