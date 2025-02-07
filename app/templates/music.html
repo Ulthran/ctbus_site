@@ -7,9 +7,16 @@
 
 {% block body %}
 {% call macros.hero(title="Music", subtitle = "Music sounds good. I listen to it a lot and sometimes try to make it. Top 0.05% of Jacob Collier listeners on Spotify for 4 years running. I play piano. I've also made playlists of my new music finds every month since January 2022, follow my Spotify to listen.") %}
-<a href="https://open.spotify.com/user/charlie_bushman?si=0dd732a8d6da46b6" target="_blank" class="flex items-center justify-center p-5">
-    {{ svgs.spotify(class="w-12 h-12")}}
-</a>
+
+
+<div class="flex flex-wrap items-center justify-around p-5 md:mx-10">
+    <a href="https://open.spotify.com/user/charlie_bushman?si=0dd732a8d6da46b6" target="_blank" class="flex items-center justify-center p-5">
+        {{ svgs.spotify(class="w-12 h-12")}}
+    </a>
+    <a href="https://0qn7o9e6pd.execute-api.us-east-1.amazonaws.com/Prod/" target="_blank" class="text-white" title="Spotify Vis Site">
+        {{ svgs.web(class="w-12 h-12") }}
+    </a>
+</div>
 
 <div class="container flex flex-wrap mx-auto md:w-1/2 p-4 justify-center items-center">
 {% for playlist in monthlies %}

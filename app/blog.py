@@ -1,10 +1,17 @@
 # This is not a clean implementation but it's kinda in line with the site design
 # It'll probably stay this way until I rewrite the whole site at some point
 posts = {
+    "serverless-dashboards-with-dash": {
+        "title": "Serverless Dashboards with Dash",
+        "date": "02/03/25",
+        "mod_date": "02/03/25",
+        "tags": ["serverless", "dash", "aws"],
+        "subtitle": "A quick guide to deploying Dash apps with AWS Lambda and API Gateway.",
+    },
     "thematic-image-generation": {
         "title": "Generating Consistent Thematic Images",
         "date": "01/21/25",
-        "mod_date": "01/21/25",
+        "mod_date": "02/07/25",
         "tags": ["ai", "generative models", "aws"],
         "subtitle": "A picture is, in fact, worth a thousand words when it comes to image generation.",
     },
