@@ -12,7 +12,7 @@
 {{ blog.hero(title = title, subtitle = subtitle, tags = tags, date = date, mod_date = mod_date, img_link = img_link) }}
 
 {% call blog.section(header = "Background") %}
-<p class="text-lg text-left">I recently moved some things around on my site to have this Blog separate from the <a href="{{ url_for('projects') }}" target="_blank">Projects</a> page. And as part of this move, I wanted to make the Blog look nice by having a little thumbnail art for each post, so I set to work in the AWS Bedrock Playground.</p>
+<p class="text-lg text-left">I recently moved some things around on my site to have this Blog separate from the <a class="underline" href="{{ url_for('projects') }}" target="_blank">Projects</a> page. And as part of this move, I wanted to make the Blog look nice by having a little thumbnail art for each post, so I set to work in the AWS Bedrock Playground.</p>
 {% endcall %}
 
 {% call blog.section(header = "Attempting One-Shot Prompt Solution") %}
@@ -25,6 +25,18 @@
 
 {% call blog.section(header = "Generating with Seeds") %}
 <p class="text-lg text-left">But I didn't want to go through this process each time I make a blog post. For one thing, it's more expensive than a single generation. For another, it's much harder to arrive at consistent styles. You can achieve impressive results separately but when you put them together they don't always look cohesive, because they might have taken such different paths to generate. So instead I generated a few seed images. In essence, I pursued iterative generation until I got a few images that were the exact style I was going for, a kind of medieval pixel art with plants in my case, and now I can use those seeds to create new thumbnails. Each new post I write, I generate images with a mix of a seed image and a prompt just giving a few words or ideas to push it towards the post content (the thumbnail for this post is one of the seed images).</p>
+
+{% endcall %}
+
+{% call blog.code(filename = "image-generation-params.json") %}
+{
+    "model-id": "amazon.titan-image-generator-v2:0",
+    "action": "generate-variations",
+    "image-size": "384x576",
+    "seed-image": "seed.png",
+    "prompt-strength": 0.8,
+    "similarity-strength": 0.5,
+}
 {% endcall %}
 {% endcall %}
 {% endblock %}

@@ -31,7 +31,12 @@
 
 {% macro code(filename) %}
     <!-- Code Block -->
-    <div>
-        {{ caller() }}
+    <div class="mt-4 mb-2 w-full">
+        <p class="text-sm text-gray-500">{{ filename }}</p>
+        <pre class="text-sm inline-flex text-left bg-gray-800 text-white rounded-lg pl-6 w-full overflow-x-auto max-h-96 overflow-y-auto">
+            <span class="flex gap-4">
+                {{ caller() }}
+            </span>
+        </pre>
     </div>
 {% endmacro %}

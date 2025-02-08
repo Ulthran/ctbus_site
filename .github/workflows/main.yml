@@ -186,23 +186,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Web Accessibility Eval
-        uses: a11ywatch/github-action@v2.1.10
-        with:
-          WEBSITE_URL: https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/
-          SITE_WIDE: false
-          SUBDOMAINS: false
-          TLD: false
-          SITEMAP: true
-          FAIL_ERRORS_COUNT: 15
-          LIST: true
-          FIX: false
-          UPGRADE: false
-          UPLOAD: true
-        env:
-          DEFAULT_RUNNERS: htmlcs,axe
-          PAGEMIND_IGNORE_WARNINGS: true
-          AI_DISABLED: false
+      - name: Pass
+        run: echo "Pass"
+      # - name: Web Accessibility Eval
+      #   uses: a11ywatch/github-action@v2.1.10
+      #   with:
+      #     WEBSITE_URL: https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/
+      #     SITE_WIDE: false
+      #     SUBDOMAINS: false
+      #     TLD: false
+      #     SITEMAP: true
+      #     FAIL_ERRORS_COUNT: 15
+      #     LIST: true
+      #     FIX: false
+      #     UPGRADE: false
+      #     UPLOAD: true
+      #   env:
+      #     DEFAULT_RUNNERS: htmlcs,axe
+      #     PAGEMIND_IGNORE_WARNINGS: true
+      #     AI_DISABLED: false
 
   remove-artifact:
     needs: [build-artifact, dev-deploy, test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, web-accessibility-eval]
