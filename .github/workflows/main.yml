@@ -181,33 +181,31 @@ jobs:
         run: |
           flask-unsign --decode --server "https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/" || true
 
-  # Will reinstate once https://github.com/a11ywatch/github-actions/pull/60 is resolved
-  # web-accessibility-eval:
-  #   needs: dev-deploy
-  #   runs-on: ubuntu-latest
+  web-accessibility-eval:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Web Accessibility Eval
-  #       uses: a11ywatch/github-action@v2.1.10
-  #       with:
-  #         WEBSITE_URL: https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/
-  #         SITE_WIDE: false
-  #         SUBDOMAINS: false
-  #         TLD: false
-  #         SITEMAP: true
-  #         FAIL_ERRORS_COUNT: 15
-  #         LIST: true
-  #         FIX: false
-  #         UPGRADE: false
-  #         UPLOAD: true
-  #       env:
-  #         DEFAULT_RUNNERS: htmlcs,axe
-  #         PAGEMIND_IGNORE_WARNINGS: true
-  #         AI_DISABLED: false
+    steps:
+      - name: Web Accessibility Eval
+        uses: a11ywatch/github-action@v2.1.10
+        with:
+          WEBSITE_URL: https://cjg5wanye9.execute-api.us-east-1.amazonaws.com/dev/
+          SITE_WIDE: false
+          SUBDOMAINS: false
+          TLD: false
+          SITEMAP: true
+          FAIL_ERRORS_COUNT: 15
+          LIST: true
+          FIX: false
+          UPGRADE: false
+          UPLOAD: true
+        env:
+          DEFAULT_RUNNERS: htmlcs,axe
+          PAGEMIND_IGNORE_WARNINGS: true
+          AI_DISABLED: false
 
   remove-artifact:
-    needs: [build-artifact, dev-deploy, test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment]
-    #needs: [build-artifact, dev-deploy, test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, web-accessibility-eval]
+    needs: [build-artifact, dev-deploy, test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, web-accessibility-eval]
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     runs-on: ubuntu-latest
 
@@ -219,8 +217,7 @@ jobs:
             failOnError: false
 
   prod-deploy:
-    needs: [test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, lint]
-    #needs: [test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, web-accessibility-eval, lint]
+    needs: [test-deployment, linkcheck-deployment, zap-deployment, unsign-deployment, web-accessibility-eval, lint]
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint
