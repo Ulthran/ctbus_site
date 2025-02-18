@@ -42,7 +42,9 @@
                         <img src="{{ header_img_link }}" class="w-12 h-16 rounded-l-lg" alt="Blog Icon" />
                         <div class="flex flex-col justify-center ml-4 overflow-x-auto">
                             <h1 class="text-lg font-bold mb-1">{{ header_post.title }}</h1>
-                            <p class="text-sm italic">{{ header_post.subtitle }}</p>
+                            <p class="text-sm italic">
+                                {{ header_post.subtitle[:50] + '...' if header_post.subtitle|length > 50 else header_post.subtitle }}
+                            </p>
                         </div>
                     </div>
                 </a>
