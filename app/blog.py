@@ -5,8 +5,8 @@ posts = {
         "title": "A Fully Serverless Data Pipeline",
         "date": "02/18/25",
         "mod_date": "02/18/25",
-        "tags": ["serverless", "aws", "queue"],
-        "subtitle": "",
+        "tags": ["serverless", "aws", "queues"],
+        "subtitle": "Creating a serverless, decoupled components for an end-to-end data pipeline.",
     },
     "serverless-dashboards-with-dash": {
         "title": "Serverless Dashboards with Dash",

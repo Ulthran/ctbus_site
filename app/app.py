@@ -51,6 +51,9 @@ def favicon():
 def index():
     return render_template(
         "index.html",
+        header_post=posts[post_list[0]],
+        header_post_key=post_list[0],
+        header_img_link=f"{CDN_URL}/images/blog/{post_list[0].replace('-', '_')}.png",
     )
 
 
