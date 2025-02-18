@@ -1,6 +1,13 @@
 # This is not a clean implementation but it's kinda in line with the site design
 # It'll probably stay this way until I rewrite the whole site at some point
 posts = {
+    "fully-serverless-data-pipeline": {
+        "title": "A Fully Serverless Data Pipeline",
+        "date": "02/18/25",
+        "mod_date": "02/18/25",
+        "tags": ["serverless", "aws", "queue"],
+        "subtitle": "",
+    },
     "serverless-dashboards-with-dash": {
         "title": "Serverless Dashboards with Dash",
         "date": "02/03/25",
