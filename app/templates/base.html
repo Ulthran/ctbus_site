@@ -31,7 +31,26 @@
                 <a href="{{ url_for('about') }}" class="font-bold text-lg flex items-center" title="About Me">
                     {{ svgs.about() }}
                 </a>
+                <div class="w-12"></div>
+                <div class="w-12"></div>
             </div>
+
+            {% if header_post is defined %}
+            <div class="flex space-x-4 items-center md:block hidden">
+                <a href="{{ url_for('blog', post=header_post_key) }}" class="font-bold text-lg" title="{{  header_post.title }}">
+                    <div class="container flex flex-row">
+                        <img src="{{ header_img_link }}" class="w-12 h-16 rounded-l-lg" alt="Blog Icon" />
+                        <div class="flex flex-col justify-center ml-4 overflow-x-auto">
+                            <h1 class="text-lg font-bold mb-1">{{ header_post.title }}</h1>
+                            <p class="text-sm italic">
+                                {{ header_post.subtitle[:50] + '...' if header_post.subtitle|length > 50 else header_post.subtitle }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+
             <div class="flex space-x-4">
                 <a href="{{ url_for('session_info') }}" class="font-bold text-lg" title="Your Data">
                     {{ svgs.data(class="w-8 h-8") }}
