@@ -36,7 +36,7 @@
             </div>
 
             {% if header_post is defined %}
-            <div class="flex space-x-4 items-center">
+            <div class="flex space-x-4 items-center md:block hidden">
                 <a href="{{ url_for('blog', post=header_post_key) }}" class="font-bold text-lg" title="{{  header_post.title }}">
                     <div class="container flex flex-row">
                         <img src="{{ header_img_link }}" class="w-12 h-16 rounded-l-lg" alt="Blog Icon" />
