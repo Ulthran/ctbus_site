@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import 'blog/blog.jinja' as blog %}
+
+{% block head %}
+<title>{{ title }}</title>
+<meta name="description" content="{{ subtitle }}" />
+{% endblock %}
+
+{% block body %}
+{% call blog.post_body() %}
+
+{{ blog.hero(title = title, subtitle = subtitle, tags = tags, date = date, mod_date = mod_date, img_link = img_link) }}
+
+{% call blog.section(header = "Background") %}
+<p class="text-lg text-left">It's all well and good to keep playing around with the newest technologies; make everything serverless, highly-available, and AI-driven. But sometimes a simple application of a couple really old tools is all you need to get a job done and it's always good to stay in practice with them too.</p><br />
+<p class="text-lg text-left">I'd been considering potential designs for a personal finance app. Thinking thoughts like: how do I secure automated exports from multiple financial institutions? How do I manage authentication for the database access? Can I do the whole thing serverlessly? After considering all this for a while, I came to thinking that for this a simplest form solution might actually be best. One where I import data manually, don't have to worry about auth because it's all local, and is portable to many other potential personal-data-storage-and-viewing-type applications.</p><br />
+
+<p class="text-lg text-left">The GitHub repository can be found <a class="underline" href="https://github.com/Ulthran/ctbus_finance" target="_blank">here</a>.</p>
+{% endcall %}
+
+{% call blog.section(header = "The Data Model") %}
+<p class="text-lg text-left"></p><br />
+{% endcall %}
+
+{% call blog.section(header = "Ingest and Storage") %}
+<p class="text-lg text-left"></p>
+{% endcall %}
+
+{% call blog.section(header = "Views") %}
+<p class="text-lg text-left"></p><br />
+{% endcall %}
+{% endcall %}
+{% endblock %}
