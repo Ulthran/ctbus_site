@@ -1,6 +1,13 @@
 # This is not a clean implementation but it's kinda in line with the site design
 # It'll probably stay this way until I rewrite the whole site at some point
 posts = {
+    "ctbus-finance": {
+        "title": "Building a Simple Personal Finance App",
+        "date": "04/07/25",
+        "mod_date": "04/07/25",
+        "tags": ["finance", "python", "sql"],
+        "subtitle": "A minimalist personal finance app built with Python and SQLite.",
+    },
     "fully-serverless-data-pipeline": {
         "title": "A Fully Serverless Data Pipeline",
         "date": "02/18/25",
