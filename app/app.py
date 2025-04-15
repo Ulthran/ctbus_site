@@ -219,21 +219,16 @@ def resume():
     return redirect(f"{CDN_URL}/documents/resume.pdf")
 
 
-@sitemapper.include(
-    lastmod="2025-01-24",
-    changefreq="monthly",
-    priority=0.9,
-)
 @app.route("/favorite-number")
 def favorite_number():
     return render_template("favorite-number.html")
 
 
-@sitemapper.include(
-    lastmod="2025-01-24",
-    changefreq="monthly",
-    priority=0.9,
-)
+@app.route("/start-the-server")
+def start_the_server():
+    return render_template("start-the-server.html")
+
+
 @app.route("/session")
 def session_info():
     return render_template("session.html", session=session)
