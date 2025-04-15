@@ -11,6 +11,12 @@ projects_dict = {
         "tags": ["aws", "dash", "serverless"],
         "image": "spotify_vis.png",
     },
+    "ctbus-finance": {
+        "title": "CTBus Finance",
+        "subtitle": "A minimalist local finance database and dashboard for tracking my personal finances.",
+        "tags": ["python", "sql", "flask"],
+        "image": "ctbus_finance_circle.png",
+    },
     "ctbus-health": {
         "title": "CTBus Health",
         "subtitle": "A serverless ETL pipeline I'm developing in AWS to aggregate and analyze health data I keep in many different formats and locations.",
