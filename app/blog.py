@@ -1,6 +1,13 @@
 # This is not a clean implementation but it's kinda in line with the site design
 # It'll probably stay this way until I rewrite the whole site at some point
 posts = {
+    "codex-flask-dashboard": {
+        "title": "Building a Dashboard for ctbus_finance with Codex",
+        "date": "06/13/25",
+        "mod_date": "06/13/25",
+        "tags": ["codex", "flask", "python"],
+        "subtitle": "Using Codex to spin up a dashboard and fix some bugs.",
+    },
     "ctbus-finance": {
         "title": "Building a Simple Personal Finance App",
         "date": "04/07/25",
