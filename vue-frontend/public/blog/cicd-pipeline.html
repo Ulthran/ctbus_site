@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- Include Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" integrity="sha384-HtMZLkYo+pR5/u7zCzXxMJP6QoNnQJt1qkHM0EaOPvGDIzaVZbmYr/TlvUZ/sKAg" crossorigin="anonymous">
+
+    
+<title>CI/CD Pipeline with GitHub Actions</title>
+<meta name="description" content="Automate serverless flask testing and deployment with GitHub Actions." />
+
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col">
+    <!-- All SVG icons are taken from or modified from SVG Repo (https://www.svgrepo.com/) unless otherwise noted -->
+
+    <!-- Include Flowbite JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-700 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex space-x-4">
+                <a href="/" class="font-bold text-lg" title="Home">
+                    
+    <svg class=w-12 h-12 viewBox="-2.5 -2.5 30.00 30.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+        <g stroke-width="0"/>
+        <g stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.15"/>
+        <g> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.867 15.8321L18.873 10.0391L14.75 5.92908C13.5057 4.69031 11.4942 4.69031 10.25 5.92908L6.13599 10.0291V15.8291C6.1393 17.5833 7.56377 19.0028 9.31799 19.0001H15.685C17.438 19.0029 18.862 17.5851 18.867 15.8321Z" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M14 11.365C13.9846 12.1896 13.3064 12.8471 12.4817 12.8369C11.657 12.8267 10.9952 12.1526 11.0003 11.3279C11.0053 10.5031 11.6752 9.83718 12.5 9.83704C12.9015 9.84073 13.2852 10.0038 13.5665 10.2904C13.8478 10.5769 14.0037 10.9635 14 11.365V11.365Z" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> <path d="M19.63 5.76314C19.6306 5.34892 19.2953 5.01267 18.8811 5.01209C18.4668 5.0115 18.1306 5.34682 18.13 5.76103L19.63 5.76314ZM18.874 10.0391L18.124 10.038C18.1237 10.2377 18.2031 10.4293 18.3445 10.5702L18.874 10.0391ZM19.9705 12.1912C20.2638 12.4837 20.7387 12.4829 21.0311 12.1896C21.3236 11.8963 21.3229 11.4214 21.0295 11.1289L19.9705 12.1912ZM6.66552 10.5602C6.95886 10.2678 6.95959 9.79291 6.66714 9.49957C6.3747 9.20623 5.89982 9.2055 5.60648 9.49794L6.66552 10.5602ZM3.97048 11.1289C3.67714 11.4214 3.67641 11.8963 3.96886 12.1896C4.2613 12.4829 4.73618 12.4837 5.02952 12.1912L3.97048 11.1289ZM10.5 15.1971C10.0858 15.1971 9.75 15.5329 9.75 15.9471C9.75 16.3613 10.0858 16.6971 10.5 16.6971V15.1971ZM14.5 16.6971C14.9142 16.6971 15.25 16.3613 15.25 15.9471C15.25 15.5329 14.9142 15.1971 14.5 15.1971V16.6971ZM18.13 5.76103L18.124 10.038L19.624 10.0401L19.63 5.76314L18.13 5.76103ZM18.3445 10.5702L19.9705 12.1912L21.0295 11.1289L19.4035 9.50794L18.3445 10.5702ZM5.60648 9.49794L3.97048 11.1289L5.02952 12.1912L6.66552 10.5602L5.60648 9.49794ZM10.5 16.6971H14.5V15.1971H10.5V16.6971Z" fill="#ffffff"/> </g>
+    </svg>
+
+                </a>
+                <a href="/about" class="font-bold text-lg flex items-center" title="About Me">
+                    
+    <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+        <g stroke-width="0"/>
+        <g stroke-linecap="round" stroke-linejoin="round"/>
+        <g>
+            <circle cx="12" cy="8" r="3" stroke="#ffffff" stroke-width="1.8"/>
+            <path d="M12 12c-2.7 0-5 1.8-5 4.2v1.3h10v-1.3c0-2.4-2.3-4.2-5-4.2z" stroke="#ffffff" stroke-width="1.8"/>
+        </g>
+    </svg>
+
+                </a>
+                <div class="w-12"></div>
+                <div class="w-12"></div>
+            </div>
+
+            
+
+            <div class="flex space-x-4">
+                <a href="/session" class="font-bold text-lg" title="Your Data">
+                    
+    <svg class=w-8 h-8 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="System / Data"> <path id="Vector" d="M18 12V17C18 18.6569 15.3137 20 12 20C8.68629 20 6 18.6569 6 17V12M18 12V7M18 12C18 13.6569 15.3137 15 12 15C8.68629 15 6 13.6569 6 12M18 7C18 5.34315 15.3137 4 12 4C8.68629 4 6 5.34315 6 7M18 7C18 8.65685 15.3137 10 12 10C8.68629 10 6 8.65685 6 7M6 12V7" stroke=#FFFFFF stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+
+                </a>
+                <!-- Resume Download -->
+                <a href="/documents/resume.pdf" target="_blank" class="text-white" title="Download R&eacute;sum&eacute;">
+                    
+    <svg class=w-8 h-8 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke-width="0"/>
+        <g stroke-linecap="round" stroke-linejoin="round"/>
+        <g>
+            <path clip-rule="evenodd" d="m12.2826 3.81217c-.2389-.05735-.5014-.06217-1.2708-.06217h-1.2118c-.85245 0-1.44669.00058-1.90932.03838-.45388.03709-.71464.10622-.91216.20686-.42336.21571-.76757.55992-.98328.98328-.10064.19752-.16977.45829-.20686.91216-.0378.46263-.03838 1.05687-.03838 1.90932v8.4c0 .8525.00058 1.4467.03838 1.9093.03709.4539.10622.7147.20686.9122.21571.4233.55992.7676.98328.9833.19752.1006.45828.1697.91216.2068.46263.0378 1.05687.0384 1.90932.0384h4.4c.8525 0 1.4467-.0006 1.9093-.0384.4539-.0371.7147-.1062.9122-.2068.4233-.2157.7675-.56.9833-.9833.1006-.1975.1697-.4583.2068-.9122.0378-.4626.0384-1.0568.0384-1.9093v-5.2118c0-.7694-.0048-1.03194-.0622-1.27081-.0551-.22958-.146-.44906-.2694-.65037-.1283-.20946-.3105-.39848-.8546-.94258l-3.1882-3.18822c-.5441-.5441-.7332-.7263-.9426-.85466-.2013-.12336-.4208-.21427-.6504-.26939zm-1.1854-1.56218c.6516-.00019 1.1026-.00032 1.5356.10362.3826.09187.7484.24338 1.0839.44899.3797.23266.6985.55166 1.1591 1.01251l.0604.06045 3.1882 3.18822.0605.06043c.4608.46059.7798.7794 1.0125 1.15906.2056.33552.3571.70132.449 1.08395.1039.43298.1038.88398.1036 1.53558v.0854 5.2118.0321c0 .8129 0 1.4685-.0434 1.9994-.0446.5466-.139 1.0267-.3653 1.471-.3596.7056-.9332 1.2793-1.6388 1.6388-.4443.2263-.9244.3207-1.471.3653-.5309.0434-1.1865.0434-1.9994.0434h-.0321-4.4-.03212c-.81283 0-1.46844 0-1.99935-.0434-.54663-.0446-1.02678-.139-1.47099-.3653-.70561-.3595-1.27929-.9332-1.63881-1.6388-.22634-.4443-.3207-.9244-.36537-1.471-.04337-.5309-.04337-1.1866-.04336-1.9994v-.0321-8.4-.0321c-.00001-.81284-.00001-1.46846.04336-1.99937.04467-.54663.13903-1.02677.36537-1.47099.35952-.70561.9332-1.27929 1.63881-1.63881.44421-.22634.92436-.3207 1.47099-.36536.53091-.04338 1.18653-.04338 1.99937-.04337h.0321 1.2118zm.9028 5.00001c.4142 0 .75.33579.75.75v7.8781c.1969-.0737.4191-.2101.7365-.4796.3539-.3004.7745-.7202 1.3773-1.3229l.6059-.6059c.2929-.2929.7677-.2929 1.0606 0s.2929.7677 0 1.0606l-.6059.6059-.0226.0227c-.5748.5748-1.0384 1.0384-1.4445 1.3831-.4181.355-.8243.6278-1.2985.7818-.7531.2447-1.5645.2447-2.3176 0-.4742-.154-.8804-.4268-1.29851-.7818-.40608-.3447-.86967-.8083-1.44442-1.3831h-.00001l-.0227-.0227-.60589-.6059c-.29289-.2929-.29289-.7677 0-1.0606s.76777-.2929 1.06066 0l.60589.6059c.60277.6027 1.02338 1.0225 1.37728 1.3229.3174.2695.5396.4059.7365.4796v-7.8781c0-.41421.3358-.75.75-.75z" fill=#ffffff fill-rule="evenodd"/>
+        </g>
+    </svg>
+
+                </a>
+                <!-- GitHub Link -->
+                <a href="https://github.com/Ulthran" target="_blank" class="text-white" title="GitHub">
+                    
+    <!-- This SVG was generated by ChatGPT -->
+    <svg class=w-8 h-8 fill=currentColor viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577 0-.285-.01-1.03-.015-2.02-3.193.694-3.865-1.54-3.865-1.54-.522-1.324-1.274-1.677-1.274-1.677-1.044-.714.079-.699.079-.699 1.154.081 1.762 1.18 1.762 1.18 1.025 1.755 2.688 1.248 3.34.956.104-.743.4-1.247.728-1.532-2.545-.291-5.207-1.273-5.207-5.66 0-1.253.447-2.277 1.18-3.078-.118-.29-.51-1.462.112-3.042 0 0 1.005-.308 3.3 1.18.958-.267 1.98-.4 3-.405 1.02.005 2.042.138 3 .405 2.292-1.488 3.297-1.18 3.297-1.18.622 1.58.232 2.752.114 3.042.72.8 1.166 1.825 1.166 3.078 0 4.396-2.665 5.365-5.22 5.647.41.354.777 1.054.777 2.123 0 1.534-.014 2.774-.014 3.15 0 .318.21.694.8.576C20.566 21.797 24 17.288 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/>
+    </svg>
+
+                </a>
+                <!-- LinkedIn Link -->
+                <a href="https://www.linkedin.com/in/charlie-bushman-8b0b59128/" target="_blank" class="text-white" title="LinkedIn">
+                    
+    <svg class=w-8 h-8 fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"/>
+    </svg>
+
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+
+    <!-- Hero Section -->
+    <div class="container mx-auto flex-1 mt-8 p-2 md:p-4 text-center md:w-1/2">
+        <h1 class="text-4xl font-bold mb-2">CI/CD with GitHub Actions for a Flask site Deployed with Zappa</h1>
+        <p class="text-lg">Posted: 11/30/23. Last Updated: 11/30/23.</p>
+        
+    </div>
+
+
+<div class="container mx-auto flex-1 mt-8 md:p-4 p-2 text-center md:w-1/2">
+    <p class="text-lg text-left">Deploying a zappa site takes time. Not that much, a couple minutes, but it means that it's a pain to do regularly which means that I didn't do it regularly. Instead I developed and tested with a local version and then would push straight to production once that was where I wanted it. And that approach worked, but it had some downsides, such as having to manually deploy changes (even just once in a while) and not catching deployment issues early (like installing huge dependencies and having lambda reject the package for being too big). These are the kind of issues that scale with complexity so I figured I'd get a jumpstart and automate as much as I could now, get the infrastructure in place to go above and beyond the project's CI/CD needs. The end goal is a pipeline like this: version control -> tests/static analysis -> build & push artifact -> dev deployment -> test dev deployment -> prod deployment (on PR merge)</p>
+
+    <div class="flex flex-wrap items-center justify-between p-5 md:mx-10">
+        <a href="https://github.com/Ulthran/ctbus_site/tree/master/.github/workflows/" target="_blank" class="text-white" title="Github Repo">
+            
+    <!-- This SVG was generated by ChatGPT -->
+    <svg class=w-12 h-12 fill=#000000 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577 0-.285-.01-1.03-.015-2.02-3.193.694-3.865-1.54-3.865-1.54-.522-1.324-1.274-1.677-1.274-1.677-1.044-.714.079-.699.079-.699 1.154.081 1.762 1.18 1.762 1.18 1.025 1.755 2.688 1.248 3.34.956.104-.743.4-1.247.728-1.532-2.545-.291-5.207-1.273-5.207-5.66 0-1.253.447-2.277 1.18-3.078-.118-.29-.51-1.462.112-3.042 0 0 1.005-.308 3.3 1.18.958-.267 1.98-.4 3-.405 1.02.005 2.042.138 3 .405 2.292-1.488 3.297-1.18 3.297-1.18.622 1.58.232 2.752.114 3.042.72.8 1.166 1.825 1.166 3.078 0 4.396-2.665 5.365-5.22 5.647.41.354.777 1.054.777 2.123 0 1.534-.014 2.774-.014 3.15 0 .318.21.694.8.576C20.566 21.797 24 17.288 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/>
+    </svg>
+
+        </a>
+        <a href="https://github.com/Ulthran/ctbus_site/pull/16" target="_blank" class="text-white" title="Add CD">
+            
+    <svg class=w-12 h-12 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path fill-rule="evenodd" clip-rule="evenodd" d="M7 8.83a3.001 3.001 0 1 0-2 0v6.34a3.001 3.001 0 1 0 2 0V8.83ZM6 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm0 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM17 15.17a3.001 3.001 0 1 0 2 0V10.4A5.4 5.4 0 0 0 13.6 5h-.186l.293-.293a1 1 0 0 0-1.414-1.414l-2 2a1 1 0 0 0 0 1.414l2 2a1 1 0 1 0 1.414-1.414L13.414 7h.186a3.4 3.4 0 0 1 3.4 3.4v4.77ZM17 18a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" fill="#000000"></path></g></svg>
+
+        </a>
+        <a href="https://github.com/Ulthran/ctbus_site/pull/26" target="_blank" class="text-white" title="Add testing for deployed site">
+            
+    <svg class=w-12 h-12 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path fill-rule="evenodd" clip-rule="evenodd" d="M7 8.83a3.001 3.001 0 1 0-2 0v6.34a3.001 3.001 0 1 0 2 0V8.83ZM6 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm0 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM17 15.17a3.001 3.001 0 1 0 2 0V10.4A5.4 5.4 0 0 0 13.6 5h-.186l.293-.293a1 1 0 0 0-1.414-1.414l-2 2a1 1 0 0 0 0 1.414l2 2a1 1 0 1 0 1.414-1.414L13.414 7h.186a3.4 3.4 0 0 1 3.4 3.4v4.77ZM17 18a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" fill="#000000"></path></g></svg>
+
+        </a>
+    </div>
+
+    <h3 class="text-2xl font-bold my-4">Starting with Simple CI</h3>
+
+    <p class="text-lg text-left">As a starting point, I need to implement some basic CI workflows, which I'm already familiar with from developing scientific software packages. I use GitHub Actions (GHA) for everything cause that's what I'm used to. Adding a unit testing workflow with PyTest is relatively straightforward:</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+.github/workflows/tests.yml
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+name: Tests
+
+on:
+pull_request:
+    branches: [main, master]
+push:
+    branches: [main, master]
+
+jobs:
+run-tests:
+    name: Test Codebase
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+        uses: actions/checkout@v3
+
+    - name: Install Dependencies
+        run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r dev-requirements.txt
+    
+    - name: Run Tests
+        run: |
+        pytest tests/
+            </code>
+        </pre>
+    </div>
+
+    <p class="text-lg text-left">With that in place, it's time to develop some unit tests for the site. And lucky for us there's very little to actually unit test. At this point there's really just the main app file, which contains routes and not much more, and a <code>data_utils.py</code> that has one function for retrieving Chess.com stats. Even though it integrates with a 3rd party and so shouldn't technically be included in unit testing, we're gonna call it a unit test anyways.</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+tests/unit/test_data_utils.py
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-python">
+from app.data_utils import get_chess_stats
+
+
+def test_get_chess_stats():
+    # Chess.com's "unofficial" API, meaning they recognize people use it as is
+    # but don't provide guarantees that it will stay the same.
+    assert not any([v == "ERR" for k, v in get_chess_stats().items()])
+            </code>
+        </pre>
+    </div>
+    
+    <p class="text-lg text-left">Upon commiting these two files, the tests workflow runs and succeeds! Now I can develop with the confidence that my makeshift Chess.com API won't break (either with my changes or theirs, again, not really a proper unit test). I also want a linting workflow to enforce formatting for my codebase. I'm going to use Super Linter cause it's a super easy way to manage linting many different languages through GitHub Actions.</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+.github/workflows/linter.yml
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+name: Super-Linter
+
+on:
+    pull_request:
+    branches: [main, master]
+
+jobs:
+    super-linter:
+    name: Lint Codebase
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout Code
+        uses: actions/checkout@v3
+
+        - name: Run Super-Linter
+        uses: github/super-linter@v4
+        env:
+            VALIDATE_ALL_CODEBASE: true
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            VALIDATE_PYTHON_BLACK: true
+            VALIDATE_JAVASCRIPT_ES: true
+
+            FILTER_REGEX_INCLUDE: app/|tests/
+            </code>
+        </pre>
+    </div>
+
+    <p class="text-lg text-left">With that commited as well, I can now develop with confidence that my changes won't introduce poorly formatted code or break existing functionality! But there's one more thing I want to add before moving on and that's static analysis. Especially since I have started using AI dev tools like GitHub Copilot and ChatGPT for code generation, it's important to have constant static analysis checks to catch dangerous patterns I don't catch. Codacy links directly with GitHub to do its work without any configuration files necessary (see <a href="https://docs.codacy.com/v3.4/getting-started/getting-started-with-codacy/" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Codacy Docs</a>).</p>
+
+    <h3 class="text-2xl font-bold my-4">Turning Focus to CD</h3>
+
+    <p class="text-lg text-left">In the interim between the last step and now, I took a course called DevOps Foundations on LinkedIn Learning, leading me to think I should expand my CI to include CD. This presents a few challenges I've never faced before: 1) interacting with GitHub's artifact repository, 2) authorizing a GitHub Action to deploy changes to AWS, and 3) performing tests and security audits on the deployed site. Turns out the first one, interacting with artifacts, is super easy! They already have prebuilt actions for doing everything you need to do (push and pull) and zappa has utilities for building and deploying zips (instead of doing it all in one command).</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+.github/workflows/CICD.yml
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+...
+build-artifact:
+needs: test
+runs-on: ubuntu-latest
+
+steps:
+    - name: Checkout Code
+    uses: actions/checkout@v4
+
+    - name: Install Dependencies to venv
+    run: |
+        python -m venv env
+        source env/bin/activate
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Build Artifact
+    run: |
+        source env/bin/activate
+        zappa package dev -o ctbus_site.zip
+
+    - name: Upload Artifact
+    uses: actions/upload-artifact@v3
+    with:
+        name: ctbus_site
+        path: ./ctbus_site.zip
+        retention-days: 1
+...
+            </code>
+        </pre>
+    </div>
+
+    <h3 class="text-2xl font-bold my-4">AWS and GitHub Actions</h3>
+
+    <p class="text-lg text-left">Authorizing a GHA runner to interact with AWS was not quite as straightforward, despite being relatively well documented. As with most things involving AWS IAM, there are a lot of options that introduce a lot of complexity. Most of the work on GitHub's side is covered by the <a href="https://github.com/aws-actions/configure-aws-credentials" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Configure AWS Credentials</a> action. My first thought was that I'd be able to just plop credentials for an AWS profile in as GHA environment variables but the recommendation is not to do that, instead preferring OpenID Connect. Through this method, an Idendity Provider (IdP) is setup in AWS IAM and then a Role is created that trusts the IdP. That Role can then be used with GHA. Setting up the IdP in AWS IAM and connecting the Role are covered in <a href="https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#adding-the-identity-provider-to-aws" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Configuring OpenID Connect in Amazon Web Services</a>. The only setup left to do in AWS then is to create a Policy for the Role that will give zappa the necessary permissions to do its work. I couldn't find any examples of such a Policy so I've included the one I pieced together here.</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+policy.json
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-json">
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:CreateFunction",
+                "s3:ListAccessPointsForObjectLambda",
+                "s3:GetAccessPoint",
+                "lambda:ListVersionsByFunction",
+                "logs:DescribeLogStreams",
+                "events:PutRule",
+                "route53:GetHostedZone",
+                "s3:PutStorageLensConfiguration",
+                "cloudformation:DescribeStackResource",
+                "lambda:GetFunctionConfiguration",
+                "iam:PutRolePolicy",
+                "s3:ListStorageLensGroups",
+                "apigateway:DELETE",
+                "events:ListRuleNamesByTarget",
+                "apigateway:PATCH",
+                "events:ListRules",
+                "cloudformation:UpdateStack",
+                "events:RemoveTargets",
+                "lambda:DeleteFunction",
+                "logs:FilterLogEvents",
+                "apigateway:GET",
+                "events:ListTargetsByRule",
+                "cloudformation:ListStackResources",
+                "iam:GetRole",
+                "events:DescribeRule",
+                "s3:PutAccountPublicAccessBlock",
+                "apigateway:PUT",
+                "s3:ListAccessPoints",
+                "lambda:GetFunction",
+                "s3:CreateStorageLensGroup",
+                "s3:ListJobs",
+                "route53:ListHostedZones",
+                "route53:ChangeResourceRecordSets",
+                "s3:ListMultiRegionAccessPoints",
+                "cloudformation:DescribeStacks",
+                "s3:ListStorageLensConfigurations",
+                "events:DeleteRule",
+                "events:PutTargets",
+                "lambda:UpdateFunctionCode",
+                "s3:GetAccountPublicAccessBlock",
+                "lambda:AddPermission",
+                "s3:ListAllMyBuckets",
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteStack",
+                "s3:PutAccessPointPublicAccessBlock",
+                "lambda:*",
+                "apigateway:POST",
+                "s3:CreateJob"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole",
+                "s3:CreateBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::zappa-*",
+                "arn:aws:iam::832242454463:role/*-ZappaLambdaExecutionRole"
+            ]
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::zappa-*"
+        }
+    ]
+}
+            </code>
+        </pre>
+    </div>
+
+    <p class="text-lg text-left">To use this in your own project, you'll have to change the User identifier in the Resource spec <code>"arn:aws:iam::832242454463:role/*-ZappaLambdaExecutionRole"</code>. Once all that is working, the rest is pretty easy, just have to configure the AWS CLI and run the right zappa commands.</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+.github/workflows/CICD.yml
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+...
+dev-deploy:
+needs: build-artifact
+runs-on: ubuntu-latest
+# These permissions are needed to interact with GitHub's OIDC Token endpoint
+permissions:
+    id-token: write
+    contents: read
+
+steps:
+    - name: Checkout Code
+    uses: actions/checkout@v4
+
+    - name: Install Dependencies
+    run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Download Zip
+    uses: actions/download-artifact@v3
+    with:
+        name: ctbus_site
+    
+    - name: Configure AWS Credentials
+    uses: aws-actions/configure-aws-credentials@v4
+    with:
+        role-to-assume: arn:aws:iam::832242454463:role/ZappaUserRole
+        aws-region: us-east-1
+    
+    - name: Setup AWS Profile
+    run: |
+        aws configure set region us-east-1 --profile default
+        aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }} --profile default
+        aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }} --profile default
+        aws configure set aws_session_token ${{ env.AWS_SESSION_TOKEN }} --profile default
+    
+    - name: Deploy to Dev
+    run: |
+        zappa update dev --zip ctbus_site.zip --json
+
+    - name: Dump Logs
+    if: always()
+    run: |
+        sleep 30
+        zappa tail dev --json --since 10m --disable-keep-open
+...
+            </code>
+        </pre>
+    </div>
+
+    <h3 class="text-2xl font-bold my-4">Testing an Active Website</h3>
+
+    <p class="text-lg text-left">This is a part I have no prior experience with. I need tools which I can run in GHAs that will perform a healthy subset of the possible classes of tests for web apps. This article on <a href="https://www.browserstack.com/guide/how-to-perform-website-qa-testing" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">How to Perform Website QA Testing</a> is pretty helpful in creating a mental framework for this, but probably goes more in depth than I need. My thinking is that the major ones to focus on will be functionality testing, cross-browser/cross-device testing, accessibility testing, and penetration testing.</p>
+
+    <p class="text-lg text-left">The first two, functionality and cross-browser/cross-device testing, can both be handled by Selenium, which is nice enough to have a solid Python interface for us to use (as well as every other language you could want). The core idea of selenium is that you can set up a WebDriver object that mimics the behavior of whichever browser you want and then use that object to perform actions on the website as the user would and check that the results are as expected. This allows you to abstract away problems with display, browser, os, etc. and just focus on testing critical user paths. So the first step is to setup a WebDriver in PyTest.</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+tests/e2e/conftest.py
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-python">
+import pytest
+from selenium import webdriver
+
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
+
+@pytest.fixture
+def arg(request):
+    return request.getfixturevalue(request.param)
+
+@pytest.fixture()
+def setup_chrome():
+    options = ChromeOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1920,1200",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Chrome(
+        service=ChromeService(ChromeDriverManager().install()), options=options
+    )
+
+    yield driver
+
+    driver.close()
+
+
+@pytest.fixture()
+def setup_chrome_mobile():
+    options = ChromeOptions()
+    options_arr = [
+        "--headless",
+        "--disable-gpu",
+        "--window-size=1080,1920",
+        "--ignore-certificate-errors",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--user-agent=Mozilla/5.0 (Linux; Android 11; Pixel 4 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Mobile Safari/537.36",
+    ]
+    for option in options_arr:
+        options.add_argument(option)
+
+    driver = webdriver.Chrome(
+        service=ChromeService(ChromeDriverManager().install()), options=options
+    )
+
+    yield driver
+
+    driver.close()
+            </code>
+        </pre>
+    </div>
+
+    <p class="text-lg text-left">OK I went overboard and setup two WebDrivers: one for testing Chrome and one for testing Chrome on a mobile device. I also created this weird <code>arg</code> function so that I can use PyTest fixture parameterization to run the same tests on each of my WebDriver fixtures.</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+tests/e2e/test_web.py
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-python">
+import pytest
+from . import DEV_URL
+
+
+@pytest.mark.parametrize(
+    "arg",
+    [
+        "setup_chrome",
+        "setup_chrome_mobile",
+        "setup_chromium",
+        "setup_edge",
+        "setup_firefox",
+    ],
+    indirect=True,
+)
+def test_title(arg):
+    driver = arg
+    driver.get(DEV_URL)
+    assert driver.title == "Charlie Bushman"
+            </code>
+        </pre>
+    </div>
+
+    <p class="text-lg text-left">Obviously this test is little more than a PoC for running tests on multiple web drivers though. In order to actually start testing useful features, I read the Selenium docs and learned about their PageObject testing structure. Under this paradigm, each page of the site is abstracted to a PageObject that models objects on the page within the test code. These PageObjects can then be used to perform higher-level feature testing without worrying about implementation changes in the actual page. Here's an example of that with a button for hiding graphs (not the most critical, but nice to know it will work).</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+tests/e2e/test_web.py
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+import pytest
+from . import DEV_URL
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+class Page:
+    def __init__(self, driver: webdriver, url: str):
+        self.driver = driver
+        driver.get(url)
+
+class Comps(Page):
+def __init__(self, driver: webdriver, url: str):
+    super().__init__(driver, f"{url}/projects/comps")
+
+    self.hide_graphs_button = self.driver.find_element(
+        By.CLASS_NAME, "interest-button"
+    )
+    self.lorenz_plots = self.driver.find_element(By.ID, "LorenzPlots")
+
+@pytest.mark.parametrize(
+"arg",
+[
+    "setup_chrome",
+    "setup_chrome_mobile",
+    "setup_chromium",
+    "setup_edge",
+    "setup_firefox",
+],
+indirect=True,
+)
+def test_comps(arg):
+    driver = arg
+    driver.get(DEV_URL)
+
+    comps = Comps(driver, DEV_URL)
+    comps.hide_graphs_button.click()
+    assert not comps.lorenz_plots.is_displayed()
+
+    comps.hide_graphs_button.click()
+    assert comps.lorenz_plots.is_displayed()
+            </code>
+        </pre>
+    </div>
+    
+    <p class="text-lg text-left">This idea can be extended to any other user flows that need testing (but I don't really have any on the site right now, mostly just readable content). So it's time to move on to the next type of website testing: accessibility testing. Fortunately, there is a prebuilt <a href="https://github.com/a11ywatch/github-actions" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">GHA from A11ywatch</a> that has all the features one could ask for and more that one didn't think to ask for. Including it in the pipeline is not quite a piece of cake though, and that's because of the crazy API Gateway URL of the dev site deployment. (This hasn't been resolved yet but I'll try to update this when it is. For now, here's example code for running their action just on the home page of my site.)</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+.github/workflows/CICD.yml
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+web-accessibility-eval:
+needs: dev-deploy
+runs-on: ubuntu-latest
+
+steps:
+    - name: Web Accessibility Eval
+    uses: a11ywatch/github-action@v2.1.9
+    with:
+        WEBSITE_URL: https://12345abcde.execute-api.us-east-1.amazonaws.com/dev/
+        SITE_WIDE: true
+        SUBDOMAINS: false
+        TLD: false
+        SITEMAP: true
+        FAIL_ERRORS_COUNT: 15
+        LIST: true
+        FIX: false
+        UPGRADE: false
+        UPLOAD: true
+    env:
+        DEFAULT_RUNNERS: htmlcs,axe
+        PAGEMIND_IGNORE_WARNINGS: true
+        AI_DISABLED: false
+            </code>
+        </pre>
+    </div>
+
+    <p class="text-lg text-left">The final testing variant that needs to be included in the pipeline is penetration testing. Although, admittedly, I'm not super worried about the security of a website that neither stores nor accepts user data (for now) and is open source. Regardless, a super, prebuilt GHA comes to my rescue again in the form of the <a href="https://github.com/zaproxy/action-baseline" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">ZAP Scan Action</a>. Super easy to implement and provides a very helpful report at the end with all its findings.</p>
+
+    <div class="text-left p-1 my-4">
+        <code>
+.github/workflows/CICD.yml
+        </code>
+        <pre class="bg-gray-800 text-white rounded-lg shadow-lg px-4 py-1 overflow-auto max-h-96">
+            <code class="language-yaml">
+zap-deployment:
+needs: dev-deploy
+runs-on: ubuntu-latest
+
+steps:
+    - name: ZAP Scan
+    uses: zaproxy/action-baseline@v0.10.0
+    with:
+        target: DEV_URL
+            </code>
+        </pre>
+    </div>
+
+    <h3 class="text-2xl font-bold my-4">Conclusions</h3>
+
+    <p class="text-lg text-left">I wasn't convinced this would actually be useful at the start of this project. It was more of a learning project and something that might come in handy if this site ever scales up significatly. But I was absolutely wrong! Just in the process of building the PR to add this workflow I caught so many things that I normally wouldn't until later down the line or at all. I could see within minutes whether or not site configuration changes had messed up the actual deployment. I made low contrast elements and images without alt text more accessible. I added Content Security Policy headers to prevent common attacks. The positive impact that this pipeline has had on my web app practices and should continue to have on this site when I forget these practices in the future or encounter new terrain is enourmous.</p>
+
+    <img src="/images/ctbus_site_cd_workflow_success.png" alt="CI/CD Workflow Success" class="mx-auto my-4 rounded-lg shadow-lg">
+
+    <p class="text-lg text-left">And it's free. As long as the project is open source on GitHub, I have as much GHA runner usage as I can handle. If you have a web app deployed through zappa, there's almost no downside to implementing a similar CI/CD pipeline to improve the quality, security, and accessibility of your app.</p>
+
+</div>
+
+
+    </main>
+
+    <!-- Footer -->
+    <div class="flex-grow"></div> <!-- This div will take up remaining vertical space -->
+    <footer class="bg-gray-300 text-gray-700 text-center py-2">
+        <div class="container mx-auto">
+            <p>Always Learning. Always Building. Trapped in a Docker Container.</p>
+            <p>&copy; 2025 Charlie Bushman. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

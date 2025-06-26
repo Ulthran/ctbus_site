@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- Include Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" integrity="sha384-HtMZLkYo+pR5/u7zCzXxMJP6QoNnQJt1qkHM0EaOPvGDIzaVZbmYr/TlvUZ/sKAg" crossorigin="anonymous">
+
+    
+<title>Ultimate DiscTracker</title>
+<meta name="description" content="The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more." />
+
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col">
+    <!-- All SVG icons are taken from or modified from SVG Repo (https://www.svgrepo.com/) unless otherwise noted -->
+
+    <!-- Include Flowbite JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-700 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex space-x-4">
+                <a href="/" class="font-bold text-lg" title="Home">
+                    
+    <svg class=w-12 h-12 viewBox="-2.5 -2.5 30.00 30.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+        <g stroke-width="0"/>
+        <g stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.15"/>
+        <g> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.867 15.8321L18.873 10.0391L14.75 5.92908C13.5057 4.69031 11.4942 4.69031 10.25 5.92908L6.13599 10.0291V15.8291C6.1393 17.5833 7.56377 19.0028 9.31799 19.0001H15.685C17.438 19.0029 18.862 17.5851 18.867 15.8321Z" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M14 11.365C13.9846 12.1896 13.3064 12.8471 12.4817 12.8369C11.657 12.8267 10.9952 12.1526 11.0003 11.3279C11.0053 10.5031 11.6752 9.83718 12.5 9.83704C12.9015 9.84073 13.2852 10.0038 13.5665 10.2904C13.8478 10.5769 14.0037 10.9635 14 11.365V11.365Z" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> <path d="M19.63 5.76314C19.6306 5.34892 19.2953 5.01267 18.8811 5.01209C18.4668 5.0115 18.1306 5.34682 18.13 5.76103L19.63 5.76314ZM18.874 10.0391L18.124 10.038C18.1237 10.2377 18.2031 10.4293 18.3445 10.5702L18.874 10.0391ZM19.9705 12.1912C20.2638 12.4837 20.7387 12.4829 21.0311 12.1896C21.3236 11.8963 21.3229 11.4214 21.0295 11.1289L19.9705 12.1912ZM6.66552 10.5602C6.95886 10.2678 6.95959 9.79291 6.66714 9.49957C6.3747 9.20623 5.89982 9.2055 5.60648 9.49794L6.66552 10.5602ZM3.97048 11.1289C3.67714 11.4214 3.67641 11.8963 3.96886 12.1896C4.2613 12.4829 4.73618 12.4837 5.02952 12.1912L3.97048 11.1289ZM10.5 15.1971C10.0858 15.1971 9.75 15.5329 9.75 15.9471C9.75 16.3613 10.0858 16.6971 10.5 16.6971V15.1971ZM14.5 16.6971C14.9142 16.6971 15.25 16.3613 15.25 15.9471C15.25 15.5329 14.9142 15.1971 14.5 15.1971V16.6971ZM18.13 5.76103L18.124 10.038L19.624 10.0401L19.63 5.76314L18.13 5.76103ZM18.3445 10.5702L19.9705 12.1912L21.0295 11.1289L19.4035 9.50794L18.3445 10.5702ZM5.60648 9.49794L3.97048 11.1289L5.02952 12.1912L6.66552 10.5602L5.60648 9.49794ZM10.5 16.6971H14.5V15.1971H10.5V16.6971Z" fill="#ffffff"/> </g>
+    </svg>
+
+                </a>
+                <a href="/about" class="font-bold text-lg flex items-center" title="About Me">
+                    
+    <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+        <g stroke-width="0"/>
+        <g stroke-linecap="round" stroke-linejoin="round"/>
+        <g>
+            <circle cx="12" cy="8" r="3" stroke="#ffffff" stroke-width="1.8"/>
+            <path d="M12 12c-2.7 0-5 1.8-5 4.2v1.3h10v-1.3c0-2.4-2.3-4.2-5-4.2z" stroke="#ffffff" stroke-width="1.8"/>
+        </g>
+    </svg>
+
+                </a>
+                <div class="w-12"></div>
+                <div class="w-12"></div>
+            </div>
+
+            
+
+            <div class="flex space-x-4">
+                <a href="/session" class="font-bold text-lg" title="Your Data">
+                    
+    <svg class=w-8 h-8 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="System / Data"> <path id="Vector" d="M18 12V17C18 18.6569 15.3137 20 12 20C8.68629 20 6 18.6569 6 17V12M18 12V7M18 12C18 13.6569 15.3137 15 12 15C8.68629 15 6 13.6569 6 12M18 7C18 5.34315 15.3137 4 12 4C8.68629 4 6 5.34315 6 7M18 7C18 8.65685 15.3137 10 12 10C8.68629 10 6 8.65685 6 7M6 12V7" stroke=#FFFFFF stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+
+                </a>
+                <!-- Resume Download -->
+                <a href="/documents/resume.pdf" target="_blank" class="text-white" title="Download R&eacute;sum&eacute;">
+                    
+    <svg class=w-8 h-8 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke-width="0"/>
+        <g stroke-linecap="round" stroke-linejoin="round"/>
+        <g>
+            <path clip-rule="evenodd" d="m12.2826 3.81217c-.2389-.05735-.5014-.06217-1.2708-.06217h-1.2118c-.85245 0-1.44669.00058-1.90932.03838-.45388.03709-.71464.10622-.91216.20686-.42336.21571-.76757.55992-.98328.98328-.10064.19752-.16977.45829-.20686.91216-.0378.46263-.03838 1.05687-.03838 1.90932v8.4c0 .8525.00058 1.4467.03838 1.9093.03709.4539.10622.7147.20686.9122.21571.4233.55992.7676.98328.9833.19752.1006.45828.1697.91216.2068.46263.0378 1.05687.0384 1.90932.0384h4.4c.8525 0 1.4467-.0006 1.9093-.0384.4539-.0371.7147-.1062.9122-.2068.4233-.2157.7675-.56.9833-.9833.1006-.1975.1697-.4583.2068-.9122.0378-.4626.0384-1.0568.0384-1.9093v-5.2118c0-.7694-.0048-1.03194-.0622-1.27081-.0551-.22958-.146-.44906-.2694-.65037-.1283-.20946-.3105-.39848-.8546-.94258l-3.1882-3.18822c-.5441-.5441-.7332-.7263-.9426-.85466-.2013-.12336-.4208-.21427-.6504-.26939zm-1.1854-1.56218c.6516-.00019 1.1026-.00032 1.5356.10362.3826.09187.7484.24338 1.0839.44899.3797.23266.6985.55166 1.1591 1.01251l.0604.06045 3.1882 3.18822.0605.06043c.4608.46059.7798.7794 1.0125 1.15906.2056.33552.3571.70132.449 1.08395.1039.43298.1038.88398.1036 1.53558v.0854 5.2118.0321c0 .8129 0 1.4685-.0434 1.9994-.0446.5466-.139 1.0267-.3653 1.471-.3596.7056-.9332 1.2793-1.6388 1.6388-.4443.2263-.9244.3207-1.471.3653-.5309.0434-1.1865.0434-1.9994.0434h-.0321-4.4-.03212c-.81283 0-1.46844 0-1.99935-.0434-.54663-.0446-1.02678-.139-1.47099-.3653-.70561-.3595-1.27929-.9332-1.63881-1.6388-.22634-.4443-.3207-.9244-.36537-1.471-.04337-.5309-.04337-1.1866-.04336-1.9994v-.0321-8.4-.0321c-.00001-.81284-.00001-1.46846.04336-1.99937.04467-.54663.13903-1.02677.36537-1.47099.35952-.70561.9332-1.27929 1.63881-1.63881.44421-.22634.92436-.3207 1.47099-.36536.53091-.04338 1.18653-.04338 1.99937-.04337h.0321 1.2118zm.9028 5.00001c.4142 0 .75.33579.75.75v7.8781c.1969-.0737.4191-.2101.7365-.4796.3539-.3004.7745-.7202 1.3773-1.3229l.6059-.6059c.2929-.2929.7677-.2929 1.0606 0s.2929.7677 0 1.0606l-.6059.6059-.0226.0227c-.5748.5748-1.0384 1.0384-1.4445 1.3831-.4181.355-.8243.6278-1.2985.7818-.7531.2447-1.5645.2447-2.3176 0-.4742-.154-.8804-.4268-1.29851-.7818-.40608-.3447-.86967-.8083-1.44442-1.3831h-.00001l-.0227-.0227-.60589-.6059c-.29289-.2929-.29289-.7677 0-1.0606s.76777-.2929 1.06066 0l.60589.6059c.60277.6027 1.02338 1.0225 1.37728 1.3229.3174.2695.5396.4059.7365.4796v-7.8781c0-.41421.3358-.75.75-.75z" fill=#ffffff fill-rule="evenodd"/>
+        </g>
+    </svg>
+
+                </a>
+                <!-- GitHub Link -->
+                <a href="https://github.com/Ulthran" target="_blank" class="text-white" title="GitHub">
+                    
+    <!-- This SVG was generated by ChatGPT -->
+    <svg class=w-8 h-8 fill=currentColor viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577 0-.285-.01-1.03-.015-2.02-3.193.694-3.865-1.54-3.865-1.54-.522-1.324-1.274-1.677-1.274-1.677-1.044-.714.079-.699.079-.699 1.154.081 1.762 1.18 1.762 1.18 1.025 1.755 2.688 1.248 3.34.956.104-.743.4-1.247.728-1.532-2.545-.291-5.207-1.273-5.207-5.66 0-1.253.447-2.277 1.18-3.078-.118-.29-.51-1.462.112-3.042 0 0 1.005-.308 3.3 1.18.958-.267 1.98-.4 3-.405 1.02.005 2.042.138 3 .405 2.292-1.488 3.297-1.18 3.297-1.18.622 1.58.232 2.752.114 3.042.72.8 1.166 1.825 1.166 3.078 0 4.396-2.665 5.365-5.22 5.647.41.354.777 1.054.777 2.123 0 1.534-.014 2.774-.014 3.15 0 .318.21.694.8.576C20.566 21.797 24 17.288 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/>
+    </svg>
+
+                </a>
+                <!-- LinkedIn Link -->
+                <a href="https://www.linkedin.com/in/charlie-bushman-8b0b59128/" target="_blank" class="text-white" title="LinkedIn">
+                    
+    <svg class=w-8 h-8 fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"/>
+    </svg>
+
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+
+    <!-- Project Page -->
+    <div class="container mx-auto flex flex-col mt-8 p-2 md:p-4 md:w-1/2">
+        
+
+
+    <!-- Project Hero -->
+    <div class="container flex flex-row">
+        <img src="/images/disctracker.png" class="w-48 h-48 rounded-full" alt="Project Image" />
+        <div class="flex flex-col justify-center ml-4">
+            <h1 class="text-4xl font-bold mb-2">Ultimate DiscTracker</h1>
+            <p class="text-lg italic">The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.</p>
+            <div class="flex flex-row mt-2">
+                
+                    <span class="text-sm bg-gray-200 text-gray-800 rounded-full px-2 py-1 mr-2">python</span>
+                
+                    <span class="text-sm bg-gray-200 text-gray-800 rounded-full px-2 py-1 mr-2">web</span>
+                
+                    <span class="text-sm bg-gray-200 text-gray-800 rounded-full px-2 py-1 mr-2">flask</span>
+                
+                    <span class="text-sm bg-gray-200 text-gray-800 rounded-full px-2 py-1 mr-2">sports analytics</span>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Project Section -->
+    <div>
+        <h2 class="text-2xl font-bold mt-4 mb-2">Overview</h2>
+        
+<p class="text-lg text-left">WORK IN PROGRESS. My goal was originally to create a real-time stat tracking app so that coaches could easily and actively track touches, turnovers, scores, play time, etc during a game and receive suggestions on how to stick to whatever plan they create for player management. That still sounds cool but my attention has drifted towards the data processing and analytics end of the process. Focus is lacking but dreams are big.</p>
+
+    </div>
+
+
+    </div>
+
+
+    </main>
+
+    <!-- Footer -->
+    <div class="flex-grow"></div> <!-- This div will take up remaining vertical space -->
+    <footer class="bg-gray-300 text-gray-700 text-center py-2">
+        <div class="container mx-auto">
+            <p>Always Learning. Always Building. XKCD Quoter.</p>
+            <p>&copy; 2025 Charlie Bushman. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
