@@ -1,5 +1,31 @@
 # Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This front-end is built with [Vue 3](https://vuejs.org/) and [Vite](https://vitejs.dev/).
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Getting started
+
+From this directory run:
+
+```bash
+npm install
+npm run dev
+```
+
+This starts Vite's development server so you can visit the site locally. Opening
+`index.html` directly without running the dev server results in errors like
+`Failed to resolve module specifier "vue"` because the modules are unbundled.
+
+To create a production build run:
+
+```bash
+npm run build
+npm run preview
+```
+
+`npm run preview` serves the built files from `dist/` so you can verify the
+output before deploying.
+
+The production build expects Vue and Vue Router to be provided from a CDN. The
+default `index.html` includes links to `https://unpkg.com/vue@3/dist/vue.global.prod.js`
+and `https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js`. These
+scripts must be available at runtime when hosting the generated files from S3.
