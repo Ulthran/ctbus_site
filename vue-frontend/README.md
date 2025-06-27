@@ -25,6 +25,9 @@ npm run preview
 `npm run preview` serves the built files from `dist/` so you can verify the
 output before deploying.
 
+After building, upload the contents of `dist/` to your S3 bucket (Terraform in
+the repo does this automatically).
+
 The production build expects Vue and Vue Router to be provided from a CDN. The
 default `index.html` includes links to `https://unpkg.com/vue@3/dist/vue.global.prod.js`
 and `https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js`. These

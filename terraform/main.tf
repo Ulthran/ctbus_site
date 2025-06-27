@@ -3,7 +3,8 @@ resource "aws_s3_bucket" "this" {
 }
 
 locals {
-  site_dir   = "${path.root}/../vue-frontend"
+  # Upload only the built static files from the Vue app.
+  site_dir   = "${path.root}/../vue-frontend/dist"
   site_files = fileset(local.site_dir, "**")
 
   mime_types = {
