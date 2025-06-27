@@ -1,26 +1,34 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-100 text-gray-800">
-    <nav class="bg-gray-700 text-white p-4">
-      <div class="container mx-auto flex space-x-4">
-        <router-link to="/" class="font-bold">Home</router-link>
-        <router-link to="/about" class="font-bold">About</router-link>
-        <router-link to="/blog" class="font-bold">Blog</router-link>
-        <router-link to="/projects" class="font-bold">Projects</router-link>
-      </div>
-    </nav>
-    <main class="flex-1">
+  <v-app>
+    <v-app-bar color="secondary" dark app>
+      <v-toolbar-title>
+        <router-link to="/" style="color: inherit; text-decoration: none;">ctbus</router-link>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn to="/about" variant="text" router>About</v-btn>
+      <v-btn to="/blog" variant="text" router>Blog</v-btn>
+      <v-btn to="/projects" variant="text" router>Projects</v-btn>
+    </v-app-bar>
+    <v-main class="pa-15">
       <router-view></router-view>
-    </main>
-    <footer class="bg-gray-300 text-center py-2">
-      <p>Always Learning. Always Building.</p>
-      <p>&copy; 2025 Charlie Bushman. All rights reserved.</p>
-    </footer>
-  </div>
+    </v-main>
+    <v-footer color="grey lighten-3" class="text-center">
+      <v-container>
+        <p>Always Learning. Always Building.</p>
+        <p>&copy; 2025 Charlie Bushman. All rights reserved.</p>
+      </v-container>
+    </v-footer>
+  </v-app>
 </template>
 
-<script setup>
+<script>
+const { computed } = Vue;
+const { useRouter } = VueRouter;
+export default {
+  name: 'App',
+  setup() {
+    const router = useRouter();
+    return {};
+  },
+};
 </script>
-
-<style>
-body { margin: 0; }
-</style>
