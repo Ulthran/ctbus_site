@@ -19,10 +19,10 @@ To build and deploy:
 
 - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
 - `cd vue-frontend && npm install`
-- `npm run build` to generate the static files in `dist/`
+- `npm run build` to generate static files in `vue-frontend/dist`
 - `cd ..`
 - `terraform init && terraform apply` to create/update the S3 bucket and
-  CloudFront distribution and upload the built files.
+  CloudFront distribution and upload the contents of `dist/`.
 
 To run locally,
 
