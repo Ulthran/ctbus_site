@@ -11,16 +11,18 @@ https://charliebushman.com
 
 ## Deployment
 
-It is deployed as a serverless flask site using zappa on AWS.
+The site is now a Vue application deployed to an S3 bucket and served through a
+CloudFront distribution. Infrastructure is managed with Terraform. All pages are
+written as Vue single file components.
 
--   `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
--   `python -m venv env`
--   `source env/bin/activate`
--   `pip install -r requirements.txt`
--   `pip install -r dev-requirements.txt` (for testing and development)
--   `zappa deploy`
--   `zappa update` (to update a previously deployed app)
--   `zappa tail` (to see logs)
+To build and deploy:
+
+- `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
+- `cd vue-frontend && npm install`
+- `npm run build` to generate the static files in `dist/`
+- `cd ..`
+- `terraform init && terraform apply` to create/update the S3 bucket and
+  CloudFront distribution and upload the built files.
 
 To run locally,
 
