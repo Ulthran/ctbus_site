@@ -1,8 +1,9 @@
-<template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-2">Generating Consistent Thematic Images</h1>
-    <p>A picture is, in fact, worth a thousand words when it comes to image generation.</p>
-  </div>
-</template>
 <script setup>
+import SimplePage from '../components/SimplePage.vue'
 </script>
+
+<template>
+  <SimplePage title="Generating Consistent Thematic Images">
+    <p>A picture is, in fact, worth a thousand words when it comes to image generation.</p>
+  </SimplePage>
+</template>

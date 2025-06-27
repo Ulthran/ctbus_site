@@ -1,8 +1,9 @@
-<template>
-  <div class="container mx-auto p-4 text-center">
-    <h1 class="text-2xl font-bold mb-2">About Me</h1>
-    <p>This is a placeholder about page converted from the Flask site.</p>
-  </div>
-</template>
 <script setup>
+import SimplePage from '../components/SimplePage.vue'
 </script>
+
+<template>
+  <SimplePage title="About Me">
+    <p>This is a placeholder about page converted from the Flask site.</p>
+  </SimplePage>
+</template>
