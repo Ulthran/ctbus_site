@@ -1,16 +1,17 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { computed } from 'vue'
 const route = useRoute()
-const html = ref('')
 
-onMounted(async () => {
+const pages = import.meta.glob('../project_pages/*.vue', { eager: true })
+
+const component = computed(() => {
   const name = route.params.project
-  const res = await fetch(`/projects/${name}.html`)
-  html.value = await res.text()
+  return pages[`../project_pages/${name}.vue`]
 })
 </script>
 
 <template>
-  <div class="container mx-auto p-4" v-html="html"></div>
+  <component :is="component" v-if="component" />
+  <div v-else class="container mx-auto p-4">Project not found.</div>
 </template>

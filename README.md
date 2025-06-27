@@ -12,7 +12,8 @@ https://charliebushman.com
 ## Deployment
 
 The site is now a Vue application deployed to an S3 bucket and served through a
-CloudFront distribution. Infrastructure is managed with Terraform.
+CloudFront distribution. Infrastructure is managed with Terraform. All pages are
+written as Vue single file components.
 
 To build and deploy:
 

@@ -1,18 +1,17 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import posts from '../data/posts.json'
-import { ref, onMounted } from 'vue'
+import { computed } from 'vue'
 
 const route = useRoute()
-const html = ref('')
+const posts = import.meta.glob('../posts/*.vue', { eager: true })
 
-onMounted(async () => {
+const component = computed(() => {
   const name = route.params.post
-  const res = await fetch(`/blog/${name}.html`)
-  html.value = await res.text()
+  return posts[`../posts/${name}.vue`]
 })
 </script>
 
 <template>
-  <div class="container mx-auto p-4" v-html="html"></div>
+  <component :is="component" v-if="component" />
+  <div v-else class="container mx-auto p-4">Post not found.</div>
 </template>
