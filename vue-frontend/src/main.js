@@ -17,15 +17,15 @@ const options = {
     },
   };
   window.loaderOptions = options;
-  window.componentsPath = './components';
-  window.viewsPath = './views';
-  window.postsPath = './posts';
-  window.projectsPath = './projects';
-  window.dataPath = './data';
+  window.componentsPath = './src/components';
+  window.viewsPath = './src/views';
+  window.postsPath = './src/posts';
+  window.projectsPath = './src/projects';
+  window.dataPath = './src/data';
   
   (async () => {
     const [App] = await Promise.all([
-      window['vue3-sfc-loader'].loadModule('./App.vue', options),
+      window['vue3-sfc-loader'].loadModule('./src/App.vue', options),
     ]);
   
     const router = VueRouter.createRouter({
@@ -35,7 +35,7 @@ const options = {
         { path: '/about', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/About.vue`, options) },
         { path: '/blog', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/BlogList.vue`, options) },
         { path: '/blog/:slug', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/BlogPost.vue`, options) },
-        { path: 'certifications', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/Certifications.vue`, options) },
+        { path: '/certifications', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/Certifications.vue`, options) },
         { path: '/education', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/Education.vue`, options) },
         { path: '/favorite-numbers', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/FavoriteNumber.vue`, options) },
         { path: '/music', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/Music.vue`, options) },
@@ -50,7 +50,7 @@ const options = {
     });
   
     const vuetify = Vuetify.createVuetify({
-      theme: {
+      /*theme: {
         defaultTheme: 'dark',
         themes: {
             dark: {
@@ -62,21 +62,9 @@ const options = {
               },
             },
         },
-      },
+      },*/
     });
   
-    const pinia = Pinia.createPinia();
-    const auth = window.useAuthStore(pinia);
-  
-    router.beforeEach((to, from, next) => {
-      auth.updateLoggedIn();
-      if (to.path === '/start' && auth.loggedIn) {
-        next('/console');
-      } else {
-        next();
-      }
-    });
-  
-    Vue.createApp(App).use(router).use(vuetify).use(pinia).mount('#app');
+    Vue.createApp(App).use(router).use(vuetify).mount('#app');
   })();
   
