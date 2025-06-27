@@ -5,6 +5,12 @@ projects_dict = {
         "tags": ["web", "flask", "python", "serverless"],
         "image": "Bvnrihioon.png",
     },
+    "disctracker": {
+        "title": "Ultimate DiscTracker",
+        "subtitle": "The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.",
+        "tags": ["python", "web", "flask", "sports analytics"],
+        "image": "disctracker.png",
+    },
     "spotify-vis": {
         "title": "Spotify Visualizer",
         "subtitle": "A quick and dirty serverless data dashboard for visualizing Spotify playlist information.",
@@ -22,12 +28,6 @@ projects_dict = {
         "subtitle": "A serverless ETL pipeline I'm developing in AWS to aggregate and analyze health data I keep in many different formats and locations.",
         "tags": ["aws", "data engineering", "serverless"],
         "image": "Bvnrihioon.png",
-    },
-    "disctracker": {
-        "title": "Ultimate DiscTracker",
-        "subtitle": "The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.",
-        "tags": ["python", "web", "flask", "sports analytics"],
-        "image": "disctracker.png",
     },
 }
 

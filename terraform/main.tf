@@ -2,6 +2,33 @@ resource "aws_s3_bucket" "this" {
   bucket = var.bucket_name
 }
 
+locals {
+  site_dir   = "${path.root}/../vue-frontend"
+  site_files = fileset(local.site_dir, "**")
+
+  mime_types = {
+    html = "text/html"
+    js   = "application/javascript"
+    css  = "text/css"
+    vue  = "text/plain"
+    ico  = "image/x-icon"
+    json = "application/json"
+  }
+}
+
+resource "aws_s3_object" "site" {
+  for_each = local.site_files
+  bucket   = aws_s3_bucket.this.id
+  key      = each.key
+  content  = each.value
+  content_type = lookup(
+    local.mime_types,
+    lower(element(reverse(split(".", each.key)), 0)),
+    "text/plain",
+  )
+  etag = md5(each.value)
+}
+
 resource "aws_cloudfront_origin_access_identity" "this" {
   comment = "Website access"
 }
