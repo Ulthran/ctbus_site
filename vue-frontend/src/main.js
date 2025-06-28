@@ -22,7 +22,7 @@ const options = {
   window.postsPath = './src/posts';
   window.projectsPath = './src/projects';
   window.dataPath = './src/data';
-  window.CDN_URL = window.CDN_URL || '';
+  window.CDN_URL = 'CDN_URL';
   
   (async () => {
     const [App] = await Promise.all([
