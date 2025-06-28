@@ -3,7 +3,7 @@ flask-sitemapper
 zappa
 werkzeug>=3.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
 wheel>=0.38.0 # not directly required, pinned by Snyk to avoid a vulnerability
-requests==2.28.2 # Pinned to avoid deployment error, flagged by Snyk as a vulnerability
+requests==2.32.4 # Pinned to avoid deployment error, flagged by Snyk as a vulnerability
 # This vulnerability can be avoided by setting allow_redirects to False on all calls through Requests top-level APIs, and then capturing the 3xx response codes to make a new request to the redirect destination
 python-dotenv
 # TODO: Remove below requirements
