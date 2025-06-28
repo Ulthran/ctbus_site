@@ -3,16 +3,25 @@ resource "aws_s3_bucket" "this" {
 }
 
 locals {
-  # Upload only the built static files from the Vue app.
-  site_dir   = "${path.root}/../vue-frontend/dist"
+  site_dir   = "${path.root}/../vue-frontend"
   site_files = fileset(local.site_dir, "**")
+  placeholders = {
+    "CDN_URL" = var.cdn_url
+  }
+
+  processed_files = {
+    for f in local.site_files :
+    f => replace(
+      file("${local.site_dir}/${f}"),
+      "CDN_URL", local.placeholders["CDN_URL"]
+    ),
+  }
 
   mime_types = {
     html = "text/html"
     js   = "application/javascript"
     css  = "text/css"
     vue  = "text/plain"
-    ico  = "image/x-icon"
     json = "application/json"
   }
 }
