@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  window.location.href = '/documents/resume.pdf'
+  window.location.href = 'CDN_URL/documents/resume.pdf'
 })
 </script>
 
