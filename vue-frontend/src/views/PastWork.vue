@@ -33,7 +33,7 @@ const workCards = [
   <Hero title="My Previous Employment" />
   <v-container>
     <v-row justify="center">
-      <v-col cols="12" md="8" v-for="(card, i) in workCards" :key="i">
+      <v-col cols="12" md="8" v-for="(card, i) in workCards" :key="card.title">
         <v-card class="ma-4" :href="card.link" target="_blank">
           <v-row no-gutters>
             <v-col cols="12" md="4">
