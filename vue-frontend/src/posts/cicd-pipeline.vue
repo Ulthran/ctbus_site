@@ -1,6 +1,5 @@
 <script setup>
 import SimplePage from '../components/SimplePage.vue'
-const CDN_URL = window.CDN_URL || ''
 </script>
 
 <template>
@@ -416,7 +415,7 @@ const CDN_URL = window.CDN_URL || ''
     </pre>
     <h3 >Conclusions</h3>
     <p >I wasn't convinced this would actually be useful at the start of this project. It was more of a learning project and something that might come in handy if this site ever scales up significatly. But I was absolutely wrong! Just in the process of building the PR to add this workflow I caught so many things that I normally wouldn't until later down the line or at all. I could see within minutes whether or not site configuration changes had messed up the actual deployment. I made low contrast elements and images without alt text more accessible. I added Content Security Policy headers to prevent common attacks. The positive impact that this pipeline has had on my web app practices and should continue to have on this site when I forget these practices in the future or encounter new terrain is enourmous.</p>
-    <img src="${CDN_URL}/images/ctbus_site_cd_workflow_success.png" alt="CI/CD Workflow Success" >
+    <img src="CDN_URL/images/ctbus_site_cd_workflow_success.png" alt="CI/CD Workflow Success" >
     <p >And it's free. As long as the project is open source on GitHub, I have as much GHA runner usage as I can handle. If you have a web app deployed through zappa, there's almost no downside to implementing a similar CI/CD pipeline to improve the quality, security, and accessibility of your app.</p>
   </SimplePage>
 </template>
