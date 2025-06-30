@@ -3,7 +3,7 @@ import SimplePage from '../components/SimplePage.vue'
 </script>
 
 <template>
-  <SimplePage title="Favorite Number">
-    <p>The number 3 is pretty neat.</p>
+  <SimplePage title="27">
+    <p>It's 3<sup>3</sup>, what's not to like?</p>
   </SimplePage>
 </template>

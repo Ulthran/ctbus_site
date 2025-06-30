@@ -4,6 +4,9 @@ import SimplePage from '../components/SimplePage.vue'
 
 <template>
   <SimplePage title="Education">
-    <p>Education history summary.</p>
+    <ul>
+      <li><a href="https://www.carleton.edu/" target="_blank">Carleton College</a></li>
+      <li><a href="https://www.marbleheadschools.org/marblehead-high-school" target="_blank">Marblehead High School</a></li>
+    </ul>
   </SimplePage>
 </template>

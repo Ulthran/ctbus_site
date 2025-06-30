@@ -4,6 +4,6 @@ import SimplePage from '../components/SimplePage.vue'
 
 <template>
   <SimplePage title="Sports">
-    <p>Placeholder sports stats.</p>
+    <p>I enjoy ultimate frisbee, chess, skiing, soccer, badminton, and even a bit of squash.</p>
   </SimplePage>
 </template>
