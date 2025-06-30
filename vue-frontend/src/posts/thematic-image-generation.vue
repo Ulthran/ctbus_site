@@ -1,6 +1,6 @@
 <script setup>
 import BlogHero from '../components/BlogHero.vue'
-import posts from '../data/posts.js'
+const posts = window.posts
 const slug = 'thematic-image-generation'
 const info = posts[slug]
 </script>
