@@ -14,7 +14,7 @@ locals {
     f => replace(
       file("${local.site_dir}/${f}"),
       "CDN_URL", local.placeholders["CDN_URL"]
-    ),
+    )
   }
 
   mime_types = {
@@ -27,7 +27,7 @@ locals {
 }
 
 resource "aws_s3_object" "site" {
-  for_each = local.site_files
+  for_each = local.processed_files
   bucket   = aws_s3_bucket.this.id
   key      = each.value
   source   = "${local.site_dir}/${each.value}"
