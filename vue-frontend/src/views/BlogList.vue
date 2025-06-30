@@ -1,5 +1,5 @@
 <script setup>
-import posts from '../data/posts.js'
+const posts = window.posts
 </script>
 
 <template>

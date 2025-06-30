@@ -1,6 +1,6 @@
 <script setup>
 import ProjectHero from '../components/ProjectHero.vue'
-import projects from '../data/projects.js'
+const projects = window.projects
 
 const info = projects['disctracker']
 const CDN_URL = 'CDN_URL'
