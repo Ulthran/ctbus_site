@@ -1,5 +1,5 @@
 <script setup>
-import projects from '../data/projects.js'
+const projects = window.projects
 </script>
 
 <template>
