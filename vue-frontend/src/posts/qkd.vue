@@ -1,9 +1,19 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import BlogHero from '../components/BlogHero.vue'
+import posts from '../data/posts.js'
+const slug = 'qkd'
+const info = posts[slug]
 </script>
 
 <template>
-  <SimplePage title="Quantum Key Distribution">
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4">
     <p >Towards the end of Junior year quantum mechanics we were given an assignment along the lines of go find something cool (quantum mechanics related) and research it and write a short paper on your findings. I picked quantum key distribution (QKD) as my subject because it sounds cool. Turns out, it also is cool. There's a fair amount of groundwork to do to convince others of that though; I'll do my best here, then you can read the paper.</p>
     <h3 >What is This and Why Do We Care?</h3>
     <p >One of the oldest and most widely used cryptographic algorithms is RSA, which uses a public and private key to encrypt and decrypt messages and which relies on the computational complexity of factoring prime numbers for its security. If I want to send you a message using RSA, the steps are fairly straightforward. First, you take two big prime numbers and you multiply them together. The product is your public key and the two starting numbers are your private key (oversimplification). You make your public key public so that I can find it (as can anyone else who might be eavesdropping). Second, I encrypt the super secret file I want to send you with this big number using the RSA algorithm. Then I can send you the encrypted file without worrying about anyone eavesdropping because even if they see what I send, it's just jibberish without the two prime numbers you kept to yourself. You, with the two prime numbers, can use RSA sort of in reverse to decrypt the super secret file.</p>
@@ -14,5 +24,5 @@ import SimplePage from '../components/SimplePage.vue'
     <p >Information theory is a surprisingly recent field that is also surprisingly fundamental. The basic idea behind it is that the information content of anything can be quantified by determining how many bits it would take to represent it. For instance, the number 1000 encodes 10 bits of information because in binary it is 1111101000. The number 1 only has 1 bit of information. But information content is also context dependent. In the context of picking a random number, 127 encodes 7 bits of information because its binary representation is 1111111. However, 1111111 taken as a string, has extremely low entropy -- essentially randomness -- and as such has a low information content. You can easily get into some mind bending situations if you don't keep track of your context as you calculate information content.</p>
     <p >Extending this to quantum information theory, the only thing that changes is the unit, the bit, becomes a quantum bit (qubit). Now instead of a bit encoding either 1 or 0, it is a superposition of the two, which can be represented as a vector of two real (normalized) numbers. So in theory a qubit holds infinitely more information than a bit, though in practice our ability to measure a qubit's exact state without error is severely lacking with current technology. The advantage that this gives quantum computing over classical is that it turns all your logic operations into big matrices that can chug through NP-hard problems very efficiently (problems like cracking RSA).</p>
     <p >There are a couple weird rules with qubits that I feel compelled to cover before letting you go off and read my little paper. The first is that qubits cannot be copied. We know of no physical way in which someone can take a qubit and make an exact copy of it without changing the value of the original. The second is that a qubit can only hold information in one of many bases and when it is measured in a different basis its information content will change. Basically, qubits are very finicky about information access in ways that make the universe work as we know it. Now you're ready, enjoy!</p>
-  </SimplePage>
+  </v-container>
 </template>

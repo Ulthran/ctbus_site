@@ -1,9 +1,19 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import BlogHero from '../components/BlogHero.vue'
+import posts from '../data/posts.js'
+const slug = 'cicd-pipeline'
+const info = posts[slug]
 </script>
 
 <template>
-  <SimplePage title="CI/CD Pipeline with GitHub Actions">
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4">
     <p >Deploying a zappa site takes time. Not that much, a couple minutes, but it means that it's a pain to do regularly which means that I didn't do it regularly. Instead I developed and tested with a local version and then would push straight to production once that was where I wanted it. And that approach worked, but it had some downsides, such as having to manually deploy changes (even just once in a while) and not catching deployment issues early (like installing huge dependencies and having lambda reject the package for being too big). These are the kind of issues that scale with complexity so I figured I'd get a jumpstart and automate as much as I could now, get the infrastructure in place to go above and beyond the project's CI/CD needs. The end goal is a pipeline like this: version control -> tests/static analysis -> build & push artifact -> dev deployment -> test dev deployment -> prod deployment (on PR merge)</p>
     <h3 >Starting with Simple CI</h3>
     <p >As a starting point, I need to implement some basic CI workflows, which I'm already familiar with from developing scientific software packages. I use GitHub Actions (GHA) for everything cause that's what I'm used to. Adding a unit testing workflow with PyTest is relatively straightforward:</p>
@@ -417,5 +427,5 @@ import SimplePage from '../components/SimplePage.vue'
     <p >I wasn't convinced this would actually be useful at the start of this project. It was more of a learning project and something that might come in handy if this site ever scales up significatly. But I was absolutely wrong! Just in the process of building the PR to add this workflow I caught so many things that I normally wouldn't until later down the line or at all. I could see within minutes whether or not site configuration changes had messed up the actual deployment. I made low contrast elements and images without alt text more accessible. I added Content Security Policy headers to prevent common attacks. The positive impact that this pipeline has had on my web app practices and should continue to have on this site when I forget these practices in the future or encounter new terrain is enourmous.</p>
     <img src="CDN_URL/images/ctbus_site_cd_workflow_success.png" alt="CI/CD Workflow Success" >
     <p >And it's free. As long as the project is open source on GitHub, I have as much GHA runner usage as I can handle. If you have a web app deployed through zappa, there's almost no downside to implementing a similar CI/CD pipeline to improve the quality, security, and accessibility of your app.</p>
-  </SimplePage>
+  </v-container>
 </template>
