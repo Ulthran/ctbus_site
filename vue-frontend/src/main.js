@@ -46,7 +46,7 @@ const options = {
         { path: '/projects/:slug', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/ProjectDetail.vue`, options) },
         { path: '/resume', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/Resume.vue`, options) },
         { path: '/sports', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/Sports.vue`, options) },
-        { path: '/:pathMatch(.*)*', component: () => window['vue3-sfc-loader'].loadModule(`${window.componentsPath}/NotFound.vue`, options) },
+        { path: '/:pathMatch(.*)*', component: () => window['vue3-sfc-loader'].loadModule(`${window.viewsPath}/NotFound.vue`, options) },
       ],
     });
   
