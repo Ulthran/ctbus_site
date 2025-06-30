@@ -11,6 +11,7 @@ const projects = window.projects
         :key="name"
         :to="`/projects/${name}`"
         link
+        :prepend-avatar="`CDN_URL/images/${proj.image}`"
       >
         <v-list-item-title>{{ proj.title }}</v-list-item-title>
         <v-list-item-subtitle>{{ proj.subtitle }}</v-list-item-subtitle>
