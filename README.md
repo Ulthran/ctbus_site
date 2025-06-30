@@ -24,11 +24,19 @@ To deploy the site:
   CloudFront distribution. The CDN will be
   reachable at `https://vue.charliebushman.com`.
 
-To run locally, start a simple web server from the `vue-frontend` directory:
+To run locally, start the helper server which replaces Terraform placeholders:
 
-- `cd vue-frontend && python3 -m http.server`
+- `python3 scripts/serve_vue.py`
+
+The script reads environment variables like `CDN_URL` from a `.env` file if
+present and serves the Vue files with those placeholders replaced.
 
 Then open the given address in your browser.
+
+While running locally, you can quickly debug individual Vue components by
+navigating to `/component/ComponentName`. For example, visiting
+`http://localhost:8000/component/Hero` renders `src/components/Hero.vue` on its
+own page.
 
 Some environment variables are defined in `zappa_settings.json` but others are secret and are defined in a json file uploaded to a bucket defined by `remote_env`. For local deployments, just put everything in a `.env` file.
 
