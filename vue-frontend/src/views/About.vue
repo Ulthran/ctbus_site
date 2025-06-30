@@ -54,6 +54,11 @@ const timelineEvents = [
 </script>
 
 <template>
-  <Hero title="About Me" subtitle="Building the infrastructure behind <b>reliable</b>, <b>reproducible</b>, and <b>high performance</b> research and development." />
-  <Timeline :events="timelineEvents" />
+  <Hero
+    title="About Me"
+    subtitle="Building the infrastructure behind <b>reliable</b>, <b>reproducible</b>, and <b>high performance</b> research and development."
+  />
+  <v-container class="pt-0 pb-10">
+    <Timeline :events="timelineEvents" />
+  </v-container>
 </template>
