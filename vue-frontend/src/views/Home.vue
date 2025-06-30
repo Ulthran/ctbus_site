@@ -52,7 +52,7 @@ const buttons = [
   >
     <v-row justify="center" class="my-4">
       <v-col cols="auto" v-for="cert in certs" :key="cert.href">
-        <a :href="cert.href" target="_blank">
+        <a :href="cert.href" target="_blank" rel="noopener noreferrer">
           <v-img :src="cert.src" :alt="cert.alt" :height="cert.h" :width="cert.w" contain />
         </a>
       </v-col>
