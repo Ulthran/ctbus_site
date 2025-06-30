@@ -7,7 +7,6 @@ variable "bucket_name" {
 variable "cdn_url" {
   type        = string
   description = "The URL of the assets CDN."
-  default     = "https://vue.charliebushman.com"
 }
 
 variable "hostname" {
@@ -20,4 +19,13 @@ variable "zone_name" {
   type        = string
   description = "Route53 hosted zone to create the record in"
   default     = "charliebushman.com"
+}
+variable "spotify_client_id" {
+  type        = string
+  description = "Spotify API client ID"
+}
+
+variable "spotify_client_secret" {
+  type        = string
+  description = "Spotify API client secret"
 }

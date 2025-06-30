@@ -1,29 +1,28 @@
 <script setup>
 import Hero from '../components/Hero.vue'
-const CDN_URL = window.CDN_URL || ''
 
 const workCards = [
   {
     title: 'Lead Developer for Nightly',
     body: 'In college a friend pitched a party planning app for a startup competition. I built a prototype with React Native and AWS Amplify and later helped refine the web and mobile apps alongside a small team before joining the PCMP.',
-    img: `${CDN_URL}/images/latenite_logo.png`,
+    img: `CDN_URL/images/latenite_logo.png`,
   },
   {
     title: 'HPE Software Internship',
     body: 'I worked with the GreenLake team on a large scale data migration pipeline, learning Scrum and tackling challenges around flexible data ingestion and processing.',
-    img: `${CDN_URL}/images/hpe_greenlake.png`,
+    img: `CDN_URL/images/hpe_greenlake.png`,
     link: 'https://hpe.com/us/en/greenlake.html',
   },
   {
     title: 'Owl Labs Software Internship',
     body: 'At Owl Labs I created a unit testing framework for their Meeting Owl firmware and later built internal inventory tools.',
-    img: `${CDN_URL}/images/owllabs.png`,
+    img: `CDN_URL/images/owllabs.png`,
     link: 'https://owllabs.com',
   },
   {
     title: 'HepatoChem Software Internship',
     body: 'During high school I built an Access database to manage inventory for HepatoChem\'s biomimetic screening kits.',
-    img: `${CDN_URL}/images/hepatochem.png`,
+    img: `CDN_URL/images/hepatochem.png`,
     link: 'https://hepatochem.com',
   },
 ]
