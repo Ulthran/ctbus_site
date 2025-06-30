@@ -7,7 +7,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container mx-auto p-4 text-center">
+  <v-container class="text-center">
     <p>Redirecting to resume...</p>
-  </div>
+  </v-container>
 </template>

@@ -10,11 +10,11 @@ function clearKey(key){
 </script>
 
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Session Data</h1>
+  <v-container>
+    <h1 class="text-h5 font-weight-bold mb-4">Session Data</h1>
     <div v-for="(value,key) in sessionData" :key="key" class="mb-2">
       <span class="font-mono">{{ key }}: {{ value }}</span>
-      <button class="ml-2 text-blue-600 underline" @click="clearKey(key)">remove</button>
+      <v-btn variant="text" size="x-small" class="ml-2" @click="clearKey(key)">remove</v-btn>
     </div>
-  </div>
+  </v-container>
 </template>
