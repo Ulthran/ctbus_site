@@ -21,7 +21,7 @@ const workCards = [
   },
   {
     title: 'HepatoChem Software Internship',
-    body: 'During high school I built an Access database to manage inventory for HepatoChem\'s biomimetic screening kits.',
+    body: 'During high school I built an MS Access database and interface to manage inventory for HepatoChem\'s biomimetic screening kits.',
     img: `CDN_URL/images/hepatochem.png`,
     link: 'https://hepatochem.com',
   },
