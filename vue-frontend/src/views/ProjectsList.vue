@@ -15,7 +15,7 @@ const projects = window.projects
       >
         <v-list-item-title>{{ proj.title }}</v-list-item-title>
         <v-list-item-subtitle>{{ proj.subtitle }}</v-list-item-subtitle>
-        <template v-slot:append>
+        <v-list-item-subtitle>
           <div class="d-flex flex-wrap">
             <v-chip
               v-for="tag in proj.tags"
@@ -27,7 +27,7 @@ const projects = window.projects
               {{ tag }}
             </v-chip>
           </div>
-        </template>
+        </v-list-item-subtitle>
       </v-list-item>
     </v-list>
   </v-container>

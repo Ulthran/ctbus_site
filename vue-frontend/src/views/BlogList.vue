@@ -23,7 +23,7 @@ const posts = window.posts
         <v-list-item-title>{{ post.title }}</v-list-item-title>
         <v-list-item-subtitle>{{ post.subtitle }}</v-list-item-subtitle>
         <v-list-item-subtitle class="text-caption">{{ post.date }}</v-list-item-subtitle>
-        <template v-slot:append>
+        <v-list-item-subtitle>
           <div class="d-flex flex-wrap">
             <v-chip
               v-for="tag in post.tags"
@@ -35,7 +35,7 @@ const posts = window.posts
               {{ tag }}
             </v-chip>
           </div>
-        </template>
+        </v-list-item-subtitle>
       </v-list-item>
     </v-list>
   </v-container>
