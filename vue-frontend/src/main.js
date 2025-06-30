@@ -17,15 +17,18 @@ const options = {
     },
   };
   window.loaderOptions = options;
-  window.componentsPath = './src/components';
-  window.viewsPath = './src/views';
-  window.postsPath = './src/posts';
-  window.projectsPath = './src/projects';
-  window.dataPath = './src/data';
+  // use absolute paths so navigation from nested routes works correctly
+  const basePath = '/src';
+  window.basePath = basePath;
+  window.componentsPath = `${basePath}/components`;
+  window.viewsPath = `${basePath}/views`;
+  window.postsPath = `${basePath}/posts`;
+  window.projectsPath = `${basePath}/projects`;
+  window.dataPath = `${basePath}/data`;
   
   (async () => {
     const [App] = await Promise.all([
-      window['vue3-sfc-loader'].loadModule('./src/App.vue', options),
+      window['vue3-sfc-loader'].loadModule(`${basePath}/App.vue`, options),
     ]);
   
     const router = VueRouter.createRouter({
@@ -67,4 +70,3 @@ const options = {
   
     Vue.createApp(App).use(router).use(vuetify).mount('#app');
   })();
-  
