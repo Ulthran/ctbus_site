@@ -1,5 +1,5 @@
 <script setup>
-import projects from '../data/projects.json'
+import projects from '../data/projects.js'
 </script>
 
 <template>

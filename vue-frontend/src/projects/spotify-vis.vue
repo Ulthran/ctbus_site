@@ -1,6 +1,6 @@
 <script setup>
 import ProjectHero from '../components/ProjectHero.vue'
-import projects from '../data/projects.json'
+import projects from '../data/projects.js'
 
 const info = projects['spotify-vis']
 const CDN_URL = 'CDN_URL'
