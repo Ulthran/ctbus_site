@@ -3,7 +3,6 @@ import ProjectHero from '../components/ProjectHero.vue'
 const projects = window.projects
 
 const info = projects['disctracker']
-const CDN_URL = 'CDN_URL'
 </script>
 
 <template>
@@ -11,7 +10,7 @@ const CDN_URL = 'CDN_URL'
     :title="info.title"
     :subtitle="info.subtitle"
     :tags="info.tags"
-    :img="`${CDN_URL}/images/${info.image}`"
+    :img="`CDN_URL/images/${info.image}`"
   />
   <v-container>
     <h2 class="text-h6 font-weight-bold mb-2">Overview</h2>

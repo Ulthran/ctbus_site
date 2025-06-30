@@ -1,6 +1,5 @@
 <script setup>
 import SimplePage from '../components/SimplePage.vue'
-const CDN_URL = window.CDN_URL || ''
 </script>
 
 <template>
