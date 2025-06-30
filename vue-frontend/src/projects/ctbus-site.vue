@@ -3,7 +3,6 @@ import ProjectHero from '../components/ProjectHero.vue'
 const projects = window.projects
 
 const info = projects['ctbus-site']
-const CDN_URL = 'CDN_URL'
 
 const badges = [
   {
@@ -23,23 +22,24 @@ const badges = [
     :title="info.title"
     :subtitle="info.subtitle"
     :tags="info.tags"
-    :img="`${CDN_URL}/images/${info.image}`"
+    :img="`CDN_URL/images/${info.image}`"
   />
   <v-container>
     <h2 class="text-h6 font-weight-bold mb-2">Overview</h2>
     <p>
       It's my website! I've spent a lot of time working on this, evolving it into the thing you see now.
-      Not all of it is pretty, there are ideas and remnants of ideas that should definitely be cleaned up
-      (and I am working on cleaning them up all the time). But I'm proud of it and I like working on it.
+      Not all of it is pretty, there are ideas and remnants of ideas floating around places. But I'm proud of it and I like working on it.
       Hopefully you like it and find what you came here looking for. :)
     </p>
 
     <h2 class="text-h6 font-weight-bold mt-4 mb-2">Dev</h2>
     <p>
-      Built with Flask, stylized with Tailwind CSS, and deployed "serverlessly" on AWS with Zappa.
+      A Vue site deployed through AWS S3 and CloudFront using Terraform for infrastructure management.
       It began as a PHP-based site using Laravel and running on an EC2 instance.
       From there it progressed to being a collection of statically sourced HTML pages from an S3 bucket.
-      And then to it's current incarnation. There are absolutely no fun easter-eggs so don't bother looking.
+      The next step was making it dynamic and "serverless" with Flask, stylized with Tailwind CSS, and Zappa.
+      And then to it's current, properly serverless incarnation.
+      There are absolutely no fun easter-eggs so don't bother looking.
     </p>
     <v-row class="my-2" justify="center">
       <v-col cols="auto" v-for="badge in badges" :key="badge.href">
@@ -52,7 +52,7 @@ const badges = [
     <h2 class="text-h6 font-weight-bold mt-4 mb-2">Links</h2>
     <v-row>
       <v-col cols="auto">
-        <a href="https://charliebushman.com" target="_blank" title="My Site">
+        <a href="https://charliebushman.com" target="_blank" title="charliebushman.com">
           <v-btn variant="text" icon>
             <i class="fas fa-globe"></i>
           </v-btn>
