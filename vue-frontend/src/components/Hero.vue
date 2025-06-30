@@ -1,13 +1,17 @@
 <template>
-  <div class="container mx-auto flex-1 mt-8 p-2 md:p-4 text-center md:w-1/2">
-    <h1 class="text-4xl font-bold mb-2">{{ title }}</h1>
-    <p class="text-lg" v-html="subtitle"></p>
-    <slot />
-  </div>
+  <v-container class="mt-8 text-center">
+    <v-row justify="center">
+      <v-col cols="12" md="6">
+        <h1 class="text-h4 font-weight-bold mb-2">{{ title }}</h1>
+        <p v-html="subtitle" class="text-subtitle-1"></p>
+        <slot />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script setup>
 defineProps({
   title: String,
-  subtitle: String
-})
+  subtitle: String,
+});
 </script>

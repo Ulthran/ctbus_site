@@ -3,13 +3,13 @@ import posts from '../data/posts.json'
 </script>
 
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Blog</h1>
+  <v-container>
+    <h1 class="text-h5 font-weight-bold mb-4">Blog</h1>
     <div v-for="(post, name) in posts" :key="name" class="mb-4">
       <router-link :to="`/blog/${name}`" class="text-blue-600 underline">
         {{ post.title }}
       </router-link>
-      <p class="text-sm">{{ post.subtitle }}</p>
+      <p class="text-caption">{{ post.subtitle }}</p>
     </div>
-  </div>
+  </v-container>
 </template>

@@ -13,5 +13,5 @@ const component = computed(() => {
 
 <template>
   <component :is="component" v-if="component" />
-  <div v-else class="container mx-auto p-4">Post not found.</div>
+  <v-container v-else>Post not found.</v-container>
 </template>
