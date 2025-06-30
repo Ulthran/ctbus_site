@@ -13,7 +13,7 @@ function clearKey(key){
   <v-container>
     <h1 class="text-h5 font-weight-bold mb-4">Session Data</h1>
     <div v-for="(value,key) in sessionData" :key="key" class="mb-2">
-      <span class="font-mono">{{ key }}: {{ value }}</span>
+      <code>{{ key }}: {{ value }}</code>
       <v-btn variant="text" size="x-small" class="ml-2" @click="clearKey(key)">remove</v-btn>
     </div>
   </v-container>

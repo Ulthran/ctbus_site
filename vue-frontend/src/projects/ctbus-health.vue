@@ -1,9 +1,27 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import ProjectHero from '../components/ProjectHero.vue'
+import projects from '../data/projects.json'
+
+const info = projects['ctbus-health']
+const CDN_URL = 'CDN_URL'
 </script>
 
 <template>
-  <SimplePage title="CTBus Health">
-    <p>A serverless ETL pipeline I'm developing in AWS to aggregate and analyze health data I keep in many different formats and locations.</p>
-  </SimplePage>
+  <ProjectHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :tags="info.tags"
+    :img="`${CDN_URL}/images/${info.image}`"
+  />
+  <v-container>
+    <h2 class="text-h6 font-weight-bold mb-2">Overview</h2>
+    <p>
+      WORK IN PROGRESS. I've been keeping more and more personal biometric data as I figure out
+      what I care about and what maybe I should care about. I've had a heart rate tracking watch
+      of some sort for years now. I've been tracking my weight daily for almost a year. And as of
+      2025 I'm keeping track of everything I eat as well. All that data deserves a good pipeline so
+      I'm taking the chance to apply all my newfound knowledge of AWS SAM and Glue and create a
+      serverless ETL pipeline.
+    </p>
+  </v-container>
 </template>
