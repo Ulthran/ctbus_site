@@ -13,7 +13,7 @@ const info = posts[slug]
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
-  <v-container class="py-4">
+  <v-container class="py-4 blog-content">
     <h3 class="text-
     xl font-bold my-4">Intro</h3>
     <i >Some background on the <a  href="">original CI/CD pipeline I created for this site</a> and on the <a  href="">Ultimate Disctracker (UDT)</a> project (which I copied a lot of the CI/CD for) linked here.</i>

@@ -13,7 +13,7 @@ const info = posts[slug]
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
-  <v-container class="py-4">
+  <v-container class="py-4 blog-content">
     <p >It's all well and good to keep playing around with the newest technologies; make everything serverless, highly-available, and AI-driven. But sometimes a simple application of a couple really old tools is all you need to get a job done and it's always good to stay in practice with them too.</p>
     <p >I'd been considering potential designs for a personal finance app. Thinking thoughts like: how do I secure automated exports from multiple financial institutions? How do I manage authentication for the database access? Can I do the whole thing serverlessly? After considering all this for a while, I came to thinking that for this a simplest form solution might actually be best. One where I import data manually, don't have to worry about auth because it's all local, and is portable to many other potential personal-data-storage-and-viewing-type applications.</p><br />
     <p >The GitHub repository can be found <a  href="https://github.com/Ulthran/ctbus_finance" target="_blank">here</a>.</p>

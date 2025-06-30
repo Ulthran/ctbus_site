@@ -13,7 +13,7 @@ const info = posts[slug]
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
-  <v-container class="py-4">
+  <v-container class="py-4 blog-content">
     <p >Towards the end of Junior year quantum mechanics we were given an assignment along the lines of go find something cool (quantum mechanics related) and research it and write a short paper on your findings. I picked quantum key distribution (QKD) as my subject because it sounds cool. Turns out, it also is cool. There's a fair amount of groundwork to do to convince others of that though; I'll do my best here, then you can read the paper.</p>
     <h3 >What is This and Why Do We Care?</h3>
     <p >One of the oldest and most widely used cryptographic algorithms is RSA, which uses a public and private key to encrypt and decrypt messages and which relies on the computational complexity of factoring prime numbers for its security. If I want to send you a message using RSA, the steps are fairly straightforward. First, you take two big prime numbers and you multiply them together. The product is your public key and the two starting numbers are your private key (oversimplification). You make your public key public so that I can find it (as can anyone else who might be eavesdropping). Second, I encrypt the super secret file I want to send you with this big number using the RSA algorithm. Then I can send you the encrypted file without worrying about anyone eavesdropping because even if they see what I send, it's just jibberish without the two prime numbers you kept to yourself. You, with the two prime numbers, can use RSA sort of in reverse to decrypt the super secret file.</p>
