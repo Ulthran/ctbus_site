@@ -15,21 +15,17 @@ The site is now a Vue application deployed to an S3 bucket and served through a
 CloudFront distribution. Infrastructure is managed with Terraform. All pages are
 written as Vue single file components.
 
-To build and deploy:
+To deploy the site:
 
 - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
-- `cd vue-frontend && npm install`
-- `npm run build` to generate static files in `vue-frontend/dist`
-- `cd ..`
 - `terraform init && terraform apply` to create/update the S3 bucket and
-  CloudFront distribution and upload the contents of `dist/`.
+  CloudFront distribution and upload the contents of `vue-frontend/`.
 
-To run locally,
+To run locally, start a simple web server from the `vue-frontend` directory:
 
--   `source env/bin/activate`
--   `export FLASK_DEBUG=1 && flask --app app/app run`
+- `cd vue-frontend && python3 -m http.server`
 
-And go to the address given.
+Then open the given address in your browser.
 
 Some environment variables are defined in `zappa_settings.json` but others are secret and are defined in a json file uploaded to a bucket defined by `remote_env`. For local deployments, just put everything in a `.env` file.
 
