@@ -13,34 +13,42 @@ const info = projects['ctbus-finance']
     :img="`CDN_URL/images/${info.image}`"
   />
   <v-container>
-    <h2 class="text-h6 font-weight-bold mb-2">Overview</h2>
-    <p>
-      Just a minimal example of using Python and SQL for some personal data management.
-      Sometimes you just don't need to go any fancier.
-    </p>
+    <v-card class="mb-4">
+      <v-card-title>Overview</v-card-title>
+      <v-card-text>
+        Just a minimal example of using Python and SQL for some personal data management.
+        Sometimes you just don't need to go any fancier.
+      </v-card-text>
+    </v-card>
 
-    <h2 class="text-h6 font-weight-bold mt-4 mb-2">Dev</h2>
-    <p>
-      The data model is built using SQLAlchemy. Pandas for ingesting data from CSVs
-      and Yahoo finance for hydrating market values. SQLite for the database.
-    </p>
+    <v-card class="mb-4">
+      <v-card-title>Dev</v-card-title>
+      <v-card-text>
+        The data model is built using SQLAlchemy. Pandas for ingesting data from CSVs
+        and Yahoo finance for hydrating market values. SQLite for the database.
+      </v-card-text>
+    </v-card>
 
-    <h2 class="text-h6 font-weight-bold mt-4 mb-2">Links</h2>
-    <v-row>
-      <v-col cols="auto">
-        <router-link to="/blog/ctbus-finance">
-          <v-btn variant="text" icon>
-            <i class="fas fa-globe"></i>
-          </v-btn>
-        </router-link>
-      </v-col>
-      <v-col cols="auto">
-        <a href="https://github.com/Ulthran/ctbus_finance" target="_blank" title="GitHub Repo">
-          <v-btn variant="text" icon>
-            <i class="fab fa-github"></i>
-          </v-btn>
-        </a>
-      </v-col>
-    </v-row>
+    <v-card>
+      <v-card-title>Links</v-card-title>
+      <v-card-text>
+        <v-row>
+          <v-col cols="auto">
+            <router-link to="/blog/ctbus-finance">
+              <v-btn variant="text" icon>
+                <i class="fas fa-globe"></i>
+              </v-btn>
+            </router-link>
+          </v-col>
+          <v-col cols="auto">
+            <a href="https://github.com/Ulthran/ctbus_finance" target="_blank" title="GitHub Repo">
+              <v-btn variant="text" icon>
+                <i class="fab fa-github"></i>
+              </v-btn>
+            </a>
+          </v-col>
+        </v-row>
+      </v-card-text>
+    </v-card>
   </v-container>
 </template>
