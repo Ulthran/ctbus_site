@@ -7,4 +7,17 @@ variable "bucket_name" {
 variable "cdn_url" {
   type        = string
   description = "The URL of the assets CDN."
+  default     = "https://vue.charliebushman.com"
+}
+
+variable "hostname" {
+  type        = string
+  description = "Fully qualified domain that will point to the CloudFront distribution"
+  default     = "vue.charliebushman.com"
+}
+
+variable "zone_name" {
+  type        = string
+  description = "Route53 hosted zone to create the record in"
+  default     = "charliebushman.com"
 }
