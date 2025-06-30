@@ -21,3 +21,14 @@ variable "zone_name" {
   description = "Route53 hosted zone to create the record in"
   default     = "charliebushman.com"
 }
+variable "spotify_client_id" {
+  type        = string
+  description = "Spotify API client ID"
+  default     = ""
+}
+
+variable "spotify_client_secret" {
+  type        = string
+  description = "Spotify API client secret"
+  default     = ""
+}

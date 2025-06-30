@@ -22,15 +22,23 @@ locals {
   site_dir   = "${path.root}/../vue-frontend"
   site_files = fileset(local.site_dir, "**")
   placeholders = {
-    "CDN_URL" = var.cdn_url
+    "CDN_URL"             = var.cdn_url
+    "SPOTIFY_CLIENT_ID"     = var.spotify_client_id
+    "SPOTIFY_CLIENT_SECRET" = var.spotify_client_secret
   }
 
   processed_files = {
     for f in local.site_files :
     f => replace(
-      file("${local.site_dir}/${f}"),
-      "CDN_URL", local.placeholders["CDN_URL"]
-    )
+          replace(
+            replace(
+              file("${local.site_dir}/${f}"),
+              "CDN_URL", local.placeholders["CDN_URL"]
+            ),
+            "SPOTIFY_CLIENT_ID", local.placeholders["SPOTIFY_CLIENT_ID"]
+          ),
+          "SPOTIFY_CLIENT_SECRET", local.placeholders["SPOTIFY_CLIENT_SECRET"]
+        )
   }
 
   mime_types = {
