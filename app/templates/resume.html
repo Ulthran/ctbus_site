@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Résumé</title>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    window.open('{{ cdn_url }}/documents/resume.pdf', '_blank');
+  });
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="flex-grow flex items-center justify-center p-10">
+  <div class="bg-white p-8 rounded-lg shadow-md text-center">
+      <p>Opening résumé...</p>
+      <p>If nothing happens, <a href="{{ cdn_url }}/documents/resume.pdf" target="_blank">click here</a>.</p>
+  </div>
+</div>
+{% endblock %}

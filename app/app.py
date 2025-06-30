@@ -216,7 +216,7 @@ def about():
 )
 @app.route("/resume")
 def resume():
-    return redirect(f"{CDN_URL}/documents/resume.pdf")
+    return render_template("resume.html")
 
 
 @app.route("/favorite-number")
