@@ -1,13 +1,23 @@
 <template>
   <v-app>
     <v-app-bar color="secondary" dark app>
-      <v-toolbar-title>
-        <router-link to="/" style="color: inherit; text-decoration: none;">ctbus</router-link>
+      <v-toolbar-title class="ml-0 pl-0">
+        <router-link to="/" style="color: inherit; text-decoration: none;">
+          <v-btn icon variant="text" router>
+            <v-icon icon="fas fa-home"></v-icon>
+          </v-btn>
+        </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn to="/about" variant="text" router>About</v-btn>
-      <v-btn to="/blog" variant="text" router>Blog</v-btn>
-      <v-btn to="/projects" variant="text" router>Projects</v-btn>
+      <v-btn to="/resume" icon variant="text" router>
+        <v-icon icon="fas fa-file-alt"></v-icon>
+      </v-btn>
+      <v-btn href="https://github.com/Ulthran" icon variant="text" target="_blank">
+        <v-icon icon="fab fa-github"></v-icon>
+      </v-btn>
+      <v-btn href="https://www.linkedin.com/in/charlie-bushman-8b0b59128/" icon variant="text" target="_blank">
+        <v-icon icon="fab fa-linkedin"></v-icon>
+      </v-btn>
     </v-app-bar>
     <v-main class="pa-15">
       <router-view></router-view>

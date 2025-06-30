@@ -6,7 +6,7 @@ posts = {
         "date": "04/24/25",
         "mod_date": "04/24/25",
         "tags": ["serverless", "aws", "python"],
-        "subtitle": "How \"lambdaliths\" allow for rapid prototyping and at what cost.",
+        "subtitle": 'How "lambdaliths" allow for rapid prototyping and at what cost.',
     },
     "ctbus-finance": {
         "title": "Building a Simple Personal Finance App",
