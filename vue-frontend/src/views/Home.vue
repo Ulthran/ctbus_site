@@ -1,0 +1,81 @@
+<script setup>
+import Hero from '../components/Hero.vue'
+
+const certs = [
+  {
+    href: 'https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url',
+    src: `CDN_URL/certificates/aws_certified_cloud_practitioner.png`,
+    alt: 'AWS Certified Cloud Practitioner - Foundational',
+    h: 150,
+    w: 150,
+  },
+  {
+    href: 'https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url',
+    src: `CDN_URL/certificates/aws_certified_ai_practitioner_early_adopter.png`,
+    alt: 'AWS Certified AI Practitioner',
+    h: 180,
+    w: 180,
+  },
+  {
+    href: 'https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url',
+    src: `CDN_URL/certificates/aws_certified_developer_associate.png`,
+    alt: 'AWS Certified Developer - Associate',
+    h: 150,
+    w: 150,
+  },
+  {
+    href: 'https://www.credly.com/badges/3decec7b-025c-4f64-a461-01d7d0fd6c22/public_url',
+    src: `CDN_URL/certificates/aws_certified_devops_pro.png`,
+    alt: 'AWS Certified DevOps Engineer - Professional',
+    h: 150,
+    w: 150,
+  },
+]
+
+const buttons = [
+  { to: '/pcmp', label: 'Work', icon: 'fas fa-briefcase' },
+  { to: '/blog', label: 'Blog', icon: 'fas fa-code' },
+  { to: '/projects', label: 'Projects', icon: 'fas fa-project-diagram' },
+  { to: '/certifications', label: 'Certs', icon: 'fas fa-certificate' },
+  { to: '/education', label: 'Education', icon: 'fas fa-graduation-cap' },
+  { to: '/past-work', label: 'Past Work', icon: 'fas fa-history' },
+  { to: '/sports', label: 'Sports', icon: 'fas fa-football-ball' },
+  { to: '/music', label: 'Music', icon: 'fas fa-music' },
+]
+</script>
+
+<template>
+  <Hero
+    title="Charlie Bushman"
+    subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts."
+  >
+    <v-row justify="center" class="my-4">
+      <v-col cols="auto" v-for="cert in certs" :key="cert.href">
+        <a :href="cert.href" target="_blank" rel="noopener noreferrer">
+          <v-img :src="cert.src" :alt="cert.alt" :height="cert.h" :width="cert.w" contain />
+        </a>
+      </v-col>
+    </v-row>
+  </Hero>
+
+  <v-container class="text-center">
+    <v-row justify="center">
+      <v-col cols="auto" v-for="btn in buttons" :key="btn.to">
+        <router-link :to="btn.to">
+          <v-btn color="green-darken-2" class="ma-2" variant="elevated">
+            {{ btn.label }}
+            <i class="ms-2" :class="btn.icon"></i>
+          </v-btn>
+        </router-link>
+      </v-col>
+    </v-row>
+  </v-container>
+
+  <v-container class="text-center">
+    <h2 class="text-h6 font-weight-bold mb-4">Get In Touch</h2>
+    <p class="mb-4">
+      Feel free to reach out at
+      <a href="mailto:ctbushman@gmail.com">ctbushman@gmail.com</a>
+    </p>
+  </v-container>
+</template>

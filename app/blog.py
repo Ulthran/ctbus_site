@@ -1,6 +1,13 @@
 # This is not a clean implementation but it's kinda in line with the site design
 # It'll probably stay this way until I rewrite the whole site at some point
 posts = {
+    "disctracker-lambdalith": {
+        "title": "The Dangers (and Joys) of the Lambdalith",
+        "date": "04/24/25",
+        "mod_date": "04/24/25",
+        "tags": ["serverless", "aws", "python"],
+        "subtitle": "How \"lambdaliths\" allow for rapid prototyping and at what cost.",
+    },
     "ctbus-finance": {
         "title": "Building a Simple Personal Finance App",
         "date": "04/07/25",
