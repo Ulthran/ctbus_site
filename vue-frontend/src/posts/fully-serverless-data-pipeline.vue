@@ -13,7 +13,7 @@ const info = posts[slug]
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
-  <v-container class="py-4">
+  <v-container class="py-4 blog-content">
     <p >In 2025, I started tracking everything I ingest other than water in a Google doc. I'd already been tracking my weight in a Google spreadsheet and I've worn various different HR trackers for years as well. And now I've earned the Professional AWS DevOps Engineer certification and have a lot of technologies floating around in my head that I want to practice. So I am working on creating an entirely serverless data pipeline for extracting, transforming, ingesting, and viewing all of my health data at once.</p>
     <p >I'm breaking this project down into four logical subdivisions:</p><br />
     <p >1. Extraction: The first step is creating Lambda functions that will access their assigned data sources and provide a recent chunk of the data to an SQS queue</p>

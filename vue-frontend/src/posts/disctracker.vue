@@ -13,7 +13,7 @@ const info = posts[slug]
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
-  <v-container class="py-4">
+  <v-container class="py-4 blog-content">
     <p >NOTE: As of writing, this is still very much a work in progress. Don't go to these links expecting polished results (or even a living webpage sometimes).</p>
     <h3 >Inspiration</h3>
     <p >I've seen Moneyball (one of the few Michael Lewis books I actually haven't read though). I know the power of data to uncover non-obvious and non-trivial truths about sports. And with frisbee still being a relatively niche and low budget sport, I think there is a big opportunity to translate existing tools from more established field sports and apply them to frisbee. And I wanted more practice with developing a fullstack web/mobile app so this seemed like the perfect project to undertake.</p>

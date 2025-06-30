@@ -13,7 +13,7 @@ const info = posts[slug]
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
-  <v-container class="py-4">
+  <v-container class="py-4 blog-content">
     <p >The issue of storing session data on this site came up when I started trying to build a Spotify stats visualizer. The Spotify Web API requires an access token which is retrieved with a combination of the app's API key and the user's login information. The access token then has to be stored somehow so that the user doesn't have to login again everytime the app makes a request. In the case of a web app, it is stored as session data. And as it happens, there are a lot of ways to store session data for a website.</p>
     <h3 >What is Session Data</h3>
     <p >Session data is information that is associated with a particular user of a website and that persists for some amount of time. It can be stored locally on a user's computer, locally on the server running the website, or in a remote database. How it is persisted can also vary to dependent on a timeout, a user action, an administrator action, etc. There are not so minute minutiae I'm skimming here like the difference between session and cookies and more I'm probably not aware of but for this case I was just looking for the simplest way to persist information for a user on my site.</p>

@@ -13,7 +13,7 @@ const info = posts[slug]
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
-  <v-container class="py-4">
+  <v-container class="py-4 blog-content">
     <p >Up until recently, I had a (janky) Spotify stats visualizer on this site that I had implemented with Flask handling the backend and a simple JavaScript frontend. It wasn't particularly well organized code, especially on the frontend and I wanted to move it to a separate repository. So with the dual goals of trying to offload this bad code and get more practice with AWS SAM, I set about implementing a super simple serverless dashboard.</p><br />
     <p >The finished GitHub repository can be found <a  href="https://github.com/Ulthran/spotify_vis" target="_blank">here</a> and the live site <a  href="https://0qn7o9e6pd.execute-api.us-east-1.amazonaws.com/Prod/" target="_blank">here</a>.</p>
     <p >Going from nothing to having an active serverless data dashboard is a pretty quick process once you know what tools you want to use. In our case, that's the SAM CLI, Dash, Spotipy, and TailwindCSS. Then it's just five steps:</p><br />
