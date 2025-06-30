@@ -1,14 +1,29 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { ref, watch } from 'vue'
+
 const route = useRoute()
+const component = ref(null)
 
-const pages = import.meta.glob('../projects/*.vue', { eager: true })
+async function loadComponent() {
+  const name = route.params.slug
+  try {
+    component.value = await window['vue3-sfc-loader'].loadModule(
+      `${window.projectsPath}/${name}.vue`,
+      window.loaderOptions,
+    )
+  } catch (e) {
+    component.value = null
+  }
+}
 
-const component = computed(() => {
-  const name = route.params.project
-  return pages[`../projects/${name}.vue`]
-})
+watch(
+  () => route.params.slug,
+  () => {
+    loadComponent()
+  },
+  { immediate: true },
+)
 </script>
 
 <template>

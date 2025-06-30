@@ -1,14 +1,29 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { ref, watch } from 'vue'
 
 const route = useRoute()
-const posts = import.meta.glob('../posts/*.vue', { eager: true })
+const component = ref(null)
 
-const component = computed(() => {
-  const name = route.params.post
-  return posts[`../posts/${name}.vue`]
-})
+async function loadComponent() {
+  const name = route.params.slug
+  try {
+    component.value = await window['vue3-sfc-loader'].loadModule(
+      `${window.postsPath}/${name}.vue`,
+      window.loaderOptions,
+    )
+  } catch (e) {
+    component.value = null
+  }
+}
+
+watch(
+  () => route.params.slug,
+  () => {
+    loadComponent()
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
