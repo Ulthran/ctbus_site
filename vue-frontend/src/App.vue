@@ -12,8 +12,8 @@
     <v-main class="pa-15">
       <router-view></router-view>
     </v-main>
-    <v-footer color="grey lighten-3" class="text-center">
-      <v-container>
+    <v-footer color="grey lighten-3" class="text-center py-2">
+      <v-container class="py-0">
         <p>Always Learning. Always Building.</p>
         <p>&copy; 2025 Charlie Bushman. All rights reserved.</p>
       </v-container>
