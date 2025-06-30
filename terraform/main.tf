@@ -29,14 +29,14 @@ locals {
 resource "aws_s3_object" "site" {
   for_each = local.processed_files
   bucket   = aws_s3_bucket.this.id
-  key      = each.value
-  source   = "${local.site_dir}/${each.value}"
+  key      = each.key
+  content  = each.value
   content_type = lookup(
     local.mime_types,
-    lower(element(reverse(split(".", each.value)), 0)),
+    lower(element(reverse(split(".", each.key)), 0)),
     "text/plain",
   )
-  etag = filemd5("${local.site_dir}/${each.value}")
+  etag = md5(each.value)
 }
 
 resource "aws_cloudfront_origin_access_identity" "this" {
