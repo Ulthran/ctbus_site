@@ -1,30 +1,29 @@
 <script setup>
 import Hero from '../components/Hero.vue'
-const CDN_URL = window.CDN_URL || ''
 
 const featured = [
   {
     title: 'Sunbeam',
     link: 'https://github.com/sunbeam-labs/sunbeam',
-    img: `${CDN_URL}/images/sunbeam_logo.png`,
+    img: `CDN_URL/images/sunbeam_logo.png`,
     desc: 'A robust and extensible Snakemake pipeline for metagenomic sequencing analysis.',
   },
   {
     title: 'Condabot',
     link: 'https://github.com/sunbeam-labs/condabot',
-    img: `${CDN_URL}/images/condabot_logo.png`,
+    img: `CDN_URL/images/condabot_logo.png`,
     desc: 'Automates dependency updates for Conda environments across our projects.',
   },
   {
     title: 'sbx_template',
     link: 'https://github.com/sunbeam-labs/sbx_template',
-    img: `${CDN_URL}/images/sunbeam_logo.png`,
+    img: `CDN_URL/images/sunbeam_logo.png`,
     desc: 'Template repository for quickly creating new Sunbeam extensions.',
   },
   {
     title: 'Autobfx',
     link: 'https://github.com/Ulthran/autobfx',
-    img: `${CDN_URL}/images/autobfx_logo.png`,
+    img: `CDN_URL/images/autobfx_logo.png`,
     desc: 'A modern pipeline framework providing an alternative to Snakemake.',
   },
 ]

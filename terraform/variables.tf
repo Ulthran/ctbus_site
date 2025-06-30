@@ -7,7 +7,6 @@ variable "bucket_name" {
 variable "cdn_url" {
   type        = string
   description = "The URL of the assets CDN."
-  default     = "https://vue.charliebushman.com"
 }
 
 variable "hostname" {
@@ -24,11 +23,9 @@ variable "zone_name" {
 variable "spotify_client_id" {
   type        = string
   description = "Spotify API client ID"
-  default     = ""
 }
 
 variable "spotify_client_secret" {
   type        = string
   description = "Spotify API client secret"
-  default     = ""
 }

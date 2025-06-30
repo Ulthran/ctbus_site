@@ -8,9 +8,9 @@ data "aws_route53_zone" "selected" {
 }
 
 data "aws_acm_certificate" "wildcard" {
-  provider = aws.us_east_1
-  domain   = "*.${var.zone_name}"
-  statuses = ["ISSUED"]
+  provider    = aws.us_east_1
+  domain      = "*.${var.zone_name}"
+  statuses    = ["ISSUED"]
   most_recent = true
 }
 
@@ -22,7 +22,7 @@ locals {
   site_dir   = "${path.root}/../vue-frontend"
   site_files = fileset(local.site_dir, "**")
   placeholders = {
-    "CDN_URL"             = var.cdn_url
+    "CDN_URL"               = var.cdn_url
     "SPOTIFY_CLIENT_ID"     = var.spotify_client_id
     "SPOTIFY_CLIENT_SECRET" = var.spotify_client_secret
   }
@@ -30,15 +30,15 @@ locals {
   processed_files = {
     for f in local.site_files :
     f => replace(
-          replace(
-            replace(
-              file("${local.site_dir}/${f}"),
-              "CDN_URL", local.placeholders["CDN_URL"]
-            ),
-            "SPOTIFY_CLIENT_ID", local.placeholders["SPOTIFY_CLIENT_ID"]
-          ),
-          "SPOTIFY_CLIENT_SECRET", local.placeholders["SPOTIFY_CLIENT_SECRET"]
-        )
+      replace(
+        replace(
+          file("${local.site_dir}/${f}"),
+          "CDN_URL", local.placeholders["CDN_URL"]
+        ),
+        "SPOTIFY_CLIENT_ID", local.placeholders["SPOTIFY_CLIENT_ID"]
+      ),
+      "SPOTIFY_CLIENT_SECRET", local.placeholders["SPOTIFY_CLIENT_SECRET"]
+    )
   }
 
   mime_types = {
@@ -138,9 +138,9 @@ resource "aws_cloudfront_distribution" "this" {
 
   price_class = "PriceClass_100"
   viewer_certificate {
-    acm_certificate_arn            = data.aws_acm_certificate.wildcard.arn
-    ssl_support_method             = "sni-only"
-    minimum_protocol_version       = "TLSv1.2_2021"
+    acm_certificate_arn      = data.aws_acm_certificate.wildcard.arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   restrictions {
