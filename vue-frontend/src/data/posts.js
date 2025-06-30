@@ -1,4 +1,4 @@
-{
+export default {
   "ctbus-finance": {
     "title": "Building a Simple Personal Finance App",
     "date": "04/07/25",
@@ -132,4 +132,4 @@
     ],
     "subtitle": "My undergrad thesis! Read on for more."
   }
-}
+};

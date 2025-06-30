@@ -1,4 +1,4 @@
-{
+export default {
   "ctbus-site": {
     "title": "CTBus Site",
     "subtitle": "A site for me. This site! Designed with Flask and Tailwind then deployed serverlessly on AWS using Zappa.",
@@ -51,4 +51,4 @@
     ],
     "image": "disctracker.png"
   }
-}
+};
