@@ -1,9 +1,19 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import BlogHero from '../components/BlogHero.vue'
+import posts from '../data/posts.js'
+const slug = 'serverless-dashboards-with-dash'
+const info = posts[slug]
 </script>
 
 <template>
-  <SimplePage title="Serverless Dashboards with Dash">
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4">
     <p >Up until recently, I had a (janky) Spotify stats visualizer on this site that I had implemented with Flask handling the backend and a simple JavaScript frontend. It wasn't particularly well organized code, especially on the frontend and I wanted to move it to a separate repository. So with the dual goals of trying to offload this bad code and get more practice with AWS SAM, I set about implementing a super simple serverless dashboard.</p><br />
     <p >The finished GitHub repository can be found <a  href="https://github.com/Ulthran/spotify_vis" target="_blank">here</a> and the live site <a  href="https://0qn7o9e6pd.execute-api.us-east-1.amazonaws.com/Prod/" target="_blank">here</a>.</p>
     <p >Going from nothing to having an active serverless data dashboard is a pretty quick process once you know what tools you want to use. In our case, that's the SAM CLI, Dash, Spotipy, and TailwindCSS. Then it's just five steps:</p><br />
@@ -16,5 +26,5 @@ import SimplePage from '../components/SimplePage.vue'
     <p >One piece of the puzzle that I glossed over but is non-trivial is how to define the <i>lambda_handler</i> in <i>app.py</i>. The difference lies in how the app handles custom domains vs API Gateway assigned ones. If you know you'll only use API Gateway assigned domains, you can simplify the event handler. On the bright side, you should be able to just copy/paste what I've written into any project and have it work.</p>
     <p >Unfortunately, Spotify recently removed public access to most of the fun stats they keep on a per-song basis. Things like tempo, key, "danceability," and "speechiness" are now too valuable for training the Recommendation Algorithm to expose, leaving my dashboard with little to show beyond popularity and playtimes. Still, from a technical perspective, there is a major improvement to be made, which you'll probably notice if you visit the site: the initial page load time is super slow. This should be a relatively simple fix, as SAM provides tooling for keeping functions warm!</p><br />
     <p >Expect another blog post soon about a similarly simple serverless data dashboard, this time implemented with Streamlit!</p>
-  </SimplePage>
+  </v-container>
 </template>

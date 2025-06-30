@@ -1,9 +1,19 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import BlogHero from '../components/BlogHero.vue'
+import posts from '../data/posts.js'
+const slug = 'ctbus-finance'
+const info = posts[slug]
 </script>
 
 <template>
-  <SimplePage title="Building a Simple Personal Finance App">
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4">
     <p >It's all well and good to keep playing around with the newest technologies; make everything serverless, highly-available, and AI-driven. But sometimes a simple application of a couple really old tools is all you need to get a job done and it's always good to stay in practice with them too.</p>
     <p >I'd been considering potential designs for a personal finance app. Thinking thoughts like: how do I secure automated exports from multiple financial institutions? How do I manage authentication for the database access? Can I do the whole thing serverlessly? After considering all this for a while, I came to thinking that for this a simplest form solution might actually be best. One where I import data manually, don't have to worry about auth because it's all local, and is portable to many other potential personal-data-storage-and-viewing-type applications.</p><br />
     <p >The GitHub repository can be found <a  href="https://github.com/Ulthran/ctbus_finance" target="_blank">here</a>.</p>
@@ -123,5 +133,5 @@ import SimplePage from '../components/SimplePage.vue'
     for a in accounts
     ]
     <p >With that we have our per-account valuation! Next we can create an easy net worth function by summing over the results of the accounts and then subtracting the net CreditCard balance. There are a million other things we might investigate down the line, portfolio distribution over different asset classes, net rate of growth, performance of different investments. But that should all be much easier now that we have this simple infrastructure in place to do it. Another addition to this collection might be a quick Flask site, giving us a quick and dirty method for displaying certain stats and graphs that keeps with the theme of running everything locally. I hope this can be useful for you, it certainly is for me! And remember that this framework can be applied to just about any application you want to build that involves data you want to keep track of and have easy access to!</p>
-  </SimplePage>
+  </v-container>
 </template>

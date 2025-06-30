@@ -1,9 +1,19 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import BlogHero from '../components/BlogHero.vue'
+import posts from '../data/posts.js'
+const slug = 'comps'
+const info = posts[slug]
 </script>
 
 <template>
-  <SimplePage title="Physical Reservoir Computing for Classification of Temporal Data">
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4">
     <!-- Plotly -->
     <script src="https://cdn.plot.ly/plotly-2.26.0.min.js" integrity="sha384-xuh4dD2xC9BZ4qOrUrLt8psbgevXF2v+K+FrXxV4MlJHnWKgnaKoh74vd/6Ik8uF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous"></script>
@@ -50,5 +60,5 @@ import SimplePage from '../components/SimplePage.vue'
     <script src=""></script>
     <p >It is a time delayed system, which means it relies on previous values of itself to determine its present dynamics. It is inspired by biological systems and is also the model used by <a href="https://www.nature.com/articles/ncomms1476" target="_blank" >L. Appeltant in his thesis work developing the first example of a physical system being used for reservoir computing</a>. He (and later in a class taught by <a href="https://umdphysics.umd.edu/people/faculty/current/item/445-rroy.html" target="_blank" >Rajarshi Roy</a>, I) mimicked this sytem's dynamics with a nonlinear, optoelectronic circuit to act as a physical reservoir computer.</p>
     <p >In the paper I also explore a mechanical system being used as a reservoir (a bunch of masses and springs) and a quantum computer being used as a reservoir. Maybe I'll write more about those here in the future.</p>
-  </SimplePage>
+  </v-container>
 </template>

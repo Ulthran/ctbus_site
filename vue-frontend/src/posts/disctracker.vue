@@ -1,9 +1,19 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import BlogHero from '../components/BlogHero.vue'
+import posts from '../data/posts.js'
+const slug = 'disctracker'
+const info = posts[slug]
 </script>
 
 <template>
-  <SimplePage title="Ultimate DiscTracker">
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4">
     <p >NOTE: As of writing, this is still very much a work in progress. Don't go to these links expecting polished results (or even a living webpage sometimes).</p>
     <h3 >Inspiration</h3>
     <p >I've seen Moneyball (one of the few Michael Lewis books I actually haven't read though). I know the power of data to uncover non-obvious and non-trivial truths about sports. And with frisbee still being a relatively niche and low budget sport, I think there is a big opportunity to translate existing tools from more established field sports and apply them to frisbee. And I wanted more practice with developing a fullstack web/mobile app so this seemed like the perfect project to undertake.</p>
@@ -17,5 +27,5 @@ import SimplePage from '../components/SimplePage.vue'
     <h3 >Crazy Aspirations</h3>
     <p >One of my pipe dreams when starting this project was to create a platform where a user could speak directly at their phone/tablet over the course of a game and it would parse out relevant "game events" from the dialogue and timestamp them. Despite calling it a pipe dream, I do think that this feature could follow pretty readily for a well built base product. All it would take is access to a voice-to-text module (either built in or accessed through an API) and an LLM with some basic training to recognize "game events". This comes from the number one issue I've heard from users of existing apps for this type of thing: "it's happening too fast and I don't want to look at my phone that much." If instead they could just be narrating the game, that could make it dramatically easier to follow and record the action in a structured format. If any video of the game is also timestamped, it will enable me to sync up any kind of video/analysis pairing features.</p>
     <p >Linking with other services, like Ultiworld for film and relevant articles, USAU for rosters and tournament info, etc. It would take a significant user base and a lot of talking but I am building this with the mindset that it could (keyword, could) be a one stop shop for all things ultimate. I feel like, along with being ambitious, this makes sure that as many doors as possible are open for development down the line.</p>
-  </SimplePage>
+  </v-container>
 </template>

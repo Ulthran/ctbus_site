@@ -1,9 +1,19 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import BlogHero from '../components/BlogHero.vue'
+import posts from '../data/posts.js'
+const slug = 'flask-sessions'
+const info = posts[slug]
 </script>
 
 <template>
-  <SimplePage title="Where to Put Flask Session Data">
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4">
     <p >The issue of storing session data on this site came up when I started trying to build a Spotify stats visualizer. The Spotify Web API requires an access token which is retrieved with a combination of the app's API key and the user's login information. The access token then has to be stored somehow so that the user doesn't have to login again everytime the app makes a request. In the case of a web app, it is stored as session data. And as it happens, there are a lot of ways to store session data for a website.</p>
     <h3 >What is Session Data</h3>
     <p >Session data is information that is associated with a particular user of a website and that persists for some amount of time. It can be stored locally on a user's computer, locally on the server running the website, or in a remote database. How it is persisted can also vary to dependent on a timeout, a user action, an administrator action, etc. There are not so minute minutiae I'm skimming here like the difference between session and cookies and more I'm probably not aware of but for this case I was just looking for the simplest way to persist information for a user on my site.</p>
@@ -14,5 +24,5 @@ import SimplePage from '../components/SimplePage.vue'
     <h3 >Third Try: Flask's Built-In <i>session</i> Object</h3>
     <p >Then I realized I had made a signinificant oversight in my initial overview of the options available to me. Flask (without Flask Session) has a built in session object. And that session stores data locally to the user's computer. I tried this way out and it worked immediately. Even better, it incurs no added cost and doesn't add any dependencies to the site (keeping bundle size down). So this is what I went with. And it still gives the ability to have a page where you (the user) can <a href="/session" target="_blank" >view and delete session data</a> from this site.</p><br />
     <p >This was my first foray into using session data on a website. If you have experience with it and want to provide feedback/critique or if you have none and want to know more about my setup, please send me an email. :)</p>
-  </SimplePage>
+  </v-container>
 </template>
