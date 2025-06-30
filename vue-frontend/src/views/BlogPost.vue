@@ -13,6 +13,7 @@ async function loadComponent() {
       window.loaderOptions,
     )
   } catch (e) {
+    console.error('Error loading component:', e)
     component.value = null
   }
 }
