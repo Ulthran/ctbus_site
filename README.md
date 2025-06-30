@@ -9,6 +9,8 @@ This is a personal website for Charlie Bushman.
 
 https://charliebushman.com
 
+The static frontend is served via CloudFront at [https://vue.charliebushman.com](https://vue.charliebushman.com).
+
 ## Deployment
 
 The site is now a Vue application deployed to an S3 bucket and served through a
@@ -22,7 +24,8 @@ To build and deploy:
 - `npm run build` to generate static files in `vue-frontend/dist`
 - `cd ..`
 - `terraform init && terraform apply` to create/update the S3 bucket and
-  CloudFront distribution and upload the contents of `dist/`.
+  CloudFront distribution and upload the contents of `dist/`. The CDN will be
+  reachable at `https://vue.charliebushman.com`.
 
 To run locally,
 
