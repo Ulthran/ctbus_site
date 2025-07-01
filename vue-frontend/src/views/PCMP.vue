@@ -62,40 +62,50 @@ const others = [
 <template>
   <Hero title="Developer in Statistical Metagenomics" subtitle="Penn-CHOP Microbiome Program" />
 
-  <v-container class="text-left">
-    <h2 class="text-h6 font-weight-bold mb-2">About the PCMP</h2>
-    <p>
-      The Penn‑CHOP Microbiome Program is a joint effort between the Perelman
-      School of Medicine at the University of Pennsylvania and the Children&#39;s
-      Hospital of Philadelphia. The program supports researchers studying the
-      microbiome by providing analysis expertise, open-source tools and
-      compute infrastructure.
-    </p>
+  <v-container class="text-center">
+    <v-row>
+      <v-col cols="12" md="6" class="text-center">
+        <h2 class="text-h6 font-weight-bold mb-2">About the PCMP</h2>
+        <p>
+          The Penn‑CHOP Microbiome Program is a joint effort between the Perelman
+          School of Medicine at the University of Pennsylvania and the Children&#39;s
+          Hospital of Philadelphia. The program supports researchers studying the
+          microbiome by providing analysis expertise, open-source tools and
+          compute infrastructure.
+        </p>
+      </v-col>
 
-    <h2 class="text-h6 font-weight-bold mb-2 mt-6">Human Gut Metagenomics</h2>
-    <p>
-      The human gut contains trillions of microbes. Instead of culturing each
-      one individually, we sequence all DNA from a sample and use computational
-      pipelines to piece together who is there and what they&#39;re doing. These
-      approaches reveal links between the microbiome and health or disease.
-    </p>
+      <v-col cols="12" md="6" class="text-center">
+        <h2 class="text-h6 font-weight-bold mb-2">Human Gut Metagenomics</h2>
+        <p>
+          The human gut contains trillions of microbes. Instead of culturing each
+          one individually, we sequence all DNA from a sample and use computational
+          pipelines to piece together who is there and what they&#39;re doing. These
+          approaches reveal links between the microbiome and health or disease.
+        </p>
+      </v-col>
 
-    <h2 class="text-h6 font-weight-bold mb-2 mt-6">My Role</h2>
-    <p>
-      As the program&#39;s software engineer I establish development standards,
-      refactor published work and build internal services ranging from
-      preprocessing automation to statistical packages.
-    </p>
+      <v-col cols="12" md="6" class="text-center">
+        <h2 class="text-h6 font-weight-bold mb-2">My Role</h2>
+        <p>
+          As the program&#39;s software engineer I establish development standards,
+          refactor published work and build internal services ranging from
+          preprocessing automation to statistical packages.
+        </p>
+      </v-col>
 
-    <h2 class="text-h6 font-weight-bold mb-2 mt-6">Tech Stack</h2>
-    <p>
-      Python and R make up the core of our work with frameworks like Snakemake,
-      Prefect, Flask, and Docker. For orchestration we rely largely on SLURM and 
-      Kubernetes with GitHub and GitHub Actions for source control and CI/CD. 
-      Increasingly, AI tools such as OpenAI/Azure Chat APIs, CoPilot, Codex, and 
-      LangChain/LangGraph are being integrated across the SDLC to enhance 
-      productivity and analysis capabilities.
-    </p>
+      <v-col cols="12" md="6" class="text-center">
+        <h2 class="text-h6 font-weight-bold mb-2">Tech Stack</h2>
+        <p>
+          Python and R make up the core of our work with frameworks like Snakemake,
+          Prefect, Flask, and Docker. For orchestration we rely largely on SLURM and
+          Kubernetes with GitHub and GitHub Actions for source control and CI/CD.
+          Increasingly, AI tools such as OpenAI/Azure Chat APIs, CoPilot, Codex, and
+          LangChain/LangGraph are being integrated across the SDLC to enhance
+          productivity and analysis capabilities.
+        </p>
+      </v-col>
+    </v-row>
   </v-container>
 
   <v-container>
