@@ -37,7 +37,7 @@ const extraCerts = {
     },
     {
       href: 'CDN_URL/certificates/aws_optimizing_foundation_models.pdf',
-      title: "Optimizing Foudnation Models ('25)",
+      title: "Optimizing Foundation Models ('25)",
     },
     {
       href: 'CDN_URL/certificates/aws_essentials_of_prompt_engineering.pdf',
@@ -108,7 +108,7 @@ const extraCerts = {
           size="small"
           variant="outlined"
         >
-          <a :href="cert.href" target="_blank" class="text-decoration-none">{{ cert.title }}</a>
+          <a :href="cert.href" target="_blank" class="text-decoration-none" rel="noopener noreferrer">{{ cert.title }}</a>
         </v-chip>
       </div>
     </div>
