@@ -276,12 +276,7 @@ onMounted(() => {
         <v-icon :icon="MGPlaying.g ? 'fas fa-pause' : 'fas fa-play'" />
       </v-btn>
     </div>
-    <div class="d-flex align-center">
-      <v-slider v-model="MGtdelay" :min="1" :max="4" step="0.1" label="τ" class="my-2 flex-grow-1" hide-details></v-slider>
-      <v-btn icon variant="text" size="small" @click="toggleMG('tdelay')">
-        <v-icon :icon="MGPlaying.tdelay ? 'fas fa-pause' : 'fas fa-play'" />
-      </v-btn>
-    </div>
+    
     <Paragraph>It is a time delayed system, which means it relies on previous values of itself to determine its present dynamics. It is inspired by biological systems and is also the model used by <a href="https://www.nature.com/articles/ncomms1476" target="_blank" >L. Appeltant in his thesis work developing the first example of a physical system being used for reservoir computing</a>. He (and later in a class taught by <a href="https://umdphysics.umd.edu/people/faculty/current/item/445-rroy.html" target="_blank" >Rajarshi Roy</a>, I) mimicked this sytem's dynamics with a nonlinear, optoelectronic circuit to act as a physical reservoir computer.</Paragraph>
     <Paragraph>In the paper I also explore a mechanical system being used as a reservoir (a bunch of masses and springs) and a quantum computer being used as a reservoir. Maybe I'll write more about those here in the future.</Paragraph>
   </v-container>
@@ -297,6 +292,9 @@ onMounted(() => {
 .lorenz-main {
   flex: 1 1 45%;
   min-width: 300px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
 }
 .lorenz-side {
   display: flex;
