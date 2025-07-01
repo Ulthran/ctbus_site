@@ -49,7 +49,7 @@ jobs:
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           VALIDATE_PYTHON_BLACK: true
           VALIDATE_JAVASCRIPT_ES: true
           FILTER_REGEX_INCLUDE: app/|tests/`
