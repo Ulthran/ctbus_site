@@ -6,26 +6,41 @@ const primaryCerts = [
     href: 'https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url',
     src: `CDN_URL/certificates/aws_certified_cloud_practitioner.png`,
     alt: 'AWS Certified Cloud Practitioner - Foundational',
+    h: 130,
+    w: 130,
+    offset: 0,
   },
   {
     href: 'https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url',
     src: `CDN_URL/certificates/aws_certified_ai_practitioner_early_adopter.png`,
     alt: 'AWS Certified AI Practitioner',
+    h: 175,
+    w: 175,
+    offset: -30,
   },
   {
     href: 'https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url',
     src: `CDN_URL/certificates/aws_certified_developer_associate.png`,
     alt: 'AWS Certified Developer - Associate',
+    h: 130,
+    w: 130,
+    offset: 0,
   },
   {
     href: 'https://www.credly.com/badges/3decec7b-025c-4f64-a461-01d7d0fd6c22/public_url',
     src: `CDN_URL/certificates/aws_certified_devops_pro.png`,
     alt: 'AWS Certified DevOps Engineer - Professional',
+    h: 130,
+    w: 130,
+    offset: 0,
   },
   {
     href: 'https://www.credly.com/badges/23e89c9d-02de-49e3-9634-a21816ea29b2/public_url',
     src: `CDN_URL/certificates/ibm_data_engineering_badge.png`,
     alt: 'IBM Data Engineering Specialization',
+    h: 130,
+    w: 130,
+    offset: 0,
   },
 ]
 
@@ -92,7 +107,14 @@ const extraCerts = {
     <v-row class="my-4" justify="center" align="center">
       <v-col cols="auto" v-for="cert in primaryCerts" :key="cert.href">
         <a :href="cert.href" target="_blank">
-          <v-img :src="cert.src" :alt="cert.alt" height="130" width="130" contain />
+          <v-img
+            :src="cert.src"
+            :alt="cert.alt"
+            :height="cert.h"
+            :width="cert.w"
+            :style="{ marginTop: cert.offset + 'px' }"
+            contain
+          />
         </a>
       </v-col>
     </v-row>
