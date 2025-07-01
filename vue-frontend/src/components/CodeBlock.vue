@@ -4,9 +4,8 @@
       <span class="filename">{{ props.filename }}</span>
       <v-btn
         class="copy-btn"
-        size="x-small"
+        size="small"
         variant="text"
-        color="grey lighten-4"
         @click="copyCode"
       >
         <v-icon icon="fas fa-copy" />
@@ -101,5 +100,6 @@ pre {
 
 .copy-btn {
   color: #f8f8f2;
+  z-index: 100;
 }
 </style>

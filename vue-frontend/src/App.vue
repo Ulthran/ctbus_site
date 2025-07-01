@@ -9,13 +9,13 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <NavbarPostPreview
+      <!--<NavbarPostPreview
         v-if="latestPost"
         :link="`/blog/${latestSlug}`"
         :img="latestImg"
         :title="latestPost.title"
         :subtitle="latestPost.subtitle"
-      />
+      />-->
       <v-spacer></v-spacer>
       <v-btn href="CDN_URL/documents/resume.pdf" icon variant="text" target="_blank">
         <v-icon icon="fas fa-file-alt"></v-icon>
