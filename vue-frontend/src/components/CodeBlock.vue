@@ -5,11 +5,12 @@
       <v-btn
         class="copy-btn"
         size="x-small"
-        icon="mdi-content-copy"
         variant="text"
         color="grey lighten-4"
         @click="copyCode"
-      ></v-btn>
+      >
+        <v-icon icon="fas fa-copy" />
+      </v-btn>
     </div>
     <pre ref="pre" class="line-numbers"><code :class="languageClass"></code></pre>
   </v-card>
