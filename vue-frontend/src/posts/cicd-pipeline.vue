@@ -26,7 +26,7 @@ jobs:
           pip install -r dev-requirements.txt
       - name: Run Tests
         run: |
-          pytest tests/
+          pytest tests/`
 
 const unitTestPy = `from app.data_utils import get_chess_stats
 def test_get_chess_stats():
