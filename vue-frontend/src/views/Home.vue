@@ -1,5 +1,6 @@
 <script setup>
 import Hero from '../components/Hero.vue'
+import Frisbee from '../svgs/Frisbee.vue'
 
 const certs = [
   {
@@ -43,7 +44,7 @@ const buttons = [
   { to: '/certifications', label: 'Certs', icon: 'fas fa-certificate' },
   { to: '/education', label: 'Education', icon: 'fas fa-graduation-cap' },
   { to: '/past-work', label: 'Past Work', icon: 'fas fa-history' },
-  { to: '/sports', label: 'Sports', icon: 'fas fa-futbol' },
+  { to: '/sports', label: 'Sports', component: Frisbee },
   { to: '/music', label: 'Music', icon: 'fas fa-music' },
 ]
 </script>
@@ -75,7 +76,10 @@ const buttons = [
         <router-link :to="btn.to">
           <v-btn color="green-darken-2" class="ma-2" variant="elevated">
             {{ btn.label }}
-            <i class="ms-2" :class="btn.icon"></i>
+            <span class="ms-2">
+              <component v-if="btn.component" :is="btn.component" :size="24" />
+              <i v-else :class="btn.icon"></i>
+            </span>
           </v-btn>
         </router-link>
       </v-col>
