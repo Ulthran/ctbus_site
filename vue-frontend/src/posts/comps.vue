@@ -2,9 +2,142 @@
 import BlogHero from '../components/BlogHero.vue'
 import Paragraph from '../components/Paragraph.vue'
 import SectionTitle from '../components/SectionTitle.vue'
+import { onMounted } from 'vue'
 const posts = window.posts
 const slug = 'comps'
 const info = posts[slug]
+
+onMounted(() => {
+  // Hide/show control for Lorenz plots
+  const hideUnhide = () => {
+    const elem = document.getElementById('LorenzPlots')
+    if (!elem) return
+    if (elem.style.display === 'none') {
+      elem.style.display = 'flex'
+    } else {
+      elem.style.display = 'none'
+    }
+  }
+  window.hide_unhide_plots = hideUnhide
+
+  const n = 100
+  const dt = 0.015
+
+  const system1 = { x: [], y: [], z: [] }
+  const system2 = { x: [], y: [], z: [] }
+  const system3 = { x: [], y: [], z: [] }
+
+  for (let i = 0; i < n; i++) {
+    system1.x[i] = Math.random() * 2 - 15
+    system1.y[i] = Math.random() * 2 - 15
+    system1.z[i] = 30 + Math.random() * 10
+
+    system2.x[i] = Math.random() * 2 + 13
+    system2.y[i] = Math.random() * 2 + 13
+    system2.z[i] = 30 + Math.random() * 10
+
+    system3.x[i] = system2.x[i]
+    system3.y[i] = system2.y[i]
+    system3.z[i] = system2.z[i]
+  }
+
+  function plot(id, dataX, dataZ, title) {
+    return Plotly.newPlot(
+      id,
+      [
+        { x: [dataX[0]], y: [dataZ[0]], mode: 'markers', marker: { color: '#FF0000', size: 10 } },
+        { x: dataX.slice(1), y: dataZ.slice(1), mode: 'markers', marker: { color: '#0000FF', size: 3 } },
+      ],
+      {
+        title: { text: title, font: { size: 18 } },
+        xaxis: { range: [-60, 60], showticklabels: false, zeroline: false },
+        yaxis: { range: [0, 60], showticklabels: false, zeroline: false },
+        plot_bgcolor: '#F3F4F6',
+        paper_bgcolor: '#F3F4F6',
+        showlegend: false,
+      },
+      { responsive: true },
+    )
+  }
+
+  plot('Lorenz_unlinked_2', system3.x, system3.z, 'Unlinked Lorenz Attractor #2')
+  plot('Lorenz', system1.x, system1.z, 'Lorenz Attractor #1')
+  plot('Lorenz2', system2.x, system2.z, 'Linked Lorenz Attractor #2')
+
+  function step(sys, coupling = 0, sourceY = null) {
+    const s = 10
+    const b = 8 / 3
+    const r = 28
+    for (let i = 0; i < n; i++) {
+      let dx = s * (sys.y[i] - sys.x[i])
+      let dy = sys.x[i] * (r - sys.z[i]) - sys.y[i]
+      let dz = sys.x[i] * sys.y[i] - b * sys.z[i]
+
+      const xh = sys.x[i] + dx * dt * 0.5
+      const yh = sys.y[i] + dy * dt * 0.5
+      const zh = sys.z[i] + dz * dt * 0.5
+
+      dx = s * (yh - xh)
+      dy = xh * (r - zh) - yh
+      dz = xh * yh - b * zh
+
+      sys.x[i] += dx * dt
+      if (sourceY) {
+        sys.y[i] = (1 - coupling) * (sys.y[i] + dy * dt) + coupling * sourceY[i]
+      } else {
+        sys.y[i] += dy * dt
+      }
+      sys.z[i] += dz * dt
+    }
+  }
+
+  function update() {
+    step(system1)
+    step(system2, 0.03, system1.y)
+    step(system3)
+
+    Plotly.animate(
+      'Lorenz_unlinked_2',
+      {
+        data: [
+          { x: [system3.x[0]], y: [system3.z[0]] },
+          { x: system3.x.slice(1), y: system3.z.slice(1) },
+        ],
+      },
+      { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+    )
+
+    Plotly.animate(
+      'Lorenz',
+      {
+        data: [
+          { x: [system1.x[0]], y: [system1.z[0]] },
+          { x: system1.x.slice(1), y: system1.z.slice(1) },
+        ],
+      },
+      { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+    )
+
+    Plotly.animate(
+      'Lorenz2',
+      {
+        data: [
+          { x: [system2.x[0]], y: [system2.z[0]] },
+          { x: system2.x.slice(1), y: system2.z.slice(1) },
+        ],
+      },
+      { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+    )
+
+    requestAnimationFrame(update)
+  }
+
+  requestAnimationFrame(update)
+
+  if (window.MathJax && window.MathJax.typeset) {
+    window.MathJax.typeset()
+  }
+})
 </script>
 
 <template>
@@ -17,20 +150,6 @@ const info = posts[slug]
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
   <v-container class="py-4 blog-content">
-    <!-- Plotly -->
-    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js" integrity="sha384-xuh4dD2xC9BZ4qOrUrLt8psbgevXF2v+K+FrXxV4MlJHnWKgnaKoh74vd/6Ik8uF" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous"></script>
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-    MathJax = {
-    tex: {
-    inlineMath: [['$', '$'], ["\\(", "\\)"]],
-    processEscapes: true,
-    }
-    }
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" integrity="sha384-WSLBwI+Q8tqRHaC+f1sjS/FVv5cWp7VAfrGB17HLfZlXhbp5F/RPVP7bYVHtiAWE" crossorigin="anonymous"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6/1Nxveei" crossorigin="anonymous"></script>
     <Paragraph>My undergraduate thesis project on physical reservoir computing models. In the paper I introduce the reservoir computing framework, necessary grounding in ML, the characteristics of good physical reservoirs, and a few case studies: mechanical, electronic, and quantum. While this is still a relatively new field, the potential for chaotic systems prediction, smart mechanical sensors and more is potentially revolutionary across a wide range of sciences and industries. I also gave a talk that mimics the structure of the paper.</Paragraph>
     <Paragraph>The phenomenon of reservoir computing arises from an amazing property of chaotic systems: that when you link two similar chaotic systems, they start to align with each other. The technical definitions of most of the words used there can vary across contexts but at its core, that is reservoir computing. It's creating a chaotic system you know and using it to extract information from one you don't.</Paragraph>
     <SectionTitle>Linked Lorenz Systems</SectionTitle>
@@ -45,138 +164,10 @@ const info = posts[slug]
     <div id='Lorenz' ><!-- Plotly chart will be drawn inside this DIV --></div>
     <div id='Lorenz_unlinked_2'><!-- Plotly chart will be drawn inside this DIV --></div>
     <div id='Lorenz2'><!-- Plotly chart will be drawn inside this DIV --></div>
-    <script>
-    function hide_unhide_plots() {
-    var x = document.getElementById("LorenzPlots");
-    if (x.style.display === "none") {
-    x.style.display = "flex";
-    } else {
-    x.style.display = "none";
-    }
-    }
-    </script>
-    <script>
-(function () {
-      const n = 100
-      const dt = 0.015
-
-      const system1 = { x: [], y: [], z: [] }
-      const system2 = { x: [], y: [], z: [] } // linked to system1
-      const system3 = { x: [], y: [], z: [] } // unlinked copy of system2
-
-      for (let i = 0; i < n; i++) {
-        system1.x[i] = Math.random() * 2 - 15
-        system1.y[i] = Math.random() * 2 - 15
-        system1.z[i] = 30 + Math.random() * 10
-
-        system2.x[i] = Math.random() * 2 + 13
-        system2.y[i] = Math.random() * 2 + 13
-        system2.z[i] = 30 + Math.random() * 10
-
-        system3.x[i] = system2.x[i]
-        system3.y[i] = system2.y[i]
-        system3.z[i] = system2.z[i]
-      }
-
-      function plot (id, dataX, dataZ, title) {
-        return Plotly.newPlot(
-          id,
-          [
-            { x: [dataX[0]], y: [dataZ[0]], mode: 'markers', marker: { color: '#FF0000', size: 10 } },
-            { x: dataX.slice(1), y: dataZ.slice(1), mode: 'markers', marker: { color: '#0000FF', size: 3 } },
-          ],
-          {
-            title: { text: title, font: { size: 18 } },
-            xaxis: { range: [-60, 60], showticklabels: false, zeroline: false },
-            yaxis: { range: [0, 60], showticklabels: false, zeroline: false },
-            plot_bgcolor: '#F3F4F6',
-            paper_bgcolor: '#F3F4F6',
-            showlegend: false,
-          },
-          { responsive: true },
-        )
-      }
-
-      plot('Lorenz_unlinked_2', system3.x, system3.z, 'Unlinked Lorenz Attractor #2')
-      plot('Lorenz', system1.x, system1.z, 'Lorenz Attractor #1')
-      plot('Lorenz2', system2.x, system2.z, 'Linked Lorenz Attractor #2')
-
-      function step (sys, coupling = 0, sourceY = null) {
-        const s = 10
-        const b = 8 / 3
-        const r = 28
-        for (let i = 0; i < n; i++) {
-          let dx = s * (sys.y[i] - sys.x[i])
-          let dy = sys.x[i] * (r - sys.z[i]) - sys.y[i]
-          let dz = sys.x[i] * sys.y[i] - b * sys.z[i]
-
-          const xh = sys.x[i] + dx * dt * 0.5
-          const yh = sys.y[i] + dy * dt * 0.5
-          const zh = sys.z[i] + dz * dt * 0.5
-
-          dx = s * (yh - xh)
-          dy = xh * (r - zh) - yh
-          dz = xh * yh - b * zh
-
-          sys.x[i] += dx * dt
-          if (sourceY) {
-            sys.y[i] = (1 - coupling) * (sys.y[i] + dy * dt) + coupling * sourceY[i]
-          } else {
-            sys.y[i] += dy * dt
-          }
-          sys.z[i] += dz * dt
-        }
-      }
-
-      function update () {
-        step(system1)
-        step(system2, 0.03, system1.y)
-        step(system3)
-
-        Plotly.animate(
-          'Lorenz_unlinked_2',
-          {
-            data: [
-              { x: [system3.x[0]], y: [system3.z[0]] },
-              { x: system3.x.slice(1), y: system3.z.slice(1) },
-            ],
-          },
-          { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
-        )
-
-        Plotly.animate(
-          'Lorenz',
-          {
-            data: [
-              { x: [system1.x[0]], y: [system1.z[0]] },
-              { x: system1.x.slice(1), y: system1.z.slice(1) },
-            ],
-          },
-          { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
-        )
-
-        Plotly.animate(
-          'Lorenz2',
-          {
-            data: [
-              { x: [system2.x[0]], y: [system2.z[0]] },
-              { x: system2.x.slice(1), y: system2.z.slice(1) },
-            ],
-          },
-          { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
-        )
-
-        requestAnimationFrame(update)
-      }
-
-      requestAnimationFrame(update)
-    })()
-    </script>
     <Paragraph>Each dot represents its own version of the system (unique starting points) and you can see from the highlighted red one that the dots across the two linked systems are drawn to each other and, even if they aren't always on the same side of the attractor, quickly fall into the same (quasi-)period. Meanwhile the unlinked system is doing its own thing, on its own time. And this is with a coupling constant of only 0.03!</Paragraph>
     <SectionTitle>More Systems</SectionTitle>
     <Paragraph>The Mackey-Glass system is a single variable : $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</Paragraph>
     <div id="MG" ><!-- Plotly chart will be drawn inside this DIV --></div>
-    <script src=""></script>
     <Paragraph>It is a time delayed system, which means it relies on previous values of itself to determine its present dynamics. It is inspired by biological systems and is also the model used by <a href="https://www.nature.com/articles/ncomms1476" target="_blank" >L. Appeltant in his thesis work developing the first example of a physical system being used for reservoir computing</a>. He (and later in a class taught by <a href="https://umdphysics.umd.edu/people/faculty/current/item/445-rroy.html" target="_blank" >Rajarshi Roy</a>, I) mimicked this sytem's dynamics with a nonlinear, optoelectronic circuit to act as a physical reservoir computer.</Paragraph>
     <Paragraph>In the paper I also explore a mechanical system being used as a reservoir (a bunch of masses and springs) and a quantum computer being used as a reservoir. Maybe I'll write more about those here in the future.</Paragraph>
   </v-container>
