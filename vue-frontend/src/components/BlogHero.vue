@@ -7,7 +7,10 @@
       <v-col>
         <h1 class="text-h5 font-weight-bold mb-2">{{ title }}</h1>
         <p class="text-subtitle-1 mb-1">{{ subtitle }}</p>
-        <div class="text-caption mb-1">{{ date }}</div>
+        <div class="text-caption mb-1">
+          {{ date }}
+          <span v-if="mod_date !== date">(Edited: {{ mod_date }})</span>
+        </div>
         <div>
           <v-chip
             v-for="tag in tags"
@@ -28,6 +31,7 @@ defineProps({
   title: String,
   subtitle: String,
   date: String,
+  mod_date: String,
   tags: Array,
   img: String,
 });

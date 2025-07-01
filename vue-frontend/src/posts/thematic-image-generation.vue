@@ -10,6 +10,7 @@ const info = posts[slug]
     :title="info.title"
     :subtitle="info.subtitle"
     :date="info.date"
+    :mod_date="info.mod_date"
     :tags="info.tags"
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
