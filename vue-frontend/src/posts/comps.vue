@@ -11,11 +11,14 @@ onMounted(() => {
   // Hide/show control for Lorenz plots
   const hideUnhide = () => {
     const elem = document.getElementById('LorenzPlots')
-    if (!elem) return
+    const button = document.getElementById('LorenzButton')
+    if (!elem || !button) return
     if (elem.style.display === 'none') {
       elem.style.display = 'flex'
+      button.textContent = 'Hide Lorenz Plots'
     } else {
       elem.style.display = 'none'
+      button.textContent = 'Show Lorenz Plots'
     }
   }
   window.hide_unhide_plots = hideUnhide
@@ -134,6 +137,74 @@ onMounted(() => {
 
   requestAnimationFrame(update)
 
+  const MGnt = 1000
+  const MGdt = 0.1
+  const MGtdelay = 2
+  const MGx = []
+  const MGxd = []
+  const MGxd2 = []
+  const MGn = 9.65
+  const MGg = 1
+  const MGB = 10
+
+  MGx[0] = 0.5
+  for (let i = 1; i < MGtdelay / MGdt + 1; i++) {
+    MGx[i] = 0.5
+  }
+
+  function computeMG() {
+    for (let i = MGtdelay / MGdt; i < MGnt; i++) {
+      const idelay = i - MGtdelay / MGdt
+      const frac = (MGB * MGx[idelay]) / (1 + Math.pow(MGx[idelay], MGn))
+      const dx = frac - MGg * MGx[i - 1]
+      MGx[i] = MGx[i - 1] + dx * MGdt
+    }
+  }
+
+  computeMG()
+
+  for (let i = 1; i < MGnt - MGtdelay / MGdt; i++) {
+    MGxd[i] = MGx[i + MGtdelay / MGdt]
+  }
+  for (let i = 1; i < MGnt - 2 * (MGtdelay / MGdt); i++) {
+    MGxd2[i] = MGx[i + 2 * (MGtdelay / MGdt)]
+  }
+
+  Plotly.newPlot(
+    'MG',
+    [
+      {
+        x: MGx,
+        y: MGxd,
+        z: MGxd2,
+        mode: 'markers',
+        marker: {
+          size: 2,
+        },
+        type: 'scatter3d',
+      },
+    ],
+    {
+      xaxis: {
+        range: [-5, 5],
+        showticklabels: false,
+        zeroline: false,
+      },
+      yaxis: {
+        range: [-5, 5],
+        showticklabels: false,
+        zeroline: false,
+      },
+      zaxis: {
+        range: [-5, 5],
+        showticklabels: false,
+        zeroline: false,
+      },
+      plot_bgcolor: '#F3F4F6',
+      paper_bgcolor: '#F3F4F6',
+    },
+  )
+
   if (window.MathJax && window.MathJax.typeset) {
     window.MathJax.typeset()
   }
@@ -159,7 +230,7 @@ onMounted(() => {
     <Paragraph>$$x_{1,t} = x_{1,t-1} + dx * dt$$ $$y_{1,t} = y_{1,t-1} + dy * dt$$ $$z_{1,t} = z_{1,t-1} + dz * dt$$</Paragraph>
     <Paragraph>$$x_{2,t} = x_{2,t-1} + dx * dt$$ $$y_{2,t} = (1 - c)(y_{2,t-1} + dy * dt) + c * y_{1,t-1}$$ $$z_{2,t} = z_{2,t-1} + dz * dt$$ $$c = 0.03$$</Paragraph>
     <Paragraph>$$x_{3,t} = x_{3,t-1} + dx * dt$$ $$y_{3,t} = y_{3,t-1} + dy * dt$$ $$z_{3,t} = z_{3,t-1} + dz * dt$$</Paragraph>
-    <a onclick="hide_unhide_plots()" >Hide/Show Lorenz Plots</a>
+    <button id="LorenzButton" class="interest-button" onclick="hide_unhide_plots()">Hide Lorenz Plots</button>
     <div  id="LorenzPlots">
     <div id='Lorenz' ><!-- Plotly chart will be drawn inside this DIV --></div>
     <div id='Lorenz_unlinked_2'><!-- Plotly chart will be drawn inside this DIV --></div>
