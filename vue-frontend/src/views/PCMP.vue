@@ -84,17 +84,18 @@ const others = [
     <p>
       As the program&#39;s software engineer I establish development standards,
       refactor published work and build internal services ranging from
-      preprocessing automation to compute infrastructure.
+      preprocessing automation to statistical packages.
     </p>
 
     <h2 class="text-h6 font-weight-bold mb-2 mt-6">Tech Stack</h2>
-    <ul>
-      <li>Python and R for core analyses</li>
-      <li>Snakemake and Prefect for pipeline orchestration</li>
-      <li>Docker and Conda for reproducible environments</li>
-      <li>HPC and AWS resources for compute</li>
-      <li>GitHub and GitHub Actions for CI/CD</li>
-    </ul>
+    <p>
+      Python and R make up the core of our work with frameworks like Snakemake,
+      Prefect, Flask, and Docker. For orchestration we rely largely on SLURM and 
+      Kubernetes with GitHub and GitHub Actions for source control and CI/CD. 
+      Increasingly, AI tools such as OpenAI/Azure Chat APIs, CoPilot, Codex, and 
+      LangChain/LangGraph are being integrated across the SDLC to enhance 
+      productivity and analysis capabilities.
+    </p>
   </v-container>
 
   <v-container>

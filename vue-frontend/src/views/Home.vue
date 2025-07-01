@@ -44,7 +44,7 @@ const buttons = [
   { to: '/certifications', label: 'Certs', icon: 'fas fa-certificate' },
   { to: '/education', label: 'Education', icon: 'fas fa-graduation-cap' },
   { to: '/past-work', label: 'Past Work', icon: 'fas fa-history' },
-  { to: '/sports', label: 'Sports', component: Frisbee },
+  { to: '/sports', label: 'Sports', icon: 'fas fa-futbol' },
   { to: '/music', label: 'Music', icon: 'fas fa-music' },
 ]
 </script>
@@ -77,7 +77,7 @@ const buttons = [
           <v-btn color="green-darken-2" class="ma-2" variant="elevated">
             {{ btn.label }}
             <span class="ms-2">
-              <component v-if="btn.component" :is="btn.component" :size="24" />
+              <component v-if="btn.component" :is="btn.component" :size="16" :mode=light />
               <i v-else :class="btn.icon"></i>
             </span>
           </v-btn>
