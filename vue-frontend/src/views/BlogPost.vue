@@ -25,8 +25,9 @@ async function loadComponent() {
     console.error('Error loading component:', e)
     component.value = null
     notFound.value = true
+  } finally {
+    loading.value = false
   }
-  loading.value = false
 }
 
 watch(
