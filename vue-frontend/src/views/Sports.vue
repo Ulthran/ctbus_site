@@ -1,6 +1,12 @@
 <script setup>
 import SimplePage from '../components/SimplePage.vue'
 import Badminton from '../svgs/Badminton.vue'
+import Bruises from '../svgs/Bruises.vue'
+import Batman from '../svgs/Batman.vue'
+import Locomotive from '../svgs/Locomotive.vue'
+import WildCard from '../svgs/WildCard.vue'
+import Frisbee from '../svgs/Frisbee.vue'
+import SquashIcon from '../svgs/Squash.vue'
 </script>
 
 <template>
@@ -12,27 +18,37 @@ import Badminton from '../svgs/Badminton.vue'
       <v-row class="py-4" align="center" justify="space-around">
         <v-col cols="auto">
           <a href="https://www.buda.org/en_us/t/mob-3" target="_blank" title="M.O.B.: Hollaredutulliöh">
-            <v-icon icon="fas fa-bolt" class="icon-bg" size="48" />
+            <div class="icon-bg" style="display:inline-block">
+              <Frisbee :size="48" />
+            </div>
           </a>
         </v-col>
         <v-col cols="auto">
           <a href="https://twitter.com/BruisesUltimate" target="_blank" title="Bruises: Compote ('19)">
-            <v-icon icon="fas fa-hand-fist" class="icon-bg" size="48" />
+            <div class="icon-bg" style="display:inline-block">
+              <Bruises :size="48" />
+            </div>
           </a>
         </v-col>
         <v-col cols="auto">
           <a href="https://twitter.com/LoS_Ultimate" target="_blank" title="League of Shadows: You either die a hero or live long enough to see yourself become the villain ('21)">
-            <v-icon icon="fas fa-bat" class="icon-bg" size="48" />
+            <div class="icon-bg" style="display:inline-block">
+              <Batman :size="48" />
+            </div>
           </a>
         </v-col>
         <v-col cols="auto">
           <a href="https://twitter.com/loco_ultimate" target="_blank" title="Loco: 1. 2. 3. 4. Loco. ('22)">
-            <v-icon icon="fas fa-train" class="icon-bg" size="48" />
+            <div class="icon-bg" style="display:inline-block">
+              <Locomotive :size="48" />
+            </div>
           </a>
         </v-col>
         <v-col cols="auto">
           <a href="https://twitter.com/WildCardult" target="_blank" title="Wild Card: Uno, you know ('23)">
-            <v-icon icon="fas fa-arrows-rotate" class="icon-bg" size="48" />
+            <div class="icon-bg" style="display:inline-block">
+              <WildCard :size="48" />
+            </div>
           </a>
         </v-col>
       </v-row>
@@ -100,7 +116,7 @@ import Badminton from '../svgs/Badminton.vue'
       <v-row class="py-4" align="center" justify="center">
         <v-col cols="auto">
           <div class="icon-bg" style="display:inline-block">
-            <Badminton style="width:48px;height:48px" />
+            <Badminton :size="48" />
           </div>
         </v-col>
       </v-row>
@@ -112,7 +128,9 @@ import Badminton from '../svgs/Badminton.vue'
       <p class="text-body-1">I played squash for a few years somewhere around middle school. My crowning achievement was winning the Marblehead YMCA snowflake holiday tournament.</p>
       <v-row class="py-4" align="center" justify="center">
         <v-col cols="auto">
-          <v-icon icon="fas fa-person-running" class="icon-bg" size="48" />
+          <div class="icon-bg" style="display:inline-block">
+            <SquashIcon :size="48" />
+          </div>
         </v-col>
       </v-row>
     </v-card>
