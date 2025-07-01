@@ -10,7 +10,7 @@ const schools = [
   {
     name: 'Marblehead High School',
     link: 'https://www.marbleheadschools.org/marblehead-high-school',
-    img: `CDN_URL/images/marblehead_logo.png`,
+    img: `CDN_URL/images/mhs_logo.png`,
   },
 ]
 </script>
