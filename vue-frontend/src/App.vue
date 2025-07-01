@@ -9,7 +9,7 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn to="/resume" icon variant="text" router>
+      <v-btn href="CDN_URL/documents/resume.pdf" icon variant="text" target="_blank">
         <v-icon icon="fas fa-file-alt"></v-icon>
       </v-btn>
       <v-btn href="https://github.com/Ulthran" icon variant="text" target="_blank">
