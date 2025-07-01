@@ -93,4 +93,5 @@ button:focus-visible {
 }
 .blog-content code {
   font-family: 'Fira Code', monospace;
+  text-shadow: none;
 }
