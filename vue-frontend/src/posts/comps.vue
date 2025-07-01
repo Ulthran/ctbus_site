@@ -56,7 +56,123 @@ const info = posts[slug]
     }
     }
     </script>
-    <script src=""></script>
+    <script>
+(function () {
+      const n = 100
+      const dt = 0.015
+
+      const system1 = { x: [], y: [], z: [] }
+      const system2 = { x: [], y: [], z: [] } // linked to system1
+      const system3 = { x: [], y: [], z: [] } // unlinked copy of system2
+
+      for (let i = 0; i < n; i++) {
+        system1.x[i] = Math.random() * 2 - 15
+        system1.y[i] = Math.random() * 2 - 15
+        system1.z[i] = 30 + Math.random() * 10
+
+        system2.x[i] = Math.random() * 2 + 13
+        system2.y[i] = Math.random() * 2 + 13
+        system2.z[i] = 30 + Math.random() * 10
+
+        system3.x[i] = system2.x[i]
+        system3.y[i] = system2.y[i]
+        system3.z[i] = system2.z[i]
+      }
+
+      function plot (id, dataX, dataZ, title) {
+        return Plotly.newPlot(
+          id,
+          [
+            { x: [dataX[0]], y: [dataZ[0]], mode: 'markers', marker: { color: '#FF0000', size: 10 } },
+            { x: dataX.slice(1), y: dataZ.slice(1), mode: 'markers', marker: { color: '#0000FF', size: 3 } },
+          ],
+          {
+            title: { text: title, font: { size: 18 } },
+            xaxis: { range: [-60, 60], showticklabels: false, zeroline: false },
+            yaxis: { range: [0, 60], showticklabels: false, zeroline: false },
+            plot_bgcolor: '#F3F4F6',
+            paper_bgcolor: '#F3F4F6',
+            showlegend: false,
+          },
+          { responsive: true },
+        )
+      }
+
+      plot('Lorenz_unlinked_2', system3.x, system3.z, 'Unlinked Lorenz Attractor #2')
+      plot('Lorenz', system1.x, system1.z, 'Lorenz Attractor #1')
+      plot('Lorenz2', system2.x, system2.z, 'Linked Lorenz Attractor #2')
+
+      function step (sys, coupling = 0, sourceY = null) {
+        const s = 10
+        const b = 8 / 3
+        const r = 28
+        for (let i = 0; i < n; i++) {
+          let dx = s * (sys.y[i] - sys.x[i])
+          let dy = sys.x[i] * (r - sys.z[i]) - sys.y[i]
+          let dz = sys.x[i] * sys.y[i] - b * sys.z[i]
+
+          const xh = sys.x[i] + dx * dt * 0.5
+          const yh = sys.y[i] + dy * dt * 0.5
+          const zh = sys.z[i] + dz * dt * 0.5
+
+          dx = s * (yh - xh)
+          dy = xh * (r - zh) - yh
+          dz = xh * yh - b * zh
+
+          sys.x[i] += dx * dt
+          if (sourceY) {
+            sys.y[i] = (1 - coupling) * (sys.y[i] + dy * dt) + coupling * sourceY[i]
+          } else {
+            sys.y[i] += dy * dt
+          }
+          sys.z[i] += dz * dt
+        }
+      }
+
+      function update () {
+        step(system1)
+        step(system2, 0.03, system1.y)
+        step(system3)
+
+        Plotly.animate(
+          'Lorenz_unlinked_2',
+          {
+            data: [
+              { x: [system3.x[0]], y: [system3.z[0]] },
+              { x: system3.x.slice(1), y: system3.z.slice(1) },
+            ],
+          },
+          { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+        )
+
+        Plotly.animate(
+          'Lorenz',
+          {
+            data: [
+              { x: [system1.x[0]], y: [system1.z[0]] },
+              { x: system1.x.slice(1), y: system1.z.slice(1) },
+            ],
+          },
+          { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+        )
+
+        Plotly.animate(
+          'Lorenz2',
+          {
+            data: [
+              { x: [system2.x[0]], y: [system2.z[0]] },
+              { x: system2.x.slice(1), y: system2.z.slice(1) },
+            ],
+          },
+          { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+        )
+
+        requestAnimationFrame(update)
+      }
+
+      requestAnimationFrame(update)
+    })()
+    </script>
     <Paragraph>Each dot represents its own version of the system (unique starting points) and you can see from the highlighted red one that the dots across the two linked systems are drawn to each other and, even if they aren't always on the same side of the attractor, quickly fall into the same (quasi-)period. Meanwhile the unlinked system is doing its own thing, on its own time. And this is with a coupling constant of only 0.03!</Paragraph>
     <SectionTitle>More Systems</SectionTitle>
     <Paragraph>The Mackey-Glass system is a single variable : $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</Paragraph>
