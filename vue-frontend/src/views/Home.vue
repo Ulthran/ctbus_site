@@ -6,29 +6,29 @@ const certs = [
     href: 'https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url',
     src: `CDN_URL/certificates/aws_certified_cloud_practitioner.png`,
     alt: 'AWS Certified Cloud Practitioner - Foundational',
-    h: 150,
-    w: 150,
+    h: 120,
+    w: 120,
   },
   {
     href: 'https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url',
     src: `CDN_URL/certificates/aws_certified_ai_practitioner_early_adopter.png`,
     alt: 'AWS Certified AI Practitioner',
-    h: 180,
-    w: 180,
+    h: 120,
+    w: 120,
   },
   {
     href: 'https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url',
     src: `CDN_URL/certificates/aws_certified_developer_associate.png`,
     alt: 'AWS Certified Developer - Associate',
-    h: 150,
-    w: 150,
+    h: 120,
+    w: 120,
   },
   {
     href: 'https://www.credly.com/badges/3decec7b-025c-4f64-a461-01d7d0fd6c22/public_url',
     src: `CDN_URL/certificates/aws_certified_devops_pro.png`,
     alt: 'AWS Certified DevOps Engineer - Professional',
-    h: 150,
-    w: 150,
+    h: 120,
+    w: 120,
   },
 ]
 
@@ -49,7 +49,7 @@ const buttons = [
     title="Charlie Bushman"
     subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts."
   >
-    <v-row justify="center" class="my-4">
+    <v-row justify="space-evenly" class="my-4">
       <v-col cols="auto" v-for="cert in certs" :key="cert.href">
         <a :href="cert.href" target="_blank" rel="noopener noreferrer">
           <v-img :src="cert.src" :alt="cert.alt" :height="cert.h" :width="cert.w" contain />
