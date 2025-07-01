@@ -7,6 +7,7 @@
         size="x-small"
         icon="mdi-content-copy"
         variant="text"
+        color="grey lighten-4"
         @click="copyCode"
       ></v-btn>
     </div>
