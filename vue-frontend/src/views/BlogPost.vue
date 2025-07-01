@@ -41,7 +41,7 @@ watch(
 
 <template>
   <v-container class="py-8 d-flex justify-center" v-if="loading">
-    <v-progress-circular indeterminate />
+    <v-progress-circular indeterminate aria-label="Loading post..." />
   </v-container>
   <component :is="component" v-else-if="component" />
   <v-container v-else-if="notFound">Post not found.</v-container>
