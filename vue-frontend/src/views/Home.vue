@@ -43,7 +43,7 @@ const buttons = [
   { to: '/certifications', label: 'Certs', icon: 'fas fa-certificate' },
   { to: '/education', label: 'Education', icon: 'fas fa-graduation-cap' },
   { to: '/past-work', label: 'Past Work', icon: 'fas fa-history' },
-  { to: '/sports', label: 'Sports', icon: 'fas fa-football-ball' },
+  { to: '/sports', label: 'Sports', icon: 'fas fa-futbol' },
   { to: '/music', label: 'Music', icon: 'fas fa-music' },
 ]
 </script>
