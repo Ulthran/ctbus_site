@@ -17,12 +17,12 @@ import Badminton from '../svgs/Badminton.vue'
         </v-col>
         <v-col cols="auto">
           <a href="https://twitter.com/BruisesUltimate" target="_blank" title="Bruises: Compote ('19)">
-            <BruisesIcon style="width:48px;height:48px" />
+            <font-awesome-icon icon="fist" style="width:48px;height:48px" />
           </a>
         </v-col>
         <v-col cols="auto">
           <a href="https://twitter.com/LoS_Ultimate" target="_blank" title="League of Shadows: You either die a hero or live long enough to see yourself become the villain ('21)">
-            <BatmanIcon style="width:48px;height:48px" />
+            <font-awesome-icon icon="bat" style="width:48px;height:48px" />
           </a>
         </v-col>
         <v-col cols="auto">
@@ -32,7 +32,7 @@ import Badminton from '../svgs/Badminton.vue'
         </v-col>
         <v-col cols="auto">
           <a href="https://twitter.com/WildCardult" target="_blank" title="Wild Card: Uno, you know ('23)">
-            <WildcardIcon style="width:48px;height:48px" />
+            <font-awesome-icon icon="uno-reverse" style="width:48px;height:48px" />
           </a>
         </v-col>
       </v-row>
@@ -99,7 +99,7 @@ import Badminton from '../svgs/Badminton.vue'
       <p class="text-body-1">I started playing badminton end of high school and trained 10 hours a week for a few months. Now I play for fun when I can.</p>
       <v-row class="py-4" align="center" justify="center">
         <v-col cols="auto">
-          <Badminton style="width:48px;height:48px" />
+          <font-awesome-icon icon="badminton" style="width:48px;height:48px" />
         </v-col>
       </v-row>
     </v-card>
@@ -110,7 +110,7 @@ import Badminton from '../svgs/Badminton.vue'
       <p class="text-body-1">I played squash for a few years somewhere around middle school. My crowning achievement was winning the Marblehead YMCA snowflake holiday tournament.</p>
       <v-row class="py-4" align="center" justify="center">
         <v-col cols="auto">
-          <SquashIcon style="width:48px;height:48px" />
+          <font-awesome-icon icon="squash" style="width:48px;height:48px" />
         </v-col>
       </v-row>
     </v-card>
