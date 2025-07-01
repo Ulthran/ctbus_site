@@ -1,24 +1,12 @@
 <script setup>
 import BlogHero from '../components/BlogHero.vue'
+import Paragraph from '../components/Paragraph.vue'
+import SectionTitle from '../components/SectionTitle.vue'
+import CodeBlock from '../components/CodeBlock.vue'
 const posts = window.posts
 const slug = 'ctbus-finance'
 const info = posts[slug]
-</script>
-
-<template>
-  <BlogHero
-    :title="info.title"
-    :subtitle="info.subtitle"
-    :date="info.date"
-    :mod_date="info.mod_date"
-    :tags="info.tags"
-    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
-  />
-  <v-container class="py-4 blog-content">
-    <p >It's all well and good to keep playing around with the newest technologies; make everything serverless, highly-available, and AI-driven. But sometimes a simple application of a couple really old tools is all you need to get a job done and it's always good to stay in practice with them too.</p>
-    <p >I'd been considering potential designs for a personal finance app. Thinking thoughts like: how do I secure automated exports from multiple financial institutions? How do I manage authentication for the database access? Can I do the whole thing serverlessly? After considering all this for a while, I came to thinking that for this a simplest form solution might actually be best. One where I import data manually, don't have to worry about auth because it's all local, and is portable to many other potential personal-data-storage-and-viewing-type applications.</p><br />
-    <p >The GitHub repository can be found <a  href="https://github.com/Ulthran/ctbus_finance" target="_blank">here</a>.</p>
-    <p >For starters, the two high level data models I created were CreditCard and Account. The distinction here is that an Account holds Holdings, with each Holding being some asset with a ticker symbol (including things like cash or crypto) and a CreditCard is just associated with a balance and a rewards balance. Both CreditCards and Accounts are snapshotted each month with AccountHoldings and CreditCardHoldings, recording the current date, the current quantity, and the current value. All of this is implemented in SQLAlchemy for compatibility with whatever backend we choose.</p>
+const modelsPy = `
     class Account(Base):
     __tablename__ = "accounts"
     name = Column(
@@ -104,9 +92,8 @@ const info = posts[slug]
     @property
     def total_value(self):
     return (self.rewards if self.rewards else 0) - self.balance
-    <p >Now that we have these data models, creating ingest and storage functions is a piece of cake. We can use pandas to read CSVs into DataFrames and then the built in <i>to_sql()</i> to load those DataFrames to tables. Behind the scenes, there's a bit more going on to setup a database connection, create the database, and process the CSVs to add things like the current date. You can check out how that works in the GitHub.</p>
-    <p >One of the keys to the simplicity of the whole project is SQLite, a widely used, lightweight database solution that lives directly on the filesystem. You can specify the connection to such a database with the URI <i>sqlite:////path/to/db.sqlite</i> and then interact with it as a file and as a database (a sort of file/database superposition).</p>
-    <p >Now we have a database full of data and a set of models which provide us clean ways of querying it. It's time to start looking at our data. The first thing I wanted was a function that would provide a list of accounts and their values. We can make use of our SQLAlchemy models to query the database for all AccountHoldings in the month/year of interest and then sum their values per Account.</p>
+`
+const queryPy = `
     account_holdings = (
     session.query(AccountHolding)
     .filter(
@@ -133,6 +120,28 @@ const info = posts[slug]
     )
     for a in accounts
     ]
-    <p >With that we have our per-account valuation! Next we can create an easy net worth function by summing over the results of the accounts and then subtracting the net CreditCard balance. There are a million other things we might investigate down the line, portfolio distribution over different asset classes, net rate of growth, performance of different investments. But that should all be much easier now that we have this simple infrastructure in place to do it. Another addition to this collection might be a quick Flask site, giving us a quick and dirty method for displaying certain stats and graphs that keeps with the theme of running everything locally. I hope this can be useful for you, it certainly is for me! And remember that this framework can be applied to just about any application you want to build that involves data you want to keep track of and have easy access to!</p>
+`
+</script>
+
+<template>
+  <BlogHero
+    :title="info.title"
+    :subtitle="info.subtitle"
+    :date="info.date"
+    :mod_date="info.mod_date"
+    :tags="info.tags"
+    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+  />
+  <v-container class="py-4 blog-content">
+    <Paragraph>It's all well and good to keep playing around with the newest technologies; make everything serverless, highly-available, and AI-driven. But sometimes a simple application of a couple really old tools is all you need to get a job done and it's always good to stay in practice with them too.</Paragraph>
+    <Paragraph>I'd been considering potential designs for a personal finance app. Thinking thoughts like: how do I secure automated exports from multiple financial institutions? How do I manage authentication for the database access? Can I do the whole thing serverlessly? After considering all this for a while, I came to thinking that for this a simplest form solution might actually be best. One where I import data manually, don't have to worry about auth because it's all local, and is portable to many other potential personal-data-storage-and-viewing-type applications.</Paragraph>
+    <Paragraph>The GitHub repository can be found <a  href="https://github.com/Ulthran/ctbus_finance" target="_blank">here</a>.</Paragraph>
+    <Paragraph>For starters, the two high level data models I created were CreditCard and Account. The distinction here is that an Account holds Holdings, with each Holding being some asset with a ticker symbol (including things like cash or crypto) and a CreditCard is just associated with a balance and a rewards balance. Both CreditCards and Accounts are snapshotted each month with AccountHoldings and CreditCardHoldings, recording the current date, the current quantity, and the current value. All of this is implemented in SQLAlchemy for compatibility with whatever backend we choose.</Paragraph>
+    <CodeBlock :code="modelsPy" language="python" filename="models.py" />
+    <Paragraph>Now that we have these data models, creating ingest and storage functions is a piece of cake. We can use pandas to read CSVs into DataFrames and then the built in <i>to_sql()</i> to load those DataFrames to tables. Behind the scenes, there's a bit more going on to setup a database connection, create the database, and process the CSVs to add things like the current date. You can check out how that works in the GitHub.</Paragraph>
+    <Paragraph>One of the keys to the simplicity of the whole project is SQLite, a widely used, lightweight database solution that lives directly on the filesystem. You can specify the connection to such a database with the URI <i>sqlite:////path/to/db.sqlite</i> and then interact with it as a file and as a database (a sort of file/database superposition).</Paragraph>
+    <CodeBlock :code="queryPy" language="python" filename="finance.py" />
+    <Paragraph>Now we have a database full of data and a set of models which provide us clean ways of querying it. It's time to start looking at our data. The first thing I wanted was a function that would provide a list of accounts and their values. We can make use of our SQLAlchemy models to query the database for all AccountHoldings in the month/year of interest and then sum their values per Account.</Paragraph>
+    <Paragraph>With that we have our per-account valuation! Next we can create an easy net worth function by summing over the results of the accounts and then subtracting the net CreditCard balance. There are a million other things we might investigate down the line, portfolio distribution over different asset classes, net rate of growth, performance of different investments. But that should all be much easier now that we have this simple infrastructure in place to do it. Another addition to this collection might be a quick Flask site, giving us a quick and dirty method for displaying certain stats and graphs that keeps with the theme of running everything locally. I hope this can be useful for you, it certainly is for me! And remember that this framework can be applied to just about any application you want to build that involves data you want to keep track of and have easy access to!</Paragraph>
   </v-container>
 </template>
