@@ -2,7 +2,6 @@
 import BlogHero from '../components/BlogHero.vue'
 import Paragraph from '../components/Paragraph.vue'
 import SectionTitle from '../components/SectionTitle.vue'
-import CodeBlock from '../components/CodeBlock.vue'
 const posts = window.posts
 const slug = 'comps'
 const info = posts[slug]

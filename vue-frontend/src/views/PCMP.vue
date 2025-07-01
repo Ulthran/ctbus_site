@@ -60,7 +60,7 @@ const others = [
 </script>
 
 <template>
-  <Hero title="Developer in Statistical Metagenomics with the PCMP" />
+  <Hero title="Developer in Statistical Metagenomics" subtitle="Penn-CHOP Microbiome Program" />
 
   <v-container class="text-left">
     <h2 class="text-h6 font-weight-bold mb-2">About the PCMP</h2>
