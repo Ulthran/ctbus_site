@@ -24,7 +24,7 @@ function toggleLorenz() {
 function toggleMG(key) {
   MGPlaying[key] = !MGPlaying[key]
   if (MGPlaying[key]) {
-    const step = { B: 0.5, n: 0.1, g: 0.1, tdelay: 0.1 }[key]
+    const step = { B: 0.1, n: 0.05, g: 0.05, tdelay: 0.1 }[key]
     const min = { B: 5, n: 5, g: 0.1, tdelay: 1 }[key]
     const max = { B: 20, n: 12, g: 2, tdelay: 4 }[key]
     MGIntervals[key] = setInterval(() => {
@@ -292,7 +292,6 @@ onMounted(() => {
 .lorenz-main {
   flex: 1 1 45%;
   min-width: 300px;
-  min-height: 600px;
   display: flex;
   align-items: center;
 }
