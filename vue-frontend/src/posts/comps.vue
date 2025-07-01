@@ -2,26 +2,17 @@
 import BlogHero from '../components/BlogHero.vue'
 import Paragraph from '../components/Paragraph.vue'
 import SectionTitle from '../components/SectionTitle.vue'
-import { onMounted } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
 const posts = window.posts
 const slug = 'comps'
 const info = posts[slug]
 
+const MGtdelay = ref(2)
+const MGn = ref(9.65)
+const MGg = ref(1)
+const MGB = ref(10)
+
 onMounted(() => {
-  // Hide/show control for Lorenz plots
-  const hideUnhide = () => {
-    const elem = document.getElementById('LorenzPlots')
-    const button = document.getElementById('LorenzButton')
-    if (!elem || !button) return
-    if (elem.style.display === 'none') {
-      elem.style.display = 'flex'
-      button.textContent = 'Hide Lorenz Plots'
-    } else {
-      elem.style.display = 'none'
-      button.textContent = 'Show Lorenz Plots'
-    }
-  }
-  window.hide_unhide_plots = hideUnhide
 
   const n = 100
   const dt = 0.015
@@ -139,71 +130,54 @@ onMounted(() => {
 
   const MGnt = 1000
   const MGdt = 0.1
-  const MGtdelay = 2
-  const MGx = []
-  const MGxd = []
-  const MGxd2 = []
-  const MGn = 9.65
-  const MGg = 1
-  const MGB = 10
-
-  MGx[0] = 0.5
-  for (let i = 1; i < MGtdelay / MGdt + 1; i++) {
-    MGx[i] = 0.5
-  }
 
   function computeMG() {
-    for (let i = MGtdelay / MGdt; i < MGnt; i++) {
-      const idelay = i - MGtdelay / MGdt
-      const frac = (MGB * MGx[idelay]) / (1 + Math.pow(MGx[idelay], MGn))
-      const dx = frac - MGg * MGx[i - 1]
-      MGx[i] = MGx[i - 1] + dx * MGdt
+    const x = []
+    const xd = []
+    const xd2 = []
+    x[0] = 0.5
+    for (let i = 1; i < MGtdelay.value / MGdt + 1; i++) {
+      x[i] = 0.5
     }
+    for (let i = MGtdelay.value / MGdt; i < MGnt; i++) {
+      const idelay = i - MGtdelay.value / MGdt
+      const frac =
+        (MGB.value * x[idelay]) / (1 + Math.pow(x[idelay], MGn.value))
+      const dx = frac - MGg.value * x[i - 1]
+      x[i] = x[i - 1] + dx * MGdt
+    }
+    for (let i = 1; i < MGnt - MGtdelay.value / MGdt; i++) {
+      xd[i] = x[i + MGtdelay.value / MGdt]
+    }
+    for (let i = 1; i < MGnt - 2 * (MGtdelay.value / MGdt); i++) {
+      xd2[i] = x[i + 2 * (MGtdelay.value / MGdt)]
+    }
+    return { x, xd, xd2 }
   }
 
-  computeMG()
-
-  for (let i = 1; i < MGnt - MGtdelay / MGdt; i++) {
-    MGxd[i] = MGx[i + MGtdelay / MGdt]
-  }
-  for (let i = 1; i < MGnt - 2 * (MGtdelay / MGdt); i++) {
-    MGxd2[i] = MGx[i + 2 * (MGtdelay / MGdt)]
-  }
-
-  Plotly.newPlot(
-    'MG',
-    [
-      {
-        x: MGx,
-        y: MGxd,
-        z: MGxd2,
-        mode: 'markers',
-        marker: {
-          size: 2,
+  watchEffect(() => {
+    const { x, xd, xd2 } = computeMG()
+    Plotly.react(
+      'MG',
+      [
+        {
+          x,
+          y: xd,
+          z: xd2,
+          mode: 'markers',
+          marker: { size: 2 },
+          type: 'scatter3d',
         },
-        type: 'scatter3d',
+      ],
+      {
+        xaxis: { range: [-5, 5], showticklabels: false, zeroline: false },
+        yaxis: { range: [-5, 5], showticklabels: false, zeroline: false },
+        zaxis: { range: [-5, 5], showticklabels: false, zeroline: false },
+        plot_bgcolor: '#F3F4F6',
+        paper_bgcolor: '#F3F4F6',
       },
-    ],
-    {
-      xaxis: {
-        range: [-5, 5],
-        showticklabels: false,
-        zeroline: false,
-      },
-      yaxis: {
-        range: [-5, 5],
-        showticklabels: false,
-        zeroline: false,
-      },
-      zaxis: {
-        range: [-5, 5],
-        showticklabels: false,
-        zeroline: false,
-      },
-      plot_bgcolor: '#F3F4F6',
-      paper_bgcolor: '#F3F4F6',
-    },
-  )
+    )
+  })
 
   if (window.MathJax && window.MathJax.typeset) {
     window.MathJax.typeset()
@@ -230,16 +204,51 @@ onMounted(() => {
     <Paragraph>$$x_{1,t} = x_{1,t-1} + dx * dt$$ $$y_{1,t} = y_{1,t-1} + dy * dt$$ $$z_{1,t} = z_{1,t-1} + dz * dt$$</Paragraph>
     <Paragraph>$$x_{2,t} = x_{2,t-1} + dx * dt$$ $$y_{2,t} = (1 - c)(y_{2,t-1} + dy * dt) + c * y_{1,t-1}$$ $$z_{2,t} = z_{2,t-1} + dz * dt$$ $$c = 0.03$$</Paragraph>
     <Paragraph>$$x_{3,t} = x_{3,t-1} + dx * dt$$ $$y_{3,t} = y_{3,t-1} + dy * dt$$ $$z_{3,t} = z_{3,t-1} + dz * dt$$</Paragraph>
-    <button id="LorenzButton" class="interest-button" onclick="hide_unhide_plots()">Hide Lorenz Plots</button>
-    <div  id="LorenzPlots">
-    <div id='Lorenz' ><!-- Plotly chart will be drawn inside this DIV --></div>
-    <div id='Lorenz_unlinked_2'><!-- Plotly chart will be drawn inside this DIV --></div>
-    <div id='Lorenz2'><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div id="LorenzPlots" class="lorenz-container">
+      <div id="Lorenz" class="lorenz-main"><!-- Plotly chart will be drawn inside this DIV --></div>
+      <div class="lorenz-side">
+        <div id="Lorenz_unlinked_2"><!-- Plotly chart will be drawn inside this DIV --></div>
+        <div id="Lorenz2"><!-- Plotly chart will be drawn inside this DIV --></div>
+      </div>
+    </div>
     <Paragraph>Each dot represents its own version of the system (unique starting points) and you can see from the highlighted red one that the dots across the two linked systems are drawn to each other and, even if they aren't always on the same side of the attractor, quickly fall into the same (quasi-)period. Meanwhile the unlinked system is doing its own thing, on its own time. And this is with a coupling constant of only 0.03!</Paragraph>
     <SectionTitle>More Systems</SectionTitle>
     <Paragraph>The Mackey-Glass system is a single variable : $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</Paragraph>
     <div id="MG" ><!-- Plotly chart will be drawn inside this DIV --></div>
+    <v-slider v-model="MGB" :min="5" :max="20" step="0.5" label="β" class="my-2" hide-details></v-slider>
+    <v-slider v-model="MGn" :min="5" :max="12" step="0.1" label="n" class="my-2" hide-details></v-slider>
+    <v-slider v-model="MGg" :min="0.1" :max="2" step="0.1" label="γ" class="my-2" hide-details></v-slider>
+    <v-slider v-model="MGtdelay" :min="1" :max="4" step="0.1" label="τ" class="my-2" hide-details></v-slider>
     <Paragraph>It is a time delayed system, which means it relies on previous values of itself to determine its present dynamics. It is inspired by biological systems and is also the model used by <a href="https://www.nature.com/articles/ncomms1476" target="_blank" >L. Appeltant in his thesis work developing the first example of a physical system being used for reservoir computing</a>. He (and later in a class taught by <a href="https://umdphysics.umd.edu/people/faculty/current/item/445-rroy.html" target="_blank" >Rajarshi Roy</a>, I) mimicked this sytem's dynamics with a nonlinear, optoelectronic circuit to act as a physical reservoir computer.</Paragraph>
     <Paragraph>In the paper I also explore a mechanical system being used as a reservoir (a bunch of masses and springs) and a quantum computer being used as a reservoir. Maybe I'll write more about those here in the future.</Paragraph>
   </v-container>
 </template>
+
+<style scoped>
+.lorenz-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.lorenz-main {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+.lorenz-side {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+.lorenz-side > div {
+  flex: 1;
+}
+#Lorenz,
+#Lorenz_unlinked_2,
+#Lorenz2,
+#MG {
+  width: 100%;
+  height: 400px;
+}
+</style>
