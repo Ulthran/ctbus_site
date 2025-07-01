@@ -14,9 +14,9 @@ const certs = [
     href: 'https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url',
     src: `CDN_URL/certificates/aws_certified_ai_practitioner_early_adopter.png`,
     alt: 'AWS Certified AI Practitioner',
-    h: 175,
-    w: 175,
-    offset: -30,
+    h: 205,
+    w: 205,
+    offset: -25,
   },
   {
     href: 'https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url',
