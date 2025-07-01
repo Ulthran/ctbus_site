@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 460.545 460.545" xml:space="preserve">
+        <svg :stroke="color" :width="size" :height="size" :fill="color" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 460.545 460.545" xml:space="preserve">
         <g>
             <path d="M370.814,136.466c-5.233-1.77-10.908,1.03-12.681,6.261c-5.881,17.352-16.962,29.858-32.047,36.168
                 c-14.688,6.142-32.223,5.823-48.949-0.698c-0.016-0.895-0.041-1.787-0.104-2.664c-1.77-24.788-22.645-35.992-38.19-42.261
@@ -34,3 +34,12 @@
     </svg>
     </v-container>
 </template>
+<script setup>
+import { computed } from "vue"
+
+const props = defineProps({
+  size: { type: [Number, String], default: 48 },
+  mode: { type: String, default: "dark" }
+})
+const color = computed(() => (props.mode === "light" ? "#fff" : "#000"))
+</script>
