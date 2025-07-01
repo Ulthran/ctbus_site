@@ -15,9 +15,11 @@ const languageClass = computed(() => `language-${props.language}`);
 
 onMounted(() => {
   const el = pre.value.querySelector('code');
-  el.textContent = props.code;
-  if (window.Prism) {
-    Prism.highlightElement(el);
+  if (el) {
+    el.textContent = props.code;
+    if (window.Prism) {
+      Prism.highlightElement(el);
+    }
   }
 });
 </script>
