@@ -2,7 +2,9 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  window.open('CDN_URL/documents/resume.pdf', '_blank')
+  // Redirect directly to the resume so navigating to /resume
+  // loads the PDF in the current tab instead of opening a new one
+  window.location.replace('CDN_URL/documents/resume.pdf')
 })
 </script>
 
