@@ -2,7 +2,7 @@
 import BlogHero from '../components/BlogHero.vue'
 import Paragraph from '../components/Paragraph.vue'
 import SectionTitle from '../components/SectionTitle.vue'
-import { onMounted, ref, watchEffect } from 'vue'
+import { onMounted, ref, watchEffect, reactive } from 'vue'
 const posts = window.posts
 const slug = 'comps'
 const info = posts[slug]
@@ -11,6 +11,41 @@ const MGtdelay = ref(2)
 const MGn = ref(9.65)
 const MGg = ref(1)
 const MGB = ref(10)
+
+const lorenzRunning = ref(true)
+
+const MGPlaying = reactive({ B: false, n: false, g: false, tdelay: false })
+const MGIntervals = {}
+
+function toggleLorenz() {
+  lorenzRunning.value = !lorenzRunning.value
+}
+
+function toggleMG(key) {
+  MGPlaying[key] = !MGPlaying[key]
+  if (MGPlaying[key]) {
+    const step = { B: 0.5, n: 0.1, g: 0.1, tdelay: 0.1 }[key]
+    const min = { B: 5, n: 5, g: 0.1, tdelay: 1 }[key]
+    const max = { B: 20, n: 12, g: 2, tdelay: 4 }[key]
+    MGIntervals[key] = setInterval(() => {
+      if (key === 'B') {
+        MGB.value += step
+        if (MGB.value > max) MGB.value = min
+      } else if (key === 'n') {
+        MGn.value += step
+        if (MGn.value > max) MGn.value = min
+      } else if (key === 'g') {
+        MGg.value += step
+        if (MGg.value > max) MGg.value = min
+      } else if (key === 'tdelay') {
+        MGtdelay.value += step
+        if (MGtdelay.value > max) MGtdelay.value = min
+      }
+    }, 200)
+  } else {
+    clearInterval(MGIntervals[key])
+  }
+}
 
 onMounted(() => {
 
@@ -43,7 +78,8 @@ onMounted(() => {
         { x: dataX.slice(1), y: dataZ.slice(1), mode: 'markers', marker: { color: '#0000FF', size: 3 } },
       ],
       {
-        title: { text: title, font: { size: 18 } },
+        title: { text: title, font: { size: 14 } },
+        margin: { l: 20, r: 10, t: 25, b: 20 },
         xaxis: { range: [-60, 60], showticklabels: false, zeroline: false },
         yaxis: { range: [0, 60], showticklabels: false, zeroline: false },
         plot_bgcolor: '#F3F4F6',
@@ -86,42 +122,44 @@ onMounted(() => {
   }
 
   function update() {
-    step(system1)
-    step(system2, 0.03, system1.y)
-    step(system3)
+    if (lorenzRunning.value) {
+      step(system1)
+      step(system2, 0.03, system1.y)
+      step(system3)
 
-    Plotly.animate(
-      'Lorenz_unlinked_2',
-      {
-        data: [
-          { x: [system3.x[0]], y: [system3.z[0]] },
-          { x: system3.x.slice(1), y: system3.z.slice(1) },
-        ],
-      },
-      { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
-    )
+      Plotly.animate(
+        'Lorenz_unlinked_2',
+        {
+          data: [
+            { x: [system3.x[0]], y: [system3.z[0]] },
+            { x: system3.x.slice(1), y: system3.z.slice(1) },
+          ],
+        },
+        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+      )
 
-    Plotly.animate(
-      'Lorenz',
-      {
-        data: [
-          { x: [system1.x[0]], y: [system1.z[0]] },
-          { x: system1.x.slice(1), y: system1.z.slice(1) },
-        ],
-      },
-      { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
-    )
+      Plotly.animate(
+        'Lorenz',
+        {
+          data: [
+            { x: [system1.x[0]], y: [system1.z[0]] },
+            { x: system1.x.slice(1), y: system1.z.slice(1) },
+          ],
+        },
+        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+      )
 
-    Plotly.animate(
-      'Lorenz2',
-      {
-        data: [
-          { x: [system2.x[0]], y: [system2.z[0]] },
-          { x: system2.x.slice(1), y: system2.z.slice(1) },
-        ],
-      },
-      { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
-    )
+      Plotly.animate(
+        'Lorenz2',
+        {
+          data: [
+            { x: [system2.x[0]], y: [system2.z[0]] },
+            { x: system2.x.slice(1), y: system2.z.slice(1) },
+          ],
+        },
+        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+      )
+    }
 
     requestAnimationFrame(update)
   }
@@ -204,6 +242,11 @@ onMounted(() => {
     <Paragraph>$$x_{1,t} = x_{1,t-1} + dx * dt$$ $$y_{1,t} = y_{1,t-1} + dy * dt$$ $$z_{1,t} = z_{1,t-1} + dz * dt$$</Paragraph>
     <Paragraph>$$x_{2,t} = x_{2,t-1} + dx * dt$$ $$y_{2,t} = (1 - c)(y_{2,t-1} + dy * dt) + c * y_{1,t-1}$$ $$z_{2,t} = z_{2,t-1} + dz * dt$$ $$c = 0.03$$</Paragraph>
     <Paragraph>$$x_{3,t} = x_{3,t-1} + dx * dt$$ $$y_{3,t} = y_{3,t-1} + dy * dt$$ $$z_{3,t} = z_{3,t-1} + dz * dt$$</Paragraph>
+    <div class="d-flex justify-center my-2">
+      <v-btn size="small" icon variant="text" @click="toggleLorenz">
+        <v-icon :icon="lorenzRunning ? 'fas fa-pause' : 'fas fa-play'" />
+      </v-btn>
+    </div>
     <div id="LorenzPlots" class="lorenz-container">
       <div id="Lorenz" class="lorenz-main"><!-- Plotly chart will be drawn inside this DIV --></div>
       <div class="lorenz-side">
@@ -215,10 +258,30 @@ onMounted(() => {
     <SectionTitle>More Systems</SectionTitle>
     <Paragraph>The Mackey-Glass system is a single variable : $$\frac{dx}{dt} = \frac{\beta x(t-\tau)}{1+x(t-\tau)^n} - \gamma x(t)$$</Paragraph>
     <div id="MG" ><!-- Plotly chart will be drawn inside this DIV --></div>
-    <v-slider v-model="MGB" :min="5" :max="20" step="0.5" label="β" class="my-2" hide-details></v-slider>
-    <v-slider v-model="MGn" :min="5" :max="12" step="0.1" label="n" class="my-2" hide-details></v-slider>
-    <v-slider v-model="MGg" :min="0.1" :max="2" step="0.1" label="γ" class="my-2" hide-details></v-slider>
-    <v-slider v-model="MGtdelay" :min="1" :max="4" step="0.1" label="τ" class="my-2" hide-details></v-slider>
+    <div class="d-flex align-center">
+      <v-slider v-model="MGB" :min="5" :max="20" step="0.5" label="β" class="my-2 flex-grow-1" hide-details></v-slider>
+      <v-btn icon variant="text" size="small" @click="toggleMG('B')">
+        <v-icon :icon="MGPlaying.B ? 'fas fa-pause' : 'fas fa-play'" />
+      </v-btn>
+    </div>
+    <div class="d-flex align-center">
+      <v-slider v-model="MGn" :min="5" :max="12" step="0.1" label="n" class="my-2 flex-grow-1" hide-details></v-slider>
+      <v-btn icon variant="text" size="small" @click="toggleMG('n')">
+        <v-icon :icon="MGPlaying.n ? 'fas fa-pause' : 'fas fa-play'" />
+      </v-btn>
+    </div>
+    <div class="d-flex align-center">
+      <v-slider v-model="MGg" :min="0.1" :max="2" step="0.1" label="γ" class="my-2 flex-grow-1" hide-details></v-slider>
+      <v-btn icon variant="text" size="small" @click="toggleMG('g')">
+        <v-icon :icon="MGPlaying.g ? 'fas fa-pause' : 'fas fa-play'" />
+      </v-btn>
+    </div>
+    <div class="d-flex align-center">
+      <v-slider v-model="MGtdelay" :min="1" :max="4" step="0.1" label="τ" class="my-2 flex-grow-1" hide-details></v-slider>
+      <v-btn icon variant="text" size="small" @click="toggleMG('tdelay')">
+        <v-icon :icon="MGPlaying.tdelay ? 'fas fa-pause' : 'fas fa-play'" />
+      </v-btn>
+    </div>
     <Paragraph>It is a time delayed system, which means it relies on previous values of itself to determine its present dynamics. It is inspired by biological systems and is also the model used by <a href="https://www.nature.com/articles/ncomms1476" target="_blank" >L. Appeltant in his thesis work developing the first example of a physical system being used for reservoir computing</a>. He (and later in a class taught by <a href="https://umdphysics.umd.edu/people/faculty/current/item/445-rroy.html" target="_blank" >Rajarshi Roy</a>, I) mimicked this sytem's dynamics with a nonlinear, optoelectronic circuit to act as a physical reservoir computer.</Paragraph>
     <Paragraph>In the paper I also explore a mechanical system being used as a reservoir (a bunch of masses and springs) and a quantum computer being used as a reservoir. Maybe I'll write more about those here in the future.</Paragraph>
   </v-container>
@@ -243,12 +306,14 @@ onMounted(() => {
 }
 .lorenz-side > div {
   flex: 1;
+  min-height: 300px;
 }
 #Lorenz,
 #Lorenz_unlinked_2,
 #Lorenz2,
 #MG {
   width: 100%;
-  height: 400px;
+  height: 300px;
+  margin: 0;
 }
 </style>
