@@ -125,13 +125,34 @@ const others = [
     <h2 class="text-h6 font-weight-bold mb-4">Highlighted Projects</h2>
     <v-row justify="center">
       <v-col cols="12" md="6" v-for="(proj, i) in featured" :key="proj.title">
-        <v-card class="ma-2" height="100%">
-          <v-img v-if="proj.img" :src="proj.img" height="160" contain />
-          <v-card-title>{{ proj.title }}</v-card-title>
-          <v-card-subtitle>{{ proj.desc }}</v-card-subtitle>
+        <v-card class="ma-2 pa-2" height="100%">
+          <v-row no-gutters align="center">
+            <v-col cols="auto">
+              <v-img
+                v-if="proj.img"
+                :src="proj.img"
+                alt=""
+                width="120"
+                height="120"
+                contain
+              />
+            </v-col>
+            <v-col>
+              <v-card-title class="text-start">{{ proj.title }}</v-card-title>
+              <v-card-subtitle class="text-start">{{ proj.desc }}</v-card-subtitle>
+            </v-col>
+          </v-row>
           <v-card-text>{{ proj.did }}</v-card-text>
-          <v-card-actions>
-            <v-btn :href="proj.link" target="_blank" variant="text">See More!</v-btn>
+          <v-card-actions class="justify-end">
+            <v-btn
+              :href="proj.link"
+              target="_blank"
+              variant="text"
+              icon
+              aria-label="Project Link"
+            >
+              <v-icon icon="fas fa-arrow-up-right-from-square" />
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
