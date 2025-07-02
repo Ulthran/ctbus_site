@@ -13,22 +13,22 @@ const featured = [
   {
     title: 'Condabot',
     link: 'https://github.com/sunbeam-labs/condabot',
-    img: `CDN_URL/images/condabot_logo.png`,
+    img: `CDN_URL/images/bioconda_logo.png`,
     desc: 'Automates dependency updates for Conda environments across our projects.',
     did: 'I created this GitHub app to keep our Conda dependencies up to date.',
   },
   {
-    title: 'sbx_template',
-    link: 'https://github.com/sunbeam-labs/sbx_template',
-    img: `CDN_URL/images/sunbeam_logo.png`,
-    desc: 'Template repository for quickly creating new Sunbeam extensions.',
+    title: 'DEMIC',
+    link: 'https://github.com/Ulthran/DEMIC',
+    img: `CDN_URL/images/DEMIC_replication_nbg.png`,
+    desc: 'Statistical package for estimating microbial growth rates from sequencing data.',
     did: 'I built and maintain the template used for developing new extensions.',
   },
   {
     title: 'Autobfx',
     link: 'https://github.com/Ulthran/autobfx',
     img: `CDN_URL/images/autobfx_logo.png`,
-    desc: 'A modern pipeline framework providing an alternative to Snakemake.',
+    desc: 'A modern, terabyte scale automation preprocessing system for sequencing data.',
     did: 'I lead development of this Prefect-based workflow system.',
   },
 ]
@@ -141,19 +141,21 @@ const others = [
               <v-card-title class="text-start">{{ proj.title }}</v-card-title>
               <v-card-subtitle class="text-start">{{ proj.desc }}</v-card-subtitle>
             </v-col>
+            <v-col>
+              <v-btn
+                :href="proj.link"
+                target="_blank"
+                variant="text"
+                width="32"
+                height="32"
+                icon
+                :aria-label="`${proj.title} link`"
+              >
+                <v-icon icon="fas fa-arrow-up-right-from-square" />
+              </v-btn>
+            </v-col>
           </v-row>
           <v-card-text>{{ proj.did }}</v-card-text>
-          <v-card-actions class="justify-end">
-            <v-btn
-              :href="proj.link"
-              target="_blank"
-              variant="text"
-              icon
-              aria-label="Project Link"
-            >
-              <v-icon icon="fas fa-arrow-up-right-from-square" />
-            </v-btn>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
