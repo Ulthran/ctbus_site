@@ -138,24 +138,27 @@ const others = [
               />
             </v-col>
             <v-col>
-              <v-card-title class="text-start">{{ proj.title }}</v-card-title>
+              <div class="d-flex align-center">
+                <v-card-title class="text-start flex-grow-1 pa-0">{{ proj.title }}</v-card-title>
+                <v-btn
+                  :href="proj.link"
+                  target="_blank"
+                  variant="text"
+                  width="32"
+                  height="32"
+                  icon
+                  :aria-label="`${proj.title} GitHub`"
+                >
+                  <v-icon icon="fab fa-github" />
+                </v-btn>
+              </div>
               <v-card-subtitle class="text-start">{{ proj.desc }}</v-card-subtitle>
             </v-col>
-            <v-col>
-              <v-btn
-                :href="proj.link"
-                target="_blank"
-                variant="text"
-                width="32"
-                height="32"
-                icon
-                :aria-label="`${proj.title} link`"
-              >
-                <v-icon icon="fas fa-arrow-up-right-from-square" />
-              </v-btn>
-            </v-col>
           </v-row>
-          <v-card-text>{{ proj.did }}</v-card-text>
+          <v-card-text>
+            <p class="mb-2">{{ proj.desc }}</p>
+            <p>{{ proj.did }}</p>
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
