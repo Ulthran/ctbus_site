@@ -17,7 +17,7 @@ const posts = window.posts
             class="rounded"
             :style="{ width: '60px', height: '90px', 'border-radius': '4px' }"
           >
-            <v-img :src="`CDN_URL/images/blog/${name.replace(/-/g, '_')}.png`" cover></v-img>
+            <v-img :src="`CDN_URL/images/blog/${name.replace(/-/g, '_')}.png`" cover loading="lazy"></v-img>
           </v-avatar>
         </template>
         <v-list-item-title>{{ post.title }}</v-list-item-title>

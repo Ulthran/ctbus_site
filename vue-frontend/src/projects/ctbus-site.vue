@@ -48,7 +48,7 @@ const badges = [
         <v-row class="my-2" justify="center">
           <v-col cols="auto" v-for="badge in badges" :key="badge.href">
             <a :href="badge.href" target="_blank" rel="noopener noreferrer">
-              <v-img :src="badge.src" :alt="badge.alt" height="24" contain />
+              <v-img :src="badge.src" :alt="badge.alt" loading="lazy" height="24" contain />
             </a>
           </v-col>
         </v-row>

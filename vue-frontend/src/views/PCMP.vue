@@ -132,6 +132,7 @@ const others = [
                 v-if="proj.img"
                 :src="proj.img"
                 :alt="`${proj.title} logo`"
+                loading="lazy"
                 width="120"
                 height="120"
                 contain

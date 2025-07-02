@@ -20,7 +20,7 @@ const schools = [
     <v-row justify="center">
       <v-col cols="12" md="4" v-for="school in schools" :key="school.name">
         <v-card class="ma-4" :href="school.link" target="_blank">
-          <v-img :src="school.img" :alt="school.name" height="160" contain />
+          <v-img :src="school.img" :alt="school.name" height="160" contain loading="lazy" />
           <v-card-title>{{ school.name }}</v-card-title>
         </v-card>
       </v-col>
