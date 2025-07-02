@@ -125,26 +125,15 @@ const others = [
     <h2 class="text-h6 font-weight-bold mb-4">Highlighted Projects</h2>
     <v-row justify="center">
       <v-col cols="12" md="6" v-for="(proj, i) in featured" :key="proj.title">
-        <div class="flip-card" @click="toggleFlip(i)">
-          <div class="flip-card-inner" :class="{ flipped: flipped[i] }">
-            <div class="flip-card-front">
-              <v-card class="ma-2" height="100%">
-                <v-img v-if="proj.img" :src="proj.img" height="160" contain />
-                <v-card-title>{{ proj.title }}</v-card-title>
-                <v-card-text>{{ proj.desc }}</v-card-text>
-              </v-card>
-            </div>
-            <div class="flip-card-back">
-              <v-card class="ma-2" height="100%">
-                <v-card-title>{{ proj.title }}</v-card-title>
-                <v-card-text>{{ proj.did }}</v-card-text>
-                <v-card-actions>
-                  <v-btn :href="proj.link" target="_blank" variant="text">More Info</v-btn>
-                </v-card-actions>
-              </v-card>
-            </div>
-          </div>
-        </div>
+        <v-card class="ma-2" height="100%">
+          <v-img v-if="proj.img" :src="proj.img" height="160" contain />
+          <v-card-title>{{ proj.title }}</v-card-title>
+          <v-card-subtitle>{{ proj.desc }}</v-card-subtitle>
+          <v-card-text>{{ proj.did }}</v-card-text>
+          <v-card-actions>
+            <v-btn :href="proj.link" target="_blank" variant="text">See More!</v-btn>
+          </v-card-actions>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
