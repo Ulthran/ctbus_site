@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue'
 import Hero from '../components/Hero.vue'
 
 const featured = [
@@ -7,26 +8,36 @@ const featured = [
     link: 'https://github.com/sunbeam-labs/sunbeam',
     img: `CDN_URL/images/sunbeam_logo.png`,
     desc: 'A robust and extensible Snakemake pipeline for metagenomic sequencing analysis.',
+    did: 'I help maintain the core pipeline and develop new modules.',
   },
   {
     title: 'Condabot',
     link: 'https://github.com/sunbeam-labs/condabot',
     img: `CDN_URL/images/condabot_logo.png`,
     desc: 'Automates dependency updates for Conda environments across our projects.',
+    did: 'I created this GitHub app to keep our Conda dependencies up to date.',
   },
   {
     title: 'sbx_template',
     link: 'https://github.com/sunbeam-labs/sbx_template',
     img: `CDN_URL/images/sunbeam_logo.png`,
     desc: 'Template repository for quickly creating new Sunbeam extensions.',
+    did: 'I built and maintain the template used for developing new extensions.',
   },
   {
     title: 'Autobfx',
     link: 'https://github.com/Ulthran/autobfx',
     img: `CDN_URL/images/autobfx_logo.png`,
     desc: 'A modern pipeline framework providing an alternative to Snakemake.',
+    did: 'I lead development of this Prefect-based workflow system.',
   },
 ]
+
+const flipped = ref(featured.map(() => false))
+
+function toggleFlip(idx) {
+  flipped.value[idx] = !flipped.value[idx]
+}
 
 const others = [
   { title: 'AutoBfx', link: '#', desc: 'Prefect based automation for early sequencing analysis.' },
@@ -111,12 +122,27 @@ const others = [
   <v-container>
     <h2 class="text-h6 font-weight-bold mb-4">Highlighted Projects</h2>
     <v-row justify="center">
-      <v-col cols="12" md="6" v-for="proj in featured" :key="proj.title">
-        <v-card class="ma-2" :href="proj.link" target="_blank">
-          <v-img v-if="proj.img" :src="proj.img" height="160" contain />
-          <v-card-title>{{ proj.title }}</v-card-title>
-          <v-card-text>{{ proj.desc }}</v-card-text>
-        </v-card>
+      <v-col cols="12" md="6" v-for="(proj, i) in featured" :key="proj.title">
+        <div class="flip-card" @click="toggleFlip(i)">
+          <div class="flip-card-inner" :class="{ flipped: flipped[i] }">
+            <div class="flip-card-front">
+              <v-card class="ma-2" height="100%">
+                <v-img v-if="proj.img" :src="proj.img" height="160" contain />
+                <v-card-title>{{ proj.title }}</v-card-title>
+                <v-card-text>{{ proj.desc }}</v-card-text>
+              </v-card>
+            </div>
+            <div class="flip-card-back">
+              <v-card class="ma-2" height="100%">
+                <v-card-title>{{ proj.title }}</v-card-title>
+                <v-card-text>{{ proj.did }}</v-card-text>
+                <v-card-actions>
+                  <v-btn :href="proj.link" target="_blank" variant="text">More Info</v-btn>
+                </v-card-actions>
+              </v-card>
+            </div>
+          </div>
+        </div>
       </v-col>
     </v-row>
   </v-container>
