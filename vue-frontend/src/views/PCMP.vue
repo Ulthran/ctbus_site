@@ -131,7 +131,7 @@ const others = [
               <v-img
                 v-if="proj.img"
                 :src="proj.img"
-                alt=""
+                :alt="`${proj.title} logo`"
                 width="120"
                 height="120"
                 contain
