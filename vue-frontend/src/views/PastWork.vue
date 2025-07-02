@@ -36,7 +36,7 @@ const workCards = [
         <v-card class="ma-4" :href="card.link" target="_blank">
           <v-row no-gutters>
             <v-col cols="12" md="4">
-              <v-img :src="card.img" :alt="card.title" height="160" contain />
+              <v-img :src="card.img" :alt="card.title" height="160" contain loading="lazy" />
             </v-col>
             <v-col cols="12" md="8">
               <v-card-title>{{ card.title }}</v-card-title>

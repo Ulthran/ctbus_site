@@ -60,6 +60,7 @@ const buttons = [
           <v-img
             :src="cert.src"
             :alt="cert.alt"
+            loading="lazy"
             :height="cert.h"
             :width="cert.w"
             :style="{ marginTop: cert.offset + 'px' }"
