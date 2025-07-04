@@ -27,7 +27,6 @@ jobs:
           RESUME=$(curl -s -o /dev/null -w "%{http_code}" https://d2w4s6xs8769uj.cloudfront.net/documents/resume.pdf)
           if [ $RESUME -eq 200 ]; then
             echo "Got 200! All done!"
-            break
           else
             echo "Got $RESUME :("
             exit 1
