@@ -138,7 +138,7 @@ import SquashIcon from '../svgs/Squash.vue'
     <!-- Tennis -->
     <v-card class="mt-8 pa-4 text-center" max-width="600">
       <h2 class="text-h4 font-weight-bold mb-2">Tennis</h2>
-      <p class="text-body-1">I picked up tennis in college and love hitting the courts whenever I can.</p>
+      <p class="text-body-1">I've played tennis off and on through my life.</p>
       <v-row class="py-4" align="center" justify="center">
         <v-col cols="auto">
           <v-icon icon="fas fa-table-tennis-paddle-ball" class="icon-bg" size="48" />

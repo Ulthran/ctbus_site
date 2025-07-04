@@ -25,7 +25,7 @@ const featured = [
     did: 'I built and maintain the template used for developing new extensions.',
   },
   {
-    title: 'Autobfx',
+    title: 'AutoBfx',
     link: 'https://github.com/Ulthran/autobfx',
     img: `CDN_URL/images/autobfx_logo.png`,
     desc: 'A modern, terabyte scale automation preprocessing system for sequencing data.',
@@ -123,45 +123,22 @@ const others = [
 
   <v-container>
     <h2 class="text-h6 font-weight-bold mb-4">Highlighted Projects</h2>
-    <v-row justify="center">
-      <v-col cols="12" md="6" v-for="(proj, i) in featured" :key="proj.title">
-        <v-card class="ma-2 pa-2" height="100%">
-          <v-row no-gutters align="center">
-            <v-col cols="auto">
-              <v-img
-                v-if="proj.img"
-                :src="proj.img"
-                :alt="`${proj.title} logo`"
-                loading="lazy"
-                width="120"
-                height="120"
-                contain
-              />
-            </v-col>
-            <v-col>
-              <div class="d-flex align-center">
-                <v-card-title class="text-start flex-grow-1 pa-0">{{ proj.title }}</v-card-title>
-                <v-btn
-                  :href="proj.link"
-                  target="_blank"
-                  variant="text"
-                  width="32"
-                  height="32"
-                  icon
-                  :aria-label="`${proj.title} GitHub`"
-                >
-                  <v-icon icon="fab fa-github" />
-                </v-btn>
-              </div>
-              <v-card-subtitle class="text-start">{{ proj.desc }}</v-card-subtitle>
-            </v-col>
-          </v-row>
-          <v-card-text>
-            <p class="mb-2">{{ proj.desc }}</p>
-            <p>{{ proj.did }}</p>
-          </v-card-text>
-        </v-card>
-      </v-col>
+    <v-row v-for="(proj, i) in featured" :key="proj.title" class="mb-4">
+      <v-card
+        class="mx-auto"
+        :prepend-avatar="proj.img"
+        :to="proj.link"
+        :target="proj.link ? '_blank' : null"
+        width="85%"
+      >
+        <template v-slot:title>
+          <span class="font-weight-black">{{ proj.title }}</span>
+          <span class="text-caption text-secondary">{{ proj.desc }}</span>
+        </template>
+        <v-card-text class="bg-surface-light pt-4">
+          {{ proj.did }}
+        </v-card-text>
+      </v-card>
     </v-row>
   </v-container>
 
