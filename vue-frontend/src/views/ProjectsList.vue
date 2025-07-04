@@ -11,8 +11,20 @@ const projects = window.projects
         :key="name"
         :to="`/projects/${name}`"
         link
-        :prepend-avatar="`CDN_URL/images/${proj.image}`"
       >
+        <template v-slot:prepend>
+          <v-avatar
+            class="rounded-circle"
+            :style="{ width: '60px', height: '60px' }"
+          >
+            <v-img
+              :src="`CDN_URL/images/${proj.image}`"
+              :alt="proj.title"
+              cover
+              loading="lazy"
+            />
+          </v-avatar>
+        </template>
         <v-list-item-title>{{ proj.title }}</v-list-item-title>
         <v-list-item-subtitle>{{ proj.subtitle }}</v-list-item-subtitle>
         <v-list-item-subtitle>
