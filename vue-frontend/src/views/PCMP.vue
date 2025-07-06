@@ -8,36 +8,29 @@ const featured = [
     link: 'https://github.com/sunbeam-labs/sunbeam',
     img: `CDN_URL/images/sunbeam_logo.png`,
     desc: 'A robust and extensible Snakemake pipeline for metagenomic sequencing analysis.',
-    did: 'I help maintain the core pipeline and develop new modules.',
+    did: "One of the program's primary tools for analysis, I have led the open source development of the pipeline since 2022 through multiple major releases. I have also developed and continue to maintain many of the pipeline's extensions.",
   },
   {
     title: 'Condabot',
     link: 'https://github.com/sunbeam-labs/condabot',
     img: `CDN_URL/images/bioconda_logo.png`,
     desc: 'Automates dependency updates for Conda environments across our projects.',
-    did: 'I created this GitHub app to keep our Conda dependencies up to date.',
+    did: 'This is a DevOps utility I created to keep our Conda environments up-to-date with the latest package versions, ensuring reproducibility and reliability. Conda presents several unique challenges for dependency management, and this tool helps bioinformaticians navigate them.',
   },
   {
     title: 'DEMIC',
     link: 'https://github.com/Ulthran/DEMIC',
     img: `CDN_URL/images/DEMIC_replication_nbg.png`,
-    desc: 'Statistical package for estimating microbial growth rates from sequencing data.',
-    did: 'I built and maintain the template used for developing new extensions.',
+    desc: 'Dense statistical package for estimating microbial growth rates from sequencing data.',
+    did: 'In my first year with the program I refactored and extended most of the code in this package, including the development of a new preprocessing software (PyCov3) and a Sunbeam extension (sbx_demic). I also wrote the documentation and tutorials for the package.',
   },
   {
     title: 'AutoBfx',
-    link: 'https://github.com/Ulthran/autobfx',
     img: `CDN_URL/images/autobfx_logo.png`,
     desc: 'A modern, terabyte scale automation preprocessing system for sequencing data.',
-    did: 'I lead development of this Prefect-based workflow system.',
+    did: "I led the development of this Prefect-based workflow system. From ideation with the bioinformaticians and PIs who's time was being sucked into repetitive, error-prone computation, I have built a system that moves projects from the wet lab to exploratory data analysis with no human interaction.",
   },
 ]
-
-const flipped = ref(featured.map(() => false))
-
-function toggleFlip(idx) {
-  flipped.value[idx] = !flipped.value[idx]
-}
 
 const others = [
   { title: 'AutoBfx', link: '#', desc: 'Prefect based automation for early sequencing analysis.' },
@@ -132,7 +125,7 @@ const others = [
         width="85%"
       >
         <template v-slot:title>
-          <span class="font-weight-black">{{ proj.title }}</span>
+          <span class="font-weight-black">{{ proj.title }}</span><br />
           <span class="text-caption text-secondary">{{ proj.desc }}</span>
         </template>
         <v-card-text class="bg-surface-light pt-4">
