@@ -72,7 +72,7 @@ const buttons = [
     </v-row>
     <v-row justify="center" class="mb-4">
       <router-link to="/resume">
-        <v-btn color="green-darken-2" variant="elevated">View Resume</v-btn>
+        <v-btn color="green-darken-2" variant="elevated" aria-label="View Charlie Bushman's resume">View Resume</v-btn>
       </router-link>
     </v-row>
   </Hero>
