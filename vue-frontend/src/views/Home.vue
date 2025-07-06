@@ -55,6 +55,16 @@ const buttons = [
     title="Charlie Bushman"
     subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts."
   >
+  <v-row justify="center" class="mb-4">
+      <router-link to="/resume">
+        <v-btn
+          color="green-darken-2"
+          variant="elevated"
+          aria-label="View Charlie Bushman's resume"
+          >View Resume</v-btn
+        >
+      </router-link>
+    </v-row>
     <v-row justify="space-evenly" class="my-4">
       <v-col cols="auto" v-for="cert in certs" :key="cert.href">
         <a :href="cert.href" target="_blank" rel="noopener noreferrer">
@@ -69,16 +79,6 @@ const buttons = [
           />
         </a>
       </v-col>
-    </v-row>
-    <v-row justify="center" class="mb-4">
-      <router-link to="/resume">
-        <v-btn
-          color="green-darken-2"
-          variant="elevated"
-          aria-label="View Charlie Bushman's resume"
-          >View Resume</v-btn
-        >
-      </router-link>
     </v-row>
   </Hero>
 
