@@ -1,42 +1,42 @@
 <script setup>
-import { useRoute } from 'vue-router'
-import { ref, watch } from 'vue'
+import { useRoute } from "vue-router";
+import { ref, watch } from "vue";
 
-const loading = ref(true)
-const notFound = ref(false)
+const loading = ref(true);
+const notFound = ref(false);
 
-const route = useRoute()
-const component = ref(null)
+const route = useRoute();
+const component = ref(null);
 
 async function loadComponent() {
-  loading.value = true
-  notFound.value = false
-  component.value = null
-  const name = route.params.slug
+  loading.value = true;
+  notFound.value = false;
+  component.value = null;
+  const name = route.params.slug;
   try {
-    component.value = await window['vue3-sfc-loader'].loadModule(
+    component.value = await window["vue3-sfc-loader"].loadModule(
       `${window.postsPath}/${name}.vue`,
       window.loaderOptions,
-    )
+    );
     if (!component.value) {
-      notFound.value = true
+      notFound.value = true;
     }
   } catch (e) {
-    console.error('Error loading component:', e)
-    component.value = null
-    notFound.value = true
+    console.error("Error loading component:", e);
+    component.value = null;
+    notFound.value = true;
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 
 watch(
   () => route.params.slug,
   () => {
-    loadComponent()
+    loadComponent();
   },
   { immediate: true },
-)
+);
 </script>
 
 <template>

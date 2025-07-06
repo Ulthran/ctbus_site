@@ -2,7 +2,14 @@
   <v-container class="my-4">
     <v-row align="center">
       <v-col cols="auto">
-        <v-img :src="img" :alt="title" width="120" height="120" class="rounded-circle" loading="lazy" />
+        <v-img
+          :src="img"
+          :alt="title"
+          width="120"
+          height="120"
+          class="rounded-circle"
+          loading="lazy"
+        />
       </v-col>
       <v-col>
         <h1 class="text-h5 font-weight-bold mb-2">{{ title }}</h1>
@@ -28,5 +35,5 @@ defineProps({
   subtitle: String,
   img: String,
   tags: Array,
-})
+});
 </script>

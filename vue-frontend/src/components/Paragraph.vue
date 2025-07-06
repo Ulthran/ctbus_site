@@ -1,8 +1,7 @@
 <template>
   <p class="blog-paragraph"><slot /></p>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style scoped>
 .blog-paragraph {
   margin-bottom: 1rem;

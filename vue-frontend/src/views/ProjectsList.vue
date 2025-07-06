@@ -1,5 +1,5 @@
 <script setup>
-const projects = window.projects
+const projects = window.projects;
 </script>
 
 <template>
