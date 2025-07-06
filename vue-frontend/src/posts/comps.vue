@@ -95,7 +95,7 @@ onMounted(() => {
         paper_bgcolor: "#F3F4F6",
         showlegend: false,
       },
-      { responsive: true },
+      { responsive: true }
     );
   }
 
@@ -103,7 +103,7 @@ onMounted(() => {
     "Lorenz_unlinked_2",
     system3.x,
     system3.z,
-    "Unlinked Lorenz Attractor #2",
+    "Unlinked Lorenz Attractor #2"
   );
   plot("Lorenz", system1.x, system1.z, "Lorenz Attractor #1");
   plot("Lorenz2", system2.x, system2.z, "Linked Lorenz Attractor #2");
@@ -150,7 +150,7 @@ onMounted(() => {
             { x: system3.x.slice(1), y: system3.z.slice(1) },
           ],
         },
-        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } }
       );
 
       Plotly.animate(
@@ -161,7 +161,7 @@ onMounted(() => {
             { x: system1.x.slice(1), y: system1.z.slice(1) },
           ],
         },
-        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } }
       );
 
       Plotly.animate(
@@ -172,7 +172,7 @@ onMounted(() => {
             { x: system2.x.slice(1), y: system2.z.slice(1) },
           ],
         },
-        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } },
+        { transition: { duration: 0 }, frame: { duration: 0, redraw: false } }
       );
     }
 
@@ -228,7 +228,7 @@ onMounted(() => {
         zaxis: { range: [-5, 5], showticklabels: false, zeroline: false },
         plot_bgcolor: "#F3F4F6",
         paper_bgcolor: "#F3F4F6",
-      },
+      }
     );
   });
 

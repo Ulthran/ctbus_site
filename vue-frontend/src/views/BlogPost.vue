@@ -16,7 +16,7 @@ async function loadComponent() {
   try {
     component.value = await window["vue3-sfc-loader"].loadModule(
       `${window.postsPath}/${name}.vue`,
-      window.loaderOptions,
+      window.loaderOptions
     );
     if (!component.value) {
       notFound.value = true;
@@ -35,7 +35,7 @@ watch(
   () => {
     loadComponent();
   },
-  { immediate: true },
+  { immediate: true }
 );
 </script>
 

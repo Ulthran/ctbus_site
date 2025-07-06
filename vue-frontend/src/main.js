@@ -42,7 +42,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/Home.vue`,
-            options,
+            options
           ),
         meta: {
           title: "Charlie Bushman - Portfolio",
@@ -55,7 +55,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/About.vue`,
-            options,
+            options
           ),
         meta: { title: "About - Charlie Bushman" },
       },
@@ -64,7 +64,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/BlogList.vue`,
-            options,
+            options
           ),
         meta: {
           title: "Blog - Charlie Bushman",
@@ -77,7 +77,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/BlogPost.vue`,
-            options,
+            options
           ),
         meta: { title: "Blog Post - Charlie Bushman" },
       },
@@ -86,7 +86,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/Certifications.vue`,
-            options,
+            options
           ),
         meta: { title: "Certifications - Charlie Bushman" },
       },
@@ -95,7 +95,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/Education.vue`,
-            options,
+            options
           ),
         meta: { title: "Education - Charlie Bushman" },
       },
@@ -104,7 +104,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/FavoriteNumber.vue`,
-            options,
+            options
           ),
         meta: { title: "Favorite Number - Charlie Bushman" },
       },
@@ -113,7 +113,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/Music.vue`,
-            options,
+            options
           ),
         meta: { title: "Music - Charlie Bushman" },
       },
@@ -122,7 +122,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/PastWork.vue`,
-            options,
+            options
           ),
         meta: { title: "Past Work - Charlie Bushman" },
       },
@@ -131,7 +131,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/PCMP.vue`,
-            options,
+            options
           ),
         meta: { title: "Work - Charlie Bushman" },
       },
@@ -140,7 +140,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/ProjectsList.vue`,
-            options,
+            options
           ),
         meta: {
           title: "Projects - Charlie Bushman",
@@ -153,7 +153,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/ProjectDetail.vue`,
-            options,
+            options
           ),
         meta: { title: "Project Details - Charlie Bushman" },
       },
@@ -162,7 +162,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/Resume.vue`,
-            options,
+            options
           ),
         meta: {
           title: "Resume - Charlie Bushman",
@@ -174,7 +174,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/Sports.vue`,
-            options,
+            options
           ),
         meta: { title: "Sports - Charlie Bushman" },
       },
@@ -183,7 +183,7 @@ window.dataPath = `${basePath}/data`;
         component: () =>
           window["vue3-sfc-loader"].loadModule(
             `${window.viewsPath}/NotFound.vue`,
-            options,
+            options
           ),
         meta: { title: "Not Found - Charlie Bushman" },
       },

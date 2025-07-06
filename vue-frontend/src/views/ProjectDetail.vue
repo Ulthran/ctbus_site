@@ -10,7 +10,7 @@ async function loadComponent() {
   try {
     component.value = await window["vue3-sfc-loader"].loadModule(
       `${window.projectsPath}/${name}.vue`,
-      window.loaderOptions,
+      window.loaderOptions
     );
   } catch (e) {
     console.error("Failed to load component:", e);
@@ -23,7 +23,7 @@ watch(
   () => {
     loadComponent();
   },
-  { immediate: true },
+  { immediate: true }
 );
 </script>
 

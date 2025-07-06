@@ -35,6 +35,6 @@ const props = defineProps({
 });
 const color = computed(() => (props.mode === "light" ? "#fff" : "#000"));
 const secondaryColor = computed(() =>
-  props.mode === "light" ? "#000" : "#fff",
+  props.mode === "light" ? "#000" : "#fff"
 );
 </script>
