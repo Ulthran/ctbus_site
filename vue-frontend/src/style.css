@@ -92,21 +92,8 @@ button:focus-visible {
   overflow-x: auto;
 }
 .blog-content code {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   text-shadow: none;
-}
-
-.nav-blog-preview {
-  display: none;
-  align-items: center;
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (min-width: 960px) {
-  .nav-blog-preview {
-    display: flex;
-  }
 }
 
 .flip-card {

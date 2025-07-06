@@ -28,7 +28,8 @@ jobs:
           npm install -g prettier
 
       - name: Prettier Check
-        run: prettier --check "vue-frontend/**/*.{js,vue,css,html}"
+        run: |
+          prettier --config .prettierrc.json --check "vue-frontend/**/*.{js,vue,css,html}" "terraform/**/*.js"
 
       - name: Terraform Format
         run: terraform fmt -check -recursive

@@ -9,14 +9,6 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <NavbarPostPreview
-        v-if="latestPost"
-        :link="`/blog/${latestSlug}`"
-        :img="latestImg"
-        :title="latestPost.title"
-        :subtitle="latestPost.subtitle"
-      />
-      <v-spacer></v-spacer>
       <v-btn
         href="CDN_URL/documents/resume.pdf"
         icon
@@ -55,20 +47,5 @@
 </template>
 
 <script>
-const { computed } = Vue;
-const { useRouter } = VueRouter;
-import NavbarPostPreview from "./components/NavbarPostPreview.vue";
-export default {
-  name: "App",
-  components: { NavbarPostPreview },
-  setup() {
-    const posts = window.posts || {};
-    const latestSlug = Object.keys(posts)[0];
-    const latestPost = latestSlug ? posts[latestSlug] : null;
-    const latestImg = latestSlug
-      ? `CDN_URL/images/blog/${latestSlug.replace(/-/g, "_")}.png`
-      : "";
-    return { latestSlug, latestPost, latestImg };
-  },
-};
+export default { name: "App" };
 </script>
