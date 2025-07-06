@@ -1,20 +1,40 @@
 <template>
   <v-container>
-    <svg :width="size" :height="size" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" :fill="color" :stroke="color">
+    <svg
+      :width="size"
+      :height="size"
+      version="1.1"
+      id="Icons"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 32 32"
+      xml:space="preserve"
+      :fill="color"
+      :stroke="color"
+    >
       <style type="text/css">
-        .st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+        .st0 {
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-miterlimit: 10;
+        }
       </style>
-      <path d="M29.8,23.3L23,15.6v-5.3l1.8-2.7c0.2-0.3,0.2-0.7,0-1S24.4,6,24,6h-8c-0.4,0-0.7,0.2-0.9,0.5s-0.2,0.7,0,1l1.8,2.7V14h-4v-3c0.6,0,1-0.4,1-1s-0.4-1-1-1h-1H4H3c-0.6,0-1,0.4-1,1s0.4,1,1,1v7c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1c0,0,0,0,0,0c0.2,1.7,1.7,3,3.5,3c1.8,0,3.2-1.3,3.4-3h1.1c0.2,1.7,1.7,3,3.4,3s3.2-1.3,3.4-3h1.1c0.2,1.7,1.7,3,3.4,3s3.2-1.3,3.4-3H29c0.4,0,0.7-0.2,0.9-0.6C30.1,24.1,30,23.6,29.8,23.3z M6.5,26C5.7,26,5,25.3,5,24.5S5.7,23,6.5,23S8,23.7,8,24.5S7.3,26,6.5,26z M14.5,26c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5S15.3,26,14.5,26z M22.5,26c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5S23.3,26,22.5,26z"/>
+      <path
+        d="M29.8,23.3L23,15.6v-5.3l1.8-2.7c0.2-0.3,0.2-0.7,0-1S24.4,6,24,6h-8c-0.4,0-0.7,0.2-0.9,0.5s-0.2,0.7,0,1l1.8,2.7V14h-4v-3c0.6,0,1-0.4,1-1s-0.4-1-1-1h-1H4H3c-0.6,0-1,0.4-1,1s0.4,1,1,1v7c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1c0,0,0,0,0,0c0.2,1.7,1.7,3,3.5,3c1.8,0,3.2-1.3,3.4-3h1.1c0.2,1.7,1.7,3,3.4,3s3.2-1.3,3.4-3h1.1c0.2,1.7,1.7,3,3.4,3s3.2-1.3,3.4-3H29c0.4,0,0.7-0.2,0.9-0.6C30.1,24.1,30,23.6,29.8,23.3z M6.5,26C5.7,26,5,25.3,5,24.5S5.7,23,6.5,23S8,23.7,8,24.5S7.3,26,6.5,26z M14.5,26c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5S15.3,26,14.5,26z M22.5,26c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5S23.3,26,22.5,26z"
+      />
     </svg>
   </v-container>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed } from "vue";
 
 const props = defineProps({
   size: { type: [Number, String], default: 48 },
-  mode: { type: String, default: 'dark' }
-})
-const color = computed(() => (props.mode === 'light' ? '#fff' : '#000'))
+  mode: { type: String, default: "dark" },
+});
+const color = computed(() => (props.mode === "light" ? "#fff" : "#000"));
 </script>

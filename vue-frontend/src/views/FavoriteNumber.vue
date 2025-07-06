@@ -1,5 +1,5 @@
 <script setup>
-import SimplePage from '../components/SimplePage.vue'
+import SimplePage from "../components/SimplePage.vue";
 </script>
 
 <template>

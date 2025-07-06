@@ -205,6 +205,48 @@ window.dataPath = `${basePath}/data`;
       meta.content = desc;
       document.head.appendChild(meta);
     }
+
+    const defaultImage = "CDN_URL/images/favicon.ico";
+    let ogTitle = to.meta.ogTitle || document.title;
+    let ogDescription = to.meta.ogDescription || desc;
+    let ogImage = to.meta.ogImage || defaultImage;
+
+    if (to.path.startsWith("/blog/") && window.posts) {
+      const slug = to.params.slug;
+      const post = window.posts[slug];
+      if (post) {
+        ogTitle = `${post.title} - Charlie Bushman`;
+        ogDescription = post.subtitle;
+        ogImage = `CDN_URL/images/blog/${slug.replace(/-/g, "_")}.png`;
+      }
+    }
+
+    if (to.path.startsWith("/projects/") && window.projects) {
+      const slug = to.params.slug;
+      const project = window.projects[slug];
+      if (project) {
+        ogTitle = `${project.title} - Charlie Bushman`;
+        ogDescription = project.subtitle;
+        ogImage = `CDN_URL/images/projects/${project.image}`;
+      }
+    }
+
+    function setPropertyMeta(property, content) {
+      let tag = document.querySelector(`meta[property='${property}']`);
+      if (tag) {
+        tag.setAttribute("content", content);
+      } else {
+        tag = document.createElement("meta");
+        tag.setAttribute("property", property);
+        tag.setAttribute("content", content);
+        document.head.appendChild(tag);
+      }
+    }
+
+    setPropertyMeta("og:title", ogTitle);
+    setPropertyMeta("og:description", ogDescription);
+    setPropertyMeta("og:url", window.location.href);
+    setPropertyMeta("og:image", ogImage);
   });
 
   const vuetify = Vuetify.createVuetify({
