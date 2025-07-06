@@ -1,52 +1,53 @@
 <script setup>
-import Hero from '../components/Hero.vue'
-import Frisbee from '../svgs/Frisbee.vue'
+import Hero from "../components/Hero.vue";
+import Frisbee from "../svgs/Frisbee.vue";
 
 const certs = [
   {
-    href: 'https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url',
+    href: "https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url",
     src: `CDN_URL/certificates/aws_certified_cloud_practitioner.png`,
-    alt: 'AWS Certified Cloud Practitioner - Foundational',
+    alt: "AWS Certified Cloud Practitioner - Foundational",
     h: 120,
     w: 120,
     offset: 0,
   },
   {
-    href: 'https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url',
+    href: "https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url",
     src: `CDN_URL/certificates/aws_certified_ai_practitioner_early_adopter.png`,
-    alt: 'AWS Certified AI Practitioner',
+    alt: "AWS Certified AI Practitioner",
     h: 205,
     w: 205,
     offset: -25,
   },
   {
-    href: 'https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url',
+    href: "https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url",
     src: `CDN_URL/certificates/aws_certified_developer_associate.png`,
-    alt: 'AWS Certified Developer - Associate',
+    alt: "AWS Certified Developer - Associate",
     h: 120,
     w: 120,
     offset: 0,
   },
   {
-    href: 'https://www.credly.com/badges/3decec7b-025c-4f64-a461-01d7d0fd6c22/public_url',
+    href: "https://www.credly.com/badges/3decec7b-025c-4f64-a461-01d7d0fd6c22/public_url",
     src: `CDN_URL/certificates/aws_certified_devops_pro.png`,
-    alt: 'AWS Certified DevOps Engineer - Professional',
+    alt: "AWS Certified DevOps Engineer - Professional",
     h: 120,
     w: 120,
     offset: 0,
   },
-]
+];
 
 const buttons = [
-  { to: '/pcmp', label: 'Work', icon: 'fas fa-briefcase' },
-  { to: '/blog', label: 'Blog', icon: 'fas fa-code' },
-  { to: '/projects', label: 'Projects', icon: 'fas fa-project-diagram' },
-  { to: '/certifications', label: 'Certs', icon: 'fas fa-certificate' },
-  { to: '/education', label: 'Education', icon: 'fas fa-graduation-cap' },
-  { to: '/past-work', label: 'Past Work', icon: 'fas fa-history' },
-  { to: '/sports', label: 'Sports', icon: 'fas fa-futbol' },
-  { to: '/music', label: 'Music', icon: 'fas fa-music' },
-]
+  { to: "/resume", label: "Resume", icon: "fas fa-file-alt" },
+  { to: "/projects", label: "Projects", icon: "fas fa-project-diagram" },
+  { to: "/blog", label: "Blog", icon: "fas fa-code" },
+  { to: "/pcmp", label: "Work", icon: "fas fa-briefcase" },
+  { to: "/certifications", label: "Certs", icon: "fas fa-certificate" },
+  { to: "/education", label: "Education", icon: "fas fa-graduation-cap" },
+  { to: "/past-work", label: "Past Work", icon: "fas fa-history" },
+  { to: "/sports", label: "Sports", icon: "fas fa-futbol" },
+  { to: "/music", label: "Music", icon: "fas fa-music" },
+];
 </script>
 
 <template>
@@ -69,6 +70,11 @@ const buttons = [
         </a>
       </v-col>
     </v-row>
+    <v-row justify="center" class="mb-4">
+      <router-link to="/resume">
+        <v-btn color="green-darken-2" variant="elevated" aria-label="View Charlie Bushman's resume">View Resume</v-btn>
+      </router-link>
+    </v-row>
   </Hero>
 
   <v-container class="text-center">
@@ -78,7 +84,12 @@ const buttons = [
           <v-btn color="green-darken-2" class="ma-2" variant="elevated">
             {{ btn.label }}
             <span class="ms-2">
-              <component v-if="btn.component" :is="btn.component" :size="16" :mode=light />
+              <component
+                v-if="btn.component"
+                :is="btn.component"
+                :size="16"
+                :mode="light"
+              />
               <i v-else :class="btn.icon"></i>
             </span>
           </v-btn>
