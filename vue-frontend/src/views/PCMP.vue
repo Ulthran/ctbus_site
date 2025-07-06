@@ -8,7 +8,20 @@ const featured = [
     link: "https://github.com/sunbeam-labs/sunbeam",
     img: `CDN_URL/images/sunbeam_logo.png`,
     desc: "A robust and extensible Snakemake pipeline for metagenomic sequencing analysis.",
-    did: "One of the program's primary tools for analysis, I have led the open source development of the pipeline since 2022 through multiple major releases. I have also developed and continue to maintain many of the pipeline's extensions.",
+    did: "One of the program's primary tools for analysis, I have led the open source development of this pipeline since 2022 through multiple major releases. I have also developed and continue to maintain many of the pipeline's extensions. Recently I have begun integrating AI tooling into the pipeline to automate debugging, reporting, analysis, and more.",
+  },
+  {
+    title: "AutoBfx",
+    img: `CDN_URL/images/autobfx_logo.png`,
+    desc: "A modern, terabyte scale automation preprocessing system for sequencing data.",
+    did: "I led the development of this Prefect-based workflow system. From ideation with the bioinformaticians and PIs who's time was being sucked into repetitive, error-prone computation, I have built a system that moves projects from the wet lab to exploratory data analysis with no human interaction.",
+  },
+  {
+    title: "microbial ARchive and Cryo-collection (mARC)",
+    link: "https://github.com/PennChopMicrobiomeProgram/marc_web",
+    img: `CDN_URL/images/chop_logo.png`,
+    desc: "An AI-enabled web application for managing mARC data and providing researchers with easy access.",
+    did: "I led the development and deployment of this web application and auxiliary database packages for defining, anonymizing, and managing mARC data. The app is one of the first at CHOP to integrate their new AI platform, allowing users to query the database using natural language.",
   },
   {
     title: "Condabot",
@@ -24,24 +37,23 @@ const featured = [
     desc: "Dense statistical package for estimating microbial growth rates from sequencing data.",
     did: "In my first year with the program I refactored and extended most of the code in this package, including the development of a new preprocessing software (PyCov3) and a Sunbeam extension (sbx_demic). I also wrote the documentation and tutorials for the package.",
   },
-  {
-    title: "AutoBfx",
-    img: `CDN_URL/images/autobfx_logo.png`,
-    desc: "A modern, terabyte scale automation preprocessing system for sequencing data.",
-    did: "I led the development of this Prefect-based workflow system. From ideation with the bioinformaticians and PIs who's time was being sucked into repetitive, error-prone computation, I have built a system that moves projects from the wet lab to exploratory data analysis with no human interaction.",
-  },
 ];
 
 const others = [
   {
-    title: "AutoBfx",
-    link: "#",
-    desc: "Prefect based automation for early sequencing analysis.",
+    title: "marc_db",
+    link: "https://github.com/PennChopMicrobiomeProgram/marc_db",
+    desc: "Defines the mARC database and provides a Python interface for it.",
+  },
+  {
+    title: "marc_honest",
+    link: "https://github.com/PennChopMicrobiomeProgram/marc_honest",
+    desc: "Anonymizes mARC data for sharing with external collaborators.",
   },
   {
     title: "sbx_assembly",
     link: "https://github.com/sunbeam-labs/sbx_assembly",
-    desc: "Extension for contig assembly and annotation.",
+    desc: "Assemble contigs then annotate and report on coverage.",
   },
   {
     title: "sbx_coassembly",
@@ -49,19 +61,9 @@ const others = [
     desc: "Co-assemble reads from groups of samples.",
   },
   {
-    title: "sbx_mapping",
-    link: "https://github.com/sunbeam-labs/sbx_mapping",
-    desc: "Map reads to reference genomes with custom filtering.",
-  },
-  {
-    title: "sbx_kraken",
-    link: "https://github.com/sunbeam-labs/sbx_kraken",
-    desc: "Taxonomic assignment of reads using Kraken.",
-  },
-  {
     title: "sbx_demic",
     link: "https://github.com/sunbeam-labs/sbx_demic",
-    desc: "Estimate bacterial growth rates via PTRs.",
+    desc: "Estimate bacterial growth rates via peak-to-trough ratios (PTRs).",
   },
   {
     title: "sbx_gene_clusters",
@@ -71,12 +73,17 @@ const others = [
   {
     title: "sbx_genome_assembly",
     link: "https://github.com/sunbeam-labs/sbx_genome_assembly",
-    desc: "Pipeline for de novo microbial genome assembly.",
+    desc: "De novo microbial genome assembly.",
   },
   {
-    title: "sbx_virus_id",
-    link: "https://github.com/sunbeam-labs/sbx_virus_id",
-    desc: "Identify and annotate viruses from metagenomic samples.",
+    title: "sbx_kraken",
+    link: "https://github.com/sunbeam-labs/sbx_kraken",
+    desc: "Assign reads to taxonomic bins.",
+  },
+  {
+    title: "sbx_mapping",
+    link: "https://github.com/sunbeam-labs/sbx_mapping",
+    desc: "Map reads to reference genomes with custom filtering.",
   },
   {
     title: "sbx_marker_magu",
@@ -94,19 +101,29 @@ const others = [
     desc: "Discriminate virus and phage sequences with Seeker.",
   },
   {
+    title: "sbx_sga",
+    link: "https://github.com/sunbeam-labs/sbx_sga",
+    desc: "Perform standard mARC analysis and reporting on bacteremia isolates.",
+  },
+  {
+    title: "sbx_shotgun_unifrac",
+    link: "https://github.com/sunbeam-labs/sbx_shotgun_unifrac",
+    desc: "Calculate UniFrac distances for metagenomic samples based on full tree of life.",
+  },
+  {
+    title: "sbx_virus_id",
+    link: "https://github.com/sunbeam-labs/sbx_virus_id",
+    desc: "Identify and annotate viruses from metagenomic samples.",
+  },
+  {
+    title: "sbx_test_action",
+    link: "https://github.com/sunbeam-labs/sbx_test_action",
+    desc: "GitHub Action to test Sunbeam extensions in CI pipelines.",
+  },
+  {
     title: "q2-unassigner",
     link: "https://github.com/Ulthran/q2-unassigner",
     desc: "QIIME2 plugin evaluating closeness of 16S sequences to named species.",
-  },
-  {
-    title: "WFRCWF",
-    link: "https://github.com/PennChopMicrobiomeProgram/wfrcwf",
-    desc: "Early work on a simplified pipeline DSL.",
-  },
-  {
-    title: "DEMIC",
-    link: "https://github.com/Ulthran/demic",
-    desc: "Dynamic estimator of microbial communities.",
   },
   {
     title: "unassigner",
@@ -126,7 +143,7 @@ const others = [
   {
     title: "ShotgunUniFrac",
     link: "https://github.com/Ulthran/ShotgunUnifrac",
-    desc: "Build phylogenetic trees for many genes from NCBI.",
+    desc: "Build phylogenetic trees for many genes from NCBI (deprecated: see sbx_shotgun_unifrac).",
   },
   {
     title: "PyCov3",
@@ -159,14 +176,9 @@ const others = [
     desc: "Kubernetes hosted app tracking all sequenced samples.",
   },
   {
-    title: "Conda Env Check",
-    link: "https://github.com/Ulthran/conda_env_check",
-    desc: "GitHub Action that validates and reports on Conda environments.",
-  },
-  {
-    title: "sbx_test_action",
-    link: "https://github.com/sunbeam-labs/sbx_test_action",
-    desc: "GitHub Action to test Sunbeam extensions in CI.",
+    title: "BCL Convert",
+    link: "https://github.com/Ulthran/bcl_convert",
+    desc: "Containerized BCL Convert (Illumina basecalling software) and workflows for automating updates.",
   },
 ];
 </script>

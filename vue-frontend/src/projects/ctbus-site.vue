@@ -11,11 +11,6 @@ const badges = [
     alt: "CI/CD",
   },
   {
-    href: "https://www.mend.io/renovate/",
-    src: "https://img.shields.io/badge/renovate-enabled-brightgreen.svg",
-    alt: "Renovate",
-  },
-  {
     href: "https://app.codacy.com/gh/Ulthran/ctbus_site/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade",
     src: "https://app.codacy.com/project/badge/Grade/07edb64af1c544439190dff82571e7a5",
     alt: "Codacy",
