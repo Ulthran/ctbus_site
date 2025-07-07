@@ -1,4 +1,11 @@
 export default {
+  "ai-root-cause-analysis-in-sunbeam": {
+    title: "AI Root Cause Analysis in Sunbeam",
+    date: "05/12/25",
+    mod_date: "05/12/25",
+    tags: ["ai", "sunbeam", "debugging"],
+    subtitle: "Launching automated debugging with AI assistance in Sunbeam.",
+  },
   "ctbus-finance": {
     title: "Building a Simple Personal Finance App",
     date: "04/07/25",
