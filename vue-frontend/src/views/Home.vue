@@ -38,10 +38,9 @@ const certs = [
 ];
 
 const buttons = [
-  { to: "/resume", label: "Resume", icon: "fas fa-file-alt" },
+  { to: "/pcmp", label: "Work", icon: "fas fa-briefcase" },
   { to: "/projects", label: "Projects", icon: "fas fa-project-diagram" },
   { to: "/blog", label: "Blog", icon: "fas fa-code" },
-  { to: "/pcmp", label: "Work", icon: "fas fa-briefcase" },
   { to: "/certifications", label: "Certs", icon: "fas fa-certificate" },
   { to: "/education", label: "Education", icon: "fas fa-graduation-cap" },
   { to: "/past-work", label: "Past Work", icon: "fas fa-history" },
@@ -55,7 +54,7 @@ const buttons = [
     title="Charlie Bushman"
     subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts."
   >
-  <v-row justify="center" class="mb-4">
+  <v-row justify="center" class="mt-4">
       <router-link to="/resume">
         <v-btn
           color="green-darken-2"
