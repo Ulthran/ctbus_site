@@ -1,6 +1,7 @@
 <script setup>
 import Hero from "../components/Hero.vue";
 import Frisbee from "../svgs/Frisbee.vue";
+import SkillHoneycomb from "../components/SkillHoneycomb.vue";
 
 const certs = [
   {
@@ -37,6 +38,32 @@ const certs = [
   },
 ];
 
+const layers = [
+  [
+    { label: "Codex", icon: "fas fa-robot" },
+    { label: "CoPilot", icon: "fas fa-user-astronaut" },
+    { label: "LangChain", icon: "fas fa-link" },
+  ],
+  [
+    { label: "Cloud Practitioner", icon: "fab fa-aws" },
+    { label: "AI Practitioner", icon: "fab fa-aws" },
+    { label: "Developer", icon: "fab fa-aws" },
+    { label: "DevOps Pro", icon: "fab fa-aws" },
+  ],
+  [
+    { label: "Data Engineering", icon: "fas fa-database" },
+    { label: "Bioinformatics", icon: "fas fa-dna" },
+    { label: "Snakemake", icon: "fas fa-network-wired" },
+    { label: "Prefect", icon: "fas fa-check-circle" },
+  ],
+  [
+    { label: "Python", icon: "fab fa-python" },
+    { label: "Terraform", icon: "fas fa-cubes" },
+    { label: "JavaScript", icon: "fab fa-js" },
+    { label: "R", icon: "fab fa-r-project" },
+  ],
+];
+
 const buttons = [
   { to: "/pcmp", label: "Work", icon: "fas fa-briefcase" },
   { to: "/projects", label: "Projects", icon: "fas fa-project-diagram" },
@@ -54,7 +81,7 @@ const buttons = [
     title="Charlie Bushman"
     subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts."
   >
-  <v-row justify="center" class="mt-4">
+    <v-row justify="center" class="mt-4">
       <router-link to="/resume">
         <v-btn
           color="green-darken-2"
@@ -80,6 +107,8 @@ const buttons = [
       </v-col>
     </v-row>
   </Hero>
+
+  <SkillHoneycomb :layers="layers" class="my-8" />
 
   <v-container class="text-center">
     <v-row justify="center">
