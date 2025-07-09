@@ -79,7 +79,7 @@ resource "aws_s3_object" "asset" {
     lower(element(reverse(split(".", each.key)), 0)),
     "binary/octet-stream",
   )
-  etag = filemd5("${local.assets_dir}/${each.value}")
+  source_hash = filesha256("${local.assets_dir}/${each.value}")
 }
 
 resource "aws_cloudfront_origin_access_identity" "this" {
