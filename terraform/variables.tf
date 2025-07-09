@@ -4,10 +4,6 @@ variable "bucket_name" {
   default     = "ctbus-site-frontend"
 }
 
-variable "cdn_url" {
-  type        = string
-  description = "The URL of the assets CDN."
-}
 
 variable "hostname" {
   type        = string

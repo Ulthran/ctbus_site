@@ -18,7 +18,7 @@ const projects = window.projects;
             :style="{ width: '60px', height: '60px' }"
           >
             <v-img
-              :src="`CDN_URL/images/${proj.image}`"
+              :src="`/assets/images/${proj.image}`"
               :alt="proj.title"
               cover
               loading="lazy"
