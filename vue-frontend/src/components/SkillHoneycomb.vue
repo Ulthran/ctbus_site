@@ -46,7 +46,7 @@ defineProps({
 .hex-inner {
   width: 100%;
   height: 100%;
-  background-color: var(--v-theme-primary, #2e7d32);
+  background-color: rgb(var(--v-theme-primary, 46, 125, 50));
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
   display: flex;
   flex-direction: column;
