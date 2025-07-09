@@ -2,7 +2,7 @@ export default {
   "ctbus-site": {
     title: "CTBus Site",
     subtitle:
-      "A site for me. This site! Designed with Flask and Tailwind then deployed serverlessly on AWS using Zappa.",
+      "A site for me. This site! Built with Vue and Terraform on AWS S3 and CloudFront.",
     tags: ["aws", "js", "serverless", "terraform"],
     image: "Bvnrihioon.png",
   },

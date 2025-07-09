@@ -1,6 +1,5 @@
 <script setup>
 import Hero from "../components/Hero.vue";
-import Frisbee from "../svgs/Frisbee.vue";
 
 const certs = [
   {
