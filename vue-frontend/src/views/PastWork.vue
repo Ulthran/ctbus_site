@@ -6,6 +6,7 @@ const workCards = [
     title: "Lead Developer for Nightly",
     body: "In college a friend pitched a party planning app for a startup competition. I built a prototype with React Native and AWS Amplify and later helped refine the web and mobile apps alongside a small team before joining the PCMP.",
     img: `/assets/images/latenite_logo.png`,
+    link: `/assets/slides/latenite_slides.pptx`,
   },
   {
     title: "HPE Software Internship",

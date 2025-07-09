@@ -404,6 +404,15 @@ onMounted(() => {
       >
         <v-icon icon="fas fa-file-alt"></v-icon>
       </v-btn>
+      <v-btn
+        href="/assets/slides/comps_slides.pptx"
+        icon
+        variant="text"
+        target="_blank"
+        class="mx-2"
+      >
+        <v-icon icon="fas fa-file-powerpoint"></v-icon>
+      </v-btn>
     </div>
   </v-container>
 </template>
