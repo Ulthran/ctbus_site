@@ -72,5 +72,25 @@ const info = posts[slug];
       Chinese and most of it no longer comes naturally. Maybe someday I'll have
       reason to revive it.</Paragraph
     >
+    <div class="text-center my-4">
+      <v-btn
+        href="/assets/documents/firewalls_paper.pdf"
+        icon
+        variant="text"
+        target="_blank"
+        class="mx-2"
+      >
+        <v-icon icon="fas fa-file-alt"></v-icon>
+      </v-btn>
+      <v-btn
+        href="/assets/documents/firewalls_mini_papers.pdf"
+        icon
+        variant="text"
+        target="_blank"
+        class="mx-2"
+      >
+        <v-icon icon="fas fa-file-alt"></v-icon>
+      </v-btn>
+    </div>
   </v-container>
 </template>

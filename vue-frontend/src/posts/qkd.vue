@@ -123,5 +123,15 @@ const info = posts[slug];
       access in ways that make the universe work as we know it. Now you're
       ready, enjoy!</Paragraph
     >
+    <div class="text-center my-4">
+      <v-btn
+        href="/assets/documents/qkd_paper.pdf"
+        icon
+        variant="text"
+        target="_blank"
+      >
+        <v-icon icon="fas fa-file-alt"></v-icon>
+      </v-btn>
+    </div>
   </v-container>
 </template>

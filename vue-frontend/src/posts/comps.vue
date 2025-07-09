@@ -395,6 +395,16 @@ onMounted(() => {
       reservoir. Maybe I'll write more about those here in the
       future.</Paragraph
     >
+    <div class="text-center my-4">
+      <v-btn
+        href="/assets/documents/comps_paper.pdf"
+        icon
+        variant="text"
+        target="_blank"
+      >
+        <v-icon icon="fas fa-file-alt"></v-icon>
+      </v-btn>
+    </div>
   </v-container>
 </template>
 
