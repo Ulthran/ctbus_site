@@ -54,7 +54,7 @@ const buttons = [
     title="Charlie Bushman"
     subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts."
   >
-  <v-row justify="center" class="mt-4">
+    <v-row justify="center" class="mt-4">
       <router-link to="/resume">
         <v-btn
           color="green-darken-2"
