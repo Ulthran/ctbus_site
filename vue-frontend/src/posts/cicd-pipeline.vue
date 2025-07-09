@@ -345,7 +345,7 @@ const zapYaml = `zap-deployment:
     :date="info.date"
     :mod_date="info.mod_date"
     :tags="info.tags"
-    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+    :img="`/assets/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
   <v-container class="py-4 blog-content">
     <Paragraph
@@ -587,7 +587,7 @@ const zapYaml = `zap-deployment:
       terrain is enormous.</Paragraph
     >
     <img
-      src="CDN_URL/images/ctbus_site_cd_workflow_success.png"
+      src="/assets/images/ctbus_site_cd_workflow_success.png"
       alt="CI/CD Workflow Success"
     />
     <Paragraph

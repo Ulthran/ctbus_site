@@ -18,7 +18,7 @@ const posts = window.posts;
             :style="{ width: '60px', height: '90px', 'border-radius': '4px' }"
           >
             <v-img
-              :src="`CDN_URL/images/blog/${name.replace(/-/g, '_')}.png`"
+              :src="`/assets/images/blog/${name.replace(/-/g, '_')}.png`"
               :alt="post.title"
               cover
               loading="lazy"

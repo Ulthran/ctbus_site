@@ -19,10 +19,11 @@ resource "aws_s3_bucket" "this" {
 }
 
 locals {
-  site_dir   = "${path.root}/../vue-frontend"
-  site_files = fileset(local.site_dir, "**")
+  site_dir    = "${path.root}/../vue-frontend"
+  assets_dir  = "${path.root}/../assets"
+  site_files  = fileset(local.site_dir, "**")
+  asset_files = fileset(local.assets_dir, "**")
   placeholders = {
-    "CDN_URL"               = var.cdn_url
     "SPOTIFY_CLIENT_ID"     = var.spotify_client_id
     "SPOTIFY_CLIENT_SECRET" = var.spotify_client_secret
   }
@@ -31,10 +32,7 @@ locals {
     for f in local.site_files :
     f => replace(
       replace(
-        replace(
-          file("${local.site_dir}/${f}"),
-          "CDN_URL", local.placeholders["CDN_URL"]
-        ),
+        file("${local.site_dir}/${f}"),
         "SPOTIFY_CLIENT_ID", local.placeholders["SPOTIFY_CLIENT_ID"]
       ),
       "SPOTIFY_CLIENT_SECRET", local.placeholders["SPOTIFY_CLIENT_SECRET"]
@@ -47,6 +45,14 @@ locals {
     css  = "text/css"
     vue  = "text/plain"
     json = "application/json"
+    png  = "image/png"
+    gif  = "image/gif"
+    ico  = "image/x-icon"
+    pdf  = "application/pdf"
+    pptx = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    txt  = "text/plain"
+    dtd  = "application/xml-dtd"
+    nb   = "text/plain"
   }
 }
 
@@ -61,6 +67,19 @@ resource "aws_s3_object" "site" {
     "text/plain",
   )
   etag = md5(each.value)
+}
+
+resource "aws_s3_object" "asset" {
+  for_each = { for f in local.asset_files : f => f }
+  bucket   = aws_s3_bucket.this.id
+  key      = "assets/${each.key}"
+  source   = "${local.assets_dir}/${each.value}"
+  content_type = lookup(
+    local.mime_types,
+    lower(element(reverse(split(".", each.key)), 0)),
+    "binary/octet-stream",
+  )
+  etag = filemd5("${local.assets_dir}/${each.value}")
 }
 
 resource "aws_cloudfront_origin_access_identity" "this" {

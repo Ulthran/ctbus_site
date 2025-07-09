@@ -5,12 +5,12 @@ const schools = [
   {
     name: "Carleton College",
     link: "https://www.carleton.edu/",
-    img: `CDN_URL/images/carleton_logo.png`,
+    img: `/assets/images/carleton_logo.png`,
   },
   {
     name: "Marblehead High School",
     link: "https://www.marbleheadschools.org/marblehead-high-school",
-    img: `CDN_URL/images/mhs_logo.png`,
+    img: `/assets/images/mhs_logo.png`,
   },
 ];
 </script>

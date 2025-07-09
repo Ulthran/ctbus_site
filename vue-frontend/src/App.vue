@@ -10,7 +10,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
-        href="CDN_URL/documents/resume.pdf"
+        href="/assets/documents/resume.pdf"
         icon
         variant="text"
         target="_blank"

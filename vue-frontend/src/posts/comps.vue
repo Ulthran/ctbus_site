@@ -245,7 +245,7 @@ onMounted(() => {
     :date="info.date"
     :mod_date="info.mod_date"
     :tags="info.tags"
-    :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
+    :img="`/assets/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
   <v-container class="py-4 blog-content">
     <Paragraph

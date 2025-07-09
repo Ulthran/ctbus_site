@@ -10,7 +10,7 @@ const info = projects["ctbus-health"];
     :title="info.title"
     :subtitle="info.subtitle"
     :tags="info.tags"
-    :img="`CDN_URL/images/${info.image}`"
+    :img="`/assets/images/${info.image}`"
   />
   <v-container>
     <v-card>
