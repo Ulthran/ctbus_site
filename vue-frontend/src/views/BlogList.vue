@@ -1,13 +1,53 @@
 <script setup>
+import { ref, computed } from "vue";
+
 const posts = window.posts;
+
+const search = ref("");
+const selectedTag = ref(null);
+const allTags = [...new Set(Object.values(posts).flatMap((p) => p.tags))];
+
+const filteredPosts = computed(() => {
+  const query = search.value.toLowerCase();
+  return Object.fromEntries(
+    Object.entries(posts).filter(([_, post]) => {
+      const matchesSearch =
+        !query ||
+        post.title.toLowerCase().includes(query) ||
+        post.subtitle.toLowerCase().includes(query);
+      const matchesTag =
+        !selectedTag.value || post.tags.includes(selectedTag.value);
+      return matchesSearch && matchesTag;
+    })
+  );
+});
 </script>
 
 <template>
   <v-container>
     <h1 class="text-h5 font-weight-bold mb-4">Blog</h1>
+    <v-row class="mb-4">
+      <v-col cols="12" md="6">
+        <v-text-field
+          v-model="search"
+          label="Search"
+          prepend-inner-icon="fas fa-search"
+          hide-details
+        />
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-autocomplete
+          v-model="selectedTag"
+          :items="allTags"
+          label="Filter by tag"
+          clearable
+          hide-details
+        />
+      </v-col>
+    </v-row>
     <v-list>
       <v-list-item
-        v-for="(post, name) in posts"
+        v-for="(post, name) in filteredPosts"
         :key="name"
         :to="`/blog/${name}`"
         link
