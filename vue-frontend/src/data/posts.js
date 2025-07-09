@@ -18,7 +18,7 @@ export default {
     title: "A Fully Serverless Data Pipeline",
     date: "02/18/25",
     mod_date: "02/18/25",
-    tags: ["serverless", "aws", "queues"],
+    tags: ["serverless", "aws", "queue"],
     subtitle:
       "Creating serverless, decoupled components for an end-to-end data pipeline.",
   },
@@ -34,7 +34,7 @@ export default {
     title: "Generating Consistent Thematic Images",
     date: "01/21/25",
     mod_date: "02/07/25",
-    tags: ["ai", "generative models", "aws"],
+    tags: ["ai", "ux", "aws"],
     subtitle:
       "A picture is, in fact, worth a thousand words when it comes to image generation.",
   },
@@ -58,7 +58,7 @@ export default {
     title: "Ultimate DiscTracker",
     date: "10/08/24",
     mod_date: "10/08/24",
-    tags: ["python", "web", "flask", "sports analytics"],
+    tags: ["python", "ai", "flask"],
     subtitle:
       "The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.",
   },
@@ -66,7 +66,7 @@ export default {
     title: "Studying Network Security in China",
     date: "06/17/24",
     mod_date: "06/17/24",
-    tags: ["web", "firewalls", "security"],
+    tags: ["network", "firewall", "security"],
     subtitle:
       "An overview of my independent study on network security while in China.",
   },
@@ -74,21 +74,21 @@ export default {
     title: "Where to Put Flask Session Data",
     date: "06/12/24",
     mod_date: "06/12/24",
-    tags: ["python", "web", "flask", "sessions"],
+    tags: ["python", "cache", "flask"],
     subtitle: "There is a very easy solution for very simple use cases.",
   },
   qkd: {
     title: "Quantum Key Distribution",
     date: "03/20/24",
     mod_date: "03/20/24",
-    tags: ["quantum computing", "cryptography"],
+    tags: ["quantum", "cryptography"],
     subtitle: "A quick overview of some quantum cryptography basics.",
   },
   "cicd-pipeline": {
     title: "CI/CD Pipeline with GitHub Actions",
     date: "11/30/23",
     mod_date: "11/30/23",
-    tags: ["devops", "github actions", "aws"],
+    tags: ["devops", "cicd", "aws"],
     subtitle:
       "Automate serverless flask testing and deployment with GitHub Actions.",
   },
@@ -96,7 +96,7 @@ export default {
     title: "Physical Reservoir Computing for Classification of Temporal Data",
     date: "11/01/23",
     mod_date: "11/30/23",
-    tags: ["deep learning", "chaotic systems", "time series"],
+    tags: ["ml", "chaos", "time series"],
     subtitle: "My undergrad thesis! Read on for more.",
   },
 };
