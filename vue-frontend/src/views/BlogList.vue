@@ -5,7 +5,9 @@ const posts = window.posts;
 
 const search = ref("");
 const selectedTag = ref(null);
-const allTags = [...new Set(Object.values(posts).flatMap((p) => p.tags))];
+const allTags = [
+  ...new Set(Object.values(posts).flatMap((p) => p.tags)),
+].sort();
 
 const filteredPosts = computed(() => {
   const query = search.value.toLowerCase();
