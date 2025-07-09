@@ -129,6 +129,7 @@ const info = posts[slug];
         icon
         variant="text"
         target="_blank"
+        rel="noopener noreferrer"
       >
         <v-icon icon="fas fa-file-alt"></v-icon>
       </v-btn>
