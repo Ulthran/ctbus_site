@@ -23,14 +23,14 @@ export default {
   "ctbus-health": {
     title: "CTBus Health",
     subtitle:
-      "A serverless ETL pipeline I'm developing in AWS to aggregate and analyze health data I keep in many different formats and locations.",
+      "WIP. A serverless ETL pipeline I'm developing in AWS to aggregate and analyze health data I keep in many different formats and locations.",
     tags: ["aws", "data engineering", "serverless"],
     image: "Bvnrihioon.png",
   },
   disctracker: {
     title: "Ultimate DiscTracker",
     subtitle:
-      "The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.",
+      "WIP. The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.",
     tags: ["python", "web", "flask", "sports analytics"],
     image: "disctracker.png",
   },
