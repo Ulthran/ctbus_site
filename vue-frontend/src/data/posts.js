@@ -1,10 +1,10 @@
 export default {
   "ai-root-cause-analysis-in-sunbeam": {
-    title: "AI Root Cause Analysis in Data Pipelines",
-    date: "07/07/25",
-    mod_date: "07/07/25",
-    tags: ["ai", "pipeline", "python"],
-    subtitle: "Launching automated debugging with AI assistance in Sunbeam.",
+    title: "00. AI in Bioinformatics",
+    date: "06/05/25",
+    mod_date: "06/05/25",
+    tags: ["ai", "bioinformatics", "automation"],
+    subtitle: "The path towards generating novel research and clinical diagnoses.",
   },
   "ctbus-finance": {
     title: "Building a Simple Personal Finance App",

@@ -17,6 +17,6 @@ const info = posts[slug];
     :img="`CDN_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
   <v-container class="py-4 blog-content">
-    <Paragraph> Post content coming soon. </Paragraph>
+    <SectionTitle></SectionTitle>
   </v-container>
 </template>
