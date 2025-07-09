@@ -1,5 +1,5 @@
 export default {
-  "ai-root-cause-analysis-in-sunbeam": {
+  "ai-in-bioinformatics": {
     title: "00. AI in Bioinformatics",
     date: "06/05/25",
     mod_date: "06/05/25",

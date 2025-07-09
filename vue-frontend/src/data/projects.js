@@ -3,7 +3,7 @@ export default {
     title: "CTBus Site",
     subtitle:
       "A site for me. This site! Designed with Flask and Tailwind then deployed serverlessly on AWS using Zappa.",
-    tags: ["web", "flask", "python", "serverless"],
+    tags: ["aws", "js", "serverless", "terraform"],
     image: "Bvnrihioon.png",
   },
   "spotify-vis": {
