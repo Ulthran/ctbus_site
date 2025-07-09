@@ -18,14 +18,56 @@ const info = posts[slug];
   />
   <v-container class="py-4 blog-content">
     <SectionTitle>The State of Bioinformatics</SectionTitle>
-    <Paragraph>Bioinformatics is the enourmous and rapidly growing field of applying computation and statistics to biological problems in the hopes of elucidating underlying processes. Successes big and small come out from bioinformatics research every day from improved understanding of cancers to improved hygiene in hospitals. It is arguably the science with the fastest average time from exploratory research to life altering effects on the population. One of the major trends in bioinformatic research, upon realizing the importance of a new field such as the gut microbiome, is to start a long period of data gathering and synthesis. This means taking hundreds and hundreds of thousands of samples from healthy and sick people and running them through massive data pipelines to extract and document patterns. Once this has been done long enough, this map of patterns can be applied in clinical settings, deriving critical diagnostic information from what would otherwise be gibberish.</Paragraph>
+    <Paragraph
+      >Bioinformatics is the enourmous and rapidly growing field of applying
+      computation and statistics to biological problems in the hopes of
+      elucidating underlying processes. Successes big and small come out from
+      bioinformatics research every day from improved understanding of cancers
+      to improved hygiene in hospitals. It is arguably the science with the
+      fastest average time from exploratory research to life altering effects on
+      the population. One of the major trends in bioinformatic research, upon
+      realizing the importance of a new field such as the gut microbiome, is to
+      start a long period of data gathering and synthesis. This means taking
+      hundreds and hundreds of thousands of samples from healthy and sick people
+      and running them through massive data pipelines to extract and document
+      patterns. Once this has been done long enough, this map of patterns can be
+      applied in clinical settings, deriving critical diagnostic information
+      from what would otherwise be gibberish.</Paragraph
+    >
 
     <SectionTitle>Often Inexact</SectionTitle>
-    <Paragraph>The complexity of these underlying systems is almost incomprehensible. To use one of the most well known examples -- sequencing the human genome -- many believed that once the human genome was sequenced we would hold the key to everything from how tall someone would grow to what diseases they might contract. But the Human Genome Project was completed in 2003, sequencing whole human genomes is now common place, and we can hardly predict a baby's full grown height any better than in 1990. This is because we're in the field of <i>bio</i>informatics not just informatics. And that prefix adds whole worlds of complexity behind every supposed "bit" of human code.</Paragraph>
+    <Paragraph
+      >The complexity of these underlying systems is almost incomprehensible. To
+      use one of the most well known examples -- sequencing the human genome --
+      many believed that once the human genome was sequenced we would hold the
+      key to everything from how tall someone would grow to what diseases they
+      might contract. But the Human Genome Project was completed in 2003,
+      sequencing whole human genomes is now common place, and we can hardly
+      predict a baby's full grown height any better than in 1990. This is
+      because we're in the field of <i>bio</i>informatics not just informatics.
+      And that prefix adds whole worlds of complexity behind every supposed
+      "bit" of human code.</Paragraph
+    >
 
     <SectionTitle>AI in Bioinformatics</SectionTitle>
-    <Paragraph>The explosion of AI in 2023 forced many in bioinformatics to ask the question, how can we use this? And the obvious holy grail many looked to is an AI that can perform the clinical diagnostic job. But that dramatically overestimates the capabilities of AI. While I do think it has the potential to do this (and has already been implemented as such in more thoroughly researched fields) it won't allow us to skip the steps of data gathering and analysis that come before. That's not a reason to give up on AI in the field though, because it can help with all of these foundational parts as well!</Paragraph>
+    <Paragraph
+      >The explosion of AI in 2023 forced many in bioinformatics to ask the
+      question, how can we use this? And the obvious holy grail many looked to
+      is an AI that can perform the clinical diagnostic job. But that
+      dramatically overestimates the capabilities of AI. While I do think it has
+      the potential to do this (and has already been implemented as such in more
+      thoroughly researched fields) it won't allow us to skip the steps of data
+      gathering and analysis that come before. That's not a reason to give up on
+      AI in the field though, because it can help with all of these foundational
+      parts as well!</Paragraph
+    >
 
-    <Paragraph>In a series of short articles, I am going to go through what I see as the most powerful applications of AI in bioinformatics. This will start with concrete examples of tools I use daily to design and debug bioinformatic software and provide stepping stones from there to a very speculative look at how AI can end up as a diagnostic tool.</Paragraph>
+    <Paragraph
+      >In a series of short articles, I am going to go through what I see as the
+      most powerful applications of AI in bioinformatics. This will start with
+      concrete examples of tools I use daily to design and debug bioinformatic
+      software and provide stepping stones from there to a very speculative look
+      at how AI can end up as a diagnostic tool.</Paragraph
+    >
   </v-container>
 </template>

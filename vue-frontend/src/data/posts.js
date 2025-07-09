@@ -4,7 +4,8 @@ export default {
     date: "06/05/25",
     mod_date: "06/05/25",
     tags: ["ai", "bioinformatics", "automation"],
-    subtitle: "The path towards generating novel research and clinical diagnoses.",
+    subtitle:
+      "The path towards generating novel research and clinical diagnoses.",
   },
   "ctbus-finance": {
     title: "Building a Simple Personal Finance App",
