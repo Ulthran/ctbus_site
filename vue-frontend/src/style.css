@@ -124,3 +124,7 @@ button:focus-visible {
 .flip-card-back {
   transform: rotateY(180deg);
 }
+
+.blog-filter {
+  max-width: 220px;
+}

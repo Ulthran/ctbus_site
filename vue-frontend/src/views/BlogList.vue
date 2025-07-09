@@ -27,21 +27,25 @@ const filteredPosts = computed(() => {
   <v-container>
     <h1 class="text-h5 font-weight-bold mb-4">Blog</h1>
     <v-row class="mb-4">
-      <v-col cols="12" md="6">
+      <v-col cols="12" sm="6" md="4" lg="3">
         <v-text-field
           v-model="search"
           label="Search"
           prepend-inner-icon="fas fa-search"
           hide-details
+          density="compact"
+          class="blog-filter"
         />
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col cols="12" sm="6" md="4" lg="3">
         <v-autocomplete
           v-model="selectedTag"
           :items="allTags"
           label="Filter by tag"
           clearable
           hide-details
+          density="compact"
+          class="blog-filter"
         />
       </v-col>
     </v-row>
