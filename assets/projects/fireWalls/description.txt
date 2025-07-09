@@ -1,0 +1,1 @@
+这篇文章是哈工大CET留学网络安全自学的期末论文。 四个月时间里，我跟林老师学习了传统防火墙技术， WEB应用防火墙 （WAF）， 和下一代防火墙 （NGFW）。 This essay is the term-end thesis from my network security independent study while studying abroad with CET at Harbin Institute of Technology (Harbin, China). Over four months, teacher Lin and I studied traditional firewall architectures, web application firewalls, and next generation firewalls.
