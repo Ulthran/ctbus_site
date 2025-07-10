@@ -24,18 +24,15 @@ locals {
   site_files  = fileset(local.site_dir, "**")
   asset_files = fileset(local.assets_dir, "**")
   placeholders = {
-    "SPOTIFY_CLIENT_ID"     = var.spotify_client_id
-    "SPOTIFY_CLIENT_SECRET" = var.spotify_client_secret
+    "SPOTIFY_PLAYLISTS_URL" = aws_lambda_function_url.spotify_playlists.function_url
   }
 
   processed_files = {
     for f in local.site_files :
     f => replace(
-      replace(
-        file("${local.site_dir}/${f}"),
-        "SPOTIFY_CLIENT_ID", local.placeholders["SPOTIFY_CLIENT_ID"]
-      ),
-      "SPOTIFY_CLIENT_SECRET", local.placeholders["SPOTIFY_CLIENT_SECRET"]
+      file("${local.site_dir}/${f}"),
+      "SPOTIFY_PLAYLISTS_URL",
+      local.placeholders["SPOTIFY_PLAYLISTS_URL"]
     )
   }
 
@@ -54,6 +51,58 @@ locals {
     dtd  = "application/xml-dtd"
     nb   = "text/plain"
   }
+}
+
+data "archive_file" "spotify_playlists" {
+  type        = "zip"
+  source_file = "${path.module}/../lambda/spotify-playlists/index.js"
+  output_path = "${path.module}/../lambda/spotify-playlists.zip"
+}
+
+resource "aws_iam_role" "spotify_lambda" {
+  name = "spotify-playlists-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action    = "sts:AssumeRole"
+      Effect    = "Allow"
+      Principal = { Service = "lambda.amazonaws.com" }
+    }]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "spotify_lambda_basic" {
+  role       = aws_iam_role.spotify_lambda.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_lambda_function" "spotify_playlists" {
+  function_name    = "spotify-playlists"
+  role             = aws_iam_role.spotify_lambda.arn
+  handler          = "index.handler"
+  runtime          = "nodejs20.x"
+  filename         = data.archive_file.spotify_playlists.output_path
+  source_code_hash = data.archive_file.spotify_playlists.output_base64sha256
+  environment {
+    variables = {
+      SPOTIFY_CLIENT_ID     = var.spotify_client_id
+      SPOTIFY_CLIENT_SECRET = var.spotify_client_secret
+    }
+  }
+}
+
+resource "aws_lambda_function_url" "spotify_playlists" {
+  function_name      = aws_lambda_function.spotify_playlists.arn
+  authorization_type = "NONE"
+}
+
+resource "aws_lambda_permission" "spotify_playlists_url" {
+  statement_id           = "AllowPublicAccess"
+  action                 = "lambda:InvokeFunctionUrl"
+  function_name          = aws_lambda_function.spotify_playlists.function_name
+  principal              = "*"
+  function_url_auth_type = aws_lambda_function_url.spotify_playlists.authorization_type
 }
 
 resource "aws_s3_object" "site" {
@@ -187,4 +236,8 @@ output "bucket_name" {
 
 output "cloudfront_domain" {
   value = aws_cloudfront_distribution.this.domain_name
+}
+
+output "spotify_playlists_url" {
+  value = aws_lambda_function_url.spotify_playlists.function_url
 }

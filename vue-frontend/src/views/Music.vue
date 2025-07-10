@@ -2,70 +2,15 @@
 import { ref, onMounted } from "vue";
 import Hero from "../components/Hero.vue";
 
-const CLIENT_ID = "SPOTIFY_CLIENT_ID";
-const CLIENT_SECRET = "SPOTIFY_CLIENT_SECRET";
+const PLAYLISTS_URL = "SPOTIFY_PLAYLISTS_URL";
 
 const monthlies = ref([]);
 
 async function fetchMonthlyPlaylists() {
   try {
-    const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: "Basic " + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`),
-      },
-      body: "grant_type=client_credentials",
-    });
-    const tokenData = await tokenRes.json();
-    const token = tokenData.access_token;
-
-    let url =
-      "https://api.spotify.com/v1/users/charlie_bushman/playlists?limit=50";
-    const playlists = [];
-    while (url) {
-      const res = await fetch(url, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await res.json();
-      playlists.push(...data.items.filter(Boolean));
-      url = data.next;
-    }
-
-    const regex = /[A-Z][a-z]{2} ['‘]\d{2}/;
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-
-    const filtered = playlists
-      .filter((p) => regex.test(p.name))
-      .map((p) => ({ ...p, name: p.name.replace("‘", "'") }));
-
-    filtered.sort((a, b) => {
-      const aYear = parseInt(a.name.slice(-2));
-      const bYear = parseInt(b.name.slice(-2));
-      if (aYear !== bYear) return bYear - aYear;
-      const aMonth = months.indexOf(a.name.slice(0, 3));
-      const bMonth = months.indexOf(b.name.slice(0, 3));
-      return bMonth - aMonth;
-    });
-
-    monthlies.value = filtered.map((p) => ({
-      name: p.name,
-      url: p.external_urls?.spotify || "#",
-      image: (p.images && p.images[2] && p.images[2].url) || "#",
-    }));
+    const res = await fetch(PLAYLISTS_URL);
+    if (!res.ok) throw new Error("Failed to fetch playlists");
+    monthlies.value = await res.json();
   } catch (e) {
     console.error("Failed to fetch playlists", e);
   }
