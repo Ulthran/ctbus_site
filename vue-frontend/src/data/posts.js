@@ -10,7 +10,12 @@ export default {
     title: "00. AI in Bioinformatics",
     date: "06/05/25",
     mod_date: "06/05/25",
-    tags: ["ai", "bioinformatics", "automation", ":series:ai-in-bioinformatics"],
+    tags: [
+      "ai",
+      "bioinformatics",
+      "automation",
+      ":series:ai-in-bioinformatics",
+    ],
     subtitle:
       "The path towards generating novel research and clinical diagnoses.",
   },

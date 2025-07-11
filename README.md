@@ -21,7 +21,8 @@ To deploy the site:
 
 - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
 - `terraform init && terraform apply` to create/update the S3 bucket and
-  CloudFront distribution. The CDN will be
+  CloudFront distribution. Terraform state is stored in an S3 bucket so the
+  configuration can be run locally or in CI/CD. The CDN will be
   reachable at `https://vue.charliebushman.com`.
 
 To run locally, start a simple web server from the `vue-frontend` directory:
