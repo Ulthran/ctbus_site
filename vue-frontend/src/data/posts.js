@@ -1,4 +1,11 @@
 export default {
+  "vibe-coding-in-bioinformatics": {
+    title: "01. Vibe Coding for Science",
+    date: "06/17/25",
+    mod_date: "06/17/25",
+    tags: ["ai", "bioinformatics", "cicd", ":series:ai-in-bioinformatics"],
+    subtitle: "How to be confident in what the AI gives you.",
+  },
   "ai-in-bioinformatics": {
     title: "00. AI in Bioinformatics",
     date: "06/05/25",
