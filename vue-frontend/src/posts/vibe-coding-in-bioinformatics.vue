@@ -18,5 +18,9 @@ const info = posts[slug];
   />
   <v-container class="py-4 blog-content">
     <SectionTitle>AI as a Developer Tool</SectionTitle>
+    <Paragraph
+      >The most immediate place that AI can (and does) make real impacts on the
+      field of bioinformatics is as a coding assistant.
+    </Paragraph>
   </v-container>
 </template>

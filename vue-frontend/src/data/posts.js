@@ -1,4 +1,24 @@
 export default {
+  "ai-root-cause-analysis-in-sunbeam": {
+    title: "02. AI Root Cause Analysis",
+    date: "07/12/25",
+    mod_date: "07/12/25",
+    tags: [
+      "ai",
+      "bioinformatics",
+      "automation",
+      ":series:ai-in-bioinformatics",
+    ],
+    subtitle: "Using AI to solve the most frustrating data pipelining issues.",
+  },
+  "migrating-site-with-codex": {
+    title: "Migrating This Site with Codex",
+    date: "06/27/25",
+    mod_date: "06/27/25",
+    tags: ["ai", "aws", "serverless"],
+    subtitle:
+      "Using OpenAI's Codex to migrate an entire project to a new serverless architecture.",
+  },
   "vibe-coding-in-bioinformatics": {
     title: "01. Vibe Coding for Science",
     date: "06/17/25",
