@@ -1,8 +1,23 @@
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
-exports.handler = async function () {
+exports.handler = async function (event) {
+  const origin = event?.headers?.origin;
+  let corsOrigin = "https://charliebushman.com";
   try {
+    if (origin) {
+      try {
+        const { hostname } = new URL(origin);
+        if (
+          hostname === "charliebushman.com" ||
+          hostname.endsWith(".charliebushman.com")
+        ) {
+          corsOrigin = origin;
+        }
+      } catch (_) {
+        // ignore invalid origin
+      }
+    }
     const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
@@ -64,11 +79,15 @@ exports.handler = async function () {
 
     return {
       statusCode: 200,
-      headers: { "Access-Control-Allow-Origin": "*" },
+      headers: { "Access-Control-Allow-Origin": corsOrigin },
       body: JSON.stringify(result),
     };
   } catch (e) {
     console.error("Failed to fetch playlists", e);
-    return { statusCode: 500, body: "error" };
+    return {
+      statusCode: 500,
+      headers: { "Access-Control-Allow-Origin": corsOrigin },
+      body: "error",
+    };
   }
 };
