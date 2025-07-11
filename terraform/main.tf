@@ -84,6 +84,7 @@ resource "aws_lambda_function" "spotify_playlists" {
   runtime          = "nodejs20.x"
   filename         = data.archive_file.spotify_playlists.output_path
   source_code_hash = data.archive_file.spotify_playlists.output_base64sha256
+  timeout          = 15
   environment {
     variables = {
       SPOTIFY_CLIENT_ID     = var.spotify_client_id
