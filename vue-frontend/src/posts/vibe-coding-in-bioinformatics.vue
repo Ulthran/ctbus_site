@@ -18,6 +18,5 @@ const info = posts[slug];
   />
   <v-container class="py-4 blog-content">
     <SectionTitle>AI as a Developer Tool</SectionTitle>
-    
   </v-container>
 </template>
