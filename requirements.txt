@@ -9,3 +9,4 @@ python-dotenv
 # TODO: Remove below requirements
 spotipy
 async-timeout # Included debugging spotipy
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
