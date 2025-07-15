@@ -53,8 +53,12 @@ const filteredPosts = computed(() => {
     </v-row>
     <v-row>
       <v-col v-for="(post, name) in filteredPosts" :key="name" cols="12" md="6">
-        <v-card class="ma-2 scrollable-card" :to="`/blog/${name}`" link>
-          <v-row no-gutters>
+        <v-card
+          class="ma-2 scrollable-card uniform-card"
+          :to="`/blog/${name}`"
+          link
+        >
+          <v-row no-gutters align="center">
             <v-col cols="auto">
               <v-img
                 :src="`/assets/images/blog/${name.replace(/-/g, '_')}.png`"

@@ -7,8 +7,12 @@ const projects = window.projects;
     <h1 class="text-h5 font-weight-bold mb-4">Projects</h1>
     <v-row>
       <v-col v-for="(proj, name) in projects" :key="name" cols="12" md="6">
-        <v-card class="ma-2 scrollable-card" :to="`/projects/${name}`" link>
-          <v-row no-gutters>
+        <v-card
+          class="ma-2 scrollable-card uniform-card"
+          :to="`/projects/${name}`"
+          link
+        >
+          <v-row no-gutters align="center">
             <v-col cols="auto">
               <v-img
                 :src="`/assets/images/${proj.image}`"

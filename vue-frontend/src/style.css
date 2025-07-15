@@ -132,3 +132,11 @@ button:focus-visible {
 .scrollable-card {
   overflow-x: auto;
 }
+
+.uniform-card {
+  height: 150px;
+}
+
+.uniform-card .v-row {
+  height: 100%;
+}
