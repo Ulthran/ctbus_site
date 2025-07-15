@@ -128,3 +128,7 @@ button:focus-visible {
 .blog-filter {
   max-width: 220px;
 }
+
+.scrollable-card {
+  overflow-x: auto;
+}

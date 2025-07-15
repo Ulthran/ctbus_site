@@ -51,48 +51,47 @@ const filteredPosts = computed(() => {
         />
       </v-col>
     </v-row>
-    <v-list>
-      <v-list-item
-        v-for="(post, name) in filteredPosts"
-        :key="name"
-        :to="`/blog/${name}`"
-        link
-      >
-        <template v-slot:prepend>
-          <v-avatar
-            class="rounded"
-            :style="{ width: '60px', height: '90px', 'border-radius': '4px' }"
-          >
-            <v-img
-              :src="`/assets/images/blog/${name.replace(/-/g, '_')}.png`"
-              :alt="post.title"
-              cover
-              loading="lazy"
-            ></v-img>
-          </v-avatar>
-        </template>
-        <v-list-item-title>{{ post.title }}</v-list-item-title>
-        <v-list-item-subtitle>{{ post.subtitle }}</v-list-item-subtitle>
-        <v-list-item-subtitle class="text-caption">
-          {{ post.date }}
-          <span v-if="post.mod_date !== post.date"
-            >(Edited: {{ post.mod_date }})</span
-          >
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          <div class="d-flex flex-wrap">
-            <v-chip
-              v-for="tag in post.tags"
-              :key="tag"
-              class="ma-1"
-              size="x-small"
-              variant="outlined"
-            >
-              {{ tag }}
-            </v-chip>
-          </div>
-        </v-list-item-subtitle>
-      </v-list-item>
-    </v-list>
+    <v-row>
+      <v-col v-for="(post, name) in filteredPosts" :key="name" cols="12" md="6">
+        <v-card class="ma-2 scrollable-card" :to="`/blog/${name}`" link>
+          <v-row no-gutters>
+            <v-col cols="auto">
+              <v-img
+                :src="`/assets/images/blog/${name.replace(/-/g, '_')}.png`"
+                :alt="post.title"
+                width="60"
+                height="90"
+                class="rounded"
+                cover
+                loading="lazy"
+              />
+            </v-col>
+            <v-col>
+              <v-card-title class="text-wrap">{{ post.title }}</v-card-title>
+              <v-card-subtitle class="text-wrap">{{
+                post.subtitle
+              }}</v-card-subtitle>
+              <div class="text-caption">
+                {{ post.date }}
+                <span v-if="post.mod_date !== post.date"
+                  >(Edited: {{ post.mod_date }})</span
+                >
+              </div>
+              <div class="d-flex flex-wrap">
+                <v-chip
+                  v-for="tag in post.tags"
+                  :key="tag"
+                  class="ma-1"
+                  size="x-small"
+                  variant="outlined"
+                >
+                  {{ tag }}
+                </v-chip>
+              </div>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
