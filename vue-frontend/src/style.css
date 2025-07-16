@@ -128,3 +128,13 @@ button:focus-visible {
 .blog-filter {
   max-width: 220px;
 }
+
+@media (max-width: 600px) {
+  .v-list-item-title,
+  .v-list-item-subtitle,
+  .v-list-item-subtitle.text-caption {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+  }
+}
