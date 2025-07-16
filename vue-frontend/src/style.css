@@ -132,9 +132,11 @@ button:focus-visible {
 @media (max-width: 600px) {
   .v-list-item-title,
   .v-list-item-subtitle,
-  .v-list-item-subtitle.text-caption {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: initial;
+  .v-list-item-subtitle.text-caption,
+  .v-card-title,
+  .v-card-subtitle {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
   }
 }
