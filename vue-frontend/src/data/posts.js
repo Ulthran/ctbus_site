@@ -1,4 +1,6 @@
 export default {
+  // There'll probably be a split between practical examples of AI in bioinformatics and my crazy ideas
+  // Maybe alternate in the series?
   "ai-root-cause-analysis-in-sunbeam": {
     title: "02. AI Root Cause Analysis",
     date: "07/12/25",
@@ -9,22 +11,22 @@ export default {
       "automation",
       ":series:ai-in-bioinformatics",
     ],
-    subtitle: "Using AI to solve the most frustrating data pipelining issues.",
+    subtitle: "Integrating AI into bioinformatics pipelines.",
   },
-  "migrating-site-with-codex": {
+  /*"migrating-site-with-codex": {
     title: "Migrating This Site with Codex",
     date: "06/27/25",
     mod_date: "06/27/25",
     tags: ["ai", "aws", "serverless"],
     subtitle:
       "Using OpenAI's Codex to migrate an entire project to a new serverless architecture.",
-  },
+  },*/
   "vibe-coding-in-bioinformatics": {
     title: "01. Vibe Coding for Science",
     date: "06/17/25",
     mod_date: "06/17/25",
     tags: ["ai", "bioinformatics", "cicd", ":series:ai-in-bioinformatics"],
-    subtitle: "How to be confident in what the AI gives you.",
+    subtitle: "How to know what you want and trust what you get with AI.",
   },
   "ai-in-bioinformatics": {
     title: "00. AI in Bioinformatics",

@@ -8,7 +8,6 @@ variable "bucket_name" {
 variable "hostname" {
   type        = string
   description = "Fully qualified domain that will point to the CloudFront distribution"
-  default     = "vue.charliebushman.com"
 }
 
 variable "zone_name" {

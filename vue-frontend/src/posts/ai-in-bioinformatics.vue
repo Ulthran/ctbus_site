@@ -69,5 +69,17 @@ const info = posts[slug];
       software and provide stepping stones from there to a very speculative look
       at how AI can end up as a diagnostic tool.</Paragraph
     >
+
+    <SectionTitle>Data Governance</SectionTitle>
+    <Paragraph
+      >Can't forget! Proper data governance is core to any AI solution and this
+      is particularly true in a field where human samples are often front and
+      center. Maintaining a clear boundary between raw and anonymized data is
+      critical to ensure HIPPA compliance. If your institution has an in-house
+      AI platform, it will always be easier for data governance purposes to use
+      that over third party options. But if you are using a third party AI
+      platform, make sure data is both anonymized and doesn't include
+      proprietary information.</Paragraph
+    >
   </v-container>
 </template>
