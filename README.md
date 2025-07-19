@@ -20,11 +20,13 @@ written as Vue single file components.
 To deploy the site:
 
 - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
-- `terraform init && terraform apply` to create/update the S3 bucket and
-  CloudFront distribution. Terraform state is stored in an S3 bucket so the
-  configuration can be run locally or in CI/CD. The CDN will be
-  reachable at `https://vue.charliebushman.com`.
-
+- Run `terraform init` once to configure the backend.
+- For development subdomains run
+  `terraform apply -var 'hostname=subdomain.charliebushman.com'`.
+- For production run
+  `terraform apply -var-file terraform/production.tfvars`.
+  This deploys both `charliebushman.com` and `www.charliebushman.com`.
+  
 To run locally, start a simple web server from the `vue-frontend` directory:
 
 - `cd vue-frontend && python3 -m http.server`

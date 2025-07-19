@@ -51,6 +51,8 @@ locals {
     dtd  = "application/xml-dtd"
     nb   = "text/plain"
   }
+
+  aliases = concat([var.hostname], var.additional_aliases)
 }
 
 data "archive_file" "spotify_playlists" {
@@ -162,7 +164,7 @@ resource "aws_cloudfront_function" "spa_rewrite" {
 resource "aws_cloudfront_distribution" "this" {
   enabled             = true
   default_root_object = "index.html"
-  aliases             = [var.hostname]
+  aliases             = local.aliases
 
   origin {
     domain_name = aws_s3_bucket.this.bucket_regional_domain_name
@@ -220,9 +222,10 @@ resource "aws_cloudfront_distribution" "this" {
 }
 
 resource "aws_route53_record" "cdn" {
-  zone_id = data.aws_route53_zone.selected.zone_id
-  name    = var.hostname
-  type    = "A"
+  for_each = toset(local.aliases)
+  zone_id  = data.aws_route53_zone.selected.zone_id
+  name     = each.value
+  type     = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.this.domain_name

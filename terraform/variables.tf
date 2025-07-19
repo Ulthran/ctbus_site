@@ -10,6 +10,12 @@ variable "hostname" {
   description = "Fully qualified domain that will point to the CloudFront distribution"
 }
 
+variable "additional_aliases" {
+  type        = list(string)
+  description = "Additional DNS names for the CloudFront distribution"
+  default     = []
+}
+
 variable "zone_name" {
   type        = string
   description = "Route53 hosted zone to create the record in"
