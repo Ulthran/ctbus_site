@@ -9,25 +9,29 @@ This is a personal website for Charlie Bushman.
 
 https://charliebushman.com
 
+The static frontend is served via CloudFront at [https://vue.charliebushman.com](https://vue.charliebushman.com).
+
 ## Deployment
 
-It is deployed as a serverless flask site using zappa on AWS.
+The site is now a Vue application deployed to an S3 bucket and served through a
+CloudFront distribution. Infrastructure is managed with Terraform. All pages are
+written as Vue single file components.
 
--   `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
--   `python -m venv env`
--   `source env/bin/activate`
--   `pip install -r requirements.txt`
--   `pip install -r dev-requirements.txt` (for testing and development)
--   `zappa deploy`
--   `zappa update` (to update a previously deployed app)
--   `zappa tail` (to see logs)
+To deploy the site:
 
-To run locally,
+- `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
+- Run `terraform init` once to configure the backend.
+- For development subdomains run
+  `terraform apply -var 'hostname=subdomain.charliebushman.com'`.
+- For production run
+  `terraform apply -var-file terraform/production.tfvars`.
+  This deploys both `charliebushman.com` and `www.charliebushman.com`.
+  
+To run locally, start a simple web server from the `vue-frontend` directory:
 
--   `source env/bin/activate`
--   `export FLASK_DEBUG=1 && flask --app app/app run`
+- `cd vue-frontend && python3 -m http.server`
 
-And go to the address given.
+Then open the given address in your browser.
 
 Some environment variables are defined in `zappa_settings.json` but others are secret and are defined in a json file uploaded to a bucket defined by `remote_env`. For local deployments, just put everything in a `.env` file.
 
