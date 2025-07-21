@@ -16,7 +16,9 @@ class SPARequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def send_head(self):
         path = self.translate_path(self.path)
-        if not os.path.exists(path) and "." not in os.path.basename(self.path):
+        known_extensions = {".html", ".css", ".js", ".png", ".jpg", ".jpeg", ".gif", ".ico", ".svg", ".json"}
+        _, ext = os.path.splitext(self.path)
+        if not os.path.exists(path) and ext not in known_extensions:
             self.path = "/index.html"
         return super().send_head()
 
