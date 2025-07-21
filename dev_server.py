@@ -24,8 +24,7 @@ class SPARequestHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def run(port: int, directory: str) -> None:
-    os.chdir(directory)
-    handler = SPARequestHandler
+    handler = lambda *args, **kwargs: SPARequestHandler(*args, directory=directory, **kwargs)
     with socketserver.TCPServer(("", port), handler) as httpd:
         print(f"Serving {directory} at http://localhost:{port}")
         try:
