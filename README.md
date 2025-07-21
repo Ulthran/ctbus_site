@@ -25,9 +25,9 @@ To deploy the site:
   `terraform apply -var-file terraform/production.tfvars`.
   This deploys both `charliebushman.com` and `www.charliebushman.com`.
   
-To run locally, start a simple web server from the `vue-frontend` directory:
+To run locally, start the included Python development server:
 
-- `cd vue-frontend && python3 -m http.server`
+- `python3 dev_server.py`
 
 Then open the given address in your browser.
 
