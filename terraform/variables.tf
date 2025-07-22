@@ -30,3 +30,9 @@ variable "spotify_client_secret" {
   type        = string
   description = "Spotify API client secret"
 }
+
+variable "dev_hostname" {
+  type        = string
+  description = "Domain name for the dev CloudFront distribution"
+  default     = ""
+}
