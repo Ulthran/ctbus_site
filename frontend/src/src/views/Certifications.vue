@@ -47,95 +47,95 @@ const primaryCerts = [
 const extraCerts = {
   "AWS SkillBuilder": [
     {
-      href: "${window.assetsBase}/certificates/aws_security_compliance_governance_for_ai.pdf",
+      href: `${window.assetsBase}/certificates/aws_security_compliance_governance_for_ai.pdf`,
       title: "Security, Compliance, and Governance for AI Solutions ('25)",
     },
     {
-      href: "${window.assetsBase}/certificates/aws_optimizing_foundation_models.pdf",
+      href: `${window.assetsBase}/certificates/aws_optimizing_foundation_models.pdf`,
       title: "Optimizing Foundation Models ('25)",
     },
     {
-      href: "${window.assetsBase}/certificates/aws_essentials_of_prompt_engineering.pdf",
+      href: `${window.assetsBase}/certificates/aws_essentials_of_prompt_engineering.pdf`,
       title: "Essentials of Prompt Engineering ('25)",
     },
     {
-      href: "${window.assetsBase}/certificates/aws_developing_gen_ai_solutions.pdf",
+      href: `${window.assetsBase}/certificates/aws_developing_gen_ai_solutions.pdf`,
       title: "Developing Generative Artificial Intelligence Solutions ('25)",
     },
     {
-      href: "${window.assetsBase}/certificates/aws_developing_ml_solutions.pdf",
+      href: `${window.assetsBase}/certificates/aws_developing_ml_solutions.pdf`,
       title: "Developing Machine Learning Solutions ('25)",
     },
     {
-      href: "${window.assetsBase}/certificates/aws_responsible_ai_practices.pdf",
+      href: `${window.assetsBase}/certificates/aws_responsible_ai_practices.pdf`,
       title: "Responsible Artificial Intelligence Practices ('25)",
     },
     {
-      href: "${window.assetsBase}/certificates/aws_exploring_ai_use_cases_and_applications.pdf",
+      href: `${window.assetsBase}/certificates/aws_exploring_ai_use_cases_and_applications.pdf`,
       title:
         "Exploring Artificial Intelligence Use Cases and Applications ('25)",
     },
     {
-      href: "${window.assetsBase}/certificates/aws_fundamentals_of_ai_and_ml.pdf",
+      href: `${window.assetsBase}/certificates/aws_fundamentals_of_ai_and_ml.pdf`,
       title:
         "Fundamentals of Machine Learning and Artificial Intelligence ('25)",
     },
   ],
   "LinkedIn Learning": [
     {
-      href: "${window.assetsBase}/certificates/aws_mls_c01_prep.pdf",
+      href: `${window.assetsBase}/certificates/aws_mls_c01_prep.pdf`,
       title: "AWS Machine Learning ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/devops_foundations_cicd.pdf",
+      href: `${window.assetsBase}/certificates/devops_foundations_cicd.pdf`,
       title: "DevOps Foundations: CI/CD ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/learning_amazon_web_services_for_developers.pdf",
+      href: `${window.assetsBase}/certificates/learning_amazon_web_services_for_developers.pdf`,
       title: "Learning AWS for Developers ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/learning_docker.pdf",
+      href: `${window.assetsBase}/certificates/learning_docker.pdf`,
       title: "Docker ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/learning_docker_compose.pdf",
+      href: `${window.assetsBase}/certificates/learning_docker_compose.pdf`,
       title: "Docker Compose ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/25_github_configuration_files_you_should_be_using.pdf",
+      href: `${window.assetsBase}/certificates/25_github_configuration_files_you_should_be_using.pdf`,
       title: "25 GitHub Configuration Files You Should Be Using ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/scrum_master.pdf",
+      href: `${window.assetsBase}/certificates/scrum_master.pdf`,
       title: "Scrum Master ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/supporting_allyship_and_antiracism_at_work.pdf",
+      href: `${window.assetsBase}/certificates/supporting_allyship_and_antiracism_at_work.pdf`,
       title: "Supporting Allyship and Antiracism at Work ('23)",
     },
     {
-      href: "${window.assetsBase}/certificates/strategic_thinking.pdf",
+      href: `${window.assetsBase}/certificates/strategic_thinking.pdf`,
       title: "Strategic Thinking ('23)",
     },
   ],
   "Techstrong Learning": [
     {
-      href: "${window.assetsBase}/certificates/build_AI_native_foundation.pdf",
+      href: `${window.assetsBase}/certificates/build_AI_native_foundation.pdf`,
       title: "AI-Native Foundations for Enterprise Apps ('24)",
     },
     {
-      href: "${window.assetsBase}/certificates/future_of_AI_assisted_dev_and_code_qual_cert.pdf",
+      href: `${window.assetsBase}/certificates/future_of_AI_assisted_dev_and_code_qual_cert.pdf`,
       title: "Future of AI Assisted Development and Code Quality ('23)",
     },
   ],
   "Misc and Old": [
     {
-      href: "${window.assetsBase}/certificates/IBM_quantum_challenge_fall_2020.pdf",
+      href: `${window.assetsBase}/certificates/IBM_quantum_challenge_fall_2020.pdf`,
       title: "IBM - Quantum Challenge - Foundational ('20)",
     },
     {
-      href: "${window.assetsBase}/certificates/scala_lang_prof.pdf",
+      href: `${window.assetsBase}/certificates/scala_lang_prof.pdf`,
       title: "Lightbend Scala Language - Professional ('20)",
     },
     {

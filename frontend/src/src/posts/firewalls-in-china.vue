@@ -74,7 +74,7 @@ const info = posts[slug];
     >
     <div class="text-center my-4">
       <v-btn
-        href="${window.assetsBase}/documents/firewalls_paper.pdf"
+        :href="`${window.assetsBase}/documents/firewalls_paper.pdf`"
         icon
         variant="text"
         target="_blank"
@@ -83,7 +83,7 @@ const info = posts[slug];
         <v-icon icon="fas fa-file-alt"></v-icon>
       </v-btn>
       <v-btn
-        href="${window.assetsBase}/documents/firewalls_mini_papers.pdf"
+        :href="`${window.assetsBase}/documents/firewalls_mini_papers.pdf`"
         icon
         variant="text"
         target="_blank"

@@ -4,7 +4,7 @@ import { onMounted } from "vue";
 onMounted(() => {
   // Redirect directly to the resume so navigating to /resume
   // loads the PDF in the current tab instead of opening a new one
-  window.location.replace("${window.assetsBase}/documents/resume.pdf");
+  window.location.replace(`${window.assetsBase}/documents/resume.pdf`);
 });
 </script>
 

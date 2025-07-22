@@ -125,7 +125,7 @@ const info = posts[slug];
     >
     <div class="text-center my-4">
       <v-btn
-        href="${window.assetsBase}/documents/qkd_paper.pdf"
+        :href="`${window.assetsBase}/documents/qkd_paper.pdf`"
         icon
         variant="text"
         target="_blank"

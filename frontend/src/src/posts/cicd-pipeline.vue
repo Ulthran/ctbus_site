@@ -587,7 +587,7 @@ const zapYaml = `zap-deployment:
       terrain is enormous.</Paragraph
     >
     <img
-      src="${window.assetsBase}/images/ctbus_site_cd_workflow_success.png"
+      :src="`${window.assetsBase}/images/ctbus_site_cd_workflow_success.png`"
       alt="CI/CD Workflow Success"
     />
     <Paragraph

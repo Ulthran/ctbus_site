@@ -397,7 +397,7 @@ onMounted(() => {
     >
     <div class="text-center my-4">
       <v-btn
-        href="${window.assetsBase}/documents/comps_paper.pdf"
+        :href="`${window.assetsBase}/documents/comps_paper.pdf`"
         icon
         variant="text"
         target="_blank"
@@ -405,7 +405,7 @@ onMounted(() => {
         <v-icon icon="fas fa-file-alt"></v-icon>
       </v-btn>
       <v-btn
-        href="${window.assetsBase}/slides/comps_slides.pptx"
+        :href="`${window.assetsBase}/slides/comps_slides.pptx`"
         icon
         variant="text"
         target="_blank"
