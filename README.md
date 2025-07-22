@@ -10,19 +10,20 @@ https://charliebushman.com
 
 ## Deployment
 
-The site is a Vue application deployed to an S3 bucket and served through a
-CloudFront distribution. Infrastructure is managed with Terraform. All pages are
-written as Vue single file components.
+The project is split into several small services that share a Terraform backend.
+Each service can be deployed on its own.
 
-To deploy the site:
+To deploy a service:
 
 - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
-- Run `terraform -chdir=terraform init` once to configure the backend.
-- For development subdomains run
-  `terraform -chdir=terraform apply -var 'hostname=subdomain.charliebushman.com'`.
-- For production run
-  `terraform -chdir=terraform apply -var-file production.tfvars`.
-  This deploys both `charliebushman.com` and `www.charliebushman.com`.
+- Initialize Terraform in the desired service directory. For example:
+
+```
+terraform -chdir=frontend/terraform init
+terraform -chdir=frontend/terraform apply -var 'hostname=subdomain.example.com'
+```
+
+Use similar commands for `assets/terraform` and `spotify/terraform`.
   
 To run locally, start the included Python development server:
 

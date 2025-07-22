@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Development server for ctbus_site.
 
-Serves files from the vue-frontend directory and falls back to index.html for
+Serves files from the frontend/src directory and falls back to index.html for
 routes without a file extension. Useful for local SPA development.
 """
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dir",
         "-d",
-        default="vue-frontend",
+        default="frontend/src",
         help="Directory to serve",
     )
     args = parser.parse_args()
