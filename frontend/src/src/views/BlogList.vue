@@ -64,7 +64,7 @@ const filteredPosts = computed(() => {
             :style="{ width: '60px', height: '90px', 'border-radius': '4px' }"
           >
             <v-img
-              :src="`${window.assetsBase}/images/blog/${name.replace(/-/g, '_')}.png`"
+              :src="`ASSETS_BASE_URL/images/blog/${name.replace(/-/g, '_')}.png`"
               :alt="post.title"
               cover
               loading="lazy"

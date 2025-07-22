@@ -206,7 +206,7 @@ window.dataPath = `${basePath}/data`;
       document.head.appendChild(meta);
     }
 
-    const defaultImage = "${window.assetsBase}/images/favicon.ico";
+    const defaultImage = "ASSETS_BASE_URL/images/favicon.ico";
     let ogTitle = to.meta.ogTitle || document.title;
     let ogDescription = to.meta.ogDescription || desc;
     let ogImage = to.meta.ogImage || defaultImage;
@@ -217,7 +217,7 @@ window.dataPath = `${basePath}/data`;
       if (post) {
         ogTitle = `${post.title} - Charlie Bushman`;
         ogDescription = post.subtitle;
-        ogImage = `${window.assetsBase}/images/blog/${slug.replace(/-/g, "_")}.png`;
+        ogImage = `ASSETS_BASE_URL/images/blog/${slug.replace(/-/g, "_")}.png`;
       }
     }
 
@@ -227,7 +227,7 @@ window.dataPath = `${basePath}/data`;
       if (project) {
         ogTitle = `${project.title} - Charlie Bushman`;
         ogDescription = project.subtitle;
-        ogImage = `${window.assetsBase}/images/projects/${project.image}`;
+        ogImage = `ASSETS_BASE_URL/images/projects/${project.image}`;
       }
     }
 

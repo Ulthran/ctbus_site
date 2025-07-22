@@ -4,7 +4,7 @@ import Hero from "../components/Hero.vue";
 const certs = [
   {
     href: "https://www.credly.com/badges/bcecce87-e9f9-4f05-a068-40eeb7474731/public_url",
-    src: `${window.assetsBase}/certificates/aws_certified_cloud_practitioner.png`,
+    src: `ASSETS_BASE_URL/certificates/aws_certified_cloud_practitioner.png`,
     alt: "AWS Certified Cloud Practitioner - Foundational",
     h: 120,
     w: 120,
@@ -12,7 +12,7 @@ const certs = [
   },
   {
     href: "https://www.credly.com/badges/a5cc21ee-a95c-4ba8-9a04-9f1f7e4928bf/public_url",
-    src: `${window.assetsBase}/certificates/aws_certified_ai_practitioner_early_adopter.png`,
+    src: `ASSETS_BASE_URL/certificates/aws_certified_ai_practitioner_early_adopter.png`,
     alt: "AWS Certified AI Practitioner",
     h: 205,
     w: 205,
@@ -20,7 +20,7 @@ const certs = [
   },
   {
     href: "https://www.credly.com/badges/c6ee2c89-f5d2-46df-826e-b2246435709f/public_url",
-    src: `${window.assetsBase}/certificates/aws_certified_developer_associate.png`,
+    src: `ASSETS_BASE_URL/certificates/aws_certified_developer_associate.png`,
     alt: "AWS Certified Developer - Associate",
     h: 120,
     w: 120,
@@ -28,7 +28,7 @@ const certs = [
   },
   {
     href: "https://www.credly.com/badges/3decec7b-025c-4f64-a461-01d7d0fd6c22/public_url",
-    src: `${window.assetsBase}/certificates/aws_certified_devops_pro.png`,
+    src: `ASSETS_BASE_URL/certificates/aws_certified_devops_pro.png`,
     alt: "AWS Certified DevOps Engineer - Professional",
     h: 120,
     w: 120,

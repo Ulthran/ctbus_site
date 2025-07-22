@@ -5,25 +5,25 @@ const workCards = [
   {
     title: "Lead Developer for Nightly",
     body: "In college a friend pitched a party planning app for a startup competition. I built a prototype with React Native and AWS Amplify and later helped refine the web and mobile apps alongside a small team before joining the PCMP.",
-    img: `${window.assetsBase}/images/latenite_logo.png`,
-    link: `${window.assetsBase}/slides/latenite_slides.pptx`,
+    img: `ASSETS_BASE_URL/images/latenite_logo.png`,
+    link: `ASSETS_BASE_URL/slides/latenite_slides.pptx`,
   },
   {
     title: "HPE Software Internship",
     body: "I worked with the GreenLake team on a large scale data migration pipeline, learning Scrum and tackling challenges around flexible data ingestion and processing.",
-    img: `${window.assetsBase}/images/hpe_greenlake.png`,
+    img: `ASSETS_BASE_URL/images/hpe_greenlake.png`,
     link: "https://hpe.com/us/en/greenlake.html",
   },
   {
     title: "Owl Labs Software Internship",
     body: "At Owl Labs I created a unit testing framework for their Meeting Owl firmware and later built internal inventory tools.",
-    img: `${window.assetsBase}/images/owllabs.png`,
+    img: `ASSETS_BASE_URL/images/owllabs.png`,
     link: "https://owllabs.com",
   },
   {
     title: "HepatoChem Software Internship",
     body: "During high school I built an MS Access database and interface to manage inventory for HepatoChem's biomimetic screening kits.",
-    img: `${window.assetsBase}/images/hepatochem.png`,
+    img: `ASSETS_BASE_URL/images/hepatochem.png`,
     link: "https://hepatochem.com",
   },
 ];
