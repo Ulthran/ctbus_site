@@ -35,7 +35,7 @@ locals {
     nb   = "text/plain"
   }
 
-  aliases = concat([var.hostname], var.additional_aliases)
+  alias = var.hostname
 }
 
 resource "aws_s3_object" "asset" {
@@ -70,7 +70,7 @@ resource "aws_s3_bucket_policy" "allow_cloudfront" {
 resource "aws_cloudfront_distribution" "this" {
   enabled             = true
   default_root_object = "index.html"
-  aliases             = local.aliases
+  aliases             = [local.alias]
 
   origin {
     domain_name = aws_s3_bucket.this.bucket_regional_domain_name
@@ -106,9 +106,8 @@ resource "aws_cloudfront_distribution" "this" {
 }
 
 resource "aws_route53_record" "cdn" {
-  for_each = toset(local.aliases)
   zone_id  = data.aws_route53_zone.selected.zone_id
-  name     = each.value
+  name     = local.alias
   type     = "A"
 
   alias {
@@ -124,4 +123,8 @@ output "bucket_name" {
 
 output "cloudfront_domain" {
   value = aws_cloudfront_distribution.this.domain_name
+}
+
+output "domain_name" {
+  value = local.alias
 }
