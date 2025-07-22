@@ -7,6 +7,7 @@ variable "bucket_name" {
 variable "hostname" {
   type        = string
   description = "Domain name for assets CDN"
+  default     = "assets.charliebushman.com"
 }
 
 variable "additional_aliases" {
