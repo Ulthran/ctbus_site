@@ -1,0 +1,49 @@
+name: spotify
+
+on:
+  push:
+    branches: [main, master, dev]
+    paths:
+      - 'spotify/**'
+      - '.github/workflows/spotify.yml'
+  pull_request:
+    branches: [main, master, dev]
+    paths:
+      - 'spotify/**'
+      - '.github/workflows/spotify.yml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          npm install -g prettier
+
+      - name: Prettier Check
+        run: |
+          prettier --config .prettierrc.json --check "spotify/**/*.js" "spotify/terraform/**/*.js"
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive
+        working-directory: spotify/terraform
+
+      - name: Terraform Init
+        run: terraform init -backend=false
+        working-directory: spotify/terraform
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: spotify/terraform
