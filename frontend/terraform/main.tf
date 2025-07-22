@@ -43,7 +43,7 @@ locals {
   site_files = fileset(local.site_dir, "**")
   placeholders = {
     "SPOTIFY_PLAYLISTS_URL" = data.terraform_remote_state.spotify.outputs.spotify_playlists_url
-    "ASSETS_BASE_URL"       = "https://${data.terraform_remote_state.assets.outputs.cloudfront_domain}"
+    "ASSETS_BASE_URL"       = "https://${data.terraform_remote_state.assets.outputs.domain_name}"
   }
   processed_files = {
     for f in local.site_files :
@@ -194,4 +194,8 @@ output "bucket_name" {
 
 output "cloudfront_domain" {
   value = aws_cloudfront_distribution.this.domain_name
+}
+
+output "domain_name" {
+  value = local.aliases[0]
 }
