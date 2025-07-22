@@ -97,46 +97,6 @@ import SquashIcon from "../svgs/Squash.vue";
             <v-icon icon="fas fa-chess" class="icon-bg" size="48" />
           </a>
         </v-col>
-        <v-col
-          cols="auto"
-          class="d-flex flex-column align-center"
-          title="Tactical puzzles are my favorite"
-        >
-          <v-icon icon="fas fa-puzzle-piece" class="icon-bg" size="24" />
-          <p class="text-body-1 font-weight-bold">{{ chess.tactics }}</p>
-        </v-col>
-        <v-col
-          cols="auto"
-          class="d-flex flex-column align-center"
-          title="Bullet"
-        >
-          <v-icon icon="fas fa-bullseye" class="icon-bg" size="24" />
-          <p class="text-body-1 font-weight-bold">{{ chess.bullet }}</p>
-        </v-col>
-        <v-col
-          cols="auto"
-          class="d-flex flex-column align-center"
-          title="Blitz"
-        >
-          <v-icon icon="fas fa-bolt" class="icon-bg" size="24" />
-          <p class="text-body-1 font-weight-bold">{{ chess.blitz }}</p>
-        </v-col>
-        <v-col
-          cols="auto"
-          class="d-flex flex-column align-center"
-          title="Rapid"
-        >
-          <v-icon icon="fas fa-stopwatch" class="icon-bg" size="24" />
-          <p class="text-body-1 font-weight-bold">{{ chess.rapid }}</p>
-        </v-col>
-        <v-col
-          cols="auto"
-          class="d-flex flex-column align-center"
-          title="Daily"
-        >
-          <v-icon icon="fas fa-sun" class="icon-bg" size="24" />
-          <p class="text-body-1 font-weight-bold">{{ chess.daily }}</p>
-        </v-col>
       </v-row>
     </v-card>
 
