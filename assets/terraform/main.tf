@@ -106,9 +106,9 @@ resource "aws_cloudfront_distribution" "this" {
 }
 
 resource "aws_route53_record" "cdn" {
-  zone_id  = data.aws_route53_zone.selected.zone_id
-  name     = local.alias
-  type     = "A"
+  zone_id = data.aws_route53_zone.selected.zone_id
+  name    = local.alias
+  type    = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.this.domain_name

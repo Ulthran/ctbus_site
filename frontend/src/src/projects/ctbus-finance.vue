@@ -10,7 +10,7 @@ const info = projects["ctbus-finance"];
     :title="info.title"
     :subtitle="info.subtitle"
     :tags="info.tags"
-    :img="`${window.assetsBase}/images/${info.image}`"
+    :img="`ASSETS_BASE_URL/images/${info.image}`"
   />
   <v-container>
     <v-card class="mb-4">

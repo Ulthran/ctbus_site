@@ -10,7 +10,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
-        href="${window.assetsBase}/documents/resume.pdf"
+        href="ASSETS_BASE_URL/documents/resume.pdf"
         icon
         variant="text"
         target="_blank"

@@ -41,7 +41,7 @@ except (
     :date="info.date"
     :mod_date="info.mod_date"
     :tags="info.tags"
-    :img="`${window.assetsBase}/images/blog/${slug.replace(/-/g, '_')}.png`"
+    :img="`ASSETS_BASE_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
   <v-container class="py-4 blog-content">
     <SectionTitle>AI Beyond Coding</SectionTitle>

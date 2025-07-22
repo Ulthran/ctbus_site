@@ -15,7 +15,7 @@ const info = posts[slug];
     :date="info.date"
     :mod_date="info.mod_date"
     :tags="info.tags"
-    :img="`${window.assetsBase}/images/blog/${slug.replace(/-/g, '_')}.png`"
+    :img="`ASSETS_BASE_URL/images/blog/${slug.replace(/-/g, '_')}.png`"
   />
   <v-container class="py-4 blog-content">
     <Paragraph
@@ -74,7 +74,7 @@ const info = posts[slug];
     >
     <div class="text-center my-4">
       <v-btn
-        href="${window.assetsBase}/documents/firewalls_paper.pdf"
+        href="ASSETS_BASE_URL/documents/firewalls_paper.pdf"
         icon
         variant="text"
         target="_blank"
@@ -83,7 +83,7 @@ const info = posts[slug];
         <v-icon icon="fas fa-file-alt"></v-icon>
       </v-btn>
       <v-btn
-        href="${window.assetsBase}/documents/firewalls_mini_papers.pdf"
+        href="ASSETS_BASE_URL/documents/firewalls_mini_papers.pdf"
         icon
         variant="text"
         target="_blank"
