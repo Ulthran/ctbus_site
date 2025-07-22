@@ -29,22 +29,22 @@ jobs:
 
       - name: Prettier Check
         run: |
-          prettier --config .prettierrc.json --check "vue-frontend/**/*.{js,vue,css,html}" "terraform/**/*.js"
+          prettier --config .prettierrc.json --check "frontend/**/*.{js,vue,css,html}" "frontend/terraform/**/*.js" "assets/terraform/**/*.js" "spotify/terraform/**/*.js"
 
       - name: Terraform Format
         run: terraform fmt -check -recursive
-        working-directory: terraform
+        working-directory: frontend/terraform
 
       - name: Terraform Init
         run: terraform init -backend=false
-        working-directory: terraform
+        working-directory: frontend/terraform
 
       - name: Terraform Validate
         run: terraform validate
-        working-directory: terraform
+        working-directory: frontend/terraform
 
       - name: Validate HTML
-        run: tidy -qe vue-frontend/index.html
+        run: tidy -qe frontend/src/index.html
 
   deploy:
     needs: lint
@@ -71,8 +71,8 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: terraform
+        working-directory: frontend/terraform
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: terraform
+        working-directory: frontend/terraform
