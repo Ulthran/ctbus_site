@@ -28,6 +28,10 @@ window.viewsPath = `${basePath}/views`;
 window.postsPath = `${basePath}/posts`;
 window.projectsPath = `${basePath}/projects`;
 window.dataPath = `${basePath}/data`;
+// Fallback in case index.html script failed to set this
+if (!window.assetsBase) {
+  window.assetsBase = "ASSETS_BASE_URL";
+}
 
 (async () => {
   const [App] = await Promise.all([
