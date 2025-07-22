@@ -44,5 +44,5 @@ watch(
     <v-progress-circular indeterminate aria-label="Loading project..." />
   </v-container>
   <component :is="component" v-else-if="component" />
-  <v-container v-else-if="notFound">Project not found.</v-container>
+  <v-container v-else>Project not found.</v-container>
 </template>
