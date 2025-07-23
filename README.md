@@ -1,39 +1,34 @@
 [![CI/CD](https://github.com/Ulthran/ctbus_site/actions/workflows/main.yml/badge.svg)](https://github.com/Ulthran/ctbus_site/actions/workflows/main.yml)
-[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://www.mend.io/renovate/)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/07edb64af1c544439190dff82571e7a5)](https://app.codacy.com/gh/Ulthran/ctbus_site/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Known Vulnerabilities](https://snyk.io/test/github/Ulthran/ctbus_site/badge.svg)](https://snyk.io/test/github/Ulthran/ctbus_site)
 
 ## About
 
-This is a personal website for Charlie Bushman.
+This is a personal website for Charlie Bushman. It is a serverless, microservice grid comprised of a static assets CDN, the Vue frontend CDN, and an additional API for accessing third party data sources. Each service is managed with Terraform.
 
 https://charliebushman.com
 
 ## Deployment
 
-It is deployed as a serverless flask site using zappa on AWS.
+To deploy a service:
 
--   `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
--   `python -m venv env`
--   `source env/bin/activate`
--   `pip install -r requirements.txt`
--   `pip install -r dev-requirements.txt` (for testing and development)
--   `zappa deploy`
--   `zappa update` (to update a previously deployed app)
--   `zappa tail` (to see logs)
+- `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
+- Initialize Terraform in the desired service directory. For example:
 
-To run locally,
+```
+terraform -chdir=frontend/terraform init
+terraform -chdir=frontend/terraform apply -var 'hostname=subdomain.example.com'
+```
 
--   `source env/bin/activate`
--   `export FLASK_DEBUG=1 && flask --app app/app run`
+Use similar commands for `assets/terraform` and `spotify/terraform`.
 
-And go to the address given.
+NOTE: The frontend service requires deployed versions of each other service (pulled from the remote Terraform state files).
+  
+To run locally, start the included Python development server:
 
-Some environment variables are defined in `zappa_settings.json` but others are secret and are defined in a json file uploaded to a bucket defined by `remote_env`. For local deployments, just put everything in a `.env` file.
+- `python3 dev_server.py`
 
-## Contributing
-
-If you have thoughts on how I could improve the site, I'd love to hear them. It is, for now and the foreseeable future, pretty simplistic in design, but I will also be using it as a testing ground for anything in the web app arena I want to learn more about.
+Then open the given address in your browser.
 
 ## Security Vulnerabilities
 

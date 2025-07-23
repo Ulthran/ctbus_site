@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html style="width: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>ctbus</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Styles -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../all.css">
+    <link rel="stylesheet" href="../../project.css">
+</head>
+
+<body class="font-sans antialiased" style="flex-direction: column;">
+    <div class="bg-gray-100 container">
+
+        <!-- Page Heading -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" style="padding-right: 10%; padding-left: 10%;">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="navbar-item"><a href="../../index.html">Home</a></div>
+                        <div class="navbar-item"><a href="../../projects.html">Projects</a></div>
+                        <div class="navbar-item"><a href="../../resume.html">Re&#769;sume&#769;</a></div>
+                    </div>
+                 </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main>
+            <div class="project-container">
+                <div class="sidebar">
+                    <p class="title">Title</p>
+                    <p>Links and Downloads:</p>
+                    <a href="google.com" target="_blank" rel="noopener noreferrer" class="link">Link 1</a>
+                    <a href="body.pdf" target="_blank" rel="noopener noreferrer" class="link">Paper</a>
+                    <a href="video.mp4" target="_blank" rel="noopener noreferrer" class="link">Video</a>
+                    <a href="slides.pptx" target="_blank" rel="noopener noreferrer" class="link">Slides</a>
+                </div>
+                <div class="content">
+                    <embed src="body.pdf" width="100%" height="1150px" />
+                    <video width="100%" controls style="padding: 20px;">
+                    <source src="video.mp4" type="video/mp4">
+                        Your browser doesn't support the video tag. :(
+                    </video>
+                </div>
+            </div>
+        </main>
+
+        <!-- Page Footer -->
+        <footer>
+            <div class="footer">
+                <div id="bottom-line">
+                    <p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p><p id="bottom-dash">-</p>
+                </div>
+                <div class="footer-note">
+                   <p>Please direct any inquiries, bug reports, or interesting anecdotes to <a class="mailto-link" href="mailto:ctbushman@gmail.com">ctbushman@gmail.com</a>.</p> 
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

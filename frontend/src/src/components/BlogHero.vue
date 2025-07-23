@@ -1,0 +1,45 @@
+<template>
+  <v-container class="my-4">
+    <v-row align="center">
+      <v-col cols="auto">
+        <v-img
+          :src="img"
+          :alt="title"
+          width="120"
+          height="120"
+          class="rounded"
+          loading="lazy"
+        />
+      </v-col>
+      <v-col>
+        <h1 class="text-h5 font-weight-bold mb-2">{{ title }}</h1>
+        <p class="text-subtitle-1 mb-1">{{ subtitle }}</p>
+        <div class="text-caption mb-1">
+          {{ date }}
+          <span v-if="mod_date !== date">(Edited: {{ mod_date }})</span>
+        </div>
+        <div>
+          <v-chip
+            v-for="tag in tags"
+            :key="tag"
+            class="ma-1"
+            size="small"
+            variant="outlined"
+          >
+            {{ tag }}
+          </v-chip>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+<script setup>
+defineProps({
+  title: String,
+  subtitle: String,
+  date: String,
+  mod_date: String,
+  tags: Array,
+  img: String,
+});
+</script>
