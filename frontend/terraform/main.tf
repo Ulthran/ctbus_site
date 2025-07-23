@@ -49,17 +49,22 @@ locals {
   placeholders = {
     "SPOTIFY_PLAYLISTS_URL" = data.terraform_remote_state.spotify.outputs.spotify_playlists_url
     "ASSETS_BASE_URL"       = "https://${data.terraform_remote_state.assets.outputs.domain_name}"
+    "ENV_NAME"              = local.env
   }
   processed_files = {
     for f in local.site_files :
     f => replace(
       replace(
-        file("${local.site_dir}/${f}"),
-        "SPOTIFY_PLAYLISTS_URL",
-        local.placeholders["SPOTIFY_PLAYLISTS_URL"]
+        replace(
+          file("${local.site_dir}/${f}"),
+          "SPOTIFY_PLAYLISTS_URL",
+          local.placeholders["SPOTIFY_PLAYLISTS_URL"]
+        ),
+        "ASSETS_BASE_URL",
+        local.placeholders["ASSETS_BASE_URL"]
       ),
-      "ASSETS_BASE_URL",
-      local.placeholders["ASSETS_BASE_URL"]
+      "ENV_NAME",
+      local.placeholders["ENV_NAME"]
     )
   }
   mime_types = {

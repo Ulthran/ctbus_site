@@ -34,6 +34,14 @@
         <v-icon aria-label="LinkedIn" icon="fab fa-linkedin"></v-icon>
       </v-btn>
     </v-app-bar>
+    <v-alert
+      v-if="env !== 'main'"
+      type="warning"
+      variant="tonal"
+      class="text-center m-0"
+    >
+      This is a dev deployment ({{ env }})
+    </v-alert>
     <v-main class="pa-15">
       <router-view></router-view>
     </v-main>
@@ -47,5 +55,10 @@
 </template>
 
 <script>
-export default { name: "App" };
+export default {
+  name: "App",
+  data() {
+    return { env: "ENV_NAME" };
+  },
+};
 </script>
