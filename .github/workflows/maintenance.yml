@@ -1,0 +1,49 @@
+name: maintenance
+
+on:
+  push:
+    branches: [main, master, dev]
+    paths:
+      - 'maintenance/**'
+      - '.github/workflows/maintenance.yml'
+  pull_request:
+    branches: [main, master, dev]
+    paths:
+      - 'maintenance/**'
+      - '.github/workflows/maintenance.yml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          npm install -g prettier
+
+      - name: Prettier Check
+        run: |
+          prettier --config .prettierrc.json --check "maintenance/**/*.js"
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive
+        working-directory: maintenance/terraform
+
+      - name: Terraform Init
+        run: terraform init -backend=false
+        working-directory: maintenance/terraform
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: maintenance/terraform
