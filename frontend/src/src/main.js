@@ -206,7 +206,7 @@ window.dataPath = `${basePath}/data`;
       document.head.appendChild(meta);
     }
 
-    const defaultImage = "ASSETS_BASE_URL/images/favicon.ico";
+    const defaultImage = "ASSETS_BASE_URL/favicon.ico";
     let ogTitle = to.meta.ogTitle || document.title;
     let ogDescription = to.meta.ogDescription || desc;
     let ogImage = to.meta.ogImage || defaultImage;
