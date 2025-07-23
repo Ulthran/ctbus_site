@@ -3,9 +3,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-variable "env" {
-  default = terraform.workspace
-}
 
 data "aws_route53_zone" "selected" {
   name = var.zone_name
@@ -39,12 +36,16 @@ data "terraform_remote_state" "assets" {
 }
 
 resource "aws_s3_bucket" "this" {
-  bucket = var.bucket_name
+  bucket = local.bucket_name
 }
 
 locals {
-  site_dir   = "${path.root}/../src"
-  site_files = fileset(local.site_dir, "**")
+  env         = terraform.workspace
+  bucket_name = "${var.bucket_name}-${local.env}"
+  hostname    = local.env == "main" ? "charliebushman.com" : "${local.env}.charliebushman.com"
+  env_aliases = local.env == "main" ? ["www.charliebushman.com"] : []
+  site_dir    = "${path.root}/../src"
+  site_files  = fileset(local.site_dir, "**")
   placeholders = {
     "SPOTIFY_PLAYLISTS_URL" = data.terraform_remote_state.spotify.outputs.spotify_playlists_url
     "ASSETS_BASE_URL"       = "https://${data.terraform_remote_state.assets.outputs.domain_name}"
@@ -76,7 +77,7 @@ locals {
     dtd  = "application/xml-dtd"
     nb   = "text/plain"
   }
-  aliases = concat([var.hostname], var.additional_aliases)
+  aliases = distinct(concat([local.hostname], var.additional_aliases, local.env_aliases))
 }
 
 resource "aws_s3_object" "site" {
@@ -113,7 +114,7 @@ resource "aws_s3_bucket_policy" "allow_cloudfront" {
 }
 
 resource "aws_cloudfront_function" "spa_rewrite" {
-  name    = "${var.bucket_name}-spa-rewrite"
+  name    = "${local.bucket_name}-spa-rewrite"
   runtime = "cloudfront-js-1.0"
   publish = true
   code    = file("${path.module}/spa-redirect.js")
