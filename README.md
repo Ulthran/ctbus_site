@@ -6,7 +6,7 @@
 
 This is a personal website for Charlie Bushman. It is a serverless, microservice grid comprised of a static assets CDN, the Vue frontend CDN, and an additional API for accessing third party data sources. Each service is managed with Terraform.
 
-https://charliebushman.com
+<https://charliebushman.com>
 
 ## Deployment
 
