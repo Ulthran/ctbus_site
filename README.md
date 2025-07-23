@@ -4,14 +4,11 @@
 
 ## About
 
-This is a personal website for Charlie Bushman.
+This is a personal website for Charlie Bushman. It is a serverless, microservice grid comprised of a static assets CDN, the Vue frontend CDN, and an additional API for accessing third party data sources. Each service is managed with Terraform.
 
 https://charliebushman.com
 
 ## Deployment
-
-The project is split into several small services that share a Terraform backend.
-Each service can be deployed on its own.
 
 To deploy a service:
 
@@ -24,16 +21,14 @@ terraform -chdir=frontend/terraform apply -var 'hostname=subdomain.example.com'
 ```
 
 Use similar commands for `assets/terraform` and `spotify/terraform`.
+
+NOTE: The frontend service requires deployed versions of each other service (pulled from the remote Terraform state files).
   
 To run locally, start the included Python development server:
 
 - `python3 dev_server.py`
 
 Then open the given address in your browser.
-
-## Contributing
-
-If you have thoughts on how I could improve the site, I'd love to hear them. It is, for now and the foreseeable future, pretty simplistic in design, but I will also be using it as a testing ground for anything in the web app arena I want to learn more about.
 
 ## Security Vulnerabilities
 
