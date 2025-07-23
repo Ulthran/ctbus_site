@@ -34,7 +34,7 @@ jobs:
 
       - name: Prettier Check
         run: |
-          prettier --config .prettierrc.json --check "spotify/**/*.js" "spotify/terraform/**/*.js"
+          prettier --config .prettierrc.json --check "spotify/**/*.js"
 
       - name: Terraform Format
         run: terraform fmt -check -recursive

@@ -35,7 +35,7 @@ jobs:
 
       - name: Prettier Check
         run: |
-          prettier --config .prettierrc.json --check "frontend/**/*.{js,vue,css,html}" "frontend/terraform/**/*.js"
+          prettier --config .prettierrc.json --check "frontend/**/*.{js,vue,css,html}"
 
       - name: Terraform Format
         run: terraform fmt -check -recursive
