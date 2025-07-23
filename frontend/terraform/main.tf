@@ -77,7 +77,7 @@ locals {
     dtd  = "application/xml-dtd"
     nb   = "text/plain"
   }
-  aliases = concat([local.hostname], var.additional_aliases, local.env_aliases)
+  aliases = distinct(concat([local.hostname], var.additional_aliases, local.env_aliases))
 }
 
 resource "aws_s3_object" "site" {
