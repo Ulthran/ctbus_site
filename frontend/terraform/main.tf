@@ -1,5 +1,4 @@
 provider "aws" {
-  alias  = "us_east_1"
   region = "us-east-1"
 }
 
@@ -8,12 +7,6 @@ data "aws_route53_zone" "selected" {
   name = var.zone_name
 }
 
-data "aws_acm_certificate" "wildcard" {
-  provider    = aws.us_east_1
-  domain      = "*.${var.zone_name}"
-  statuses    = ["ISSUED"]
-  most_recent = true
-}
 
 # Remote states for other services
 
@@ -173,7 +166,7 @@ resource "aws_cloudfront_distribution" "this" {
 
   price_class = "PriceClass_100"
   viewer_certificate {
-    acm_certificate_arn      = data.aws_acm_certificate.wildcard.arn
+    acm_certificate_arn      = var.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
   }
