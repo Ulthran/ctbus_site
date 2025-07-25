@@ -246,7 +246,7 @@ const others = [
       <v-card
         class="mx-auto"
         :prepend-avatar="proj.img"
-        :to="proj.link"
+        :href="proj.link"
         :target="proj.link ? '_blank' : null"
         width="85%"
       >
