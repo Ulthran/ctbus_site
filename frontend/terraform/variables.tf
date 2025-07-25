@@ -4,11 +4,6 @@ variable "bucket_name" {
   default     = "ctbus-site-frontend"
 }
 
-variable "hostname" {
-  type        = string
-  description = "Domain name for the frontend"
-}
-
 variable "additional_aliases" {
   type        = list(string)
   description = "Additional DNS names"

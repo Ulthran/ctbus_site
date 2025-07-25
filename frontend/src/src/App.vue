@@ -34,15 +34,15 @@
         <v-icon aria-label="LinkedIn" icon="fab fa-linkedin"></v-icon>
       </v-btn>
     </v-app-bar>
-    <v-alert
-      v-if="env !== 'main'"
-      type="warning"
-      variant="tonal"
-      class="text-center m-0"
-    >
-      This is a dev deployment ({{ env }})
-    </v-alert>
     <v-main class="pa-15">
+      <v-alert
+        v-if="env !== 'main'"
+        type="warning"
+        variant="tonal"
+        class="text-center m-0"
+      >
+        This is a dev deployment ({{ env }})
+      </v-alert>
       <router-view></router-view>
     </v-main>
     <v-footer color="grey lighten-3" class="text-center py-2">

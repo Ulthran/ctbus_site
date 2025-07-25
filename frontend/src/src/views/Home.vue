@@ -55,6 +55,7 @@ const buttons = [
     md="12"
   >
     <v-row justify="center" class="mt-4">
+      <v-col cols="auto">
       <router-link to="/resume">
         <v-btn
           color="green-darken-2"
@@ -63,6 +64,17 @@ const buttons = [
           >View Resume</v-btn
         >
       </router-link>
+      </v-col>
+      <v-col cols="auto">
+      <router-link to="/about">
+        <v-btn
+          color="green-darken-2"
+          variant="elevated"
+          aria-label="View Charlie Bushman's timeline"
+          >About Me</v-btn
+        >
+      </router-link>
+      </v-col>
     </v-row>
     <v-row justify="space-evenly" class="my-4">
       <v-col cols="auto" v-for="cert in certs" :key="cert.href">
