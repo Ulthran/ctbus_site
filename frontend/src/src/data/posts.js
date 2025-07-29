@@ -1,15 +1,12 @@
 export default {
-  // There'll probably be a split between practical examples of AI in bioinformatics and my crazy ideas
-  // Maybe alternate in the series?
   "terraform-monolith-to-microservice": {
     title: "Migrating Terraform from Monolith to Microservice",
-    date: "08/10/25",
-    mod_date: "08/10/25",
+    date: "07/29/25",
+    mod_date: "07/29/25",
     tags: ["terraform", "devops", "microservice"],
     subtitle:
-      "Breaking up a single Terraform deployment into modular services.",
+      "Refactoring a live monolith into microservices with Terraform.",
   },
-
   "ai-root-cause-analysis-in-sunbeam": {
     title: "02. AI Root Cause Analysis",
     date: "07/12/25",
