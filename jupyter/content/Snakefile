@@ -1,0 +1,12 @@
+rule all:
+    input:
+        "data/output.txt"
+
+
+rule make_output:
+    output:
+        "data/output.txt"
+    shell:
+        """
+        echo "This is a Snakemake demo output file." > {output}
+        """

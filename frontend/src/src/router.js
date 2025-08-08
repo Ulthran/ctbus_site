@@ -14,7 +14,6 @@ import Sports from "./views/Sports.vue";
 import Education from "./views/Education.vue";
 import Certifications from "./views/Certifications.vue";
 import FavoriteNumber from "./views/FavoriteNumber.vue";
-import StartServer from "./views/StartServer.vue";
 import SessionInfo from "./views/SessionInfo.vue";
 import Resume from "./views/Resume.vue";
 import NotFound from "./views/NotFound.vue";
@@ -35,7 +34,6 @@ const routes = [
   { path: "/education", component: Education },
   { path: "/certifications", component: Certifications },
   { path: "/favorite-number", component: FavoriteNumber },
-  { path: "/start-the-server", component: StartServer },
   { path: "/session", component: SessionInfo },
   { path: "/resume", component: Resume },
   { path: "/snakemake", component: Snakemake },
