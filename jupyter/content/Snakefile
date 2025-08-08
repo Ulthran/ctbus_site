@@ -6,7 +6,9 @@ rule all:
 rule make_output:
     output:
         "data/output.txt"
-    shell:
+    run:
         """
-        echo "This is a Snakemake demo output file." > {output}
+        with open(output[0], 'w') as f:
+            f.write("This is a Snakemake demo output file.")
         """
+        

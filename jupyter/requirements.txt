@@ -3,9 +3,6 @@ jupyterlite-core==0.6.4
 jupyterlab~=4.4.5
 notebook~=7.4.5
 
-# Custom additions for demo
-snakemake==9.9.0
-
 
 # Python kernel (optional)
 jupyterlite-pyodide-kernel==0.6.1

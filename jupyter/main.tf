@@ -24,7 +24,12 @@ locals {
     pdf  = "application/pdf"
     txt  = "text/plain"
     ipynb = "application/x-ipynb+json"
+    py = "text/x-python"
     webmanifest = "application/manifest+json"
+    whl = "application/zip"
+    Snakefile = "text/x-snakefile"
+    smk = "text/x-snakefile"
+    yaml = "application/x-yaml"
   }
 
   alias = var.hostname
@@ -40,7 +45,7 @@ resource "aws_s3_object" "asset" {
 }
 
 resource "aws_cloudfront_origin_access_identity" "this" {
-  comment = "Assets access"
+  comment = "Jupyter access"
 }
 
 data "aws_iam_policy_document" "allow_cloudfront" {
@@ -66,14 +71,14 @@ resource "aws_cloudfront_distribution" "this" {
 
   origin {
     domain_name = aws_s3_bucket.this.bucket_regional_domain_name
-    origin_id   = "assets-bucket"
+    origin_id   = "jupyter-bucket"
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.this.cloudfront_access_identity_path
     }
   }
 
   default_cache_behavior {
-    target_origin_id       = "assets-bucket"
+    target_origin_id       = "jupyter-bucket"
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD", "OPTIONS"]

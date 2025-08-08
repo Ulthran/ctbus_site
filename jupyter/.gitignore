@@ -1,3 +1,5 @@
 dist/
 env/
 .jupyterlite.doit.db
+snakemake/
+.cache/
