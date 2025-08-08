@@ -1,4 +1,18 @@
 export default {
+  "vibe-bfx": {
+    title: "04. \"Vibe Bioinformatics\"",
+    date: "08/19/25",
+    mod_date: "08/19/25",
+    tags: ["ai", "bioinformatics", ":series:ai-in-bioinformatics"],
+    subtitle: "Adapting the \"vibe coding\" approach to bioinformatics.",
+  },
+  "marc-nlq": {
+    title: "03. Natural Language Queries",
+    date: "08/05/25",
+    mod_date: "08/05/25",
+    tags: ["ai", "bioinformatics", "sql", ":series:ai-in-bioinformatics"],
+    subtitle: "And other higher-order prompting bioinformatics techniques.",
+  },
   "terraform-monolith-to-microservice": {
     title: "Migrating Terraform from Monolith to Microservice",
     date: "07/29/25",
