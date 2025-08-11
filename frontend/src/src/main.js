@@ -170,15 +170,6 @@ window.dataPath = `${basePath}/data`;
         },
       },
       {
-        path: "/snakemake",
-        component: () =>
-          window["vue3-sfc-loader"].loadModule(
-            `${window.viewsPath}/Snakemake.vue`,
-            options
-          ),
-        meta: { title: "Snakemake Bfx Demo" },
-      },
-      {
         path: "/sports",
         component: () =>
           window["vue3-sfc-loader"].loadModule(

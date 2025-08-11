@@ -27,7 +27,6 @@ locals {
     py = "text/x-python"
     webmanifest = "application/manifest+json"
     whl = "application/zip"
-    Snakefile = "text/x-snakefile"
     smk = "text/x-snakefile"
     yaml = "application/x-yaml"
   }
@@ -40,7 +39,7 @@ resource "aws_s3_object" "asset" {
   bucket       = aws_s3_bucket.this.id
   key          = each.key
   source       = "${local.dist_dir}/${each.value}"
-  content_type = lookup(local.mime_types, lower(element(reverse(split(".", each.key)), 0)), "binary/octet-stream")
+  content_type = lower(basename(each.key)) == "snakefile" ? "text/x-snakefile" : lookup(local.mime_types, lower(element(reverse(split(".", basename(each.key))), 0)), "binary/octet-stream")
   source_hash  = filesha256("${local.dist_dir}/${each.value}")
 }
 
