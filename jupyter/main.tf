@@ -11,24 +11,24 @@ resource "aws_s3_bucket" "this" {
 }
 
 locals {
-  dist_dir  = "${path.root}/dist"
+  dist_dir   = "${path.root}/dist"
   dist_files = fileset(local.dist_dir, "**")
   mime_types = {
-    html = "text/html"
-    js   = "application/javascript"
-    css  = "text/css"
-    json = "application/json"
-    png  = "image/png"
-    gif  = "image/gif"
-    ico  = "image/x-icon"
-    pdf  = "application/pdf"
-    txt  = "text/plain"
-    ipynb = "application/x-ipynb+json"
-    py = "text/x-python"
+    html        = "text/html"
+    js          = "application/javascript"
+    css         = "text/css"
+    json        = "application/json"
+    png         = "image/png"
+    gif         = "image/gif"
+    ico         = "image/x-icon"
+    pdf         = "application/pdf"
+    txt         = "text/plain"
+    ipynb       = "application/x-ipynb+json"
+    py          = "text/x-python"
     webmanifest = "application/manifest+json"
-    whl = "application/zip"
-    smk = "text/x-snakefile"
-    yaml = "application/x-yaml"
+    whl         = "application/zip"
+    smk         = "text/x-snakefile"
+    yaml        = "application/x-yaml"
   }
 
   alias = var.hostname
