@@ -16,6 +16,7 @@ import Certifications from "./views/Certifications.vue";
 import FavoriteNumber from "./views/FavoriteNumber.vue";
 import SessionInfo from "./views/SessionInfo.vue";
 import Resume from "./views/Resume.vue";
+import Jupyter from "./views/Jupyter.vue";
 import NotFound from "./views/NotFound.vue";
 
 const routes = [
@@ -35,6 +36,7 @@ const routes = [
   { path: "/favorite-number", component: FavoriteNumber },
   { path: "/session", component: SessionInfo },
   { path: "/resume", component: Resume },
+  { path: "/jupyter", component: Jupyter },
   { path: "/:pathMatch(.*)*", component: NotFound },
 ];
 
