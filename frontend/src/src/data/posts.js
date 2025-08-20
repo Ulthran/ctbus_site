@@ -1,6 +1,26 @@
 export default {
-  // There'll probably be a split between practical examples of AI in bioinformatics and my crazy ideas
-  // Maybe alternate in the series?
+  "vibe-bfx": {
+    title: "04. \"Vibe Bioinformatics\"",
+    date: "08/19/25",
+    mod_date: "08/19/25",
+    tags: ["ai", "bioinformatics", ":series:ai-in-bioinformatics"],
+    subtitle: "Adapting the \"vibe coding\" approach to bioinformatics.",
+  },
+  "marc-nlq": {
+    title: "03. Natural Language Queries",
+    date: "08/05/25",
+    mod_date: "08/05/25",
+    tags: ["ai", "bioinformatics", "sql", ":series:ai-in-bioinformatics"],
+    subtitle: "And other higher-order prompting bioinformatics techniques.",
+  },
+  "terraform-monolith-to-microservice": {
+    title: "Migrating Terraform from Monolith to Microservice",
+    date: "07/29/25",
+    mod_date: "07/29/25",
+    tags: ["terraform", "devops", "microservice"],
+    subtitle:
+      "Refactoring a live monolith into microservices with Terraform.",
+  },
   "ai-root-cause-analysis-in-sunbeam": {
     title: "02. AI Root Cause Analysis",
     date: "07/12/25",

@@ -219,7 +219,7 @@ const others = [
           As the program&#39;s software engineer I establish development
           standards, refactor published work and build internal services ranging
           from preprocessing automation to statistical packages. I have led many
-          projects through from creation to production or through major
+          projects from creation to production or through major
           upgrades, often working cross-functionally with researchers and
           analysts across lab groups.
         </p>

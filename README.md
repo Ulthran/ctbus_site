@@ -13,12 +13,9 @@ This is a personal website for Charlie Bushman. It is a serverless, microservice
 To deploy a service:
 
 - `git clone git@github.com:Ulthran/ctbus_site.git && cd ctbus_site`
-- Initialize Terraform in the desired service directory. For example:
-
-```
-terraform -chdir=frontend/terraform init
-terraform -chdir=frontend/terraform apply -var 'hostname=subdomain.example.com'
-```
+- Move into the desired service directory and initialize `cd frontend/terraform && terraform init`
+- Select your workspace `terraform workspace select dev`
+- Deploy stack/apply changes `terraform apply`
 
 NOTE: The frontend service requires deployed versions of each other service (pulled from the remote Terraform state files).
   
