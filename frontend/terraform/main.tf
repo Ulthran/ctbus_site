@@ -88,7 +88,8 @@ resource "aws_s3_object" "site" {
     lower(element(reverse(split(".", each.key)), 0)),
     "text/plain",
   )
-  etag = md5(each.value)
+  cache_control = local.env == "main" ? null : "no-cache, no-store, must-revalidate"
+  etag          = md5(each.value)
 }
 
 resource "aws_cloudfront_origin_access_identity" "this" {

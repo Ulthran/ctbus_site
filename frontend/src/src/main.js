@@ -179,6 +179,15 @@ window.dataPath = `${basePath}/data`;
         meta: { title: "Sports - Charlie Bushman" },
       },
       {
+        path: "/jupyter",
+        component: () =>
+          window["vue3-sfc-loader"].loadModule(
+            `${window.viewsPath}/Jupyter.vue`,
+            options
+          ),
+        meta: { title: "Jupyter - Charlie Bushman" },
+      },
+      {
         path: "/:pathMatch(.*)*",
         component: () =>
           window["vue3-sfc-loader"].loadModule(
