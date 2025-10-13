@@ -57,24 +57,34 @@ const buttons = [
   >
     <v-row justify="center" class="mt-4">
       <v-col cols="auto">
-      <router-link to="/resume">
-        <v-btn
-          color="green-darken-2"
-          variant="elevated"
-          aria-label="View Charlie Bushman's resume"
-          >View Resume</v-btn
-        >
-      </router-link>
+        <a href="https://chatgpt.com/g/g-68e582faeb6881918b14807235ee429a-charlie-bushman-s-resume" target="_blank" rel="noopener noreferrer">
+          <v-btn
+            color="green-darken-2"
+            variant="elevated"
+            aria-label="Chat with Charlie's Resume"
+            >Chat with Resume</v-btn
+          >
+        </a>
       </v-col>
       <v-col cols="auto">
-      <router-link to="/about">
-        <v-btn
-          color="green-darken-2"
-          variant="elevated"
-          aria-label="View Charlie Bushman's timeline"
-          >About Me</v-btn
-        >
-      </router-link>
+        <router-link to="/resume">
+          <v-btn
+            color="green-darken-2"
+            variant="elevated"
+            aria-label="View Charlie Bushman's resume"
+            >View Resume</v-btn
+          >
+        </router-link>
+      </v-col>
+      <v-col cols="auto">
+        <router-link to="/about">
+          <v-btn
+            color="green-darken-2"
+            variant="elevated"
+            aria-label="View Charlie Bushman's timeline"
+            >About Me</v-btn
+          >
+        </router-link>
       </v-col>
     </v-row>
     <v-row justify="space-evenly" class="my-4">

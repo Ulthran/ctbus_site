@@ -19,7 +19,8 @@ const filteredPosts = computed(() => {
         post.subtitle.toLowerCase().includes(query);
       const matchesTag =
         !selectedTag.value || post.tags.includes(selectedTag.value);
-      return matchesSearch && matchesTag;
+      const isPublished = post.published === true;
+      return matchesSearch && matchesTag && isPublished;
     })
   );
 });
