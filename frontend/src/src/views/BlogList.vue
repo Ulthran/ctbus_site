@@ -1,18 +1,17 @@
 <script setup>
 import { ref, computed } from "vue";
 
-const posts = window.posts;
-
+const posts = ref(window.posts);
 const search = ref("");
 const selectedTag = ref(null);
 const allTags = [
-  ...new Set(Object.values(posts).flatMap((p) => p.tags)),
+  ...new Set(Object.values(posts.value).flatMap((p) => p.tags)),
 ].sort();
 
 const filteredPosts = computed(() => {
   const query = search.value.toLowerCase();
   return Object.fromEntries(
-    Object.entries(posts).filter(([_, post]) => {
+    Object.entries(posts.value).filter(([_, post]) => {
       const matchesSearch =
         !query ||
         post.title.toLowerCase().includes(query) ||
