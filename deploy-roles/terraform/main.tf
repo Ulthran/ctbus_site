@@ -57,11 +57,361 @@ resource "aws_iam_role" "deploy" {
   max_session_duration = 3600
 }
 
-resource "aws_iam_role_policy_attachment" "deploy_admin" {
-  for_each = aws_iam_role.deploy
+data "aws_iam_policy_document" "assets_deploy" {
+  statement {
+    sid = "CreateAssetsBucket"
 
-  role       = each.value.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+    actions = [
+      "s3:CreateBucket",
+      "s3:ListAllMyBuckets"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ManageAssetsBucket"
+
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      "arn:aws:s3:::ctbus-site-assets",
+      "arn:aws:s3:::ctbus-site-assets/*"
+    ]
+  }
+
+  statement {
+    sid = "ManageAssetsCloudFront"
+
+    actions = [
+      "cloudfront:CreateCloudFrontOriginAccessIdentity",
+      "cloudfront:CreateDistribution",
+      "cloudfront:DeleteCloudFrontOriginAccessIdentity",
+      "cloudfront:DeleteDistribution",
+      "cloudfront:GetCloudFrontOriginAccessIdentity",
+      "cloudfront:GetCloudFrontOriginAccessIdentityConfig",
+      "cloudfront:GetDistribution",
+      "cloudfront:GetDistributionConfig",
+      "cloudfront:ListTagsForResource",
+      "cloudfront:TagResource",
+      "cloudfront:UntagResource",
+      "cloudfront:UpdateCloudFrontOriginAccessIdentity",
+      "cloudfront:UpdateDistribution"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ListAssetsHostedZone"
+
+    actions = [
+      "route53:ListHostedZonesByName"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ManageAssetsDNS"
+
+    actions = [
+      "route53:ChangeResourceRecordSets",
+      "route53:GetHostedZone",
+      "route53:ListResourceRecordSets"
+    ]
+
+    resources = ["arn:aws:route53:::hostedzone/*"]
+  }
+}
+
+resource "aws_iam_role_policy" "assets_deploy" {
+  name   = "assets-deploy"
+  role   = aws_iam_role.deploy["assets"].id
+  policy = data.aws_iam_policy_document.assets_deploy.json
+}
+
+data "aws_iam_policy_document" "frontend_deploy" {
+  statement {
+    sid = "CreateFrontendBucket"
+
+    actions = [
+      "s3:CreateBucket",
+      "s3:ListAllMyBuckets"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ManageFrontendBuckets"
+
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      "arn:aws:s3:::ctbus-site-frontend-*",
+      "arn:aws:s3:::ctbus-site-frontend-*/*"
+    ]
+  }
+
+  statement {
+    sid = "ManageFrontendCloudFront"
+
+    actions = [
+      "cloudfront:CreateCloudFrontOriginAccessIdentity",
+      "cloudfront:CreateDistribution",
+      "cloudfront:CreateFunction",
+      "cloudfront:DeleteCloudFrontOriginAccessIdentity",
+      "cloudfront:DeleteDistribution",
+      "cloudfront:DeleteFunction",
+      "cloudfront:DescribeFunction",
+      "cloudfront:GetCloudFrontOriginAccessIdentity",
+      "cloudfront:GetCloudFrontOriginAccessIdentityConfig",
+      "cloudfront:GetDistribution",
+      "cloudfront:GetDistributionConfig",
+      "cloudfront:GetFunction",
+      "cloudfront:GetFunctionConfig",
+      "cloudfront:ListTagsForResource",
+      "cloudfront:PublishFunction",
+      "cloudfront:TagResource",
+      "cloudfront:UntagResource",
+      "cloudfront:UpdateCloudFrontOriginAccessIdentity",
+      "cloudfront:UpdateDistribution",
+      "cloudfront:UpdateFunction"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ListFrontendHostedZone"
+
+    actions = [
+      "route53:ListHostedZonesByName"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ManageFrontendDNS"
+
+    actions = [
+      "route53:ChangeResourceRecordSets",
+      "route53:GetHostedZone",
+      "route53:ListResourceRecordSets"
+    ]
+
+    resources = ["arn:aws:route53:::hostedzone/*"]
+  }
+}
+
+resource "aws_iam_role_policy" "frontend_deploy" {
+  name   = "frontend-deploy"
+  role   = aws_iam_role.deploy["frontend"].id
+  policy = data.aws_iam_policy_document.frontend_deploy.json
+}
+
+data "aws_iam_policy_document" "jupyter_deploy" {
+  statement {
+    sid = "CreateJupyterBucket"
+
+    actions = [
+      "s3:CreateBucket",
+      "s3:ListAllMyBuckets"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ManageJupyterBucket"
+
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      "arn:aws:s3:::ctbus-site-jupyter",
+      "arn:aws:s3:::ctbus-site-jupyter/*"
+    ]
+  }
+
+  statement {
+    sid = "ManageJupyterCloudFront"
+
+    actions = [
+      "cloudfront:CreateCloudFrontOriginAccessIdentity",
+      "cloudfront:CreateDistribution",
+      "cloudfront:DeleteCloudFrontOriginAccessIdentity",
+      "cloudfront:DeleteDistribution",
+      "cloudfront:GetCloudFrontOriginAccessIdentity",
+      "cloudfront:GetCloudFrontOriginAccessIdentityConfig",
+      "cloudfront:GetDistribution",
+      "cloudfront:GetDistributionConfig",
+      "cloudfront:ListTagsForResource",
+      "cloudfront:TagResource",
+      "cloudfront:UntagResource",
+      "cloudfront:UpdateCloudFrontOriginAccessIdentity",
+      "cloudfront:UpdateDistribution"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ListJupyterHostedZone"
+
+    actions = [
+      "route53:ListHostedZonesByName"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "ManageJupyterDNS"
+
+    actions = [
+      "route53:ChangeResourceRecordSets",
+      "route53:GetHostedZone",
+      "route53:ListResourceRecordSets"
+    ]
+
+    resources = ["arn:aws:route53:::hostedzone/*"]
+  }
+}
+
+resource "aws_iam_role_policy" "jupyter_deploy" {
+  name   = "jupyter-deploy"
+  role   = aws_iam_role.deploy["jupyter"].id
+  policy = data.aws_iam_policy_document.jupyter_deploy.json
+}
+
+data "aws_iam_policy_document" "maintenance_deploy" {
+  statement {
+    sid = "ManageMaintenanceLambda"
+
+    actions = [
+      "lambda:AddPermission",
+      "lambda:CreateFunction",
+      "lambda:CreateFunctionUrlConfig",
+      "lambda:DeleteFunction",
+      "lambda:DeleteFunctionUrlConfig",
+      "lambda:GetFunction",
+      "lambda:GetFunctionConfiguration",
+      "lambda:GetFunctionUrlConfig",
+      "lambda:GetPolicy",
+      "lambda:ListTags",
+      "lambda:TagResource",
+      "lambda:UntagResource",
+      "lambda:UpdateFunctionCode",
+      "lambda:UpdateFunctionConfiguration",
+      "lambda:UpdateFunctionUrlConfig",
+      "lambda:RemovePermission"
+    ]
+
+    resources = ["arn:aws:lambda:${var.region}:*:function:maintenance"]
+  }
+
+  statement {
+    sid = "PassMaintenanceRole"
+
+    actions = [
+      "iam:PassRole"
+    ]
+
+    resources = ["arn:aws:iam::*:role/maintenance-role"]
+  }
+
+  statement {
+    sid = "ManageMaintenanceRole"
+
+    actions = [
+      "iam:AttachRolePolicy",
+      "iam:CreateRole",
+      "iam:DeleteRole",
+      "iam:DetachRolePolicy",
+      "iam:GetRole",
+      "iam:ListAttachedRolePolicies",
+      "iam:TagRole",
+      "iam:UntagRole",
+      "iam:UpdateAssumeRolePolicy"
+    ]
+
+    resources = ["arn:aws:iam::*:role/maintenance-role"]
+  }
+}
+
+resource "aws_iam_role_policy" "maintenance_deploy" {
+  name   = "maintenance-deploy"
+  role   = aws_iam_role.deploy["maintenance"].id
+  policy = data.aws_iam_policy_document.maintenance_deploy.json
+}
+
+data "aws_iam_policy_document" "spotify_deploy" {
+  statement {
+    sid = "ManageSpotifyLambda"
+
+    actions = [
+      "lambda:AddPermission",
+      "lambda:CreateFunction",
+      "lambda:CreateFunctionUrlConfig",
+      "lambda:DeleteFunction",
+      "lambda:DeleteFunctionUrlConfig",
+      "lambda:GetFunction",
+      "lambda:GetFunctionConfiguration",
+      "lambda:GetFunctionUrlConfig",
+      "lambda:GetPolicy",
+      "lambda:ListTags",
+      "lambda:TagResource",
+      "lambda:UntagResource",
+      "lambda:UpdateFunctionCode",
+      "lambda:UpdateFunctionConfiguration",
+      "lambda:UpdateFunctionUrlConfig",
+      "lambda:RemovePermission"
+    ]
+
+    resources = ["arn:aws:lambda:${var.region}:*:function:spotify-playlists"]
+  }
+
+  statement {
+    sid = "PassSpotifyRole"
+
+    actions = [
+      "iam:PassRole"
+    ]
+
+    resources = ["arn:aws:iam::*:role/spotify-playlists-role"]
+  }
+
+  statement {
+    sid = "ManageSpotifyRole"
+
+    actions = [
+      "iam:AttachRolePolicy",
+      "iam:CreateRole",
+      "iam:DeleteRole",
+      "iam:DetachRolePolicy",
+      "iam:GetRole",
+      "iam:ListAttachedRolePolicies",
+      "iam:TagRole",
+      "iam:UntagRole",
+      "iam:UpdateAssumeRolePolicy"
+    ]
+
+    resources = ["arn:aws:iam::*:role/spotify-playlists-role"]
+  }
+}
+
+resource "aws_iam_role_policy" "spotify_deploy" {
+  name   = "spotify-deploy"
+  role   = aws_iam_role.deploy["spotify"].id
+  policy = data.aws_iam_policy_document.spotify_deploy.json
 }
 
 output "role_arns" {
