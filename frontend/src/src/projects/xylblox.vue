@@ -25,7 +25,7 @@ const info = projects["xylblox"];
         product that doesn't exist on the Minecraft hosting market: a true
         pay-per-usage model. Everyone else charges flat monthly fees that rely
         on overprovisioning and customer inertia to make money. I can build
-        something that is more cost effective and doesn't prey on customers's
+        something that is more cost effective and doesn't prey on customers'
         absentmindedness. It's still early days, but I'm excited to keep
         building this out.
       </v-card-text>
