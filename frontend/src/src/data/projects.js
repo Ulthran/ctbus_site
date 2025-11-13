@@ -6,19 +6,33 @@ export default {
     tags: ["aws", "js", "serverless", "terraform"],
     image: "Bvnrihioon.png",
   },
+  xylblox: {
+    title: "Xylblox",
+    subtitle:
+      "WIP. A Minecraft server hosting SaaS I'm building with AWS, Terraform, and Vue.",
+    tags: ["saas", "aws", "vue"],
+    image: "xylblox.png",
+  },
+  "ctbus-finance": {
+    title: "CTBus Finance",
+    subtitle:
+      "A minimalist local finance database and dashboard for tracking my personal finances.",
+    tags: ["python", "beancount"],
+    image: "ctbus_finance_circle.png",
+  },
+  chaos: {
+    title: "Fun with Chaos",
+    subtitle:
+      "A serverless implementation of Jupyter notebooks with a JavaScript kernel for exploring chaotic systems.",
+    tags: ["simulation", "chaos", "javascript"],
+    image: "squares_method_on_Henon_map.png",
+  },
   "spotify-vis": {
     title: "Spotify Visualizer",
     subtitle:
       "A quick and dirty serverless data dashboard for visualizing Spotify playlist information.",
     tags: ["aws", "dash", "serverless"],
     image: "spotify_vis.png",
-  },
-  "ctbus-finance": {
-    title: "CTBus Finance",
-    subtitle:
-      "A minimalist local finance database and dashboard for tracking my personal finances.",
-    tags: ["python", "sql", "flask"],
-    image: "ctbus_finance_circle.png",
   },
   "ctbus-health": {
     title: "CTBus Health",

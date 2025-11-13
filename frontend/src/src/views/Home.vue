@@ -57,7 +57,11 @@ const buttons = [
   >
     <v-row justify="center" class="mt-4">
       <v-col cols="auto">
-        <a href="https://chatgpt.com/g/g-68e582faeb6881918b14807235ee429a-charlie-bushman-s-resume" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://chatgpt.com/g/g-68e582faeb6881918b14807235ee429a-charlie-bushman-s-resume"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <v-btn
             color="green-darken-2"
             variant="elevated"
