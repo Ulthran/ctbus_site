@@ -145,18 +145,16 @@ terraform state list -state="$STATE_OUT"
     <SectionTitle>Intro</SectionTitle>
     <Paragraph>
       This post will outline the process of migrating Terraform resources from a
-      single monolithic configuration to a microservice-oriented structure.
-
-      From monolith to microservice, follow these steps per service:
-
-- Remove `backend.tf`
-- Run `terraform init`
-- Move state for each resource from backup file to service e.g. `terraform state mv -state=/home/ctbus/minecraft/backup.tfstate -state-out=terraform.tfstate module.account.aws_organizations_account.tenants aws_organizations_account.tenants`
-- Check success with `terraform state list`
-- Create and fill in `terraform.tfvars`
-- Run `terraform apply` to create outputs (and verify there are no infrastructure changes)
-- Run `git restore backend.tf`
-- Run `terraform init -migrate-state`
+      single monolithic configuration to a microservice-oriented structure. From
+      monolith to microservice, follow these steps per service: - Remove
+      `backend.tf` - Run `terraform init` - Move state for each resource from
+      backup file to service e.g. `terraform state mv
+      -state=/home/ctbus/minecraft/backup.tfstate -state-out=terraform.tfstate
+      module.account.aws_organizations_account.tenants
+      aws_organizations_account.tenants` - Check success with `terraform state
+      list` - Create and fill in `terraform.tfvars` - Run `terraform apply` to
+      create outputs (and verify there are no infrastructure changes) - Run `git
+      restore backend.tf` - Run `terraform init -migrate-state`
     </Paragraph>
 
     <SectionTitle>API Migration</SectionTitle>

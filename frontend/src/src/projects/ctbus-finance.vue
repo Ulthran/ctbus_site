@@ -16,14 +16,20 @@ const info = projects["ctbus-finance"];
     <v-card class="mb-4">
       <v-card-title>Overview</v-card-title>
       <v-card-text>
-        An example of using Beancount for personal finance tracking. Through the magic of double-entry accounting, I can see all of the money that moves through me and my accounts.
+        An example of using Beancount for personal finance tracking. Through the
+        magic of double-entry accounting, I can see all of the money that moves
+        through me and my accounts.
       </v-card-text>
     </v-card>
 
     <v-card class="mb-4">
       <v-card-title>Dev</v-card-title>
       <v-card-text>
-        The core of the project is Beancount, a double-entry accounting system that uses a text-based input file to track accounts and transactions. I use Python scripts and custom importers to pull in data from bank accounts, credit cards, investment accounts, etc. All of this can then be seen in a local dashboard run with Fava.
+        The core of the project is Beancount, a double-entry accounting system
+        that uses a text-based input file to track accounts and transactions. I
+        use Python scripts and custom importers to pull in data from bank
+        accounts, credit cards, investment accounts, etc. All of this can then
+        be seen in a local dashboard run with Fava.
       </v-card-text>
     </v-card>
 

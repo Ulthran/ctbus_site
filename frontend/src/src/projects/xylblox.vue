@@ -16,7 +16,18 @@ const info = projects["xylblox"];
     <v-card class="mb-4">
       <v-card-title>Overview</v-card-title>
       <v-card-text>
-        This is as much a passion project as a viable business idea. I've spent way too many hours through my life playing Minecraft and multiplayer is always a pain (especially if you're cheap and don't want to pay for monthly hosting plans). Xylblox started simply as me building a robust Minecraft hosting architecture on AWS for me and some friends to play. As I did that, I realized there is a real opportunity to create a product that doesn't exist on the Minecraft hosting market: a true pay-per-usage model. Everyone else charges flat monthly fees that rely on overprovisioning and customer inertia to make money. I can build something that is more cost effective and doesn't prey on customers's absentmindedness. It's still early days, but I'm excited to keep building this out.
+        This is as much a passion project as a viable business idea. I've spent
+        way too many hours through my life playing Minecraft and multiplayer is
+        always a pain (especially if you're cheap and don't want to pay for
+        monthly hosting plans). Xylblox started simply as me building a robust
+        Minecraft hosting architecture on AWS for me and some friends to play.
+        As I did that, I realized there is a real opportunity to create a
+        product that doesn't exist on the Minecraft hosting market: a true
+        pay-per-usage model. Everyone else charges flat monthly fees that rely
+        on overprovisioning and customer inertia to make money. I can build
+        something that is more cost effective and doesn't prey on customers's
+        absentmindedness. It's still early days, but I'm excited to keep
+        building this out.
       </v-card-text>
     </v-card>
 
@@ -25,11 +36,7 @@ const info = projects["xylblox"];
       <v-card-text>
         <v-row>
           <v-col cols="auto">
-            <a
-              href="https://xylblox.com"
-              target="_blank"
-              title="Xylblox Site"
-            >
+            <a href="https://xylblox.com" target="_blank" title="Xylblox Site">
               <v-btn variant="text" icon>
                 <i class="fas fa-globe"></i>
               </v-btn>

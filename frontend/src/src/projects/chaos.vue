@@ -16,7 +16,14 @@ const info = projects["chaos"];
     <v-card class="mb-4">
       <v-card-title>Overview</v-card-title>
       <v-card-text>
-        This one started out as a demo for a guest lecture on snakemake but I couldn't get the JS-based kernel to work with all of the shell commands snakemake is built around, so I turned to recreating all my favorite chaotic systems and fractals instead (and ended up showing the snakemake demo on my machine, no interactive component :(). I'm always coming back to this and adding more systems or updating existing ones with new features and documentation. There are always crazy new ways to visualize chaos!
+        This one started out as a demo for a guest lecture on snakemake but I
+        couldn't get the JS-based kernel to work with all of the shell commands
+        snakemake is built around, so I turned to recreating all my favorite
+        chaotic systems and fractals instead (and ended up showing the snakemake
+        demo on my machine, no interactive component :(). I'm always coming back
+        to this and adding more systems or updating existing ones with new
+        features and documentation. There are always crazy new ways to visualize
+        chaos!
       </v-card-text>
     </v-card>
 

@@ -4,16 +4,15 @@ export default {
     date: "10/12/25",
     mod_date: "10/12/25",
     tags: ["finance", "python", "beancount"],
-    subtitle:
-      "A simple personal finance app built with Python and Beancount.",
+    subtitle: "A simple personal finance app built with Python and Beancount.",
     published: false,
   },
   "vibe-bfx": {
-    title: "04. \"Vibe Bioinformatics\"",
+    title: '04. "Vibe Bioinformatics"',
     date: "08/19/25",
     mod_date: "08/19/25",
     tags: ["ai", "bioinformatics", ":series:ai-in-bioinformatics"],
-    subtitle: "Adapting the \"vibe coding\" approach to bioinformatics.",
+    subtitle: 'Adapting the "vibe coding" approach to bioinformatics.',
     published: false,
   },
   "marc-nlq": {
@@ -29,8 +28,7 @@ export default {
     date: "07/29/25",
     mod_date: "07/29/25",
     tags: ["terraform", "devops", "microservice"],
-    subtitle:
-      "Refactoring a live monolith into microservices with Terraform.",
+    subtitle: "Refactoring a live monolith into microservices with Terraform.",
     published: false,
   },
   "ai-root-cause-analysis-in-sunbeam": {
