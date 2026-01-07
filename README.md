@@ -25,6 +25,14 @@ To run locally, start the included Python development server:
 
 Then open the given address in your browser.
 
+### Games SPA local development
+
+Run the React single-page app locally with placeholder values filled for assets and environment:
+
+- `npm run dev:games -- --port 4173`
+
+The server injects `ASSETS_BASE_URL` (defaulting to `http://localhost:<port>/assets`) and `ENV_NAME` (defaulting to `local`).
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability, please send an e-mail to me via [ctbushman@gmail.com](mailto:ctbushman@gmail.com).
