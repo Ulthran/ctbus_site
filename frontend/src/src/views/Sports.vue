@@ -16,9 +16,8 @@ import SquashIcon from "../svgs/Squash.vue";
       <h2 class="text-h4 font-weight-bold mb-2">Ultimate Frisbee</h2>
       <p class="text-body-1">
         I grew up on the sidelines of my parents' summer league games. Now I
-        play for a club team that placed 5th in the northeast this year and has
-        been a national champ in the past. I also play for the same summer
-        league team my parents did (it's 40 years old!).
+        play for a club team that is nationally competitive (top 20 last year).
+         I also play for the same summer league team my parents did (it's 40 years old!).
       </p>
       <v-row class="py-4" align="center" justify="space-around">
         <v-col cols="auto">
