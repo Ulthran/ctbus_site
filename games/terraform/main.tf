@@ -20,15 +20,13 @@ resource "aws_s3_bucket" "this" {
 }
 
 locals {
-  env         = terraform.workspace
-  bucket_name = "${var.bucket_name}-${local.env}"
-  hostname    = local.env == "main" ? "games.charliebushman.com" : "${local.env}.games.charliebushman.com"
-  env_aliases = []
+  bucket_name = var.bucket_name
+  hostname    = "games.charliebushman.com"
   site_dir    = "${path.root}/../src"
   site_files  = fileset(local.site_dir, "**")
   placeholders = {
     "ASSETS_BASE_URL" = "https://${data.terraform_remote_state.assets.outputs.domain_name}"
-    "ENV_NAME"        = local.env
+    "ENV_NAME"        = "prod"
   }
   processed_files = {
     for f in local.site_files :
@@ -57,7 +55,7 @@ locals {
     dtd  = "application/xml-dtd"
     nb   = "text/plain"
   }
-  aliases = distinct(concat([local.hostname], var.additional_aliases, local.env_aliases))
+  aliases = distinct(concat([local.hostname], var.additional_aliases))
 }
 
 resource "aws_s3_object" "site" {
@@ -70,7 +68,7 @@ resource "aws_s3_object" "site" {
     lower(element(reverse(split(".", each.key)), 0)),
     "text/plain",
   )
-  cache_control = local.env == "main" ? null : "no-cache, no-store, must-revalidate"
+  cache_control = null
   etag          = md5(each.value)
 }
 
