@@ -22,7 +22,7 @@ resource "aws_s3_bucket" "this" {
 locals {
   bucket_name = var.bucket_name
   hostname    = "games.charliebushman.com"
-  site_dir    = "${path.root}/../src"
+  site_dir    = "${path.root}/src"
   site_files  = fileset(local.site_dir, "**")
   placeholders = {
     "ASSETS_BASE_URL" = "https://${data.terraform_remote_state.assets.outputs.domain_name}"
