@@ -57,23 +57,37 @@ const styles = {
   },
 };
 
-function GameCard({ title, description }) {
+function GameCard({ title, description, link }) {
   const h = React.createElement;
+
+  const buttonStyle = {
+    display: "inline-block",
+    marginTop: 12,
+    padding: "10px 24px",
+    fontSize: 16,
+    fontWeight: 600,
+    color: "#0a101f",
+    backgroundColor: "#4da6ff",
+    border: "none",
+    borderRadius: 8,
+    textDecoration: "none",
+    cursor: "pointer",
+    transition: "background-color 0.2s",
+  };
 
   return h(
     "div",
     { style: styles.card },
     h("h2", { style: styles.cardTitle }, title),
-    h("p", { style: styles.cardCopy }, description)
+    h("p", { style: styles.cardCopy }, description),
+    link && h("a", { href: link, target: "_blank", rel: "noopener noreferrer", style: buttonStyle }, "Play")
   );
 }
 
 export function App() {
   const h = React.createElement;
   const [games] = useState([
-    { title: "Guess the Number", description: "A quick number guessing warm-up game." },
-    { title: "Tile Taps", description: "Tap as many tiles as you can before the timer runs out." },
-    { title: "Pathfinder", description: "Find a route across the grid without hitting any traps." },
+    { title: "Out of the Loop", description: "Use ChatGPT as a moderator for a game of Out of the Loop. As of last testing, you must be logged into a ChatGPT account for this to work.", link: "https://chatgpt.com/g/g-6951db6f1218819193ef085f27f6911d-out-of-the-loop" },
   ]);
 
   return h(
@@ -87,7 +101,7 @@ export function App() {
       h(
         "p",
         { style: styles.subtitle },
-        "Small experiments and playgrounds for browser-based games."
+        "Playground for game development in many forms. May be fun. May not."
       )
     ),
     h(
@@ -98,6 +112,7 @@ export function App() {
           key: game.title,
           title: game.title,
           description: game.description,
+          link: game.link,
         })
       )
     )
