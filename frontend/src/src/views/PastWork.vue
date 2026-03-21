@@ -3,6 +3,12 @@ import Hero from "../components/Hero.vue";
 
 const workCards = [
   {
+    title: "Developer in Statistical Metagenomics at PCMP",
+    body: "For four years I served as the software engineer for the Penn-CHOP Microbiome Program, a joint effort between the Perelman School of Medicine at UPenn and Children's Hospital of Philadelphia. I established development standards, led open source projects, and built internal services ranging from preprocessing automation to AI-enabled web apps.",
+    img: `ASSETS_BASE_URL/images/chop_logo.png`,
+    link: "/pcmp",
+  },
+  {
     title: "Lead Developer for Nightly",
     body: "In college a friend pitched a party planning app for a startup competition. I built a prototype with React Native and AWS Amplify and later helped refine the web and mobile apps alongside a small team before joining the PCMP.",
     img: `ASSETS_BASE_URL/images/latenite_logo.png`,

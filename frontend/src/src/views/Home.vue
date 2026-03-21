@@ -37,7 +37,7 @@ const certs = [
 ];
 
 const buttons = [
-  { to: "/pcmp", label: "Work", icon: "fas fa-briefcase" },
+  { to: "/whoop", label: "Work", icon: "fas fa-briefcase" },
   { to: "/projects", label: "Projects", icon: "fas fa-project-diagram" },
   { to: "/blog", label: "Blog", icon: "fas fa-code" },
   { to: "/certifications", label: "Certs", icon: "fas fa-certificate" },
