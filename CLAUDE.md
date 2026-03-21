@@ -1,6 +1,6 @@
 # CLAUDE.md — ctbus_site
 
-Personal portfolio site for Charlie Bushman (charliebushman.com).
+Personal portfolio site for Charlie Bushman (charliebushman.com). Monorepo of microservices deployed via AWS.
 
 ## Repo Structure
 
@@ -21,7 +21,9 @@ ctbus_site/
 └── .github/workflows/  # CI per service area (frontend, assets, spotify, etc.)
 ```
 
-## Key Pages (frontend/src/src/views/)
+## Frontend
+
+### Key Pages (frontend/src/src/views/)
 
 | File | Route | Purpose |
 |------|-------|---------|
@@ -47,6 +49,7 @@ git checkout -b <descriptive-branch-name>
 ### 2. Lint (before committing)
 ```bash
 npx prettier --config .prettierrc.json --write "frontend/**/*.{js,vue,css,html}" "spotify/lambda/**/*.js"
+python -m black example.py another_example.py
 terraform fmt -recursive
 ```
 
@@ -77,5 +80,3 @@ Workflows run per service area on push/PR to `master`/`dev`:
 | `spotify.yml` | `spotify/` | Prettier, Terraform fmt/validate |
 | `jupyter.yml` | `jupyter/` | Terraform fmt/validate |
 | `health-checks.yml` | Scheduled weekly | Broken links, critical docs |
-
-CI failures are almost always Prettier formatting — run the lint command above before committing.
