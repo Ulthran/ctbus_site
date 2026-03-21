@@ -3,10 +3,7 @@ import Hero from "../components/Hero.vue";
 </script>
 
 <template>
-  <Hero
-    title="Software Engineer, HAX Team"
-    subtitle="WHOOP"
-  />
+  <Hero title="Software Engineer, HAX Team" subtitle="WHOOP" />
 
   <v-container class="text-center">
     <v-row>
