@@ -4,10 +4,17 @@ import Timeline from "../components/Timeline.vue";
 
 const timelineEvents = [
   {
-    time: "Jan 2022",
-    title: "Developer in Statistical Metagenomics",
+    time: "Mar 2026",
+    title: "Software Engineer, HAX Team at WHOOP",
     content:
-      "My position with the Penn-CHOP Microbiome Program has honed my <b>software development skills</b> and expanded my knowledge about <b>bioinformatics and statistics</b>. It has also shown me how to have an outsized impact on research and development on the basis of my unique skillset, namely driving software standards, encouraging well structured data/metadata, and building the infrastructure to support it.",
+      "I joined WHOOP&#39;s Hardware Accelerate (HAX) team as a Software Engineer, working at the intersection of software and hardware to build reliable systems for WHOOP&#39;s wearable devices.",
+    link: "/whoop",
+  },
+  {
+    time: "Jan 2022",
+    title: "Developer in Statistical Metagenomics at PCMP",
+    content:
+      "My four years with the Penn-CHOP Microbiome Program honed my <b>software development skills</b> and expanded my knowledge about <b>bioinformatics and statistics</b>. It also showed me how to have an outsized impact on research and development on the basis of my unique skillset, namely driving software standards, encouraging well structured data/metadata, and building the infrastructure to support it.",
     link: "/pcmp",
   },
   {
@@ -56,7 +63,7 @@ const timelineEvents = [
 <template>
   <Hero
     title="About Me"
-    subtitle="Building the infrastructure behind <b>reliable</b>, <b>reproducible</b>, and <b>high performance</b> research and development."
+    subtitle="Building <b>reliable</b>, <b>high performance</b> software for impactful products."
   />
   <v-container class="pt-0 pb-10">
     <Timeline :events="timelineEvents" />

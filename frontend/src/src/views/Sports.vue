@@ -17,7 +17,8 @@ import SquashIcon from "../svgs/Squash.vue";
       <p class="text-body-1">
         I grew up on the sidelines of my parents' summer league games. Now I
         play for a club team that is nationally competitive (top 20 last year).
-         I also play for the same summer league team my parents did (it's 40 years old!).
+        I also play for the same summer league team my parents did (it's 40
+        years old!).
       </p>
       <v-row class="py-4" align="center" justify="space-around">
         <v-col cols="auto">

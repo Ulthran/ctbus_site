@@ -6,7 +6,7 @@ export default {
     tags: ["aws", "js", "serverless", "terraform"],
     image: "Bvnrihioon.png",
   },
-  "xylblox": {
+  xylblox: {
     title: "Xylblox",
     subtitle:
       "WIP. A Minecraft server hosting SaaS I'm building with AWS, Terraform, and Vue.",
@@ -22,12 +22,11 @@ export default {
   },
   "ctbus-games": {
     title: "CTBus Games",
-    subtitle:
-      "A collection of game development experiments.",
+    subtitle: "A collection of game development experiments.",
     tags: ["react", "javascript", "aws"],
     image: "Bvnrihioon.png",
   },
-  "chaos": {
+  chaos: {
     title: "Fun with Chaos",
     subtitle:
       "A serverless implementation of Jupyter notebooks with a JavaScript kernel for exploring chaotic systems.",
@@ -48,7 +47,7 @@ export default {
     tags: ["aws", "data engineering", "serverless"],
     image: "Bvnrihioon.png",
   },
-  "disctracker": {
+  disctracker: {
     title: "Ultimate DiscTracker",
     subtitle:
       "WIP. The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.",

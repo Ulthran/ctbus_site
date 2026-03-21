@@ -133,6 +133,15 @@ window.dataPath = `${basePath}/data`;
             `${window.viewsPath}/PCMP.vue`,
             options
           ),
+        meta: { title: "PCMP - Charlie Bushman" },
+      },
+      {
+        path: "/whoop",
+        component: () =>
+          window["vue3-sfc-loader"].loadModule(
+            `${window.viewsPath}/WHOOP.vue`,
+            options
+          ),
         meta: { title: "Work - Charlie Bushman" },
       },
       {
