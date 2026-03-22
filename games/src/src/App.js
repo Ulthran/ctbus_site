@@ -6,7 +6,8 @@ const styles = {
     margin: 0,
     padding: "32px 24px",
     minHeight: "100vh",
-    background: "linear-gradient(135deg, #0a101f 0%, #0f162a 50%, #1b1f3a 100%)",
+    background:
+      "linear-gradient(135deg, #0a101f 0%, #0f162a 50%, #1b1f3a 100%)",
     color: "#f5f7fb",
   },
   hero: {
@@ -80,14 +81,29 @@ function GameCard({ title, description, link }) {
     { style: styles.card },
     h("h2", { style: styles.cardTitle }, title),
     h("p", { style: styles.cardCopy }, description),
-    link && h("a", { href: link, target: "_blank", rel: "noopener noreferrer", style: buttonStyle }, "Play")
+    link &&
+      h(
+        "a",
+        {
+          href: link,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          style: buttonStyle,
+        },
+        "Play"
+      )
   );
 }
 
 export function App() {
   const h = React.createElement;
   const [games] = useState([
-    { title: "Out of the Loop", description: "Use ChatGPT as a moderator for a game of Out of the Loop. As of last testing, you must be logged into a ChatGPT account for this to work.", link: "https://chatgpt.com/g/g-6951db6f1218819193ef085f27f6911d-out-of-the-loop" },
+    {
+      title: "Out of the Loop",
+      description:
+        "Use ChatGPT as a moderator for a game of Out of the Loop. As of last testing, you must be logged into a ChatGPT account for this to work.",
+      link: "https://chatgpt.com/g/g-6951db6f1218819193ef085f27f6911d-out-of-the-loop",
+    },
   ]);
 
   return h(
