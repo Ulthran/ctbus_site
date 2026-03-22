@@ -96,6 +96,6 @@ jobs:
         run: terraform workspace select -or-create ${{ steps.workspace.outputs.workspace }}
         working-directory: frontend/terraform
 
-      - name: Terraform Plan
-        run: terraform plan -input=false -no-color -lock-timeout=60s
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false -no-color -lock-timeout=60s
         working-directory: frontend/terraform
