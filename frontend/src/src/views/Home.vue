@@ -52,7 +52,7 @@ const buttons = [
 <template>
   <Hero
     title="Charlie Bushman"
-    subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts."
+    subtitle="Full-Stack Software Engineer with Cloud, DevOps, and Python expertise. Impactful results pushing projects from ideation, to creation, to production. Always eager to learn new technologies, fields, and fun facts. Currently building at WHOOP."
     md="12"
   >
     <v-row justify="center" class="mt-4">
