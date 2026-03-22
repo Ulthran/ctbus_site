@@ -59,7 +59,10 @@ jobs:
     needs: lint
     if: |
       (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
-      (github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.base_ref == 'master')
+      (github.event_name == 'pull_request' &&
+        github.event.pull_request.draft == false &&
+        github.base_ref == 'master' &&
+        github.event.pull_request.head.repo.full_name == github.repository)
     permissions:
       id-token: write
       contents: read
@@ -86,7 +89,7 @@ jobs:
           fi
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -input=false -no-color
         working-directory: frontend/terraform
 
       - name: Select or create workspace
@@ -94,5 +97,5 @@ jobs:
         working-directory: frontend/terraform
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -input=false -no-color -lock-timeout=60s
         working-directory: frontend/terraform
