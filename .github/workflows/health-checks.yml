@@ -6,11 +6,14 @@ on:
     paths:
       - .github/workflows/health-checks.yml
   schedule:
-    - cron: '3 3 * * 3'
+    - cron: "3 3 * * 3"
+
+permissions: {}
 
 jobs:
   broken-link-checker:
     runs-on: ubuntu-latest
+    permissions: {}
     container:
       image: ghcr.io/linkchecker/linkchecker:latest
 
@@ -20,7 +23,8 @@ jobs:
 
   critical-docs:
     runs-on: ubuntu-latest
-    
+    permissions: {}
+
     steps:
       - name: Verify critical docs' availability
         run: |

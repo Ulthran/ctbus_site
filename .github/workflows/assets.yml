@@ -4,13 +4,15 @@ on:
   push:
     branches: [main, master, dev]
     paths:
-      - 'assets/**'
-      - '.github/workflows/assets.yml'
+      - "assets/**"
+      - ".github/workflows/assets.yml"
   pull_request:
     branches: [main, master, dev]
     paths:
-      - 'assets/**'
-      - '.github/workflows/assets.yml'
+      - "assets/**"
+      - ".github/workflows/assets.yml"
+
+permissions: {}
 
 jobs:
   lint:
