@@ -56,19 +56,20 @@ resource "aws_iam_role_policy_attachment" "notion_automations_basic" {
 # ---------------------------------------------------------------------------
 
 resource "aws_lambda_function" "notion_automations" {
-  function_name    = "notion-automations"
-  role             = aws_iam_role.notion_automations.arn
-  handler          = "handler.handler"
-  runtime          = "python3.12"
-  filename         = data.archive_file.notion_automations.output_path
-  source_code_hash = data.archive_file.notion_automations.output_base64sha256
-  timeout          = 60
+  function_name                  = "notion-automations"
+  role                           = aws_iam_role.notion_automations.arn
+  handler                        = "handler.handler"
+  runtime                        = "python3.12"
+  filename                       = data.archive_file.notion_automations.output_path
+  source_code_hash               = data.archive_file.notion_automations.output_base64sha256
+  timeout                        = 60
+  reserved_concurrent_executions = 5
 
   environment {
     variables = {
-      NOTION_TOKEN              = var.notion_token
-      NOTION_AUTOMATIONS_DB_ID  = var.notion_automations_db_id
-      NOTION_TASKS_DB_ID        = var.notion_tasks_db_id
+      NOTION_TOKEN             = var.notion_token
+      NOTION_AUTOMATIONS_DB_ID = var.notion_automations_db_id
+      NOTION_TASKS_DB_ID       = var.notion_tasks_db_id
     }
   }
 }

@@ -1,6 +1,6 @@
 import logging
 import os
-from datetime import date, timedelta
+from datetime import date
 
 from notion_client import Client
 
@@ -69,7 +69,7 @@ def prop_date(page, name):
 
 
 def last_touched(page):
-    for key, val in page["properties"].items():
+    for _, val in page["properties"].items():
         if val.get("type") == "last_edited_time":
             t = val.get("last_edited_time", "")
             return date.fromisoformat(t[:10]) if t else None
@@ -93,7 +93,8 @@ def compute_target_priority(automation, days_since_creation):
 
 def maybe_escalate(task, automation, today):
     """Escalate based on Date Created. Used by monthly and escalation_only.
-    after_completion uses period as cycle start instead (see handle_after_completion)."""
+    after_completion uses period as cycle start instead (see handle_after_completion).
+    """
     status = prop_select(task, "Status")
     if status == DONE_STATUS:
         return
@@ -115,7 +116,9 @@ def maybe_escalate(task, automation, today):
 
 def create_task(automation, period, today):
     automation_id = automation["id"]
-    template = prop_text(automation, "task_name_template") or prop_text(automation, "Name")
+    template = prop_text(automation, "task_name_template") or prop_text(
+        automation, "Name"
+    )
     name = format_name(template, period, today)
     initial = compute_target_priority(automation, 0)
     notion.pages.create(
@@ -132,8 +135,18 @@ def create_task(automation, period, today):
 
 def format_name(template, period, today):
     month_names = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
     ]
     return template.format(
         month_name=month_names[today.month - 1],
@@ -162,7 +175,10 @@ def handle_monthly(automation, today):
         TASKS_DB_ID,
         {
             "and": [
-                {"property": "automation_id", "rich_text": {"equals": automation["id"]}},
+                {
+                    "property": "automation_id",
+                    "rich_text": {"equals": automation["id"]},
+                },
                 {"property": "period", "rich_text": {"equals": period}},
             ]
         },
@@ -177,7 +193,9 @@ def handle_monthly(automation, today):
 def handle_after_completion(automation, today):
     recurrence_days = prop_number(automation, "recurrence_days")
     if recurrence_days is None:
-        logger.warning(f"after_completion automation {automation['id']} missing recurrence_days")
+        logger.warning(
+            f"after_completion automation {automation['id']} missing recurrence_days"
+        )
         return
 
     existing = query_all(
@@ -196,7 +214,9 @@ def handle_after_completion(automation, today):
         # Use period as cycle start date for escalation (survives resets)
         cycle_start_raw = prop_text(task, "period")
         try:
-            cycle_start = date.fromisoformat(cycle_start_raw) if cycle_start_raw else None
+            cycle_start = (
+                date.fromisoformat(cycle_start_raw) if cycle_start_raw else None
+            )
         except ValueError:
             cycle_start = None
         if cycle_start:
@@ -234,7 +254,10 @@ def handle_escalation_only(automation, today):
         TASKS_DB_ID,
         {
             "and": [
-                {"property": "automation_id", "rich_text": {"equals": automation["id"]}},
+                {
+                    "property": "automation_id",
+                    "rich_text": {"equals": automation["id"]},
+                },
                 {"property": "period", "rich_text": {"equals": "singleton"}},
             ]
         },
@@ -248,7 +271,9 @@ def handle_escalation_only(automation, today):
                 page_id=automation["id"],
                 properties={"active": {"checkbox": False}},
             )
-            logger.info(f"Auto-disabled escalation_only automation {automation['id']} (task done)")
+            logger.info(
+                f"Auto-disabled escalation_only automation {automation['id']} (task done)"
+            )
         else:
             maybe_escalate(task, automation, today)
     else:
@@ -280,7 +305,9 @@ def handler(event, context):
         recurrence_type = prop_select(automation, "recurrence_type")
         fn = HANDLERS.get(recurrence_type)
         if not fn:
-            logger.warning(f"Unknown recurrence_type '{recurrence_type}' on '{automation_name}'")
+            logger.warning(
+                f"Unknown recurrence_type '{recurrence_type}' on '{automation_name}'"
+            )
             continue
         try:
             fn(automation, today)
