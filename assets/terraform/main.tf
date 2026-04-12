@@ -8,6 +8,7 @@ data "aws_route53_zone" "selected" {
 
 
 resource "aws_s3_bucket" "this" {
+  #checkov:skip=CKV_AWS_145:KMS encryption for S3 is overkill for a personal portfolio site
   bucket = var.bucket_name
 }
 
@@ -24,6 +25,19 @@ resource "aws_s3_bucket_versioning" "this" {
   bucket = aws_s3_bucket.this.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "this" {
+  bucket = aws_s3_bucket.this.id
+
+  rule {
+    id     = "expire-old-versions"
+    status = "Enabled"
+
+    noncurrent_version_expiration {
+      noncurrent_days = 90
+    }
   }
 }
 
@@ -78,7 +92,32 @@ resource "aws_s3_bucket_policy" "allow_cloudfront" {
   policy = data.aws_iam_policy_document.allow_cloudfront.json
 }
 
+resource "aws_cloudfront_response_headers_policy" "security_headers" {
+  name = "${var.bucket_name}-security-headers"
+
+  security_headers_config {
+    strict_transport_security {
+      access_control_max_age_sec = 31536000
+      include_subdomains         = true
+      override                   = true
+    }
+    content_type_options {
+      override = true
+    }
+    frame_options {
+      frame_option = "DENY"
+      override     = true
+    }
+    xss_protection {
+      mode_block = true
+      protection = true
+      override   = true
+    }
+  }
+}
+
 resource "aws_cloudfront_distribution" "this" {
+  #checkov:skip=CKV_AWS_86:CloudFront access logging not required for a personal portfolio
   enabled             = true
   default_root_object = "index.html"
   aliases             = [local.alias]
@@ -92,10 +131,11 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   default_cache_behavior {
-    target_origin_id       = "assets-bucket"
-    viewer_protocol_policy = "redirect-to-https"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
-    cached_methods         = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id           = "assets-bucket"
+    viewer_protocol_policy     = "redirect-to-https"
+    allowed_methods            = ["GET", "HEAD", "OPTIONS"]
+    cached_methods             = ["GET", "HEAD", "OPTIONS"]
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers.id
     forwarded_values {
       query_string = false
       cookies { forward = "none" }

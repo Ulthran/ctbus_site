@@ -1,4 +1,6 @@
+// eslint-disable-next-line turbo/no-undeclared-env-vars, @shopify/prefer-module-scope-constants
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+// eslint-disable-next-line turbo/no-undeclared-env-vars, @shopify/prefer-module-scope-constants
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
 exports.handler = async function (event) {

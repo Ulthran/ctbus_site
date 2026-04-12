@@ -1,3 +1,4 @@
+/* global React */
 const { useState } = React;
 
 const styles = {

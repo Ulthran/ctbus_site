@@ -1,3 +1,4 @@
+/* global Vue, VueRouter, Vuetify */
 const options = {
   moduleCache: {
     vue: Vue,
