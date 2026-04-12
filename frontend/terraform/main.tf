@@ -59,6 +59,10 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
     noncurrent_version_expiration {
       noncurrent_days = 90
     }
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
   }
 }
 
@@ -156,6 +160,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers" {
     strict_transport_security {
       access_control_max_age_sec = 31536000
       include_subdomains         = true
+      preload                    = true
       override                   = true
     }
     content_type_options {
