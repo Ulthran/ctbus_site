@@ -56,6 +56,7 @@ resource "aws_iam_role_policy_attachment" "notion_automations_basic" {
 # ---------------------------------------------------------------------------
 
 resource "aws_lambda_function" "notion_automations" {
+  #checkov:skip=CKV_AWS_173:KMS encryption for Lambda env vars is overkill for a personal portfolio
   function_name                  = "notion-automations"
   role                           = aws_iam_role.notion_automations.arn
   handler                        = "handler.handler"

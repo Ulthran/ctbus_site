@@ -27,20 +27,23 @@ resource "aws_iam_role_policy_attachment" "maintenance_lambda_basic" {
 }
 
 resource "aws_lambda_function" "maintenance" {
-  function_name    = "maintenance"
-  role             = aws_iam_role.maintenance_lambda.arn
-  handler          = "index.handler"
-  runtime          = "nodejs20.x"
-  filename         = data.archive_file.maintenance.output_path
-  source_code_hash = data.archive_file.maintenance.output_base64sha256
+  function_name                  = "maintenance"
+  role                           = aws_iam_role.maintenance_lambda.arn
+  handler                        = "index.handler"
+  runtime                        = "nodejs20.x"
+  filename                       = data.archive_file.maintenance.output_path
+  source_code_hash               = data.archive_file.maintenance.output_base64sha256
+  reserved_concurrent_executions = 5
 }
 
 resource "aws_lambda_function_url" "maintenance" {
+  #checkov:skip=CKV_AWS_258:Lambda URL is intentionally public — maintenance status endpoint
   function_name      = aws_lambda_function.maintenance.arn
   authorization_type = "NONE"
 }
 
 resource "aws_lambda_permission" "maintenance_url" {
+  #checkov:skip=CKV_AWS_301:Lambda is intentionally publicly accessible via function URL
   statement_id           = "AllowPublicAccess"
   action                 = "lambda:InvokeFunctionUrl"
   function_name          = aws_lambda_function.maintenance.function_name

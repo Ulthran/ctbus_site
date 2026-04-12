@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const fs = require("fs");
 const http = require("http");
 const path = require("path");
@@ -10,15 +9,16 @@ const providedPortIndex = args.findIndex(
 const requestedPort =
   providedPortIndex >= 0 && args[providedPortIndex + 1]
     ? Number(args[providedPortIndex + 1])
-    : Number(process.env.PORT || 4173);
+    : Number(process.env.PORT || 4173); // eslint-disable-line turbo/no-undeclared-env-vars
 const port =
   Number.isFinite(requestedPort) && requestedPort > 0 ? requestedPort : 4173;
 const contentRoot = path.resolve(__dirname, "src");
 const assetsRoot = path.resolve(__dirname, "../assets/files");
 const assetsBaseUrl =
-  process.env.ASSETS_BASE_URL || `http://localhost:${port}/assets`;
-const envName = process.env.ENV_NAME || "local";
+  process.env.ASSETS_BASE_URL || `http://localhost:${port}/assets`; // eslint-disable-line turbo/no-undeclared-env-vars
+const envName = process.env.ENV_NAME || "local"; // eslint-disable-line turbo/no-undeclared-env-vars
 
+// eslint-disable-next-line @shopify/prefer-module-scope-constants
 const MIME_TYPES = {
   ".html": "text/html",
   ".js": "application/javascript",
@@ -32,6 +32,7 @@ const MIME_TYPES = {
   ".gif": "image/gif",
 };
 
+// eslint-disable-next-line @shopify/prefer-module-scope-constants
 const TEXT_EXTENSIONS = new Set([".html", ".js", ".css", ".json", ".svg"]);
 
 const placeholderValues = {
