@@ -4,13 +4,15 @@ on:
   push:
     branches: [main, master, dev]
     paths:
-      - 'jupyter/**'
-      - '.github/workflows/jupyter.yml'
+      - "jupyter/**"
+      - ".github/workflows/jupyter.yml"
   pull_request:
     branches: [main, master, dev]
     paths:
-      - 'jupyter/**'
-      - '.github/workflows/jupyter.yml'
+      - "jupyter/**"
+      - ".github/workflows/jupyter.yml"
+
+permissions: {}
 
 jobs:
   lint:

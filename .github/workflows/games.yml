@@ -4,13 +4,15 @@ on:
   push:
     branches: [main, master, dev]
     paths:
-      - 'games/**'
-      - '.github/workflows/games.yml'
+      - "games/**"
+      - ".github/workflows/games.yml"
   pull_request:
     branches: [main, master, dev]
     paths:
-      - 'games/**'
-      - '.github/workflows/games.yml'
+      - "games/**"
+      - ".github/workflows/games.yml"
+
+permissions: {}
 
 jobs:
   lint:
@@ -24,7 +26,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
