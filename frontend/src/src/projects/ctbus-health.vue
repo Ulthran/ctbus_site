@@ -6,6 +6,7 @@ const info = projects["ctbus-health"];
 </script>
 
 <template>
+  <!-- eslint-disable i18next/no-literal-string -->
   <ProjectHero
     :title="info.title"
     :subtitle="info.subtitle"
