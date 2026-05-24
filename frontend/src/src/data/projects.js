@@ -54,10 +54,9 @@ export default {
     tags: ["python", "web", "flask", "sports analytics"],
     image: "disctracker.png",
   },
-  "notion": {
+  notion: {
     title: "Notion ",
-    subtitle:
-      "An attempt to organize my life around a single platform.",
+    subtitle: "An attempt to organize my life around a single platform.",
     tags: ["aws", "ai", "notion"],
     image: "Bvnrihioon.png",
   },

@@ -25,9 +25,7 @@ const info = projects["ctbus-health"];
         weekly, and monthly breakdowns with percent daily value (%DV) for
         calories, protein, fat, carbohydrates, fiber, sodium, and more.
       </v-card-text>
-      <v-card-text>
-        Access by allowlist only :/
-      </v-card-text>
+      <v-card-text> Access by allowlist only :/ </v-card-text>
     </v-card>
 
     <v-card class="mb-4">
@@ -49,12 +47,8 @@ const info = projects["ctbus-health"];
             <strong>Data sources:</strong> USDA FoodData Central API, Open Food
             Facts barcode database
           </li>
-          <li>
-            <strong>Storage:</strong> S3 (JSON files per day + index)
-          </li>
-          <li>
-            <strong>Infrastructure:</strong> Terraform
-          </li>
+          <li><strong>Storage:</strong> S3 (JSON files per day + index)</li>
+          <li><strong>Infrastructure:</strong> Terraform</li>
         </ul>
       </v-card-text>
     </v-card>
