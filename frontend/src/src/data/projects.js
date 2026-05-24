@@ -13,6 +13,13 @@ export default {
     tags: ["saas", "aws", "vue"],
     image: "xylblox.png",
   },
+  "ctbus-health": {
+    title: "CTBus Health",
+    subtitle:
+      "A serverless nutrition and health tracking pipeline with a Vue 3 dashboard for logging food via text or barcode scan, backed by Claude, OpenFood Facts, and USDA.",
+    tags: ["aws", "vue", "ai", "serverless"],
+    image: "ctbus_health.png",
+  },
   "ctbus-finance": {
     title: "CTBus Finance",
     subtitle:
@@ -40,18 +47,18 @@ export default {
     tags: ["aws", "dash", "serverless"],
     image: "spotify_vis.png",
   },
-  "ctbus-health": {
-    title: "CTBus Health",
-    subtitle:
-      "WIP. A serverless ETL pipeline I'm developing in AWS to aggregate and analyze health data I keep in many different formats and locations.",
-    tags: ["aws", "data engineering", "serverless"],
-    image: "Bvnrihioon.png",
-  },
   disctracker: {
     title: "Ultimate DiscTracker",
     subtitle:
       "WIP. The beginnings of an environment for Ultimate Frisbee stat tracking, analytics, real-time AI coaching, and more.",
     tags: ["python", "web", "flask", "sports analytics"],
     image: "disctracker.png",
+  },
+  "notion": {
+    title: "Notion ",
+    subtitle:
+      "An attempt to organize my life around a single platform.",
+    tags: ["aws", "ai", "notion"],
+    image: "Bvnrihioon.png",
   },
 };
